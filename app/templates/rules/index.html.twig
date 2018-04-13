@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Rules
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row logo">
+            <p class="slogan">
+                <a href="{{ url('main_index') }}" title="Łyżwiarstwo figurowe">
+                    Łyżwiarstwo figurowe
+                </a>
+            </p>
+            <p class="extra">~Soliści~</p>
+        </div>
+        <div class="row">
+            <div class="col-md-9 col-sm-9 col-xs-12">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <!-- przycisk rozwijania mobilnego menu -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Rozwiń nawigację</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{ url('rules_index') }}" title="zasady">
+                                        Zasady
+                                    </a></li>
+                                <li><a href="#">Występy</a></li>
+                                <li><a href="#">Rankingi</a></li>
+                                <li><a href="#">Łyżwiarze</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <div class="row log-in">
+                    <a href="#" title="rejestracja">Rejestracja</a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="{{ url('auth_logout') }}" title="{{ 'auth.logout.label'|trans }}">
+                            {#{{ 'auth.logout.label'|trans }}#}Logowanie
+                        </a>
+                    {% else %}
+                        <a href="{{ url('auth_login') }}" title="{{ 'auth.login.label'|trans }}">
+                            {#{{ 'auth.login.label'|trans }}#}Wyloguj
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid rules">
+        <div class="row title">
+            <p>Zasady</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <ul class="nav nav-tabs nav-justified" role="tablist">
+                    <li class="active"><a href="#1zakladka" role="tab" data-toggle="tab">Informacje ogólne</a></li>
+                    <li><a href="#2zakladka" role="tab" data-toggle="tab">Komponenty</a></li>
+                    <li><a href="#3zakladka" role="tab" data-toggle="tab">System oceniania</a></li>
+                    <li><a href="#4zakladka" role="tab" data-toggle="tab">4 ZAKŁADKA</a></li>
+                    <li><a href="#5zakladka" role="tab" data-toggle="tab">5 ZAKŁADKA</a></li>
+                    <li><a href="#6zakladka" role="tab" data-toggle="tab">6 ZAKŁADKA</a></li>
+                </ul>
+                <!-- Zawartość zakładek -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="1zakladka">
+                        <p class="title">Zawartość pierwszej zakładki</p>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                        1<br>
+                    </div>
+                    <div class="tab-pane" id="2zakladka">Zawartość drugiej zakładki</div>
+                    <div class="tab-pane" id="3zakladka">Zawartość trzeciej zakładki</div>
+                    <div class="tab-pane" id="4zakladka">Zawartość czwartej zakładki</div>
+                    <div class="tab-pane" id="5zakladka">Zawartość piątej zakładki</div>
+                    <div class="tab-pane" id="6zakladka">Zawartość szóstej zakładki</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row footer">
+            EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.
+        </div>
+    </div>
+{% endblock %}
