@@ -3,22 +3,53 @@
 {% block title %}{{ 'title.auth_login'|trans }}{% endblock %}
 
 {% block body %}
-    {% form_theme form with ['bootstrap_3_horizontal_layout.html.twig'] %}
-    <h1>{{ 'title.auth_login'|trans }}</h1>
+    <div class="all">
+        <div class="body-login">
+            <div class="container">
+                {% form_theme form with ['bootstrap_3_horizontal_layout.html.twig'] %}
+                {% if error is defined and error|length %}
+                    {% include 'default/_single_alert_message.html.twig' with {
+                        is_single_message: true,
+                        is_dismissible: false,
+                        type: 'danger',
+                        message: error,
+                    } %}
+                {% endif %}
+                <section id="loginform" class="outer-wrapper">
+                    <div class="inner-wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-offset-4">
+                                    <h1 class="text-center">{{ 'title.auth_login'|trans }}</h1>
 
-    {% if error is defined and error|length %}
-        {% include 'default/_single_alert_message.html.twig' with {
-            is_single_message: true,
-            is_dismissible: false,
-            type: 'danger',
-            message: error,
-        } %}
-    {% endif %}
+                                    {{ form_start(form, { method: 'post', action: path('auth_login_check') }) }}
+                                    {#{{ form_label(form.login) }}#}
+                                    {{ form_label(form.login) }}
+                                    {{ form_widget(form.login) }}
+                                    {{ form_label(form.password) }}
+                                    {{ form_widget(form.password) }}
 
-    <div>
-        {{ form_start(form, { method: 'post', action: path('auth_login_check') }) }}
-            {{ form_widget(form) }}
-            <input type="submit" value="{{ 'action.login'|trans }}" class="btn btn-success" />
-        {{ form_end(form) }}
+
+                                        <input type="submit" value="{{ 'action.login'|trans }}" class="btn btn-success" />
+
+                                        {{ form_end(form) }}
+                                        {% form_theme form with 'form/form_errors.html.twig' %}
+
+                                        <a class ="btn btn btn-danger" type="submit" href="{{ url('main_index') }}" title="{{ 'back.to.list'|trans }}">
+                                            {{ 'back.to.list'|trans }}
+                                        </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="container-fluid">
+                <div class="row footer">
+                    EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

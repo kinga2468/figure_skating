@@ -1,9 +1,19 @@
 *{margin:0; padding:0;}
 html, body {
+    margin:0;
+    padding:0;
     height:100%;
+    /*min-height: 100%;*/
     background-color:white;
     font-family: Oswald, helvetica, arial, sans-serif;
 }
+
+.all {
+    min-height:100%;
+    position:relative;
+}
+
+.main{padding-bottom:70px;}
 
 a:hover{text-decoration:none;}
 
@@ -25,6 +35,7 @@ a:hover{text-decoration:none;}
 .navbar-default .navbar-nav > li > a:focus {color: black; border-bottom: 2px solid #383888; margin-bottom:2px;}
 
 .log-in a{color:#666666; font-size: 1.3em; float:right; margin:13px 20px 10px 0; }
+.imie {color:#666666; font-size: 1.3em; float:right; margin:13px 20px 10px 0;}
 .log-in a:hover{color:black;}
 
 .baner{background-image: url("../images/skates.jpg"); height:200px; background-repeat: no-repeat;
@@ -82,7 +93,9 @@ a:hover{text-decoration:none;}
 .data div{float:left; color:black; font-size:1.3em; width:24%; margin-right:7%;}
 .data p{text-align: center; padding-top:3px;}
 
-.footer{background-color: #666666; text-align: center; color:white; font-size: 1.1em; margin-top:15px; padding: 15px;}
+.footer{
+    position:absolute; bottom:0; width:100%; height:50px;
+    background-color: #666666; text-align: center; color:white; font-size: 1.1em; margin-top:15px; padding: 15px;}
 
 
 
@@ -214,13 +227,14 @@ a:hover{text-decoration:none;}
 }
 #media3 img
 {
-    /*width: 250px;*/
+    /*wpadding-bottom:60px;idth: 250px;*/
     height: 170px;
 }
 
 /*end carusel ///////////////////////////////////////////////////////////*/
 
 /*zakładka rules////////////////////////////////////////////////////////*/
+.rules{padding-bottom:60px;}
 .rules .title p{background-color: #383888; color:white; font-family: 'Shadows Into Light Two', cursive; font-weight: 300;
     font-size:1.5em; text-align: center; padding:10px;}
 .nav.nav-tabs.nav-justified{margin:20px 0; font-size:1.3em;}
@@ -228,11 +242,29 @@ a:hover{text-decoration:none;}
 .nav-tabs a{color:#383888;}
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{color:#6666FF;}
 
+.tab-content p{font-family: 'Open Sans', sans-serif;}
 
 
+/*zakładka logowania////////////////////////////////////////////////////////*/
+.body-login{height:100%;
+    /*background-color: #383888;*/
+    padding:120px 0 120px 0;
+}
+.body-login .footer{margin-top:0;}
+.body-login h1{margin:40px 0 20px 0;}
+/*.body-login .btn{float:left; margin:40px 10px 10px 10px;*/
+    /*position: relative; left:95px;*/
+/*}*/
 
+.body-login .container{padding:0;}
 
+.buttons{background-color: red;}
+/*.label{color:black; font-size: 1.5em; background-color: red; margin:20px 0; padding: 10px 0;}*/
+.body-login .btn.btn-success{background-color:#383888; border-color:#383888; margin:30px auto 20px; display: block;}
+.body-login .btn.btn-danger{background-color:#666666; border-color:#666666; margin:10px 0;}
 
+.form-horizontal .control-label{font-family: 'Open Sans', sans-serif; color:black; font-size: 1.5em;
+    margin:15px 0 5px 0; padding: 10px 0; text-align: center; width:100%;}
 
 /*tablety//////////////////////////////////////////////////*/
 @media screen and (max-width: 1204px){
