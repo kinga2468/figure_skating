@@ -256,12 +256,14 @@ a:hover{text-decoration:none;}
     /*position: relative; left:95px;*/
 /*}*/
 
-.body-login .container{padding:0;}
+.body-login {background-color: #383888; background-image: url("../images/tlo5.jpg"); background-repeat:no-repeat;
+    background-position: -300px -300px;}
+.body-login .container{padding:0; background-color: white; }
 
 .buttons{background-color: red;}
 /*.label{color:black; font-size: 1.5em; background-color: red; margin:20px 0; padding: 10px 0;}*/
 .body-login .btn.btn-success{background-color:#383888; border-color:#383888; margin:30px auto 20px; display: block;}
-.body-login .btn.btn-danger{background-color:#666666; border-color:#666666; margin:10px 0;}
+.body-login .btn.btn-danger{background-color:#666666; border-color:#666666; margin:10px 0 20px;}
 
 .form-horizontal .control-label{font-family: 'Open Sans', sans-serif; color:black; font-size: 1.5em;
     margin:15px 0 5px 0; padding: 10px 0; text-align: center; width:100%;}
