@@ -16,4 +16,4 @@ $app->mount('/main', new MainController());
 $app->mount('/rules', new RulesController());
 $app->mount('/video', new VideoController());
 $app->mount('/skater', new SkaterController());
-$app->mount('/signup', new AuthController());
+//$app->mount('/signup', new AuthController());

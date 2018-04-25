@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="hello">
                 <source>hello</source>
-                <target>Hello user</target>
+                <target>Hello </target>
             </trans-unit>
             <trans-unit id="title.auth_login">
                 <source>title.auth_login</source>
@@ -25,6 +25,10 @@
             <trans-unit id="back.to.list">
                 <source>back.to.list</source>
                 <target>Back</target>
+            </trans-unit>
+            <trans-unit id="auth.login.label">
+                <source>auth.login.label</source>
+                <target>Log out</target>
             </trans-unit>
         </body>
     </file>

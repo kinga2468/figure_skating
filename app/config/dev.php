@@ -18,8 +18,4 @@ $app->register(new WebProfilerServiceProvider(), array(
     'profiler.cache_dir' => __DIR__.'/../var/cache/profiler',
 ));
 
-$app->register(new WebProfilerServiceProvider(), array(
-    'profiler.cache_dir' => __DIR__.'/../var/cache/profiler',
-));
-
 $app->register(new DoctrineProfilerServiceProvider());

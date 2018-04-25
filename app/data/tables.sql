@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   CONSTRAINT `FK_users_1`
     FOREIGN KEY (`role_id`)
     REFERENCES `roles` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 

@@ -86,7 +86,7 @@ class UserRepository
         try {
             $queryBuilder = $this->db->createQueryBuilder();
             $queryBuilder->select('u.id', 'u.login', 'u.password')
-                ->from('si_users', 'u')
+                ->from('users', 'u')
                 ->where('u.login = :login')
                 ->setParameter(':login', $login, \PDO::PARAM_STR);
 
@@ -111,8 +111,8 @@ class UserRepository
         try {
             $queryBuilder = $this->db->createQueryBuilder();
             $queryBuilder->select('r.name')
-                ->from('si_users', 'u')
-                ->innerJoin('u', 'si_roles', 'r', 'u.role_id = r.id')
+                ->from('users', 'u')
+                ->innerJoin('u', 'roles', 'r', 'u.role_id = r.id')
                 ->where('u.id = :id')
                 ->setParameter(':id', $userId, \PDO::PARAM_INT);
             $result = $queryBuilder->execute()->fetchAll();

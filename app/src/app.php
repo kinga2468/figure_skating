@@ -92,13 +92,6 @@ $app->register(
             ['^/auth.+$', 'IS_AUTHENTICATED_ANONYMOUSLY'],
             ['^/user.+$', 'ROLE_ADMIN'],
             ['^/.+$', 'ROLE_USER'],
-//            ['^/.+$', 'ROLE_ADMIN'],
-//            ['^/user.+$', 'ROLE_ADMIN'],
-//            ['^/.+$', 'IS_AUTHENTICATED_ANONYMOUSLY'],
-        //to pod spodem odkomentuj żeby działało, to nad nie odkomentowuj
-//            ['.+/delete$', 'ROLE_ADMIN'],
-//            ['.+/edit$', 'ROLE_ADMIN'],
-//            ['.+/add$', 'ROLE_ADMIN'],
         ],
         'security.role_hierarchy' => [
             'ROLE_ADMIN' => ['ROLE_USER'],
@@ -106,7 +99,10 @@ $app->register(
     ]
 );
 
-//dump($app['security.encoder.bcrypt']->encodePassword('kinga-admin', ''));
-//dump($app['security.encoder.bcrypt']->encodePassword('kinga-user', ''));
+/*login adminadmin z hasłem adminadmin, oraz useruser z hasłem useruser*/
+
+//dump($app['security.encoder.bcrypt']->encodePassword('adminadmin', ''));
+//dump($app['security.encoder.bcrypt']->encodePassword('useruser', ''));
+
 
 return $app;
