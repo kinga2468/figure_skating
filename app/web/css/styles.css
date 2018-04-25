@@ -252,9 +252,6 @@ a:hover{text-decoration:none;}
 }
 .body-login .footer{margin-top:0; }
 .body-login h1{margin:40px 0 20px 0;}
-/*.body-login .btn{float:left; margin:40px 10px 10px 10px;*/
-    /*position: relative; left:95px;*/
-/*}*/
 
 .body-login {background-color: #383888; background-image: url("../images/tlo5.jpg"); background-repeat:no-repeat;
     background-position: -300px -300px;}
@@ -274,11 +271,19 @@ a:hover{text-decoration:none;}
 .skater p {display: block; float: left;}
 .skater .link {display: block; float: left;}
 
-
-
-
-
-
+/*zakładka rejestracja////////////////////////////////////////////////////////*/
+#signupform .form-control {
+    width: 120%;
+}
+#signupform .form-horizontal .control-label{ margin:5px 0 5px 0; padding: 5px 0; font-size: 1.3em;}
+#signupform .body-login{height:100%;
+    /*margin:0;*/
+    padding:80px 0 135px 0;
+}
+#signupform h1{margin:20px 0 20px 0; font-size: 1.7em;}
+#signupform .btn.btn-success{margin:20px auto 15px; }
+#signupform .btn.btn-danger{margin:5px 0 20px;}
+.alert{margin:0;}
 
 
 /*tablety//////////////////////////////////////////////////*/

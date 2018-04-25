@@ -2,7 +2,22 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
-
+            <trans-unit id="validators_login_min">
+                <source>validators_login_min</source>
+                <target>Login is too short. Min 8 sign.</target>
+            </trans-unit>
+            <trans-unit id="validators_password_min">
+                <source>validators_password_min</source>
+                <target>Password is too short. Min 8 sign.</target>
+            </trans-unit>
+            <trans-unit id="validators_login_unique">
+                <source>validators_login_unique</source>
+                <target>This login isn't unique</target>
+            </trans-unit>
+            <trans-unit id="validators_password_match">
+                <source>validators_password_match</source>
+                <target>Passwords aren't match.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

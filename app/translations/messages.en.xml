@@ -30,6 +30,23 @@
                 <source>auth.login.label</source>
                 <target>Log out</target>
             </trans-unit>
+            <trans-unit id="label.repeatPassword">
+                <source>label.repeatPassword</source>
+                <target>Repeat Password</target>
+            </trans-unit>
+            <trans-unit id="title.auth_signup">
+                <source>title.auth_signup</source>
+                <target>Sign Up</target>
+            </trans-unit>
+            <trans-unit id="action.register">
+                <source>action.register</source>
+                <target>Sign up</target>
+            </trans-unit>
+            <trans-unit id="message.user_successfully_added">
+                <source>message.user_successfully_added</source>
+                <target>message.user_successfully_added</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

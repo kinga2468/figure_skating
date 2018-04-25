@@ -15,24 +15,22 @@
                         message: error,
                     } %}
                 {% endif %}
-                <section id="loginform" class="outer-wrapper">
+                <section id="signupform" class="outer-wrapper">
                     <div class="inner-wrapper">
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-4 col-sm-offset-4">
-                                    <h1 class="text-center">{{ 'title.auth_login'|trans }}</h1>
+                                    <h1 class="text-center">{{ 'title.auth_signup'|trans }}</h1>
 
-                                    {{ form_start(form, { method: 'post', action: path('auth_login_check') }) }}
-                                    {#{{ form_label(form.login) }}#}
+                                    {{ form_start(form, { method: 'post', action: url('auth_signup') }) }}
 
-                                    {{ form_widget(form) }}
                                     {#{{ form_label(form.login) }}#}
                                     {#{{ form_widget(form.login) }}#}
                                     {#{{ form_label(form.password) }}#}
                                     {#{{ form_widget(form.password) }}#}
+                                    {{ form_widget(form) }}
 
-
-                                    <input type="submit" value="{{ 'action.login'|trans }}" class="btn btn-success" />
+                                    <input type="submit" value="{{ 'action.register'|trans }}" class="btn btn-success" />
 
                                     {{ form_end(form) }}
                                     {% form_theme form with 'form/form_errors.html.twig' %}

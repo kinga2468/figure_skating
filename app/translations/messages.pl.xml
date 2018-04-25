@@ -34,6 +34,23 @@
                 <source>auth.login.label</source>
                 <target>Wyloguj</target>
             </trans-unit>
+            <trans-unit id="label.repeatPassword">
+                <source>label.repeatPassword</source>
+                <target>Powtórz hasło</target>
+            </trans-unit>
+            <trans-unit id="title.auth_signup">
+                <source>title.auth_signup</source>
+                <target>Rejestracja</target>
+            </trans-unit>
+            <trans-unit id="action.register">
+                <source>action.register</source>
+                <target>Zarejestruj</target>
+            </trans-unit>
+            <trans-unit id="message.user_successfully_added">
+                <source>message.user_successfully_added</source>
+                <target>Użytkownik został zarejestrowany. Można się teraz zalogować.</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
