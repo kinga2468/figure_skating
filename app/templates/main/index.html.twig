@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Main page
+    Łyżwiarstwo figurowe ~Soliści~
 {% endblock %}
 
 {% block body %}
@@ -34,9 +34,13 @@
                                     <li><a href="{{ url('rules_index') }}" title="zasady">
                                         Zasady
                                     </a></li>
-                                    <li><a href="#">Występy</a></li>
+                                    <li><a href="{{ url('video_index') }}" title="występy">
+                                            Występy
+                                        </a></li>
                                     <li><a href="#">Rankingi</a></li>
-                                    <li><a href="#">Łyżwiarze</a></li>
+                                    <li><a href="{{ url('skater_index') }}" title="występy">
+                                            Łyżwiarze
+                                        </a></li>
                                 </ul>
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->
@@ -329,8 +333,20 @@
                 <div class="title">
                     Najpopularniejsi łyżwiarze:
                 </div>
+                {#<div class="col-md-2 col-sm-4 col-xs-6">#}
+                    {#<a href="{{ url('skater_view', {'id': row.id}) }}">#}
+                        {#<div class="skater jeden">#}
+                            {#<div class="shadow">#}
+                                {#<div class="name">Javier<br>Fernandez</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</a>#}
+                {#</div>#}
+
+
+
                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a title="Zobacz łyżwiarza" href="#">
+                    <a href="#">
                         <div class="skater jeden">
                             <div class="shadow">
                                 <div class="name">Javier<br>Fernandez</div>
@@ -339,7 +355,7 @@
                     </a>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a title="Zobacz łyżwiarza" href="#">
+                    <a href="#">
                         <div class="skater dwa">
                             <div class="shadow">
                                 <div class="name">Yuzuru<br>Hanyu</div>
@@ -348,7 +364,7 @@
                     </a>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a title="Zobacz łyżwiarza" href="#">
+                    <a href="#">
                         <div class="skater trzy">
                             <div class="shadow">
                                 <div class="name">Misha<br>Ge</div>
@@ -357,7 +373,7 @@
                     </a>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a title="Zobacz łyżwiarza" href="#">
+                    <a href="#">
                         <div class="skater cztery">
                             <div class="shadow">
                                 <div class="name">Nathan<br>Chen</div>
@@ -366,7 +382,7 @@
                     </a>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a title="Zobacz łyżwiarza" href="#">
+                    <a href="#">
                         <div class="skater piec">
                             <div class="shadow">
                                 <div class="name">Jin<br>Boyang</div>
@@ -375,7 +391,7 @@
                     </a>
                 </div>
                 <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a title="Zobacz łyżwiarza" href="#">
+                    <a href="#">
                         <div class="skater szesc">
                             <div class="shadow">
                                 <div class="name">Mikhail<br>Kolyada</div>

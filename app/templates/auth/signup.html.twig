@@ -24,20 +24,22 @@
 
                                     {{ form_start(form, { method: 'post', action: path('auth_login_check') }) }}
                                     {#{{ form_label(form.login) }}#}
-                                    {{ form_label(form.login) }}
-                                    {{ form_widget(form.login) }}
-                                    {{ form_label(form.password) }}
-                                    {{ form_widget(form.password) }}
+
+                                    {{ form_widget(form) }}
+                                    {#{{ form_label(form.login) }}#}
+                                    {#{{ form_widget(form.login) }}#}
+                                    {#{{ form_label(form.password) }}#}
+                                    {#{{ form_widget(form.password) }}#}
 
 
-                                        <input type="submit" value="{{ 'action.login'|trans }}" class="btn btn-success" />
+                                    <input type="submit" value="{{ 'action.login'|trans }}" class="btn btn-success" />
 
-                                        {{ form_end(form) }}
-                                        {% form_theme form with 'form/form_errors.html.twig' %}
+                                    {{ form_end(form) }}
+                                    {% form_theme form with 'form/form_errors.html.twig' %}
 
-                                        <a class ="btn btn btn-danger" type="submit" href="{{ url('main_index') }}" title="{{ 'back.to.list'|trans }}">
-                                            {{ 'back.to.list'|trans }}
-                                        </a>
+                                    <a class ="btn btn btn-danger" type="submit" href="{{ url('main_index') }}" title="{{ 'back.to.list'|trans }}">
+                                        {{ 'back.to.list'|trans }}
+                                    </a>
 
                                 </div>
                             </div>

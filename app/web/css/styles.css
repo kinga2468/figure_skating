@@ -50,7 +50,7 @@ a:hover{text-decoration:none;}
 .skaters .col-md-2{margin:0; padding:0; }
 .skaters .col-sm-4{margin:0; padding:0; }
 .skaters .col-xs-6{margin:0; padding:0; }
-.skater{background-color:green; width:100%; height: 200px; background-repeat: no-repeat; background-size: cover;
+.skater{width:100%; height: 200px; background-repeat: no-repeat; background-size: cover;
     margin:0; padding:0; background-position: 65% 0;}
 
 .skater .name{opacity: 0;}
@@ -247,10 +247,10 @@ a:hover{text-decoration:none;}
 
 /*zakładka logowania////////////////////////////////////////////////////////*/
 .body-login{height:100%;
-    /*background-color: #383888;*/
-    padding:120px 0 120px 0;
+    /*margin:0;*/
+    padding:120px 0 135px 0;
 }
-.body-login .footer{margin-top:0;}
+.body-login .footer{margin-top:0; }
 .body-login h1{margin:40px 0 20px 0;}
 /*.body-login .btn{float:left; margin:40px 10px 10px 10px;*/
     /*position: relative; left:95px;*/
@@ -260,13 +260,26 @@ a:hover{text-decoration:none;}
     background-position: -300px -300px;}
 .body-login .container{padding:0; background-color: white; }
 
-.buttons{background-color: red;}
 /*.label{color:black; font-size: 1.5em; background-color: red; margin:20px 0; padding: 10px 0;}*/
 .body-login .btn.btn-success{background-color:#383888; border-color:#383888; margin:30px auto 20px; display: block;}
 .body-login .btn.btn-danger{background-color:#666666; border-color:#666666; margin:10px 0 20px;}
 
 .form-horizontal .control-label{font-family: 'Open Sans', sans-serif; color:black; font-size: 1.5em;
     margin:15px 0 5px 0; padding: 10px 0; text-align: center; width:100%;}
+
+
+/*zakładka skaters////////////////////////////////////////////////////////*/
+.image{ width:300px; height: 200px;}
+.image img{width:200px; height: 250px;  margin-left: auto; margin-right: auto;}
+.skater p {display: block; float: left;}
+.skater .link {display: block; float: left;}
+
+
+
+
+
+
+
 
 /*tablety//////////////////////////////////////////////////*/
 @media screen and (max-width: 1204px){
@@ -278,6 +291,7 @@ a:hover{text-decoration:none;}
     .curiosities .row .title{margin-top:20px; text-align: center;}
     .right-column .title{margin-top:20px; text-align: center;}
     .more{margin-top:15px;}
+    .body-login{ padding:120px 0 450px 0;}
 }
 
 /*telefony/////////////////////////////////////////////////*/
@@ -293,4 +307,8 @@ a:hover{text-decoration:none;}
     .curiosities .row .title{margin-top:30px; text-align: center;}
     .right-column .title{margin-top:30px; text-align: center;}
     .more{margin-top:15px;}
+
+    .body-login .footer{height:60px;}
+    .body-login .btn.btn-danger{margin:10px 0 20px 15px;}
+    .body-login{ padding:120px 0 180px 0;}
 }

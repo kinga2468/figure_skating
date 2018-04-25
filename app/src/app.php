@@ -90,6 +90,9 @@ $app->register(
         ],
         'security.access_rules' => [
             ['^/auth.+$', 'IS_AUTHENTICATED_ANONYMOUSLY'],
+            ['^/user.+$', 'ROLE_ADMIN'],
+            ['^/.+$', 'ROLE_USER'],
+//            ['^/.+$', 'ROLE_ADMIN'],
 //            ['^/user.+$', 'ROLE_ADMIN'],
 //            ['^/.+$', 'IS_AUTHENTICATED_ANONYMOUSLY'],
         //to pod spodem odkomentuj żeby działało, to nad nie odkomentowuj
