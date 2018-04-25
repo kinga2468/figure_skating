@@ -7,6 +7,7 @@ namespace Controller;
 use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Repository\VideoRepository;
 
 /**
  * Class VideoController.
@@ -24,6 +25,7 @@ class VideoController implements ControllerProviderInterface
     {
         $controller = $app['controllers_factory'];
         $controller->get('/', [$this, 'indexAction'])->bind('video_index');
+        $controller->get('/{id}', [$this, 'viewAction'])->bind('video_view');
 
         return $controller;
     }
@@ -38,11 +40,28 @@ class VideoController implements ControllerProviderInterface
      */
     public function indexAction(Application $app)
     {
-//        $mainRepository = new MainRepository($app['db']);
+        $videoRepository = new VideoRepository($app['db']);
 
         return $app['twig']->render(
-            'video/index.html.twig'
-//            ['main' => $mainRepository->findAll()]
+            'video/index.html.twig',
+            ['video' => $videoRepository->findAll()]
+        );
+    }
+    /**
+     * View action.
+     *
+     * @param \Silex\Application $app Silex application
+     * @param string             $id  Element Id
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     */
+    public function viewAction(Application $app, $id)
+    {
+        $videoRepository = new VideoRepository($app['db']);
+
+        return $app['twig']->render(
+            'video/view.html.twig',
+            ['video' => $videoRepository->findOneById($id)]
         );
     }
 }

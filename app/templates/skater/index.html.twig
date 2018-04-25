@@ -77,32 +77,22 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container main">
             <div class="message">
                 {% include 'default/_flash_messages.html.twig' %}
             </div>
-            {% if skater|length %}
-                {% for row in skater %}
-                    {#<div class="images">#}
-
-                    {#</div>#}
-                    <p>{{ row.name|upper }} {{ row.surname|upper }} {{ row.date_of_birth|upper }}</p>
-                    <div class="link">
-                        {#<a class="edit" href="{{ url('month_delete', {'id': row.id}) }}" title="{{ 'index_month_delete'|trans }}">#}
-                            {#<span class="fa fa-times-circle"></span>#}
-                        {#</a>#}
-                        {#<a class="edit" href="{{ url('month_edit', {'id': row.id}) }}" title="{{ 'index.edit2'|trans }}">#}
-                            {#{{ 'index.edit'|trans }}#}
-                        {#</a>#}
-                        <a class="edit" href="{{ url('skater_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
-                            zobacz więcej
-                        </a>
-                    </div>
-
-
-
-                {% endfor %}
-            {% endif %}
+            <div class="index skater_all">
+                {% if skater|length %}
+                    {% for row in skater %}
+                        <p>{{ row.name|upper }} {{ row.surname|upper }} {{ row.date_of_birth|upper }}</p>
+                        <div class="link">
+                            <a class="edit" href="{{ url('skater_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                zobacz więcej
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
         </div>
 
         <div class="container-fluid">

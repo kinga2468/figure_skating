@@ -266,10 +266,10 @@ a:hover{text-decoration:none;}
 
 
 /*zakładka skaters////////////////////////////////////////////////////////*/
-.image{ width:300px; height: 200px;}
-.image img{width:200px; height: 250px;  margin-left: auto; margin-right: auto;}
+.skater_all .image{ width:300px; height: 200px;}
+.skater_all .image img{width:200px; height: 250px;  margin-left: auto; margin-right: auto;}
 .skater p {display: block; float: left;}
-.skater .link {display: block; float: left;}
+/*.link {display: block; float: left; width:40%;}*/
 
 /*zakładka rejestracja////////////////////////////////////////////////////////*/
 #signupform .form-control {
@@ -284,6 +284,15 @@ a:hover{text-decoration:none;}
 #signupform .btn.btn-success{margin:20px auto 15px; }
 #signupform .btn.btn-danger{margin:5px 0 20px;}
 .alert{margin:0;}
+
+/*.index p{display: block; float:left; width:60%;}*/
+
+/*zakładka video//////////////////////////////////////////////////*/
+.video .image{ width:246px; height: 138px;}
+.video .image img{width:100%; height: 100%; margin: 4px;}
+.image_video p{text-align: center; padding:12px 0 5px 0; color:#333;}
+.image_video {width:254px; height:207px; color:black; border:1px solid #ddd; border-radius: 4px; margin:10px; float:left;}
+
 
 
 /*tablety//////////////////////////////////////////////////*/
