@@ -46,6 +46,10 @@
                 <source>message.user_successfully_added</source>
                 <target>message.user_successfully_added</target>
             </trans-unit>
+            <trans-unit id="Bad credentials.">
+                <source>Bad credentials.</source>
+                <target>Bad credentials.</target>
+            </trans-unit>
 
         </body>
     </file>

@@ -49,8 +49,8 @@
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="row log-in">
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a href="{{ url('auth_login') }}" title="{{ 'auth.login.label'|trans }}">
-                                {{ 'auth.login.label'|trans }}
+                            <a href="{{ url('auth_logout') }}" title="{{ 'auth.logout.label'|trans }}">
+                                {{ 'auth.logout.label'|trans }}
                             </a>
                             <p class="imie">
                                 {{ 'hello'|trans }}
@@ -60,11 +60,12 @@
                                 ,
                             </p>
                         {% else %}
-                            <a href="{{ url('auth_logout') }}" title="{{ 'auth.logout.label'|trans }}">
-                                {{ 'auth.logout.label'|trans }}Logowanie
+                            <a href="{{ url('auth_login') }}" title="{{ 'auth.login.label'|trans }}">
+                                {{ 'auth.login.label'|trans }}
                             </a>
-                            {#<a href="#" title="rejestracja">Logowanie</a>#}
-                            <a href="#" title="rejestracja">Rejestracja</a>
+                            <a href="{{ url('auth_signup') }}" title="{{ 'auth.signup.label'|trans }}">
+                                {{ 'auth.signup.label'|trans }}
+                            </a>
                         {% endif %}
                     </div>
                 </div>

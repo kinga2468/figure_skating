@@ -32,7 +32,7 @@
             </trans-unit>
             <trans-unit id="auth.login.label">
                 <source>auth.login.label</source>
-                <target>Wyloguj</target>
+                <target>Logowanie</target>
             </trans-unit>
             <trans-unit id="label.repeatPassword">
                 <source>label.repeatPassword</source>
@@ -50,7 +50,18 @@
                 <source>message.user_successfully_added</source>
                 <target>Użytkownik został zarejestrowany. Można się teraz zalogować.</target>
             </trans-unit>
-
+            <trans-unit id="auth.logout.label">
+                <source>auth.logout.label</source>
+                <target>Wyloguj</target>
+            </trans-unit>
+            <trans-unit id="auth.signup.label">
+                <source>auth.signup.label</source>
+                <target>Rejestracja</target>
+            </trans-unit>
+            <trans-unit id="Bad credentials.">
+                <source>Bad credentials.</source>
+                <target>Niepoprawne dane.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

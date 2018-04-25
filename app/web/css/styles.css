@@ -18,10 +18,10 @@ html, body {
 a:hover{text-decoration:none;}
 
 .logo p{text-align:center;}
-.logo .slogan{font-size:2em; color:black; margin-top:15px;}
+.logo .slogan{font-size:1.9em; color:black; margin-top:15px;}
 .slogan a{color:black;}
 .slogan:focus{text-decoration:none;}
-.logo .extra{font-family: 'Dancing Script', helvetica, arial, sans-serif; font-size:2em; color:#6666FF; margin-top:-8px;}
+.logo .extra{font-family: 'Dancing Script', helvetica, arial, sans-serif; font-size:2.4em; color:#6666FF; margin-top:-8px;}
 
 /*.navbar-nav{margin:0 auto;}*/
 .navbar{background-color:white; color:black; font-size:1.5em; border:none;}
