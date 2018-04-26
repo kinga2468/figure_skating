@@ -34,18 +34,33 @@ a:hover{text-decoration:none;}
 .navbar-default .navbar-nav > li > a:hover {color: black; border-bottom: 2px solid #6666FF; margin-bottom:2px;}
 .navbar-default .navbar-nav > li > a:focus {color: black; border-bottom: 2px solid #383888; margin-bottom:2px;}
 
-.log-in a{color:#666666; font-size: 1.3em; float:right; margin:13px 20px 10px 0; }
-.imie {color:#666666; font-size: 1.3em; float:right; margin:13px 20px 10px 0;}
+.log-in a{color:#666666; font-size: 1.5em; float:right; margin:13px 20px 10px 0; }
+.imie {color:#666666; font-size: 1.5em; float:right; margin:13px 20px 10px 0;}
 .log-in a:hover{color:black;}
 
-.baner{background-image: url("../images/skates.jpg"); height:200px; background-repeat: no-repeat;
-     background-position: 0 70%; background-size: cover;}
-.shadow-image{background: rgba(0,0,102,0.7); color:white; font-family: 'Shadows Into Light Two', cursive; font-weight: 300; height:100%;
-    font-size:1.5em; text-align: center; padding-top:50px;}
+.baner{background-image: url("../images/skates.jpg"); height:210px; background-repeat: no-repeat;
+     background-position: 0 70%; background-size: cover; color:white; margin-top:0;}
+.shadow-image{background: rgba(0,0,102,0.6); color:white; height:100%;
+    font-size:1.3em; /*text-align: center;*/
+    padding-top:20px;
+}
+
+.shadow-image .row .title{color:white; font-size:1.3em; text-align: center;  margin:0; padding:0; padding-bottom:20px;}
+.first{display:inline; text-align: center;}
+.counter{width:100%; height: 100%;}
+.counter div{/*margin-right:6%;*/ border:1px solid white; }
+.counter p{padding:16px 0 6px 0; text-align: center; color:white; font-size:1.3em;}
+
+.data{width:100%; height:35px; margin:15px auto 0; }
+.data .first{margin-left: 16.66%;}
+.data div{float:left; color:white; font-size:1.2em; width:16.66%; margin-left:8.33%;}
+.data div p{text-align: center; padding-top:3px;}
+
+
+
 
 .item .row .caption p{text-align: center;}
 
-.right-column{margin: 0; padding: 0;}
 
 .skaters .col-md-2{margin:0; padding:0; }
 .skaters .col-sm-4{margin:0; padding:0; }
@@ -56,7 +71,7 @@ a:hover{text-decoration:none;}
 .skater .name{opacity: 0;}
 .skater:hover .name{opacity: 1.0;}
 .shadow{opacity: 0; transition: .5s ease;}
-.shadow:hover{opacity: 0.7;}
+.shadow:hover{opacity: 0.6;}
 .shadow{background: rgba(0,0,102,1); height: 100%;}
 .shadow .name{text-align: center; color:white; font-size:1.5em; padding-top:70px; opacity: 1;}
 
@@ -83,15 +98,6 @@ a:hover{text-decoration:none;}
     color: #333;
 }
 
-.right-column .container-fluid{ padding:0 0;}
-.right-column .title{margin-top:60px;}
-.first{margin-left:7%;}
-.counter div{margin-right:7%; background-color: black; width:24%; }
-.counter p{padding:16px 0 6px 0; text-align: center; color:white; font-size:1.5em;}
-
-.data{width:100%; height:35px; background-color: #6666FF; margin-top:15px;}
-.data div{float:left; color:black; font-size:1.3em; width:24%; margin-right:7%;}
-.data p{text-align: center; padding-top:3px;}
 
 .footer{
     position:absolute; bottom:0; width:100%; height:50px;
@@ -234,9 +240,23 @@ a:hover{text-decoration:none;}
 /*end carusel ///////////////////////////////////////////////////////////*/
 
 /*zakładka rules////////////////////////////////////////////////////////*/
-.rules{padding-bottom:60px;}
-.rules .title p{background-color: #383888; color:white; font-family: 'Shadows Into Light Two', cursive; font-weight: 300;
-    font-size:1.5em; text-align: center; padding:10px;}
+.rules{padding-bottom:70px;}
+.rule { background-image: url("../images/tlo5.jpg"); background-position: -600px -300px; color:white; margin-bottom:25px;}
+.shadow-rules{background: rgba(0,0,102,0.5); color:white; font-size:1.5em; text-align: center;}
+.shadow-rules .title{color:white; font-size:1.2em; text-align: center;  margin:0; padding:7px; }
+
+/*.baner{background-image: url("../images/skates.jpg"); height:210px; background-repeat: no-repeat;*/
+    /*background-position: 0 70%; background-size: cover; color:white; }*/
+/*.shadow-image{background: rgba(0,0,102,0.7); color:white; height:100%;*/
+    /*font-size:1.3em; !*text-align: center;*!*/
+    /*padding-top:20px;*/
+/*}*/
+
+/*.shadow-image .row .title{color:white; font-size:1.3em; text-align: center;  margin:0; padding:0; padding-bottom:20px;}*/
+
+/*.rules .row.title {background-color: black; opacity: 0.2;}*/
+/*.rules .row.title p{!*background-color: #383888;*! color:white; font-size:1.7em; text-align: center; }*/
+
 .nav.nav-tabs.nav-justified{margin:20px 0; font-size:1.3em;}
 .tab-pane .title{margin:15px 15px 15px 25px;}
 .nav-tabs a{color:#383888;}
@@ -290,8 +310,19 @@ a:hover{text-decoration:none;}
 /*zakładka video//////////////////////////////////////////////////*/
 .video .image{ width:246px; height: 138px;}
 .video .image img{width:100%; height: 100%; margin: 4px;}
-.image_video p{text-align: center; padding:12px 0 5px 0; color:#333;}
-.image_video {width:254px; height:207px; color:black; border:1px solid #ddd; border-radius: 4px; margin:10px; float:left;}
+.image_video p{text-align: center; padding:12px 9px 4px 9px; color:#333;}
+.image_video {width:256px; height:200px; color:black; border:1px solid #ddd; border-radius: 4px; margin:8px; float:left;}
+.row .title.mini{font-size:1.2em; margin:10px 7px;}
+.radio {margin:10px 7px;}
+.filtr{border:1px solid #ddd; border-radius: 4px; margin:8px 0;}
+.btn-primary{display:block; margin:10px auto; background-color: #383888; border:none;}
+.btn-primary:hover{background-color: #383888; border:none;}
+.btn-primary:focus{background-color: #383888; border:none;}
+
+.movie{margin:0 auto; background-color: red;}
+/*.movie iframe{margin: 0 auto;}*/
+.info{border:1px solid #ddd; border-radius: 4px;}
+
 
 
 

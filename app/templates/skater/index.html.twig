@@ -72,29 +72,32 @@
             </div>
         </div>
         <div class="container-fluid rules">
-            <div class="row title">
-                <p>Łyżwiarze</p>
+            <div class="row rule">
+                <div class="shadow-rules">
+                    <div class="title">
+                        Łyżwiarze
+                    </div>
+                </div>
+            </div>
+
+            <div class="container main">
+                <div class="message">
+                    {% include 'default/_flash_messages.html.twig' %}
+                </div>
+                <div class="index skater_all">
+                    {% if skater|length %}
+                        {% for row in skater %}
+                            <p>{{ row.name|upper }} {{ row.surname|upper }} {{ row.date_of_birth|upper }}</p>
+                            <div class="link">
+                                <a class="edit" href="{{ url('skater_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                    zobacz więcej
+                                </a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
         </div>
-
-        <div class="container main">
-            <div class="message">
-                {% include 'default/_flash_messages.html.twig' %}
-            </div>
-            <div class="index skater_all">
-                {% if skater|length %}
-                    {% for row in skater %}
-                        <p>{{ row.name|upper }} {{ row.surname|upper }} {{ row.date_of_birth|upper }}</p>
-                        <div class="link">
-                            <a class="edit" href="{{ url('skater_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
-                                zobacz więcej
-                            </a>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </div>
-
         <div class="container-fluid">
             <div class="row footer">
                 EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.

@@ -75,28 +75,28 @@
             <div class="row rule">
                 <div class="shadow-rules">
                     <div class="title">
-                        Łyżwiarz
+                        {#{% if video|length %}#}
+                            Video
+                        {#{% endif %}#}
                     </div>
                 </div>
             </div>
 
-            <div class="container skater main">
+            <div class="container main">
                 <div class="message">
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
 
-                {% if skater|length %}
-                    <div class="image">
-                        <img src="{{ skater.img }} " />
-                        {#<img src="{{asset('../../web/images/yuzuru.jpg')}}">#}
-
+                {% if video|length %}
+                    <div class="col-md-8 col-sm-8 col-xs-12 movie">
+                        <iframe width="683" height="384" src="{{ video.link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
-                    <div>
-                        <p>{{ skater.name }} {{ skater.surname }}</p>
+                    <div class="col-md-4 col-sm-4 col-xs-12 info">
+                        {{ video.championship }} {{ video.year_championship }}
                     </div>
                 {% else %}
                     <div>
-                        No skater found!
+                        No video found!
                     </div>
                 {% endif %}
             </div>

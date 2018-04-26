@@ -72,31 +72,73 @@
             </div>
         </div>
         <div class="container-fluid rules">
-            <div class="row title">
-                <p>Występy</p>
+            <div class="row rule">
+                <div class="shadow-rules">
+                    <div class="title">
+                        Występy
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="container main">
+                <div class="message">
+                    {% include 'default/_flash_messages.html.twig' %}
+                </div>
 
-        <div class="container main">
-            <div class="message">
-                {% include 'default/_flash_messages.html.twig' %}
-            </div>
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <p>filtr</p>
-            </div>
-            <div class="col-md-9 col-sm-8 col-xs-12 index video">
-                {% if video|length %}
-                    {% for row in video %}
-                        <a class="edit" href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
-                            <div class="image_video">
-                                <div class="image">
-                                    <img src="{{ row.img_video_yt }} " />
+                <div class="col-md-3 col-sm-4 col-xs-12 filtr">
+                    <form>
+                        <div class="row">
+                            <p class="title">Filtrowanie</p>
+                            <p class="title mini">Zawody</p>
+                            {% if championship|length %}
+                                {% for row in championship %}
+                                    <div class="radio">
+                                        <label><input type="radio" name="championship">{{ row.championship }}</label>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <p class="title mini">Rok</p>
+                            {% if year|length %}
+                                {% for row in year %}
+                                    <div class="radio">
+                                        <label><input type="radio" name="year">{{ row.year_championship }}</label>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <p class="title mini">Zawodnik</p>
+                            {% if skater|length %}
+                                {% for row in skater %}
+                                    <div class="radio">
+                                        <label><input type="radio" name="skater">{{ row.name }} {{ row.surname }}</label>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <p class="title mini">Program</p>
+                            {% if type|length %}
+                                {% for row in type %}
+                                    <div class="radio">
+                                        <label><input type="radio" name="type">{{ row.type }}</label>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <a href=# id="send"><button type="submit" class="btn btn-primary">Filtruj</button></a>
+                    </form>
+                </div>
+
+                <div class="col-md-9 col-sm-8 col-xs-12 index video">
+                    {% if video|length %}
+                        {% for row in video %}
+                            <a class="edit" href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                <div class="image_video">
+                                    <div class="image">
+                                        <img src="{{ row.img_video_yt }} " />
+                                    </div>
+                                    <p>{{ row.title }}</p>
                                 </div>
-                                <p>{{ row.title }}</p>
-                            </div>
-                        </a>
-                    {% endfor %}
-                {% endif %}
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
         </div>
         <div class="container-fluid">

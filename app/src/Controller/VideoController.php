@@ -8,6 +8,7 @@ use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Repository\VideoRepository;
+use Form\VideoType;
 
 /**
  * Class VideoController.
@@ -25,7 +26,11 @@ class VideoController implements ControllerProviderInterface
     {
         $controller = $app['controllers_factory'];
         $controller->get('/', [$this, 'indexAction'])->bind('video_index');
+//        $controller->get('/', [$this, 'findMatchingAction'])->bind('video_index');
         $controller->get('/{id}', [$this, 'viewAction'])->bind('video_view');
+//        $controller->get('/{params}', [$this, 'displayMatchingAction'])
+//            ->value('params', '')
+//            ->bind('matching_video');
 
         return $controller;
     }
@@ -44,7 +49,12 @@ class VideoController implements ControllerProviderInterface
 
         return $app['twig']->render(
             'video/index.html.twig',
-            ['video' => $videoRepository->findAll()]
+            ['video' => $videoRepository->findAll(),
+                'championship' => $videoRepository->findChampionship(),
+                'year' => $videoRepository->findYear(),
+                'skater' => $videoRepository->findSkater(),
+                'type' => $videoRepository->findType(),
+                ]
         );
     }
     /**
@@ -64,4 +74,39 @@ class VideoController implements ControllerProviderInterface
             ['video' => $videoRepository->findOneById($id)]
         );
     }
+
+//    public function findMatchingAction(Application $app, Request $request)
+//    {
+//        $app['session']->remove('form');
+//        $video = [];
+//        $form = $app['form.factory']->createBuilder(
+//            VideoType::class,
+//            $video,
+//            ['video_repository' => new VideoRepository($app['db'])]
+//        )->getForm();
+//        return $app['twig']->render(
+//            'video/index.html.twig',
+//            [
+//                'form' => $form->createView(),
+//            ]
+//        );
+//    }
+//
+//    public function displayMatchingAction(Application $app, Request $request)
+//    {
+//        if(!$app['session']->get('form')) {
+//            $form = $request->get('video_type');
+//            $app['session']->set('form', $form);
+//        }
+//        $match = $app['session']->get('form');
+//        $videoRepository = new VideoRepository($app['db']);
+//        $video = $videoRepository->getMatching($match, 'video');
+////        $paginator = $videoRepository->paginateMatchingOffers($offers, $page);
+//        return $app['twig']->render(
+//            'main/index.html.twig',
+//            [
+//                'video' => $video,
+//            ]
+//        );
+//    }
 }
