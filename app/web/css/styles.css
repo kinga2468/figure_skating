@@ -13,6 +13,7 @@ html, body {
     position:relative;
 }
 
+.header{height:180px;}
 .main{padding-bottom:70px;}
 
 a:hover{text-decoration:none;}
@@ -319,12 +320,27 @@ a:hover{text-decoration:none;}
 .btn-primary:hover{background-color: #383888; border:none;}
 .btn-primary:focus{background-color: #383888; border:none;}
 
-.movie{margin:0 auto; background-color: red;}
+.movie{background-colorred; min-width:683px;  padding:2px 35px;}
+/*.movie{margin:0 auto; background-color: red; min-width:683px;}*/
 /*.movie iframe{margin: 0 auto;}*/
-.info{border:1px solid #ddd; border-radius: 4px;}
+.info{border:1px solid #ddd; border-radius: 4px; min-height: 388px; padding:16px 0 0 0; }
+.info p{padding:0 5px;}
+.championship{font-size:1.5em; text-align: center; color:black;}
+.video_skater{font-size:1.4em; text-align: center; color:black;}
+.song{font-size:1.2em; text-align: center; margin-top:13px;}
+
+.rating{margin:35px 0; width:100%;}
+.box{font-size: 2.4em; color:#baba8e; border:2px solid black; width:30%; height: 90px; margin-left:40px; float:left;}
+.box p{text-align: center; padding:17px;}
+.rating .name{float:left; width:50%;}
+.rating .name p{text-align: center; font-size:1.2em; padding-top:10px;}
+
+.skater_button{margin: 180px auto 20px; width:190px; clear:both;}
+.skater_button a{font-size:1.2em; text-decoration: none; color:white; background-color: #383888; padding:8px 40px; }
+.date{font-size:1.2em; text-align: center; margin-top:30px;}
 
 
-
+.comments{clear:both; background-color: red; padding:10px 0px;}
 
 /*tablety//////////////////////////////////////////////////*/
 @media screen and (max-width: 1204px){

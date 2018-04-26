@@ -87,6 +87,58 @@ CREATE TABLE IF NOT EXISTS `users` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `comments`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `text` VARCHAR(500) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `comments_has_users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `comments_has_users` (
+  `comments_id` INT UNSIGNED NOT NULL,
+  `users_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`comments_id`, `users_id`),
+  INDEX `fk_comments_has_users_users1_idx` (`users_id` ASC),
+  INDEX `fk_comments_has_users_comments1_idx` (`comments_id` ASC),
+  CONSTRAINT `fk_comments_has_users_comments1`
+    FOREIGN KEY (`comments_id`)
+    REFERENCES `comments` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comments_has_users_users1`
+    FOREIGN KEY (`users_id`)
+    REFERENCES `users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `comments_has_video`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `comments_has_video` (
+  `comments_id` INT UNSIGNED NOT NULL,
+  `video_id` INT UNSIGNED NOT NULL,
+  `video_users_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`comments_id`, `video_id`, `video_users_id`),
+  INDEX `fk_comments_has_video_video1_idx` (`video_id` ASC, `video_users_id` ASC),
+  INDEX `fk_comments_has_video_comments1_idx` (`comments_id` ASC),
+  CONSTRAINT `fk_comments_has_video_comments1`
+    FOREIGN KEY (`comments_id`)
+    REFERENCES `comments` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comments_has_video_video1`
+    FOREIGN KEY (`video_id` , `video_users_id`)
+    REFERENCES `video` (`id` , `users_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 INSERT INTO `roles` (`id`, `name`) VALUES
 (1, 'ROLE_ADMIN'),
 (2, 'ROLE_USER');

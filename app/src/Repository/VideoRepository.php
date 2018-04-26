@@ -146,4 +146,18 @@ class VideoRepository
 //        $result = isset($result) ? $result : [];
 //        return $result;
 //    }
+
+    public function getVideoSkater($videoId)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('s.name', 's.surname')
+            ->from('skaters', 's')
+            ->innerJoin('s', 'video', 'v', 'v.skaters_id = s.id')
+            ->where('v.id = :id')
+//            ->groupBy('s.surname')
+            ->setParameter(':id', $videoId, \PDO::PARAM_INT);
+        $result = $queryBuilder->execute()->fetchAll();
+        return $result;
+    }
 }

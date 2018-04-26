@@ -68,10 +68,13 @@ class VideoController implements ControllerProviderInterface
     public function viewAction(Application $app, $id)
     {
         $videoRepository = new VideoRepository($app['db']);
+//        $skater = $videoRepository->getVideoSkater($id);
+//        var_dump($skater);
 
         return $app['twig']->render(
             'video/view.html.twig',
-            ['video' => $videoRepository->findOneById($id)]
+            ['video' => $videoRepository->findOneById($id),
+            'skater' => $videoRepository->getVideoSkater($id)]
         );
     }
 

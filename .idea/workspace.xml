@@ -15,29 +15,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/web/css/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="321" column="44" selection-start-line="321" selection-start-column="44" selection-end-line="321" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="view.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/video/view.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="90" column="65" selection-start-line="90" selection-start-column="65" selection-end-line="90" selection-end-column="65" />
+            <state relative-caret-position="250">
+              <caret line="150" column="45" selection-start-line="150" selection-start-column="45" selection-end-line="150" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/skater/view.html.twig">
+      <file leaf-file-name="tables.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/data/tables.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="89" column="14" lean-forward="true" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+            <state relative-caret-position="197">
+              <caret line="55" selection-start-line="55" selection-start-column="3" selection-end-line="60" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/skater/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="91" column="32" selection-start-line="91" selection-start-column="32" selection-end-line="93" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VideoController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/Controller/VideoController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="71" column="21" lean-forward="true" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
+              <folding>
+                <element signature="e#6#34#0#PHP" expanded="true" />
+                <element signature="e#58#100#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VideoRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/Repository/VideoRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="162" column="1" lean-forward="true" selection-start-line="162" selection-start-column="1" selection-end-line="162" selection-end-column="1" />
+              <folding>
+                <element signature="e#6#34#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/web/css/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="342" column="23" selection-start-line="342" selection-start-column="23" selection-end-line="342" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -46,18 +80,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>body</find>
-      <find>span</find>
-      <find>img</find>
-      <find>jeden</find>
-      <find>tag_ind</find>
-      <find>extra</find>
       <find>auth.signup.label</find>
       <find>auth.login.label</find>
       <find>link</find>
       <find>image</find>
       <find>.image</find>
-      <find>title</find>
       <find>btn</find>
       <find>script.js</find>
       <find>time</find>
@@ -75,7 +102,14 @@
       <find>baner</find>
       <find>skater</find>
       <find>rules</find>
+      <find>of</find>
+      <find>champion</find>
       <find>video</find>
+      <find>title</find>
+      <find>comm</find>
+      <find>container</find>
+      <find>my</find>
+      <find>mydb</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -102,7 +136,6 @@
         <option value="$PROJECT_DIR$/app/src/Repository/SkaterRepository.php" />
         <option value="$PROJECT_DIR$/app/src/Controller/SkaterController.php" />
         <option value="$PROJECT_DIR$/app/templates/auth/login.html.twig" />
-        <option value="$PROJECT_DIR$/app/data/tables.sql" />
         <option value="$PROJECT_DIR$/app/src/Repository/UserRepository.php" />
         <option value="$PROJECT_DIR$/app/src/Form/LoginType.php" />
         <option value="$PROJECT_DIR$/app/src/controllers.php" />
@@ -119,15 +152,16 @@
         <option value="$PROJECT_DIR$/app/translations/messages.pl.xml" />
         <option value="$PROJECT_DIR$/app/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Form/VideoType.php" />
-        <option value="$PROJECT_DIR$/app/src/Controller/VideoController.php" />
-        <option value="$PROJECT_DIR$/app/src/Repository/VideoRepository.php" />
         <option value="$PROJECT_DIR$/app/templates/main/index.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/rules/index.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/video/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/templates/rules/index.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/skater/index.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/skater/view.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/video/view.html.twig" />
+        <option value="$PROJECT_DIR$/app/src/Repository/VideoRepository.php" />
+        <option value="$PROJECT_DIR$/app/src/Controller/VideoController.php" />
         <option value="$PROJECT_DIR$/app/web/css/styles.css" />
+        <option value="$PROJECT_DIR$/app/templates/video/view.html.twig" />
+        <option value="$PROJECT_DIR$/app/data/tables.sql" />
       </list>
     </option>
   </component>
@@ -407,27 +441,27 @@
       <workItem from="1524513738452" duration="385000" />
       <workItem from="1524563766304" duration="14134000" />
       <workItem from="1524668361837" duration="17528000" />
-      <workItem from="1524734955683" duration="22099000" />
+      <workItem from="1524734955683" duration="33128000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89880000" />
+    <option name="totallyTimeSpent" value="100909000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28322148" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28322148" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5013423" side_tool="true" visible="true" weight="0.24435028" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5013423" side_tool="true" weight="0.24435028" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4986577" visible="true" weight="0.24435028" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4986577" visible="true" weight="0.24435028" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -694,24 +728,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/data/tables.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="55" selection-start-line="55" selection-end-line="60" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Repository/SkaterRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="52" column="31" selection-end-line="71" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Controller/SkaterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="65" column="5" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="65" selection-end-column="5" />
+          <folding>
+            <element signature="e#6#35#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -744,27 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Controller/VideoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#6#34#0#PHP" expanded="true" />
-            <element signature="e#58#100#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Repository/VideoRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="123" column="41" selection-start-line="123" selection-start-column="41" selection-end-line="123" selection-end-column="41" />
-          <folding>
-            <element signature="e#6#34#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-74">
@@ -774,50 +776,89 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/main/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="74" column="33" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="33" />
+        <state relative-caret-position="151">
+          <caret line="86" column="57" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/video/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="73" column="43" lean-forward="true" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="43" />
+        <state relative-caret-position="136">
+          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/rules/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="73" column="8" lean-forward="true" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="43" />
+        <state relative-caret-position="136">
+          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/skater/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/src/Controller/SkaterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="99" column="14" selection-start-line="99" selection-start-column="14" selection-end-line="99" selection-end-column="14" />
+        <state relative-caret-position="473">
+          <caret line="65" column="5" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="65" selection-end-column="5" />
+          <folding>
+            <element signature="e#6#35#0#PHP" expanded="true" />
+            <element signature="e#59#101#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Repository/VideoRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="162" column="1" lean-forward="true" selection-start-line="162" selection-start-column="1" selection-end-line="162" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#34#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Controller/VideoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="71" column="21" lean-forward="true" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
+          <folding>
+            <element signature="e#6#34#0#PHP" expanded="true" />
+            <element signature="e#58#100#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/skater/view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="89" column="14" lean-forward="true" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
+        <state relative-caret-position="-935">
+          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/video/view.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/templates/skater/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="90" column="65" selection-start-line="90" selection-start-column="65" selection-end-line="90" selection-end-column="65" />
+        <state relative-caret-position="272">
+          <caret line="91" column="32" selection-start-line="91" selection-start-column="32" selection-end-line="93" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/web/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="342" column="23" selection-start-line="342" selection-start-column="23" selection-end-line="342" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/video/view.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
-          <caret line="321" column="44" selection-start-line="321" selection-start-column="44" selection-end-line="321" selection-end-column="44" />
+          <caret line="150" column="45" selection-start-line="150" selection-start-column="45" selection-end-line="150" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/data/tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="55" selection-start-line="55" selection-start-column="3" selection-end-line="60" selection-end-column="74" />
         </state>
       </provider>
     </entry>

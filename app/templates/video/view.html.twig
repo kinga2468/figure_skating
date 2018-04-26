@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="all">
-        <div class="container">
+        <div class="container header">
             <div class="row logo">
                 <p class="slogan">
                     <a href="{{ url('main_index') }}" title="Łyżwiarstwo figurowe">
@@ -86,19 +86,72 @@
                 <div class="message">
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
+                <div class=row">
+                    {% if video|length %}
+                        <div class="col-md-8 col-sm-8 col-xs-12 movie">
+                            <div class="movie">
+                                <iframe width="683" height="384" src="{{ video.link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
 
-                {% if video|length %}
-                    <div class="col-md-8 col-sm-8 col-xs-12 movie">
-                        <iframe width="683" height="384" src="{{ video.link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="col-md-4 col-sm-3 col-xs-12 info">
+                            <div class="championship">
+                                <p>{{ video.championship }} {{ video.year_championship }}</p>
+                            </div>
+                            <div class="video_skater">
+                                {% if skater|length %}
+                                    <p>{{ skater.0.name }} {{ skater.0.surname }}, {{ video.type }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="song">
+                                <p>do piosenki {{ video.song }}.</p>
+                            </div>
+                            <div class="rating">
+                                <div class="box">
+                                    <p>{{ video.average_rating }}</p>
+                                </div>
+                                <div class="name">
+                                    <p>oceń występ</p>
+                                </div>
+                                <div class="stars">
+
+                                </div>
+                            </div>
+                            <div class="skater_button">
+                                <a href="{{ url('skater_view', {'id': video.skaters_id}) }}" title="{{ 'label.see_Skater'|trans }}">
+                                    zobacz łyżwiarza
+                                </a>
+                            </div>
+                            <div class="date">
+                                <p>data dodania: {{ video.date_add }}</p>
+                            </div>
+                        </div>
+
+                    {% else %}
+                        <div>
+                            No video found!
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row ko">
+                    <div class="comments">
+                        <div class="title">
+                            <p>Komentarze: </p>
+                        </div>
+                        <div class="comment">
+                            <div class="avatar">
+                                hłehłe
+                            </div>
+                            <div class="login">
+                                kinga2468
+                            </div>
+                            <div class="date">
+                                dziś
+                            </div>
+                            <p>hej przystojniaku </p>
+                        </div>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 info">
-                        {{ video.championship }} {{ video.year_championship }}
-                    </div>
-                {% else %}
-                    <div>
-                        No video found!
-                    </div>
-                {% endif %}
+                </div>
             </div>
         </div>
         <div class="container-fluid">
