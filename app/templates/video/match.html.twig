@@ -75,30 +75,16 @@
             <div class="row rule">
                 <div class="shadow-rules">
                     <div class="title">
-                        Łyżwiarz
+                        Występy
                     </div>
                 </div>
             </div>
-
-            <div class="container skater main">
+            <div class="container main">
                 <div class="message">
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
 
-                {% if skater|length %}
-                    <div class="image">
-                        <img src="{{ skater.img }} " />
-                        {#<img src="{{asset('../../web/images/yuzuru.jpg')}}">#}
 
-                    </div>
-                    <div>
-                        <p>{{ skater.name }}</p>
-                    </div>
-                {% else %}
-                    <div>
-                        No skater found!
-                    </div>
-                {% endif %}
             </div>
         </div>
         <div class="container-fluid">

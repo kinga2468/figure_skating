@@ -87,7 +87,7 @@
                 <div class="index skater_all">
                     {% if skater|length %}
                         {% for row in skater %}
-                            <p>{{ row.name|upper }} {{ row.surname|upper }} {{ row.date_of_birth|upper }}</p>
+                            <p>{{ row.name|upper }} {{ row.date_of_birth|upper }}</p>
                             <div class="link">
                                 <a class="edit" href="{{ url('skater_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
                                     zobacz więcej

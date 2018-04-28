@@ -314,9 +314,14 @@ a:hover{text-decoration:none;}
 .image_video p{text-align: center; padding:12px 9px 4px 9px; color:#333;}
 .image_video {width:256px; height:200px; color:black; border:1px solid #ddd; border-radius: 4px; margin:8px; float:left;}
 
-.row .title.mini{font-size:1.2em; margin:10px 7px;}
-.radio {margin:10px 7px;}
+
+.filtr .title{margin: 15px auto; width:85px; }
+.row .title.mini{font-size:1.3em; margin:7px 13px;}
+.filtr .radio2{margin-left:10px;}
+.filtr .radio2 .input{clear:both; width:10%;  }
+.filtr label{clear:both; width:95%;  padding:2px 0 2px 5px; font-weight: 100;}
 .filtr{border:1px solid #ddd; border-radius: 4px; margin:8px 0;}
+
 .btn-primary{display:block; margin:10px auto; background-color: #383888; border:none;}
 .btn-primary:hover{background-color: #383888; border:none;}
 .btn-primary:focus{background-color: #383888; border:none;}

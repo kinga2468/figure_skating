@@ -8,7 +8,7 @@ use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Repository\VideoRepository;
-use Form\VideoType;
+use Form\FindVideoType;
 
 /**
  * Class VideoController.
@@ -25,12 +25,14 @@ class VideoController implements ControllerProviderInterface
     public function connect(Application $app)
     {
         $controller = $app['controllers_factory'];
-        $controller->get('/', [$this, 'indexAction'])->bind('video_index');
-//        $controller->get('/', [$this, 'findMatchingAction'])->bind('video_index');
+//        $controller->get('/', [$this, 'indexAction'])->bind('video_index');
+        $controller->get('/', [$this, 'findMatchingAction'])
+            ->bind('video_index');
         $controller->get('/{id}', [$this, 'viewAction'])->bind('video_view');
-//        $controller->get('/{params}', [$this, 'displayMatchingAction'])
-//            ->value('params', '')
-//            ->bind('matching_video');
+        $controller->get('/{params}', [$this, 'displayMatchingAction'])
+            ->value('params', '')
+//            ->value('page', 1)
+            ->bind('matching_video_paginated');
 
         return $controller;
     }
@@ -78,38 +80,48 @@ class VideoController implements ControllerProviderInterface
         );
     }
 
-//    public function findMatchingAction(Application $app, Request $request)
-//    {
-//        $app['session']->remove('form');
-//        $video = [];
-//        $form = $app['form.factory']->createBuilder(
-//            VideoType::class,
-//            $video,
+    public function findMatchingAction(Application $app, Request $request)
+    {
+        $app['session']->remove('form');
+        $video = [];
+        $videoRepository = new VideoRepository($app['db']);
+        $form = $app['form.factory']->createBuilder(
+            FindVideoType::class,
+            $video,
+            array('championship' => $videoRepository->findChampionship(),
+                'year_championship' => $videoRepository->findYear(),
+                'skater' => $videoRepository->findSkater(),
+                'type'=> $videoRepository->findType()
+            )
 //            ['video_repository' => new VideoRepository($app['db'])]
-//        )->getForm();
-//        return $app['twig']->render(
-//            'video/index.html.twig',
-//            [
-//                'form' => $form->createView(),
-//            ]
-//        );
-//    }
-//
-//    public function displayMatchingAction(Application $app, Request $request)
-//    {
-//        if(!$app['session']->get('form')) {
-//            $form = $request->get('video_type');
-//            $app['session']->set('form', $form);
-//        }
-//        $match = $app['session']->get('form');
-//        $videoRepository = new VideoRepository($app['db']);
-//        $video = $videoRepository->getMatching($match, 'video');
-////        $paginator = $videoRepository->paginateMatchingOffers($offers, $page);
-//        return $app['twig']->render(
-//            'main/index.html.twig',
-//            [
-//                'video' => $video,
-//            ]
-//        );
-//    }
+        )->getForm();
+//        var_dump($video);
+        return $app['twig']->render(
+            'video/index.html.twig',
+            [
+                'video' => $videoRepository->findAll(),
+                'form' => $form->createView(),
+            ]
+        );
+    }
+
+    public function displayMatchingAction(Application $app, Request $request, $page = 1)
+    {
+        var_dump(1);
+        if(!$app['session']->get('form')) {
+            $form = $request->get('video_type');
+            $app['session']->set('form', $form);
+        }
+        $match = $app['session']->get('form');
+        $videoRepository = new VideoRepository($app['db']);
+        $video = $videoRepository->getMatching($match, 'video');
+        var_dump($video);
+//        $paginator = $videoRepository->paginateMatchingVideo($video, $page);
+        return $app['twig']->render(
+            'video/match.html.twig',
+            [
+                'video' => $video,
+            ]
+        );
+    }
 }

@@ -62,6 +62,22 @@
                 <source>label.view</source>
                 <target>view</target>
             </trans-unit>
+            <trans-unit id="label.championship">
+                <source>label.championship</source>
+                <target>Championship</target>
+            </trans-unit>
+            <trans-unit id="label.year">
+                <source>label.year</source>
+                <target>Year</target>
+            </trans-unit>
+            <trans-unit id="label.skater">
+                <source>label.skater</source>
+                <target>Skater</target>
+            </trans-unit>
+            <trans-unit id="label.type">
+                <source>label.type</source>
+                <target>Type</target>
+            </trans-unit>
 
         </body>
     </file>

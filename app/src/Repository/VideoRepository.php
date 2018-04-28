@@ -78,7 +78,6 @@ class VideoRepository
         $queryBuilder->select('v.championship')
             ->from('video', 'v')
             ->groupBy('v.championship');
-//           ->setParameter(':v.championship', $championship, \PDO::PARAM_INT);
         $result = $queryBuilder->execute()->fetchAll();
         return $result;
     }
@@ -91,7 +90,6 @@ class VideoRepository
         $queryBuilder->select('v.year_championship')
             ->from('video', 'v')
             ->groupBy('v.year_championship');
-//            ->setParameter(':v.year_championship', $year, \PDO::PARAM_INT);
         $result = $queryBuilder->execute()->fetchAll();
         return $result;
     }
@@ -102,11 +100,10 @@ class VideoRepository
     {
         $queryBuilder = $this->db->createQueryBuilder();
 
-        $queryBuilder->select('s.name', 's.surname')
+        $queryBuilder->select('s.name')
             ->from('skaters', 's')
             ->innerJoin('s', 'video', 'v', 'v.skaters_id = s.id')
-            ->groupBy('s.surname');
-//            ->setParameter(':s.id', $skater, \PDO::PARAM_INT);
+            ->groupBy('s.name');
         $result = $queryBuilder->execute()->fetchAll();
         return $result;
     }
@@ -120,33 +117,17 @@ class VideoRepository
         $queryBuilder->select('v.type')
             ->from('video', 'v')
             ->groupBy('v.type');
-//            ->setParameter(':v.type', $type, \PDO::PARAM_INT);
         $result = $queryBuilder->execute()->fetchAll();
         return $result;
     }
-//
-//    public function getMatching($match, $table)
-//    {
-//        $championship = $this->findChampionship($match['championship']);
-//        $year = $this->findYear($match['year_championship']);
-//        $skater = $this->findSkater($match['cities_id']);
-//        $type = $this->findType($match['cities_id']);
-//
-//        $match['cities_id'] = $cityId;
-//        $queryBuilder = $this->db->createQueryBuilder()
-//            ->select('*')
-//            ->where('offer_types_id = :offer_types_id',
-//                'property_types_id = :property_types_id', 'cities_id = :cities_id')
-//            ->setParameter(':offer_types_id', $match['offer_types_id'])
-//            ->setParameter(':property_types_id', $match['property_types_id'])
-//            ->setParameter(':cities_id', $match['cities_id'])
-//            ->orderBy('created_at', 'ASC')
-//            ->from($table);
-//        $result = $queryBuilder->execute()->fetchAll();
-//        $result = isset($result) ? $result : [];
-//        return $result;
-//    }
 
+    /**
+     * znajdz łyżwiarza z tego video
+     * używane przy video view
+     *
+     * @param $videoId
+     * @return array
+     */
     public function getVideoSkater($videoId)
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -171,4 +152,31 @@ class VideoRepository
         $result = $queryBuilder->execute()->fetchAll();
         return $result;
     }
+
+    public function getMatching($match, $table)
+    {
+        $queryBuilder = $this->db->createQueryBuilder()
+            ->select('*')
+            ->where('championship = :championship', 'type = :type',
+                'skater = :skater', 'year_championship = :year_championship')
+            ->setParameter(':championship', $match['championship'])
+            ->setParameter(':type', $match['type'])
+            ->setParameter(':skater', $match['skater'])
+            ->setParameter(':year_championship', $match['year_championship'])
+//            ->orderBy('created_at', 'ASC')
+            ->from($table);
+        $result = $queryBuilder->execute()->fetchAll();
+        $result = isset($result) ? $result : [];
+        var_dump($result);
+        return $result;
+    }
+
+//    public function paginateMatchingVideo($offers, $page)
+//    {
+//        $adapter = new ArrayAdapter($offers);
+//        $pagerfanta = new Pagerfanta($adapter);
+//        $pagerfanta->setMaxPerPage(self::NUM_ITEMS);
+//        $pagerfanta->setCurrentPage($page);
+//        return $pagerfanta;
+//    }
 }

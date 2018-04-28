@@ -82,6 +82,22 @@
                 <source>label.nav.next</source>
                 <target>Następna strona</target>
             </trans-unit>
+            <trans-unit id="label.championship">
+                <source>label.championship</source>
+                <target>Zawody</target>
+            </trans-unit>
+            <trans-unit id="label.year">
+                <source>label.year</source>
+                <target>Rok</target>
+            </trans-unit>
+            <trans-unit id="label.skater">
+                <source>label.skater</source>
+                <target>Zawodnik</target>
+            </trans-unit>
+            <trans-unit id="label.type">
+                <source>label.type</source>
+                <target>Program</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

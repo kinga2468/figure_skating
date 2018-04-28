@@ -88,40 +88,73 @@
                     <form>
                         <div class="row">
                             <p class="title">Filtrowanie</p>
-                            <p class="title mini">Zawody</p>
-                            {% if championship|length %}
-                                {% for row in championship %}
-                                    <div class="radio">
-                                        <label><input type="radio" name="championship">{{ row.championship }}</label>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <p class="title mini">Rok</p>
-                            {% if year|length %}
-                                {% for row in year %}
-                                    <div class="radio">
-                                        <label><input type="radio" name="year">{{ row.year_championship }}</label>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <p class="title mini">Zawodnik</p>
-                            {% if skater|length %}
-                                {% for row in skater %}
-                                    <div class="radio">
-                                        <label><input type="radio" name="skater">{{ row.name }} {{ row.surname }}</label>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <p class="title mini">Program</p>
-                            {% if type|length %}
-                                {% for row in type %}
-                                    <div class="radio">
-                                        <label><input type="radio" name="type">{{ row.type }}</label>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
+
+                            {{ form_start(form, { method: 'GET', action: url('matching_video_paginated') }) }}
+
+                            <div class="radio2">
+                                <p class="title mini">{{ form_label(form.championship) }}</p>
+                                {{ form_widget(form.championship) }}
+                            </div>
+
+                            <div class="radio2">
+                                <p class="title mini">{{ form_label(form.year) }}</p>
+                                {{ form_widget(form.year) }}
+                            </div>
+
+                            <div class="radio2">
+                                <p class="title mini">{{ form_label(form.skater) }}</p>
+                                {{ form_widget(form.skater) }}
+                            </div>
+
+                            <div class="radio2">
+                                <p class="title mini">{{ form_label(form.type) }}</p>
+                                {{ form_widget(form.type) }}
+                            </div>
+
+                            {#{{ form_widget(form) }}#}
+
+                            {#<a href=# id="send"><button type="submit" class="btn btn-primary">Filtruj</button></a>#}
+
+                            <input type="submit" value="Filtruj" class="btn btn-primary" />
+                            {{ form_end(form) }}
+
+
+
+                            {#<p class="title mini">Zawody</p>#}
+                            {#{% if championship|length %}#}
+                                {#{% for row in championship %}#}
+                                    {#<div class="radio">#}
+                                        {#<label><input type="radio" name="championship">{{ row.championship }}</label>#}
+                                    {#</div>#}
+                                {#{% endfor %}#}
+                            {#{% endif %}#}
+                            {#<p class="title mini">Rok</p>#}
+                            {#{% if year|length %}#}
+                                {#{% for row in year %}#}
+                                    {#<div class="radio">#}
+                                        {#<label><input type="radio" name="year">{{ row.year_championship }}</label>#}
+                                    {#</div>#}
+                                {#{% endfor %}#}
+                            {#{% endif %}#}
+                            {#<p class="title mini">Zawodnik</p>#}
+                            {#{% if skater|length %}#}
+                                {#{% for row in skater %}#}
+                                    {#<div class="radio">#}
+                                        {#<label><input type="radio" name="skater">{{ row.name }} {{ row.surname }}</label>#}
+                                    {#</div>#}
+                                {#{% endfor %}#}
+                            {#{% endif %}#}
+                            {#<p class="title mini">Program</p>#}
+                            {#{% if type|length %}#}
+                                {#{% for row in type %}#}
+                                    {#<div class="radio">#}
+                                        {#<label><input type="radio" name="type">{{ row.type }}</label>#}
+                                    {#</div>#}
+                                {#{% endfor %}#}
+                            {#{% endif %}#}
                         </div>
-                        <a href=# id="send"><button type="submit" class="btn btn-primary">Filtruj</button></a>
+                        {#<input type="submit" value="Filtruj" class="btn btn-primary" />#}
+                        {#<a href="{{ url('video_index', {'id': row.id}) }}" id="send"><button type="submit" class="btn btn-primary">Filtruj</button></a>#}
                     </form>
                 </div>
 
