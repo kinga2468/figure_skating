@@ -160,4 +160,15 @@ class VideoRepository
         $result = $queryBuilder->execute()->fetchAll();
         return $result;
     }
+
+    public function findNewestVideo()
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('*')
+            ->from('video', 'v')
+            ->orderBy('v.date_add', 'DESC');
+        $result = $queryBuilder->execute()->fetchAll();
+        return $result;
+    }
 }

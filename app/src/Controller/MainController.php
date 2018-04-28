@@ -7,6 +7,7 @@ namespace Controller;
 use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Repository\VideoRepository;
 
 /**
  * Class MainController.
@@ -38,11 +39,11 @@ class MainController implements ControllerProviderInterface
      */
     public function indexAction(Application $app)
     {
-//        $mainRepository = new MainRepository($app['db']);
+        $videoRepository = new VideoRepository($app['db']);
 
         return $app['twig']->render(
-            'main/index.html.twig'
-//            ['main' => $mainRepository->findAll()]
+            'main/index.html.twig',
+            ['video' => $videoRepository->findNewestVideo()]
         );
     }
 }

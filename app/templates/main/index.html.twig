@@ -128,78 +128,22 @@
                         <div class='col-md-12 col-sm-12 col-xs-12'>
                             <div class="carousel slide media-carousel" data-interval="false" id="media">
                                 <div class="carousel-inner">
-                                    <div class="item  active">
-                                        <div class="row">
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <a class="fancybox thumbnail" rel="gallery1" href="https://www.youtube.com/watch?v=23EfsN7vEOA">
-                                                    <img src="https://i.ytimg.com/vi/23EfsN7vEOA/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAur6c67CYem9H7O6z1sSg28iQfUg" alt="">
-                                                    <div class = "caption">
-                                                        <p>Mistrzostwa Świata 2018, Yuzuru Hanyu, SP.</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <a class="fancybox thumbnail" rel="gallery1" href="https://www.youtube.com/watch?v=23EfsN7vEOA">
-                                                    <img src="https://i.ytimg.com/vi/23EfsN7vEOA/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAur6c67CYem9H7O6z1sSg28iQfUg" alt="">
-                                                    <div class = "caption">
-                                                        <p>Mistrzostwa Świata 2018, Yuzuru Hanyu, SP.</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <a class="fancybox thumbnail" rel="gallery1" href="https://www.youtube.com/watch?v=23EfsN7vEOA">
-                                                    <img src="https://i.ytimg.com/vi/23EfsN7vEOA/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAur6c67CYem9H7O6z1sSg28iQfUg" alt="">
-                                                    <div class = "caption">
-                                                        <p>Mistrzostwa Świata 2018, Yuzuru Hanyu, SP.</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <a class="fancybox thumbnail" rel="gallery1" href="https://www.youtube.com/watch?v=23EfsN7vEOA">
-                                                    <img src="https://i.ytimg.com/vi/23EfsN7vEOA/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAur6c67CYem9H7O6z1sSg28iQfUg" alt="">
-                                                    <div class = "caption">
-                                                        <p>Mistrzostwa Świata 2018, Yuzuru Hanyu, SP.</p>
-                                                    </div>
-                                                </a>
+                                    {% if video|length %}
+                                    {% for item in video %}
+                                        <div data-target="#carousel" data-slide-to="{{ loop.index0 }}"  {% if loop.index0 == 0 %} class="item active" {% else %} class="item" {% endif %}>
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                    <a class="fancybox thumbnail" rel="gallery1" href="{{ url('video_view', {'id': item.id}) }}">
+                                                        <img src="{{ item.img_video_yt }}" alt="">
+                                                        <div class = "caption">
+                                                            <p>{{ item.title }}</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <a class="fancybox thumbnail" rel="gallery1" href="https://www.youtube.com/watch?v=23EfsN7vEOA">
-                                                    <img src="https://i.ytimg.com/vi/23EfsN7vEOA/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAur6c67CYem9H7O6z1sSg28iQfUg" alt="">
-                                                    <div class = "caption">
-                                                        <p>Mistrzostwa Świata 2018, Yuzuru Hanyu, SP.</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <a class="fancybox thumbnail" rel="gallery1" href="https://www.youtube.com/watch?v=23EfsN7vEOA">
-                                                    <img src="https://i.ytimg.com/vi/23EfsN7vEOA/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAur6c67CYem9H7O6z1sSg28iQfUg" alt="">
-                                                    <div class = "caption">
-                                                        <p>Mistrzostwa Świata 2018, Yuzuru Hanyu, SP.</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <a class="fancybox thumbnail" rel="gallery1" href="https://www.youtube.com/watch?v=23EfsN7vEOA">
-                                                    <img src="https://i.ytimg.com/vi/23EfsN7vEOA/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAur6c67CYem9H7O6z1sSg28iQfUg" alt="">
-                                                    <div class = "caption">
-                                                        <p>Mistrzostwa Świata 2018, Yuzuru Hanyu, SP.</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                                <a class="fancybox thumbnail" rel="gallery1" href="https://www.youtube.com/watch?v=23EfsN7vEOA">
-                                                    <img src="https://i.ytimg.com/vi/23EfsN7vEOA/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAur6c67CYem9H7O6z1sSg28iQfUg" alt="">
-                                                    <div class = "caption">
-                                                        <p>Mistrzostwa Świata 2018, Yuzuru Hanyu, SP.</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
                                 </div>
                                 <a class="left carousel-control" href="#media" role="button" data-slide="prev">
                                     <i class="fa fa-angle-left"></i><span class="sr-only">Previous</span>
