@@ -2,64 +2,6 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
--- -- -----------------------------------------------------
--- -- Table `si_bookmarks`
--- -- -----------------------------------------------------
--- CREATE TABLE IF NOT EXISTS `si_bookmarks` (
---   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
---   `created_at` DATETIME NOT NULL,
---   `modified_at` DATETIME NOT NULL,
---   `title` VARCHAR(128) NOT NULL,
---   `url` VARCHAR(128) NOT NULL,
---   `is_public` TINYINT UNSIGNED NOT NULL DEFAULT 0,
---   PRIMARY KEY (`id`),
---   UNIQUE INDEX `UQ_bookmarks_1` (`url` ASC))
--- ENGINE = InnoDB;
---
--- -- -----------------------------------------------------
--- -- Table `si_tags`
--- -- -----------------------------------------------------
--- CREATE TABLE IF NOT EXISTS `si_tags` (
---   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
---   `name` VARCHAR(128) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE INDEX `UQ_tags_1` (`name` ASC))
--- ENGINE = InnoDB;
---
--- -- -----------------------------------------------------
--- -- Table `si_bookmarks_tags`
--- -- -----------------------------------------------------
--- CREATE TABLE IF NOT EXISTS `si_bookmarks_tags` (
---   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
---   `bookmark_id` INT UNSIGNED NOT NULL,
---   `tag_id` INT UNSIGNED NOT NULL,
---   PRIMARY KEY (`id`),
---   INDEX `FK_bookmarks_tags_1` (`bookmark_id` ASC),
---   INDEX `FK_bookmarks_tags_2` (`tag_id` ASC),
---   UNIQUE INDEX `UQ_bookmarks_tags_1` (`bookmark_id` ASC, `tag_id` ASC),
---   CONSTRAINT `FK_bookmarks_tags_1`
---     FOREIGN KEY (`bookmark_id`)
---     REFERENCES `si_bookmarks` (`id`)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---   CONSTRAINT `FK_bookmarks_tags_2`
---     FOREIGN KEY (`tag_id`)
---     REFERENCES `si_tags` (`id`)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION)
--- ENGINE = InnoDB;
---
--- INSERT INTO `si_tags` (`id`, `name`) VALUES
---   (1, 'mysql'),
---   (2, 'php');
---
--- ALTER TABLE si_bookmarks_tags CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
--- ALTER TABLE si_bookmarks_tags DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
--- ALTER TABLE si_bookmarks CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
--- ALTER TABLE si_bookmarks DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
--- ALTER TABLE si_tags CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
--- ALTER TABLE si_tags DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-
 -- -----------------------------------------------------
 -- Table `roles`
 -- -----------------------------------------------------
@@ -69,6 +11,9 @@ CREATE TABLE IF NOT EXISTS `roles` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+INSERT INTO `roles` (`id`, `name`) VALUES
+(1, 'ROLE_ADMIN'),
+(2, 'ROLE_USER');
 -- -----------------------------------------------------
 -- Table `users`
 -- -----------------------------------------------------
@@ -87,80 +32,50 @@ CREATE TABLE IF NOT EXISTS `users` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- l: adminadmin2, p: adminadmin2
+INSERT INTO `users` (`id`, `login`, `password`, `role_id`) VALUES ('1', 'adminadmin2', '$2y$13$CXp.kFiedg0OTaWPBolvQu/3smyfs67k5OnMkYs0vKHimp9ExFbnK', 1);
+-- l: useruser2, p: useruser2
+INSERT INTO `users` (`id`, `login`, `password`, `role_id`) VALUES ('2', 'useruser2', '$2y$13$BlWhFoq42d.eETgE7A.6HO77ZN3w4P32Q3Hu69pnnTAQptXCqFnvG', 2);
+
 -- -----------------------------------------------------
 -- Table `comments`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `text` VARCHAR(500) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `comments_has_users`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `comments_has_users` (
-  `comments_id` INT UNSIGNED NOT NULL,
   `users_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`comments_id`, `users_id`),
-  INDEX `fk_comments_has_users_users1_idx` (`users_id` ASC),
-  INDEX `fk_comments_has_users_comments1_idx` (`comments_id` ASC),
-  CONSTRAINT `fk_comments_has_users_comments1`
-    FOREIGN KEY (`comments_id`)
-    REFERENCES `comments` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comments_has_users_users1`
+  `video_id` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`, `users_id`, `video_id`),
+  INDEX `fk_comments_users1_idx` (`users_id` ASC),
+  INDEX `fk_comments_video1_idx` (`video_id` ASC),
+  CONSTRAINT `fk_comments_users1`
     FOREIGN KEY (`users_id`)
     REFERENCES `users` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `comments_has_video`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `comments_has_video` (
-  `comments_id` INT UNSIGNED NOT NULL,
-  `video_id` INT UNSIGNED NOT NULL,
-  `video_users_id` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`comments_id`, `video_id`, `video_users_id`),
-  INDEX `fk_comments_has_video_video1_idx` (`video_id` ASC, `video_users_id` ASC),
-  INDEX `fk_comments_has_video_comments1_idx` (`comments_id` ASC),
-  CONSTRAINT `fk_comments_has_video_comments1`
-    FOREIGN KEY (`comments_id`)
-    REFERENCES `comments` (`id`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_comments_has_video_video1`
-    FOREIGN KEY (`video_id` , `video_users_id`)
-    REFERENCES `video` (`id` , `users_id`)
+  CONSTRAINT `fk_comments_video1`
+    FOREIGN KEY (`video_id`)
+    REFERENCES `video` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-INSERT INTO `roles` (`id`, `name`) VALUES
-(1, 'ROLE_ADMIN'),
-(2, 'ROLE_USER');
-
--- l: TestAdmin, p: kinga-admin
-INSERT INTO `users` (`id`, `login`, `password`, `role_id`) VALUES ('1', 'TestAdmin', '$2y$13$u4AJOOeFW9dkYMulEFWideM436praACza09zZyf2sZu5p2Zn1.req', 1);
--- l: TestUser, p: kinga-user
-INSERT INTO `users` (`id`, `login`, `password`, `role_id`) VALUES ('2', 'TestUser', '$2y$13$Nejor9ND8borDoWrxti5rOMMDqjUoOAK6u/EDuP7Gvrf3VqtKSEC.', 2);
 
 -- -----------------------------------------------------
 -- Table `video`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `video` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `link` VARCHAR(200) NOT NULL,
+  `img_video_yt` VARCHAR(200) NOT NULL,
   `date_add` DATETIME NOT NULL,
   `title` VARCHAR(100) NOT NULL,
   `championship` VARCHAR(45) NOT NULL,
   `year_championship` YEAR NOT NULL,
   `type` CHAR(2) NOT NULL,
+  `song` VARCHAR(50) NULL,
   `users_id` INT UNSIGNED NOT NULL,
   `skaters_id` INT UNSIGNED NOT NULL,
+  `average_rating` DECIMAL(3,2) NOT NULL,
   PRIMARY KEY (`id`, `users_id`, `skaters_id`),
   INDEX `fk_video_users_idx` (`users_id` ASC),
   INDEX `fk_video_skaters1_idx` (`skaters_id` ASC),
@@ -192,6 +107,17 @@ CREATE TABLE IF NOT EXISTS `skaters` (
   `img` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+ALTER TABLE roles CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE roles DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE users CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE users DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE comments CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE comments DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE skaters CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE skaters DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE video CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE video DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

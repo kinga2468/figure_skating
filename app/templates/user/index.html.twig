@@ -75,70 +75,40 @@
             <div class="row rule">
                 <div class="shadow-rules">
                     <div class="title">
-                        Występy
+                        Użytkownicy
                     </div>
                 </div>
             </div>
-            <div class="container main">
+            <div class="container users">
                 <div class="message">
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
 
-                <div class="col-md-3 col-sm-3 col-xs-12 filtr">
-                    <form>
-                        <div class="row">
-                            <p class="title">Filtrowanie</p>
-                            <p class="title mini">Zawody</p>
-                            {% if championship|length %}
-                                {% for row in championship %}
-                                    <div class="radio">
-                                        <label><input type="radio" name="championship">{{ row.championship }}</label>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <p class="title mini">Rok</p>
-                            {% if year|length %}
-                                {% for row in year %}
-                                    <div class="radio">
-                                        <label><input type="radio" name="year">{{ row.year_championship }}</label>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <p class="title mini">Zawodnik</p>
-                            {% if skater|length %}
-                                {% for row in skater %}
-                                    <div class="radio">
-                                        <label><input type="radio" name="skater">{{ row.name }} {{ row.surname }}</label>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
-                            <p class="title mini">Program</p>
-                            {% if type|length %}
-                                {% for row in type %}
-                                    <div class="radio">
-                                        <label><input type="radio" name="type">{{ row.type }}</label>
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
+                {% if paginator.data|length %}
+                    {% for row in paginator.data %}
+                        <div class="category">
+                            <p class="name">{{ row.login }}</p>
+                            <div class="link">
+                                <a class="edit" href="{{ url('user_delete', {'id': row.id}) }}" title="{{ 'index_user_delete'|trans }}">
+                                    {{ 'index_user_delete'|trans }}
+                                </a>
+                                <a class="edit" href="{{ url('user_change', {'id': row.id}) }}" title="{{ 'change.role'|trans }}">
+                                    {{ 'change.role'|trans }}
+                                </a>
+                                <a class="edit" href="{{ url('user_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">
+                                    {{ 'label.view'|trans }}
+                                </a>
+                            </div>
                         </div>
-                        <a href=# id="send"><button type="submit" class="btn btn-primary">Filtruj</button></a>
-                    </form>
-                </div>
+                    {% endfor %}
+                {% endif %}
 
-                <div class="col-md-9 col-sm-9 col-xs-12 video">
-                    {% if video|length %}
-                        {% for row in video %}
-                            <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
-                                <div class="image_video">
-                                    <div class="image">
-                                        <img src="{{ row.img_video_yt }} " />
-                                    </div>
-                                    <p>{{ row.title }}</p>
-                                </div>
-                            </a>
-                        {% endfor %}
-                    {% endif %}
-                </div>
+            </div>
+            <div class="container">
+                {% include 'default/_paginator.html.twig' with {
+                    paginator: paginator,
+                    route_name: 'user_index_paginated',
+                } %}
             </div>
         </div>
         <div class="container-fluid">

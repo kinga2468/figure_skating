@@ -62,6 +62,26 @@
                 <source>Bad credentials.</source>
                 <target>Niepoprawne dane.</target>
             </trans-unit>
+            <trans-unit id="index_user_delete">
+                <source>index_user_delete</source>
+                <target>usuń</target>
+            </trans-unit>
+            <trans-unit id="change.role">
+                <source>change.role</source>
+                <target>zmień role</target>
+            </trans-unit>
+            <trans-unit id="label.view">
+                <source>label.view</source>
+                <target>zobacz</target>
+            </trans-unit>
+            <trans-unit id="labels.nav.prev">
+                <source>labels.nav.prev</source>
+                <target>Poprzednia strona</target>
+            </trans-unit>
+            <trans-unit id="label.nav.next">
+                <source>label.nav.next</source>
+                <target>Następna strona</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

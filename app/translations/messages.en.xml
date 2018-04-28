@@ -50,6 +50,18 @@
                 <source>Bad credentials.</source>
                 <target>Bad credentials.</target>
             </trans-unit>
+            <trans-unit id="index_user_delete">
+                <source>index_user_delete</source>
+                <target>delete</target>
+            </trans-unit>
+            <trans-unit id="change.role">
+                <source>change.role</source>
+                <target>change role</target>
+            </trans-unit>
+            <trans-unit id="label.view">
+                <source>label.view</source>
+                <target>view</target>
+            </trans-unit>
 
         </body>
     </file>

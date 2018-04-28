@@ -89,7 +89,7 @@ $app->register(
             ],
         ],
         'security.access_rules' => [
-            ['^/auth.+$', 'IS_AUTHENTICATED_ANONYMOUSLY'],
+            ['^/.+$', 'IS_AUTHENTICATED_ANONYMOUSLY'],
             ['^/user.+$', 'ROLE_ADMIN'],
         ],
         'security.role_hierarchy' => [
@@ -98,10 +98,10 @@ $app->register(
     ]
 );
 
-/*login adminadmin z hasłem adminadmin, oraz useruser z hasłem useruser*/
+/*login adminadmin2 z hasłem adminadmin2, oraz useruser2 z hasłem useruser2*/
 
-//dump($app['security.encoder.bcrypt']->encodePassword('adminadmin', ''));
-//dump($app['security.encoder.bcrypt']->encodePassword('useruser', ''));
+//dump($app['security.encoder.bcrypt']->encodePassword('adminadmin2', ''));
+//dump($app['security.encoder.bcrypt']->encodePassword('useruser2', ''));
 
 
 return $app;

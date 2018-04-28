@@ -22,7 +22,7 @@ class SignUpRepository
      *
      * const int NUM_ITEMS
      */
-    const NUM_ITEMS = 3;
+    const NUM_ITEMS = 5;
     /**
      * Doctrine DBAL connection.
      *
@@ -121,60 +121,60 @@ class SignUpRepository
         }
     }
 
-//    /**
-//     * edycja hasła użytkownika
-//     *
-//     * @param $user
-//     * @param Application $app
-//     * @return int
-//     */
-//    public function save2($user, Application $app)
-//    {
-//        $user['password'] = $app['security.encoder.bcrypt']->encodePassword($user['password'], '');
-//
-//        if (isset($user['id']) && ctype_digit((string) $user['id'])) {
-//            // update record
-//            $id = $user['id'];
-//            unset($user['id']);
-//
-//            return $this->db->update('user', $user, ['id' => $id]);
-//        } else {
-//            // add new record
-//            return $this->db->insert('user', $user); // pierwsze user to nazwa tabeli
-//        }
-//    }
-//
-//    /**
-//     * służy do zmiany roli użytkownika
-//     *
-//     * @param $user
-//     * @param Application $app
-//     * @return int
-//     */
-//    public function save3($user, Application $app)
-//    {
-//        if (isset($user['id']) && ctype_digit((string) $user['id'])) {
-//            // update record
-//            $id = $user['id'];
-//            unset($user['id']);
-//
-//            return $this->db->update('user', $user, ['id' => $id]);
-//        } else {
-//            // add new record
-//            return $this->db->insert('user', $user); // pierwsze user to nazwa tabeli
-//        }
-//    }
-//
-//    /**
-//     * Remove record.
-//     *
-//     * @param $user
-//     * @return int
-//     */
-//    public function delete($user)
-//    {
-//        return $this->db->delete('user', ['id' => $user['id']]);
-//    }
+    /**
+     * edycja hasła użytkownika
+     *
+     * @param $user
+     * @param Application $app
+     * @return int
+     */
+    public function save2($user, Application $app)
+    {
+        $user['password'] = $app['security.encoder.bcrypt']->encodePassword($user['password'], '');
+
+        if (isset($user['id']) && ctype_digit((string) $user['id'])) {
+            // update record
+            $id = $user['id'];
+            unset($user['id']);
+
+            return $this->db->update('user', $user, ['id' => $id]);
+        } else {
+            // add new record
+            return $this->db->insert('user', $user); // pierwsze user to nazwa tabeli
+        }
+    }
+
+    /**
+     * służy do zmiany roli użytkownika
+     *
+     * @param $user
+     * @param Application $app
+     * @return int
+     */
+    public function save3($user, Application $app)
+    {
+        if (isset($user['id']) && ctype_digit((string) $user['id'])) {
+            // update record
+            $id = $user['id'];
+            unset($user['id']);
+
+            return $this->db->update('user', $user, ['id' => $id]);
+        } else {
+            // add new record
+            return $this->db->insert('user', $user); // pierwsze user to nazwa tabeli
+        }
+    }
+
+    /**
+     * Remove record.
+     *
+     * @param $user
+     * @return int
+     */
+    public function delete($user)
+    {
+        return $this->db->delete('user', ['id' => $user['id']]);
+    }
 
     /**
      * Find for uniqueness. Login
