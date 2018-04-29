@@ -78,6 +78,18 @@
                 <source>label.type</source>
                 <target>Type</target>
             </trans-unit>
+            <trans-unit id="label.admin">
+                <source>label.admin</source>
+                <target>Admin Panel</target>
+            </trans-unit>
+            <trans-unit id="message.element_successfully_edited">
+                <source>message.element_successfully_edited</source>
+                <target>Element successfully edited.</target>
+            </trans-unit>
+            <trans-unit id="message.element_successfully_deleted">
+                <source>message.element_successfully_deleted</source>
+                <target>Element successfully deleted.</target>
+            </trans-unit>
 
         </body>
     </file>

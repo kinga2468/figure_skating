@@ -8,6 +8,7 @@ use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
 use Repository\SkaterRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Repository\UserRepository;
 
 /**
  * Class SkaterController.
@@ -41,10 +42,13 @@ class SkaterController implements ControllerProviderInterface
     public function indexAction(Application $app)
     {
         $skaterRepository = new SkaterRepository($app['db']);
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
 
         return $app['twig']->render(
             'skater/index.html.twig',
-            ['skater' => $skaterRepository->findAll()]
+            ['skater' => $skaterRepository->findAll(),
+            'user_id' => $userId,]
         );
     }
     /**
@@ -58,10 +62,13 @@ class SkaterController implements ControllerProviderInterface
     public function viewAction(Application $app, $id)
     {
         $skaterRepository = new SkaterRepository($app['db']);
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
 
         return $app['twig']->render(
             'skater/view.html.twig',
-            ['skater' => $skaterRepository->findOneById($id)]
+            ['skater' => $skaterRepository->findOneById($id),
+                'user_id' => $userId,]
         );
     }
 }

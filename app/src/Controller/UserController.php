@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
+
 /**
  * Class UserController.
  *
@@ -72,6 +73,7 @@ class UserController implements ControllerProviderInterface
     {
         $signupRepository = new SignUpRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
 
 //        $token = $app['security.token_storage']->getToken();
 //        if (null !== $token) {
@@ -83,6 +85,7 @@ class UserController implements ControllerProviderInterface
             'user/index.html.twig',
                 [
                     'user' => $signupRepository-> findAll(),
+                    'user_id' => $userId,
 //                    'user_id' => $userRepository->findUserId($userLogin),
                     'paginator' => $signupRepository->findAllPaginated($page)
                 ]
@@ -110,7 +113,6 @@ class UserController implements ControllerProviderInterface
             ]
         );
     }
-
 
     /**
      * Edit action

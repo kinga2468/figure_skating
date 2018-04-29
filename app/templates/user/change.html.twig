@@ -81,46 +81,32 @@
         <div class="container-fluid rules">
             <div class="row rule">
                 <div class="shadow-rules">
-                        <div class="title">
-                            Zasady
-                        </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <ul class="nav nav-tabs nav-justified" role="tablist">
-                        <li class="active"><a href="#1zakladka" role="tab" data-toggle="tab">Informacje ogólne</a></li>
-                        <li><a href="#2zakladka" role="tab" data-toggle="tab">Komponenty</a></li>
-                        <li><a href="#3zakladka" role="tab" data-toggle="tab">System oceniania</a></li>
-                        <li><a href="#4zakladka" role="tab" data-toggle="tab">4 ZAKŁADKA</a></li>
-                        <li><a href="#5zakladka" role="tab" data-toggle="tab">5 ZAKŁADKA</a></li>
-                        <li><a href="#6zakladka" role="tab" data-toggle="tab">6 ZAKŁADKA</a></li>
-                    </ul>
-                    <!-- Zawartość zakładek -->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="1zakladka">
-                            <p class="title">Zawody</p>
-                            <p>
-                                Każdy występ składa się z programu krótkiego (SP) i dowolnego (FS).  Mogą odbyć się one tego same dnia, pod warunkiem co najmniej 4-godzinnej przerwy pomiędzy nimi. Zasada ta nie dotyczy zawodów Grand Prix i zawodów ISU (Mistrzostw Europy, Mistrzostw Czterech Kontynentów oraz Mistrzostw Świata). Podczas tych turniejów programy odbywają się w innych dniach, ale muszą zostać ukończone w przeciągu trzech.  Maksymalnie czas trwania zawodów ISU to 7 dni. Przed ich rozpoczęciem muszą zostać zapewnione 2 dni na ćwiczenia praktyczne dla zawodników.  Łyżwiarze dopuszczeni do Mistrzostw Świata muszą być członkami ISU (Międzynarodowej Unii Łyżwiarskiej). Zawodnicy mogący konkurować w Mistrzostwach Europy muszą należeć do europejskiego ISU, a w Mistrzostwach Czterech Kontynentów startują sportowcy z pozaeuropejskiego ISU.
-                            </p>
-                            <p class="title">Przebieg zawodów</p>
-                            <p>
-                                Przed rozpoczęciem zawodów każdy uczestnik musi dostarczyć osobne płyty CD z nagraną muzyką do każdego z programów oraz listę elementów, które planują wykonać podczas swojego występu. Kolejność zawodników podczas programu krótkiego jest rozstrzygana poprzez losowanie lub zależy od miejsc, jakie łyżwiarze zajęli podczas poprzednich ważnych zawodów. Sposób, jaki zostanie zastosowany, powinien zostać wcześniej podany przez organizatorów. Tylko osoby, które zajęły miejsce z przedziału 1-24 zostaną zakwalifikowali do programu dowolnego. W przypadku remisu na miejscu dwudziestym czwartym wszyscy łyżwiarze na tej pozycji zostaną dopuszczeni do drugiego etapu. Kolejność, w jakiej wystąpią, zależeć będzie od punktów, które zdobyli podczas programu krótkiego.
-                            </p><p>
-                                Podczas obu programów zawodnicy dzieleni są na równe grupy, a ta zawierająca uczestników z najmniejszą liczbą punktów jedzie pierwsza, następna druga itd. Jeśli jacyś zawodnicy mają taką samą liczbę punktów po programie krótkim powinni jechać w tej samej grupie w dowolnym.
-                            </p><p>
-                                W przypadku zawodów ISU lub Olimpiady Zimowej zawodnicy z dwóch ostatnich grup (tj. najlepszej i drugiej najlepszej) zostają podzieleni na 4 podgrupy.  W pierwszej znajdą się łyżwiarze z miejsc 1, 2 i 3, w drugiej 4, 5, 6, w trzeciej 7, 8, 9 i w czwartej 10, 11 i 12. Kolejność w jakiej będą występować zostanie wybrana poprzez losowanie pomiędzy członkami każdej podgrupy, a grupy będą startować od 4 do 1.                        </p>
-                            </p>
-                        </div>
-                        <div class="tab-pane" id="2zakladka">Zawartość drugiej zakładki</div>
-                        <div class="tab-pane" id="3zakladka">Zawartość trzeciej zakładki</div>
-                        <div class="tab-pane" id="4zakladka">Zawartość czwartej zakładki</div>
-                        <div class="tab-pane" id="5zakladka">Zawartość piątej zakładki</div>
-                        <div class="tab-pane" id="6zakladka">Zawartość szóstej zakładki</div>
+                    <div class="title">
+                        Użytkownik  - panel admina
                     </div>
                 </div>
             </div>
+
+
+
+
+            <div class="akcje">
+                <h1>{{ 'title.edit'|trans({'%id%': user.id}) }}</h1>
+                <div class="form">
+                    {{ form_start(form, { method: 'post', action: url('user_change', {'id': user.id}) }) }}
+                    {{ form_widget(form) }}
+                </div>
+                <input type="submit" value="{{ 'action.save'|trans }}" class="zapisz" />
+                {{ form_end(form) }}
+                <a class="wroc" href="{{ url('user_index') }}" title="{{ 'back.to.list'|trans }}">
+                    {{ 'back.to.list'|trans }}
+                </a>
+            </div>
         </div>
+
+
+
+
         <div class="container-fluid">
             <div class="row footer">
                 EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.

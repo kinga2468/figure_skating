@@ -137,10 +137,10 @@ class SignUpRepository
             $id = $user['id'];
             unset($user['id']);
 
-            return $this->db->update('user', $user, ['id' => $id]);
+            return $this->db->update('users', $user, ['id' => $id]);
         } else {
             // add new record
-            return $this->db->insert('user', $user); // pierwsze user to nazwa tabeli
+            return $this->db->insert('users', $user); // pierwsze user to nazwa tabeli
         }
     }
 
@@ -158,10 +158,10 @@ class SignUpRepository
             $id = $user['id'];
             unset($user['id']);
 
-            return $this->db->update('user', $user, ['id' => $id]);
+            return $this->db->update('users', $user, ['id' => $id]);
         } else {
             // add new record
-            return $this->db->insert('user', $user); // pierwsze user to nazwa tabeli
+            return $this->db->insert('users', $user); // pierwsze user to nazwa tabeli
         }
     }
 
@@ -173,7 +173,7 @@ class SignUpRepository
      */
     public function delete($user)
     {
-        return $this->db->delete('user', ['id' => $user['id']]);
+        return $this->db->delete('users', ['id' => $user['id']]);
     }
 
     /**

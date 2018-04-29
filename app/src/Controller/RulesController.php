@@ -7,6 +7,7 @@ namespace Controller;
 use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use Repository\UserRepository;
 
 /**
  * Class RulesController.
@@ -38,11 +39,12 @@ class RulesController implements ControllerProviderInterface
      */
     public function indexAction(Application $app)
     {
-//        $mainRepository = new MainRepository($app['db']);
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
 
         return $app['twig']->render(
-            'rules/index.html.twig'
-//            ['main' => $mainRepository->findAll()]
+            'rules/index.html.twig',
+            ['user_id' => $userId,]
         );
     }
 }

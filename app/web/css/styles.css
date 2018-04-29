@@ -35,9 +35,14 @@ a:hover{text-decoration:none;}
 .navbar-default .navbar-nav > li > a:hover {color: black; border-bottom: 2px solid #6666FF; margin-bottom:2px;}
 .navbar-default .navbar-nav > li > a:focus {color: black; border-bottom: 2px solid #383888; margin-bottom:2px;}
 
-.log-in a{color:#666666; font-size: 1.5em; float:right; margin:13px 20px 10px 0; }
-.imie {color:#666666; font-size: 1.5em; float:right; margin:13px 20px 10px 0;}
+
 .log-in a:hover{color:black;}
+.imie{font-size:1.4em; color:#666666; float: right; }
+.imie a{font-size:1em; color:#666666;}
+.log-in{margin:13px;}
+.aLogIn{font-size:1.4em; color:#666666; float:right; margin-left:13px;}
+.AdminPanel{font-size:1.4em; color:#666666; float: left; margin-right:13px; }
+
 
 .baner{background-image: url("../images/skates.jpg"); height:210px; background-repeat: no-repeat;
      background-position: 0 70%; background-size: cover; color:white; margin-top:0;}
@@ -46,7 +51,7 @@ a:hover{text-decoration:none;}
     padding-top:20px;
 }
 
-.shadow-image .row .title{color:white; font-size:1.3em; text-align: center;  margin:0; padding:0; padding-bottom:20px;}
+.shadow-image .row .title{color:white; font-size:1.3em; text-align: center;  margin:0; padding:0; padding-bottom:20px; }
 .first{display:inline; text-align: center;}
 .counter{width:100%; height: 100%;}
 .counter div{/*margin-right:6%;*/ border:1px solid white; }

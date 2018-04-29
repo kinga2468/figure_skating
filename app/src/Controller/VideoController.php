@@ -9,6 +9,7 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Repository\VideoRepository;
 use Form\FindVideoType;
+use Repository\UserRepository;
 
 /**
  * Class VideoController.
@@ -48,6 +49,8 @@ class VideoController implements ControllerProviderInterface
     public function indexAction(Application $app)
     {
         $videoRepository = new VideoRepository($app['db']);
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
 
         return $app['twig']->render(
             'video/index.html.twig',
@@ -56,6 +59,7 @@ class VideoController implements ControllerProviderInterface
                 'year' => $videoRepository->findYear(),
                 'skater' => $videoRepository->findSkater(),
                 'type' => $videoRepository->findType(),
+                'user_id' => $userId,
                 ]
         );
     }
@@ -70,18 +74,21 @@ class VideoController implements ControllerProviderInterface
     public function viewAction(Application $app, $id)
     {
         $videoRepository = new VideoRepository($app['db']);
-//        $skater = $videoRepository->getVideoSkater($id);
-//        var_dump($skater);
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
 
         return $app['twig']->render(
             'video/view.html.twig',
             ['video' => $videoRepository->findOneById($id),
-            'skater' => $videoRepository->getVideoSkater($id)]
+            'skater' => $videoRepository->getVideoSkater($id),
+                'user_id' => $userId]
         );
     }
 
     public function findMatchingAction(Application $app, Request $request)
     {
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
         $app['session']->remove('form');
         $video = [];
         $videoRepository = new VideoRepository($app['db']);
@@ -101,12 +108,16 @@ class VideoController implements ControllerProviderInterface
             [
                 'video' => $videoRepository->findAll(),
                 'form' => $form->createView(),
+                'user_id' => $userId,
             ]
         );
     }
 
     public function displayMatchingAction(Application $app, Request $request, $page = 1)
     {
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
+
         var_dump(1);
         if(!$app['session']->get('form')) {
             $form = $request->get('video_type');
@@ -121,6 +132,7 @@ class VideoController implements ControllerProviderInterface
             'video/match.html.twig',
             [
                 'video' => $video,
+                'user_id' => $userId,
             ]
         );
     }

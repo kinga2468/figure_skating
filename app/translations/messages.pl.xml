@@ -98,6 +98,18 @@
                 <source>label.type</source>
                 <target>Program</target>
             </trans-unit>
+            <trans-unit id="label.admin">
+                <source>label.admin</source>
+                <target>Panel Admina</target>
+            </trans-unit>
+            <trans-unit id="message.element_successfully_deleted">
+                <source>message.element_successfully_deleted</source>
+                <target>Element usunięty pomyślnie.</target>
+            </trans-unit>
+            <trans-unit id="message.element_successfully_edited">
+                <source>message.element_successfully_edited</source>
+                <target>Element zedytowany pomyślnie.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
