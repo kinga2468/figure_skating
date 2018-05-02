@@ -89,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="container main">
+            <div class="container">
                 <div class="message">
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
@@ -145,18 +145,33 @@
                         <div class="title">
                             <p>Komentarze: </p>
                         </div>
-                        <div class="comment">
-                            <div class="avatar">
-                                hłehłe
-                            </div>
-                            <div class="login">
-                                kinga2468
-                            </div>
-                            <div class="date">
-                                dziś
-                            </div>
-                            <p>hej przystojniaku </p>
+
+                        <div class="add_comment">
+                            {% if video|length %}
+                                {{ form_start(form_comment, { method: 'post', action: url('video_view', {'id':id}) }) }}
+                                {{ form_widget(form_comment) }}
+                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
+                                {{ form_end(form_comment) }}
+                            {% endif %}
                         </div>
+
+                        {% if comments|length %}
+                            {% for row in comments %}
+                                <div class="row comment">
+                                    <div class="col-md-3 col-sm-3 col-xs-3 login">
+                                        <div class="login2">
+                                            {{ row.login }}
+                                        </div>
+                                        <div class="date">
+                                            {{ row.date_adding }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-9 text">
+                                        {{ row.text }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>

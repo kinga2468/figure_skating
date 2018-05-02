@@ -8,7 +8,9 @@ use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Repository\VideoRepository;
+use Repository\CommentRepository;
 use Form\FindVideoType;
+use Form\CommentType;
 use Repository\UserRepository;
 
 /**
@@ -29,7 +31,9 @@ class VideoController implements ControllerProviderInterface
 //        $controller->get('/', [$this, 'indexAction'])->bind('video_index');
         $controller->get('/', [$this, 'findMatchingAction'])
             ->bind('video_index');
-        $controller->get('/{id}', [$this, 'viewAction'])->bind('video_view');
+        $controller->match('/{id}', [$this, 'viewAction'])
+            ->method('GET|POST')
+            ->bind('video_view');
         $controller->get('/{params}', [$this, 'displayMatchingAction'])
             ->value('params', '')
 //            ->value('page', 1)
@@ -71,17 +75,47 @@ class VideoController implements ControllerProviderInterface
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      */
-    public function viewAction(Application $app, $id)
+    public function viewAction(Application $app, $id, Request $request)
     {
         $videoRepository = new VideoRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
+        $commentRepository = new CommentRepository($app['db']);
+
+//        $app['session']->remove('form');
+        $comment = [];
+        $commentForm = $app['form.factory']->createBuilder(
+            CommentType::class,
+            $comment,
+            ['comment_repository' => new CommentRepository($app['db'])]
+        )->getForm();
+        $commentForm->handleRequest($request);
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            $commentRepository = new CommentRepository($app['db']);
+            $comment = $commentForm->getData();
+            $comment['users_id'] = $userId;
+            $comment['video_id'] = $id;
+            $commentRepository->save($comment);
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'success',
+                    'message' => 'message.element_successfully_added',
+                ]
+            );
+        }
 
         return $app['twig']->render(
             'video/view.html.twig',
-            ['video' => $videoRepository->findOneById($id),
-            'skater' => $videoRepository->getVideoSkater($id),
-                'user_id' => $userId]
+            [
+                'video' => $videoRepository->findOneById($id),
+                'id' => $id,
+                'skater' => $videoRepository->getVideoSkater($id),
+                'user_id' => $userId,
+                'comments' => $commentRepository->findVideoComments($id),
+                'form_comment' => $commentForm->createView(),
+            ]
         );
     }
 

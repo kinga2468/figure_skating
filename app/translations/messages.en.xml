@@ -90,6 +90,18 @@
                 <source>message.element_successfully_deleted</source>
                 <target>Element successfully deleted.</target>
             </trans-unit>
+            <trans-unit id="message.element_successfully_added">
+                <source>message.element_successfully_added</source>
+                <target>Element successfully added.</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="text_comment">
+                <source>text_comment</source>
+                <target>Add comment</target>
+            </trans-unit>
 
         </body>
     </file>

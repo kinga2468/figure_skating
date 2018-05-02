@@ -110,6 +110,18 @@
                 <source>message.element_successfully_edited</source>
                 <target>Element zedytowany pomyślnie.</target>
             </trans-unit>
+            <trans-unit id="message.element_successfully_added">
+                <source>message.element_successfully_added</source>
+                <target>Element dodany pomyślnie.</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>zapisz</target>
+            </trans-unit>
+            <trans-unit id="text_comment">
+                <source>text_comment</source>
+                <target>Dodaj swój komentarz</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
