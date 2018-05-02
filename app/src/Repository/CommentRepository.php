@@ -40,22 +40,22 @@ class CommentRepository
         return $queryBuilder->execute()->fetchAll();
     }
 
-//    /**
-//     * Find one record.
-//     *
-//     * @param string $id Element id
-//     *
-//     * @return array|mixed Result
-//     */
-//    public function findOneById($id)
-//    {
-//        $queryBuilder = $this->queryAll();
-//        $queryBuilder->where('c.id = :id')
-//            ->setParameter(':id', $id, \PDO::PARAM_INT);
-//        $result = $queryBuilder->execute()->fetch();
-//
-//        return !$result ? [] : $result;
-//    }
+    /**
+     * Find one record.
+     *
+     * @param string $id Element id
+     *
+     * @return array|mixed Result
+     */
+    public function findOneById($id)
+    {
+        $queryBuilder = $this->queryAll();
+        $queryBuilder->where('c.id = :id')
+            ->setParameter(':id', $id, \PDO::PARAM_INT);
+        $result = $queryBuilder->execute()->fetch();
+
+        return !$result ? [] : $result;
+    }
 
     /**
      * Query all records.
@@ -85,6 +85,24 @@ class CommentRepository
     }
 
     /**
+     * Delete record.
+     *
+     * @param array $comment Comment
+     *
+     * @return boolean Result
+     */
+//    public function delete($comment)
+//    {
+//        if (isset($comment['id']) && ctype_digit((string)$comment['id'])) {
+//            //delete record
+//            $id = $comment['id'];
+//            return $this->db->delete('comments', ['id' => $id]);
+//        } else {
+//            throw new \InvalidArgumentException('Invalid parameter type');
+//        }
+//    }
+
+    /**
      * Save record.
      *
      * @param array $comment Comment
@@ -104,5 +122,20 @@ class CommentRepository
             return $this->db->insert('comments', $comment);
         }
     }
+
+
+//    public function findVideoIdForThisComment($id)
+//    {
+//        $queryBuilder = $this->db->createQueryBuilder();
+//
+//        $queryBuilder->select('c.video_id')
+//            ->from('comments', 'c')
+//            ->where('c.id = :id')
+//            ->setParameter(':id', $id, \PDO::PARAM_INT);
+//        $result = $queryBuilder->execute()->fetchAll();
+//        return $result;
+//    }
+
+
 
 }

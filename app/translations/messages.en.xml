@@ -98,8 +98,8 @@
                 <source>action.save</source>
                 <target>Save</target>
             </trans-unit>
-            <trans-unit id="text_comment">
-                <source>text_comment</source>
+            <trans-unit id="label.text">
+                <source>label.text</source>
                 <target>Add comment</target>
             </trans-unit>
 

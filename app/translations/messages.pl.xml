@@ -118,8 +118,8 @@
                 <source>action.save</source>
                 <target>zapisz</target>
             </trans-unit>
-            <trans-unit id="text_comment">
-                <source>text_comment</source>
+            <trans-unit id="label.text">
+                <source>label.text</source>
                 <target>Dodaj swój komentarz</target>
             </trans-unit>
         </body>

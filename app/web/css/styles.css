@@ -351,12 +351,12 @@ a:hover{text-decoration:none;}
 .comments{clear:both;  padding:10px 0;}
 .comment{ margin:10px 10px 10px 30px; border:1px solid #ddd; border-radius: 4px; padding:10px;}
 .comment div{font-size: 1.1em;}
-.login{clear:both; border-right:1px solid #ddd;}
-.comment .text{font-size: 1.2em;}
+.login{clear:both; }
+.comment .text{font-size: 1.2em; border-left:1px solid #ddd;}
 
 .add_comment{ margin:10px 0 10px 30px; width:96.8%;}
 #comment_type label{font-size: 1.3em; font-weight: 100;}
-textarea{width:100%; margin:10px 0;}
+textarea{width:100%; margin:10px 0; border-radius:4px;}
 .comments .btn-success{background-color: #383888; font-size: 1.2em; border-radius: 0;}
 .comments .btn-success:focus{background-color: #383888; font-size: 1.2em; border-radius: 0; border:0;}
 
