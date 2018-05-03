@@ -126,6 +126,26 @@
                 <source>edit</source>
                 <target>edytuj</target>
             </trans-unit>
+            <trans-unit id="label.change.password">
+                <source>label.change.password</source>
+                <target>Zmień hasło</target>
+            </trans-unit>
+            <trans-unit id="label.change.data">
+                <source>label.change.data</source>
+                <target>Zmień login</target>
+            </trans-unit>
+            <trans-unit id="title.change_role">
+                <source>title.change_role</source>
+                <target>Zmień rolę użytkownika: </target>
+            </trans-unit>
+            <trans-unit id="title.delete_user">
+                <source>title.delete_user</source>
+                <target>Usuń użytkownika: </target>
+            </trans-unit>
+            <trans-unit id="label.role">
+                <source>label.role</source>
+                <target>Rola: </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

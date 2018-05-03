@@ -87,19 +87,22 @@
                 </div>
             </div>
 
-
-            <div class="akcje">
-                <h1>{{ 'title.user_delete'|trans({'%id%': user.id}) }} {{ user.login}}</h1>
-                <div class="form">
-                    {{ form_start(form, { method: 'post', action: url('user_delete', {'id': user.id}) }) }}
-                    {{ form_widget(form) }}
+            <div class="container delete_comment">
+                <p>{{ 'title.delete_user'|trans}} {{ user.login }}</p>
+                <div class="akcje">
+                    <div class="form">
+                        {{ form_start(form, { method: 'post', action: url('user_delete', {'id': user.id}) }) }}
+                        {{ form_widget(form) }}
+                    </div>
+                    <input type="submit" value="{{ 'delete'|trans }}" class="btn btn-primary" />
+                    {{ form_end(form) }}
+                    <a class="back" href="{{ url('user_index') }}" title="{{ 'back.to.list'|trans }}">
+                        {{ 'back.to.list'|trans }}
+                    </a>
                 </div>
-                <input type="submit" value="{{ 'action.delete'|trans }}" class="zapisz" />
-                {{ form_end(form) }}
-                <a class="wroc" href="{{ url('user_index') }}" title="{{ 'back.to.list'|trans }}">
-                    {{ 'back.to.list'|trans }}
-                </a>
             </div>
+
+
         </div>
         <div class="container-fluid">
             <div class="row footer">

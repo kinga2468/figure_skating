@@ -86,15 +86,23 @@
                 </div>
             </div>
         </div>
-        {% if user|length %}
-            <div>
-                <p>{{ user.login }}</p>
-            </div>
-        {% else %}
-            <div>
-                No user found!
-            </div>
-        {% endif %}
+
+        <div class="container delete_comment">
+            {% if user|length %}
+                <div>
+                    <p>{{ user.login }}</p>
+                </div>
+            {% else %}
+                <div>
+                    No user found!
+                </div>
+            {% endif %}
+            <a class="back" href="{{ url('user_index') }}" title="{{ 'back.to.list'|trans }}">
+                {{ 'back.to.list'|trans }}
+            </a>
+        </div>
+
+
 
 
     </div>

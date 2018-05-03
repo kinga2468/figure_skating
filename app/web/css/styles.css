@@ -319,6 +319,17 @@ a:focus{text-decoration:none;}
 .tab-content p{font-family: 'Open Sans', sans-serif;}
 
 
+
+/*zakładka panel////////////////////////////////////////////////////////*/
+.user_data p{text-align: center; font-size: 1.5em; }
+
+.panel_button{background-color:#383888 ; width:200px; height:50px; float:left; margin:0 10px; border-radius: 4px; }
+.panel_button a{color:white;}
+.panel_buttony{width:440px; margin:10px auto ; }
+.wprzycisk{text-align: center; font-size:1.2em; padding:12px; }
+
+textarea{font-family: Oswald, helvetica, arial, sans-serif;}
+
 /*zakładka logowania////////////////////////////////////////////////////////*/
 .body-login{height:100%;
     /*margin:0;*/
@@ -335,7 +346,7 @@ a:focus{text-decoration:none;}
 .body-login .btn.btn-success{background-color:#383888; border-color:#383888; margin:30px auto 20px; display: block;}
 .body-login .btn.btn-danger{background-color:#666666; border-color:#666666; margin:10px 0 20px;}
 
-.form-horizontal .control-label{font-family: 'Open Sans', sans-serif; color:black; font-size: 1.5em;
+.form-horizontal .control-label{font-family: 'Oswald', sans-serif; color:black; font-size: 1.5em; font-weight: 100;
     margin:15px 0 5px 0; padding: 10px 0; text-align: center; width:100%;}
 
 

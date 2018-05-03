@@ -106,6 +106,14 @@
                 <source>edit</source>
                 <target>edit</target>
             </trans-unit>
+            <trans-unit id="label.change.password">
+                <source>label.change.password</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="label.change.data">
+                <source>label.change.data</source>
+                <target>Change login</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

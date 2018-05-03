@@ -96,8 +96,8 @@
                         <div class="category">
                             <p class="name">{{ row.login }}</p>
                             <div class="link">
-                                <a class="edit" href="{{ url('user_delete', {'id': row.id}) }}" title="{{ 'index_user_delete'|trans }}">
-                                    {{ 'index_user_delete'|trans }}
+                                <a class="edit" href="{{ url('user_delete', {'id': row.id}) }}" title="{{ 'delete'|trans }}">
+                                    {{ 'delete'|trans }}
                                 </a>
                                 <a class="edit" href="{{ url('user_change', {'id': row.id}) }}" title="{{ 'change.role'|trans }}">
                                     {{ 'change.role'|trans }}

@@ -82,57 +82,76 @@
             <div class="row rule">
                 <div class="shadow-rules">
                     <div class="title">
-                        Użytkownicy
+                        Twój panel
                     </div>
                 </div>
             </div>
-
-
-
-
-            <div class="dane_uzytkownika">
-                {% if user|length %}
-                    <div class="dane">
-                        <p>{{ 'label.login'|trans }} {{ user.login }}</p>
+            <div class="container">
+                <div class="row user_data">
+                    {% if user|length %}
+                        <div class="dane">
+                            <p>{{ 'label.login'|trans }}: {{ user.login }}</p>
+                        </div>
+                    {% else %}
+                        <div>
+                            {{ 'no_user'|trans }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row panel_buttony">
+                    <div class="message">
+                        {% include 'default/_flash_messages.html.twig' %}
                     </div>
-                {% else %}
-                    <div>
-                        {{ 'no_user'|trans }}
+                    <div class="panel_button">
+                        <p class="wprzycisk">
+                            <a href="{{ url('user_panel_edit', {'id': user.id}) }}" title="{{ 'label.change.data'|trans }}">
+                                {{ 'label.change.data'|trans }}
+                            </a>
+                        </p>
                     </div>
-                {% endif %}
-            </div>
-            <div class="panel_buttony">
-                <div class="message">
-                    {% include 'default/_flash_messages.html.twig' %}
+                    <div class="panel_button">
+                        <p class="wprzycisk">
+                            <a href="{{ url('user_panel_edit_password', {'id': user.id}) }}" title="{{ 'label.change.password'|trans }}">
+                                {{ 'label.change.password'|trans }}
+                            </a>
+                        </p>
+                    </div>
                 </div>
-                <div class="panel_button">
-                    {#<p class="wprzycisk">#}
-                        {#<a href="{{ url('user_panel_edit_password', {'id': user.id}) }}" title="{{ 'label.change.password'|trans }}">#}
-                            {#{{ 'label.change.password'|trans }}#}
-                        {#</a>#}
-                    {#</p>#}
+                <div class="row your_comments">
+                    <div class="title">Twoje komentarze:</div>
+                    {% if user_comments|length %}
+                        {% for line in user_comments %}
+                            <div class="row comment">
+                                <div class="col-md-3 col-sm-3 col-xs-3 login">
+                                    <div class="date">
+                                        {{ line.date_adding }}
+                                    </div>
+                                    <div class="login2">
+                                        <p>Komentarz do: {{ line.title }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8 text">
+                                    {{ line.text }}
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-1 link">
+                                    <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
+                                        {{ 'delete'|trans }}
+                                    </a>
+                                    <a class="edit" href="{{ url('comment_edit', {'id': line.id}) }}" title="{{ 'edit'|trans }}">
+                                        {{ 'edit'|trans }}
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
-                <div class="panel_button">
-                    {#<p class="wprzycisk">#}
-                        {#<a href="{{ url('user_panel_edit', {'id': user.id}) }}" title="{{ 'label.change.data'|trans }}">#}
-                            {#{{ 'label.change.data'|trans }}#}
-                        {#</a>#}
-                    {#</p>#}
-                </div>
-            </div>
-            <div class="powrot">
-                <p class ="back">
-                    <a href="{{ url('main_index') }}" title="{{ 'back.to.list'|trans }}">
-                    {{ 'back.to.list'|trans }}
+                <div class="powrot">
+                    <a class="back" href="{{ url('main_index') }}" title="{{ 'back.to.list'|trans }}">
+                        {{ 'back.to.list'|trans }}
                     </a>
-                </p>
+                </div>
             </div>
         </div>
-
-
-
-
-
         <div class="container-fluid">
             <div class="row footer">
                 EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.

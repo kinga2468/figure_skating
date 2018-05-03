@@ -5,12 +5,20 @@
 namespace Repository;
 
 use Doctrine\DBAL\Connection;
+use Utils\Paginator;
+use Silex\Application;
 
 /**
  * Class CommentRepository.
  */
 class CommentRepository
 {
+    /**
+     * Number of items per page.
+     *
+     * const int NUM_ITEMS
+     */
+    const NUM_ITEMS = 3;
     /**
      * Doctrine DBAL connection.
      *
@@ -126,6 +134,31 @@ class CommentRepository
         return $result;
     }
 
+    public function getUserComments($id)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('c.id, c.text, c.video_id, c.date_adding, v.title')
+            ->from('comments', 'c')
+            ->innerJoin('c', 'video', 'v', 'c.video_id = v.id')
+            ->where('c.users_id = :id')
+            ->setParameter(':id', $id, \PDO::PARAM_INT);
+        $result = $queryBuilder->execute()->fetchAll();
+        return $result;
+    }
+
+    public function getUserCommentsPaginated($id, $page = 1)
+    {
+        $countQueryBuilder = $this->getUserComments($id)
+            ->select('COUNT(DISTINCT c.id) AS total_results')
+            ->setMaxResults(1);
+
+        $paginator = new Paginator($this->queryAll(), $countQueryBuilder);
+        $paginator->setCurrentPage($page);
+        $paginator->setMaxPerPage(self::NUM_ITEMS);
+
+        return $paginator->getCurrentPageResults();
+    }
 
 
 }

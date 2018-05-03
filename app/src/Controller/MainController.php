@@ -9,6 +9,7 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Repository\VideoRepository;
 use Repository\UserRepository;
+use Repository\CommentRepository;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Repository\SignUpRepository;
 use Form\ForPasswordType;
@@ -34,14 +35,14 @@ class MainController implements ControllerProviderInterface
         $controller->get('/panel/{id}', [$this, 'viewActionPanelUser'])
             ->assert('id', '[1-9]\d*')
             ->bind('user_panel');
-//        $controller->match('/panel/{id}/edit', [$this, 'editActionPanelUser'])
-//            ->method('POST|GET')
-//            ->assert('id', '[1-9]\d*')
-//            ->bind('user_panel_edit');
-//        $controller->match('/panel/{id}/edit_password', [$this, 'editActionForUserPassword'])
-//            ->method('POST|GET')
-//            ->assert('id', '[1-9]\d*')
-//            ->bind('user_panel_edit_password');
+        $controller->match('/panel/{id}/edit', [$this, 'editActionPanelUser'])
+            ->method('POST|GET')
+            ->assert('id', '[1-9]\d*')
+            ->bind('user_panel_edit');
+        $controller->match('/panel/{id}/edit_password', [$this, 'editActionForUserPassword'])
+            ->method('POST|GET')
+            ->assert('id', '[1-9]\d*')
+            ->bind('user_panel_edit_password');
 
         return $controller;
     }
@@ -80,8 +81,10 @@ class MainController implements ControllerProviderInterface
     {
         $signupRepository = new SignUpRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
+        $commentsRepository = new CommentRepository($app['db']);
         $user = $signupRepository->findOneById($id);
         $userId = $userRepository->getLoggedUserId($app);
+        $userComments = $commentsRepository->getUserComments($id);
 
         //nie pozwala użytkonikowi wchodzić na nie swoje strony, no chyba że jest administratorem
         if($user['id'] === $userId or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
@@ -97,6 +100,7 @@ class MainController implements ControllerProviderInterface
                 [
                     'user' => $signupRepository->findOneById($id),
                     'user_id' => $userId,
+                    'user_comments' => $userComments,
                 ]
             );
         } else {
@@ -104,129 +108,129 @@ class MainController implements ControllerProviderInterface
         }
     }
 
-//    /**
-//     * Edit action
-//     * edytowanie danych użytkownika przez użytkownika (w swoim panelu) - edycja bez hasła
-//     *
-//     * @param Application $app
-//     * @param $id
-//     * @param Request $request
-//     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-//     */
-//    public function editActionPanelUser(Application $app, $id, Request $request)
-//    {
-//        $signUpRepository = new SignUpRepository($app['db']);
-//        $user = $signUpRepository->findOneById($id);
-//        $userRepository = new UserRepository($app['db']);
-//        $userId = $userRepository->getLoggedUserId($app);
-//
-//        //nie pozwala użytkonikowi wchodzić na nie swoje strony, no chyba że jest administratorem
-//        if($user['id'] === $userId  or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
-//
-//            if (!$user) {
-//                $app['session']->getFlashBag()->add(
-//                    'messages',
-//                    [
-//                        'type' => 'warning',
-//                        'message' => 'message.record_not_found',
-//                    ]
-//                );
-//
-//                return $app->redirect($app['url_generator']->generate('user_panel', array('id' => $id)));
-//            }
-//
-//            $form = $app['form.factory']->createBuilder(PanelEditType::class, $user,
-//                ['login_repository' => new SignUpRepository($app['db'])]
-//            )->getForm();
-//            $form->handleRequest($request);
-//
-//            if ($form->isSubmitted() && $form->isValid()) {
-//                $signUpRepository->save3($form->getData(), $app);
-//
-//                $app['session']->getFlashBag()->add(
-//                    'messages',
-//                    [
-//                        'type' => 'success',
-//                        'message' => 'message.element_successfully_edited',
-//                    ]
-//                );
-//
-//                return $app->redirect($app['url_generator']->generate('user_panel', array('id' => $id)), 301);
-//            }
-//
-//            return $app['twig']->render(
-//                'user/editprofil.html.twig',
-//                [
-//                    'user' => $user,
-//                    'form' => $form->createView(),
-//                    'user_id' => $id,
-//                ]
-//            );
-//        } else {
-//            throw new AccessDeniedException("You don't have access to this page!");
-//        }
-//    }
-//
-//    /**
-//     * Edit action
-//     * edytowanie hasła użytkownika przez użytkownika (w swoim panelu)
-//     *
-//     * @param Application $app
-//     * @param $id
-//     * @param Request $request
-//     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-//     */
-//    public function editActionForUserPassword(Application $app, $id, Request $request)
-//    {
-//        $signUpRepository = new SignUpRepository($app['db']);
-//        $user = $signUpRepository->findOneById($id);
-//        $userRepository = new UserRepository($app['db']);
-//        $userId = $userRepository->getLoggedUserId($app);
-//
-//        //nie pozwala użytkonikowi wchodzić na nie swoje strony, no chyba że jest administratorem
-//        if($user['id'] === $userId or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
-//
-//            if (!$user) {
-//                $app['session']->getFlashBag()->add(
-//                    'messages',
-//                    [
-//                        'type' => 'warning',
-//                        'message' => 'message.record_not_found',
-//                    ]
-//                );
-//
-//                return $app->redirect($app['url_generator']->generate('user_panel', array('id' => $id)));
-//            }
-//
-//            $form = $app['form.factory']->createBuilder(ForPasswordType::class, $user)->getForm();
-//            $form->handleRequest($request);
-//
-//            if ($form->isSubmitted() && $form->isValid()) {
-//                $signUpRepository->save2($form->getData(), $app);
-//
-//                $app['session']->getFlashBag()->add(
-//                    'messages',
-//                    [
-//                        'type' => 'success',
-//                        'message' => 'message.element_successfully_edited',
-//                    ]
-//                );
-//
-//                return $app->redirect($app['url_generator']->generate('user_panel', array('id' => $id)), 301);
-//            }
-//
-//            return $app['twig']->render(
-//                'user/password.html.twig',
-//                [
-//                    'user' => $user,
-//                    'form' => $form->createView(),
-//                    'user_id' => $id,
-//                ]
-//            );
-//        } else {
-//            throw new AccessDeniedException("You don't have access to this page!");
-//        }
-//    }
+    /**
+     * Edit action
+     * edytowanie danych użytkownika przez użytkownika (w swoim panelu) - edycja bez hasła
+     *
+     * @param Application $app
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function editActionPanelUser(Application $app, $id, Request $request)
+    {
+        $signUpRepository = new SignUpRepository($app['db']);
+        $user = $signUpRepository->findOneById($id);
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
+
+        //nie pozwala użytkonikowi wchodzić na nie swoje strony, no chyba że jest administratorem
+        if($user['id'] === $userId  or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
+
+            if (!$user) {
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'warning',
+                        'message' => 'message.record_not_found',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('user_panel', array('id' => $id)));
+            }
+
+            $form = $app['form.factory']->createBuilder(PanelEditType::class, $user,
+                ['login_repository' => new SignUpRepository($app['db'])]
+            )->getForm();
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $signUpRepository->save3($form->getData(), $app);
+
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'success',
+                        'message' => 'message.element_successfully_edited',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('user_panel', array('id' => $id)), 301);
+            }
+
+            return $app['twig']->render(
+                'user/editprofil.html.twig',
+                [
+                    'user' => $user,
+                    'form' => $form->createView(),
+                    'user_id' => $id,
+                ]
+            );
+        } else {
+            throw new AccessDeniedException("You don't have access to this page!");
+        }
+    }
+
+    /**
+     * Edit action
+     * edytowanie hasła użytkownika przez użytkownika (w swoim panelu)
+     *
+     * @param Application $app
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function editActionForUserPassword(Application $app, $id, Request $request)
+    {
+        $signUpRepository = new SignUpRepository($app['db']);
+        $user = $signUpRepository->findOneById($id);
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
+
+        //nie pozwala użytkonikowi wchodzić na nie swoje strony, no chyba że jest administratorem
+        if($user['id'] === $userId or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
+
+            if (!$user) {
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'warning',
+                        'message' => 'message.record_not_found',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('user_panel', array('id' => $id)));
+            }
+
+            $form = $app['form.factory']->createBuilder(ForPasswordType::class, $user)->getForm();
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $signUpRepository->save2($form->getData(), $app);
+
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'success',
+                        'message' => 'message.element_successfully_edited',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('user_panel', array('id' => $id)), 301);
+            }
+
+            return $app['twig']->render(
+                'user/password.html.twig',
+                [
+                    'user' => $user,
+                    'form' => $form->createView(),
+                    'user_id' => $id,
+                ]
+            );
+        } else {
+            throw new AccessDeniedException("You don't have access to this page!");
+        }
+    }
 
 
 }
