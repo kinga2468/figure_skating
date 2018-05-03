@@ -149,25 +149,33 @@
                         <div class="add_comment">
                             {% if video|length %}
                                 {{ form_start(form_comment, { method: 'post', action: url('video_view', {'id':id}) }) }}
-                                {{ form_widget(form_comment) }}
-                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
+                                {{ form_widget(form_comment.text, { 'value': '' }) }}
+                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success"/>
                                 {{ form_end(form_comment) }}
                             {% endif %}
                         </div>
 
                         {% if comments|length %}
-                            {% for row in comments %}
+                            {% for line in comments %}
                                 <div class="row comment">
                                     <div class="col-md-3 col-sm-3 col-xs-3 login">
                                         <div class="login2">
-                                            {{ row.login }}
+                                            {{ line.login }}
                                         </div>
                                         <div class="date">
-                                            {{ row.date_adding }}
+                                            {{ line.date_adding }}
                                         </div>
                                     </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-9 text">
-                                        {{ row.text }}
+                                    <div class="col-md-8 col-sm-8 col-xs-8 text">
+                                        {{ line.text }}
+                                    </div>
+                                    <div class="col-md-1 col-sm-1 col-xs-1 link">
+                                        <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
+                                            {{ 'delete'|trans }}
+                                        </a>
+                                        <a class="edit" href="{{ url('comment_edit', {'id': line.id}) }}" title="{{ 'edit'|trans }}">
+                                            {{ 'edit'|trans }}
+                                        </a>
                                     </div>
                                 </div>
                             {% endfor %}

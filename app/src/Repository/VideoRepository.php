@@ -23,6 +23,7 @@ class VideoRepository
      *
      * @param \Doctrine\DBAL\Connection $db
      */
+
     public function __construct(Connection $db)
     {
         $this->db = $db;
@@ -170,12 +171,16 @@ class VideoRepository
         return $result;
     }
 
-//    public function paginateMatchingVideo($offers, $page)
+//    public function videoRecord()
 //    {
-//        $adapter = new ArrayAdapter($offers);
-//        $pagerfanta = new Pagerfanta($adapter);
-//        $pagerfanta->setMaxPerPage(self::NUM_ITEMS);
-//        $pagerfanta->setCurrentPage($page);
-//        return $pagerfanta;
+//        $queryBuilder = $this->db->createQueryBuilder()
+//            ->select('count(*)')
+//            ->from('video', 'v');
+//        $query1 = $queryBuilder->getQuery()->getResult();
+//
+//        $result = count($query1);
+//
+//        return $result;
 //    }
+
 }

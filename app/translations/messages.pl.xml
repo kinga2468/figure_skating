@@ -62,8 +62,8 @@
                 <source>Bad credentials.</source>
                 <target>Niepoprawne dane.</target>
             </trans-unit>
-            <trans-unit id="index_user_delete">
-                <source>index_user_delete</source>
+            <trans-unit id="delete">
+                <source>delete</source>
                 <target>usuń</target>
             </trans-unit>
             <trans-unit id="change.role">
@@ -120,7 +120,11 @@
             </trans-unit>
             <trans-unit id="label.text">
                 <source>label.text</source>
-                <target>Dodaj swój komentarz</target>
+                <target>Komentarz</target>
+            </trans-unit>
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>edytuj</target>
             </trans-unit>
         </body>
     </file>

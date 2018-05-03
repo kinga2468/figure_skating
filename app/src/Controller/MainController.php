@@ -64,6 +64,7 @@ class MainController implements ControllerProviderInterface
             'main/index.html.twig',
             ['video' => $videoRepository->findNewestVideo(),
                 'user_id' => $userId,]
+//                'videoSum' => $videoRepository-> videoRecord(),]
         );
     }
 

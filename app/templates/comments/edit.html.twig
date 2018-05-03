@@ -87,16 +87,15 @@
                 </div>
             </div>
             <div class="container delete_comment">
-                <p>Czy na pewno chcesz usunąć komentarz o treści: </p>
-                <p>"{{ comment.text }}"</p>
+                <p>Zedytuj komentarz: </p>
 
                 <div class="akcje">
                     {#<h1>{{ 'title.user_delete'|trans({'%id%': user.id}) }} {{ user.login}}</h1>#}
                     <div class="form">
-                        {{ form_start(form, { method: 'post', action: url('comment_delete', {'id': comment.id}) }) }}
+                        {{ form_start(form, { method: 'post', action: url('comment_edit', {'id': comment.id}) }) }}
                         {{ form_widget(form) }}
                     </div>
-                    <input type="submit" value="{{ 'delete'|trans }}" class="btn btn-primary" />
+                    <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
                     {{ form_end(form) }}
                     <a class="back" href="{{ url('video_view', {'id': videoId.0.video_id}) }}" title="{{ 'back.to.list'|trans }}">
                         {{ 'back.to.list'|trans }}

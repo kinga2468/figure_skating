@@ -74,7 +74,7 @@ class CommentRepository
     {
         $queryBuilder = $this->db->createQueryBuilder();
 
-        $queryBuilder->select('*, u.login')
+        $queryBuilder->select('c.id, c.text, c.users_id, c.video_id, c.date_adding, u.login')
             ->from('comments', 'c')
             ->where('c.video_id = :video_id')
             ->setParameter(':video_id', $videoId, \PDO::PARAM_INT)
@@ -85,22 +85,12 @@ class CommentRepository
     }
 
     /**
-     * Delete record.
-     *
-     * @param array $comment Comment
-     *
-     * @return boolean Result
+     * Remove record.
      */
-//    public function delete($comment)
-//    {
-//        if (isset($comment['id']) && ctype_digit((string)$comment['id'])) {
-//            //delete record
-//            $id = $comment['id'];
-//            return $this->db->delete('comments', ['id' => $id]);
-//        } else {
-//            throw new \InvalidArgumentException('Invalid parameter type');
-//        }
-//    }
+    public function delete($comments)
+    {
+        return $this->db->delete('comments', ['id' => $comments['id']]);
+    }
 
     /**
      * Save record.
@@ -124,17 +114,17 @@ class CommentRepository
     }
 
 
-//    public function findVideoIdForThisComment($id)
-//    {
-//        $queryBuilder = $this->db->createQueryBuilder();
-//
-//        $queryBuilder->select('c.video_id')
-//            ->from('comments', 'c')
-//            ->where('c.id = :id')
-//            ->setParameter(':id', $id, \PDO::PARAM_INT);
-//        $result = $queryBuilder->execute()->fetchAll();
-//        return $result;
-//    }
+    public function findVideoByComments($id)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('c.video_id')
+            ->from('comments', 'c')
+            ->where('c.id = :id')
+            ->setParameter(':id', $id, \PDO::PARAM_INT);
+        $result = $queryBuilder->execute()->fetchAll();
+        return $result;
+    }
 
 
 

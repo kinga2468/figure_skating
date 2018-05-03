@@ -50,8 +50,8 @@
                 <source>Bad credentials.</source>
                 <target>Bad credentials.</target>
             </trans-unit>
-            <trans-unit id="index_user_delete">
-                <source>index_user_delete</source>
+            <trans-unit id="delete">
+                <source>delete</source>
                 <target>delete</target>
             </trans-unit>
             <trans-unit id="change.role">
@@ -102,7 +102,10 @@
                 <source>label.text</source>
                 <target>Add comment</target>
             </trans-unit>
-
+            <trans-unit id="edit">
+                <source>edit</source>
+                <target>edit</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
