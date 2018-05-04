@@ -144,7 +144,35 @@
             </trans-unit>
             <trans-unit id="label.role">
                 <source>label.role</source>
-                <target>Rola: </target>
+                <target>Rola</target>
+            </trans-unit>
+            <trans-unit id="label.link">
+                <source>label.link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="label.img_video_yt">
+                <source>label.img_video_yt</source>
+                <target>Obrazek video</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Tytuł</target>
+            </trans-unit>
+            <trans-unit id="label.year_championship">
+                <source>label.year_championship</source>
+                <target>Rok zawodów</target>
+            </trans-unit>
+            <trans-unit id="label.song">
+                <source>label.song</source>
+                <target>Piosenka</target>
+            </trans-unit>
+            <trans-unit id="label.skaters_name">
+                <source>label.skaters_name</source>
+                <target>Łyżwiarz</target>
+            </trans-unit>
+            <trans-unit id="add_video">
+                <source>add_video</source>
+                <target>Dodaj video</target>
             </trans-unit>
         </body>
     </file>

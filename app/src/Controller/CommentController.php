@@ -13,6 +13,7 @@ use Repository\VideoRepository;
 use Form\CommentType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Class CommentController.
@@ -57,47 +58,52 @@ class CommentController implements ControllerProviderInterface
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
 
-        if (!$comment) {
-            $app['session']->getFlashBag()->add(
-                'messages',
+
+        if($comment['users_id'] === $userId or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
+            if (!$comment) {
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'warning',
+                        'message' => 'message.record_not_found',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('video_index'));
+            }
+
+            $form = $app['form.factory']->createBuilder(FormType::class, $comment)->add('id', HiddenType::class)->getForm();
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $commentRepository->delete($form->getData());
+
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'success',
+                        'message' => 'message.element_successfully_deleted',
+                    ]
+                );
+
+                return $app->redirect(
+                    $app['url_generator']->generate('video_index'),
+                    301
+                );
+            }
+
+            return $app['twig']->render(
+                'comments/delete.html.twig',
                 [
-                    'type' => 'warning',
-                    'message' => 'message.record_not_found',
+                    'comment' => $comment,
+                    'form' => $form->createView(),
+                    'user_id' => $userId,
+                    'videoId' => $commentRepository->findVideoByComments($id),
                 ]
             );
-
-            return $app->redirect($app['url_generator']->generate('video_index'));
+        } else {
+            throw new AccessDeniedException("You don't have access to this page!");
         }
-
-        $form = $app['form.factory']->createBuilder(FormType::class, $comment)->add('id', HiddenType::class)->getForm();
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $commentRepository->delete($form->getData());
-
-            $app['session']->getFlashBag()->add(
-                'messages',
-                [
-                    'type' => 'success',
-                    'message' => 'message.element_successfully_deleted',
-                ]
-            );
-
-            return $app->redirect(
-                $app['url_generator']->generate('video_index'),
-                301
-            );
-        }
-
-        return $app['twig']->render(
-            'comments/delete.html.twig',
-            [
-                'comment' => $comment,
-                'form' => $form->createView(),
-                'user_id' => $userId,
-                'videoId' => $commentRepository->findVideoByComments($id),
-            ]
-        );
     }
 
     /**
@@ -117,43 +123,49 @@ class CommentController implements ControllerProviderInterface
         $userId = $userRepository->getLoggedUserId($app);
         $videoId = $commentRepository->findVideoByComments($id);
 
-        if (!$comment) {
-            $app['session']->getFlashBag()->add(
-                'messages',
+        //nie pozwala użytkonikowi wchodzić na nie swoje strony, no chyba że jest administratorem
+        if($comment['users_id'] === $userId or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
+
+            if (!$comment) {
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'warning',
+                        'message' => 'message.record_not_found',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('video_index'));
+            }
+
+            $form = $app['form.factory']->createBuilder(CommentType::class, $comment)->getForm();
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $commentRepository->save($form->getData());
+
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'success',
+                        'message' => 'message.element_successfully_edited',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('video_index'), 301);
+            }
+
+            return $app['twig']->render(
+                'comments/edit.html.twig',
                 [
-                    'type' => 'warning',
-                    'message' => 'message.record_not_found',
+                    'comment' => $comment,
+                    'form' => $form->createView(),
+                    'user_id' => $userId,
+                    'videoId' => $videoId,
                 ]
             );
-
-            return $app->redirect($app['url_generator']->generate('video_index'));
+        } else {
+            throw new AccessDeniedException("You don't have access to this page!");
         }
-
-        $form = $app['form.factory']->createBuilder(CommentType::class, $comment)->getForm();
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $commentRepository->save($form->getData());
-
-            $app['session']->getFlashBag()->add(
-                'messages',
-                [
-                    'type' => 'success',
-                    'message' => 'message.element_successfully_edited',
-                ]
-            );
-
-            return $app->redirect($app['url_generator']->generate('video_index'), 301);
-        }
-
-        return $app['twig']->render(
-            'comments/edit.html.twig',
-            [
-                'comment' => $comment,
-                'form' => $form->createView(),
-                'user_id' => $userId,
-                'videoId' => $videoId,
-            ]
-        );
     }
 }

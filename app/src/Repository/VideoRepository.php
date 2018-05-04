@@ -183,4 +183,75 @@ class VideoRepository
 //        return $result;
 //    }
 
+    /**
+     * znajduje id użytkownika po jego loginie
+     * używane przy save, saveOperation i saveForLimit
+     *
+     * @param $userLogin
+     * @return mixed
+     */
+    protected function findUserIdByLogin($userLogin)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+        $queryBuilder->select('u.id')
+            ->from('users', 'u')
+            ->where('u.login = :login')
+            ->setParameter(':login', $userLogin, \PDO::PARAM_INT);
+        $user_id = current($queryBuilder->execute()->fetch());
+        return $user_id;
+    }
+
+    /**
+     * Save record.
+     */
+    public function save($video, $userLogin)
+    {
+        $user_id = $this -> findUserIdByLogin($userLogin);
+        $video['users_id'] = $user_id;
+        $video['average_rating'] = 0.00;
+        $currentDateTime = new \DateTime();
+        $video['date_add'] = $currentDateTime->format('Y-m-d H:i:s');
+
+        if (isset($video['id']) && ctype_digit((string) $video['id'])) {
+            // update record
+            $id = $video['id'];
+            unset($video['id']);
+
+            return $this->db->update('video', $video, ['id' => $id]);
+        } else {
+            // add new record
+            return $this->db->insert('video', $video);
+        }
+    }
+
+    /**
+     * SaveForEdit record.
+     */
+    public function saveForEdit($video, $userLogin)
+    {
+        $user_id = $this -> findUserIdByLogin($userLogin);
+        $video['users_id'] = $user_id;
+        $currentDateTime = new \DateTime();
+        $video['date_add'] = $currentDateTime->format('Y-m-d H:i:s');
+
+        if (isset($video['id']) && ctype_digit((string) $video['id'])) {
+            // update record
+            $id = $video['id'];
+            unset($video['id']);
+
+            return $this->db->update('video', $video, ['id' => $id]);
+        } else {
+            // add new record
+            return $this->db->insert('video', $video);
+        }
+    }
+
+    /**
+     * Remove record.
+     */
+    public function delete($video)
+    {
+        return $this->db->delete('video', ['id' => $video['id']]);
+    }
+
 }

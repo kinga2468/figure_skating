@@ -92,6 +92,15 @@
                 </div>
 
                 <div class="col-md-3 col-sm-3 col-xs-12 filtr">
+                    {% if is_granted('ROLE_ADMIN')%}
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="video_add">
+                                <a href="{{ url('video_add') }}" title="{{ 'add_video'|trans }}">
+                                    {{ 'add_video'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
                     <form>
                         <div class="row">
                             <p class="title">Filtrowanie</p>
@@ -172,6 +181,16 @@
                                 <div class="image_video">
                                     <div class="image">
                                         <img src="{{ row.img_video_yt }} " />
+                                        {% if is_granted('ROLE_ADMIN')%}
+                                            <div class="icons">
+                                                <a class="icon cog" href="{{ url('video_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                    <span class="fa fa-cog"></span>
+                                                </a>
+                                                <a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                    <span class="fa fa-trash"></span>
+                                                </a>
+                                            </div>
+                                        {% endif %}
                                     </div>
                                     <p>{{ row.title }}</p>
                                 </div>

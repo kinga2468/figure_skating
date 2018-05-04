@@ -11,7 +11,12 @@ use Repository\VideoRepository;
 use Repository\CommentRepository;
 use Form\FindVideoType;
 use Form\CommentType;
+use Form\VideoType;
+use Repository\SkaterRepository;
 use Repository\UserRepository;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 /**
  * Class VideoController.
@@ -31,13 +36,26 @@ class VideoController implements ControllerProviderInterface
 //        $controller->get('/', [$this, 'indexAction'])->bind('video_index');
         $controller->get('/', [$this, 'findMatchingAction'])
             ->bind('video_index');
-        $controller->match('/{id}', [$this, 'viewAction'])
-            ->method('GET|POST')
+        $controller->get('/{id}', [$this, 'viewAction'])
+            ->assert('id', '[1-9]\d*')
             ->bind('video_view');
+        $controller->match('/add', [$this, 'addAction'])
+            ->method('POST|GET')
+            ->bind('video_add');
+        $controller->match('/{id}/edit', [$this, 'editAction'])
+            ->method('GET|POST')
+            ->assert('id', '[1-9]\d*')
+            ->bind('video_edit');
+        $controller->match('/{id}/delete', [$this, 'deleteAction'])
+            ->method('GET|POST')
+            ->assert('id', '[1-9]\d*')
+            ->bind('video_delete');
+
         $controller->get('/{params}', [$this, 'displayMatchingAction'])
             ->value('params', '')
 //            ->value('page', 1)
             ->bind('matching_video_paginated');
+
 
         return $controller;
     }
@@ -169,5 +187,194 @@ class VideoController implements ControllerProviderInterface
                 'user_id' => $userId,
             ]
         );
+    }
+
+    /**
+     * Add action.
+     *
+     * @param \Silex\Application                        $app     Silex application
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     */
+    public function addAction(Application $app, Request $request)
+    {
+        $video = [];
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
+
+        $token = $app['security.token_storage']->getToken();
+        if (null !== $token) {
+            $user = $token->getUser();
+            $userLogin = $user->getUsername();
+        }
+
+        if($app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
+
+            $form = $app['form.factory']->createBuilder(
+                VideoType::class,
+                $video,
+                ['skaters_repository' => new SkaterRepository($app['db'])]
+            )->getForm();
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $videoRepository = new VideoRepository($app['db']);
+                $videoRepository->save($form->getData(), $userLogin);
+
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'success',
+                        'message' => 'message.element_successfully_added',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('video_index'), 301);
+            }
+
+            return $app['twig']->render(
+                'video/add.html.twig',
+                [
+                    'video' => $video,
+                    'form' => $form->createView(),
+                    'user_id' => $userId,
+                ]
+            );
+        } else {
+            throw new AccessDeniedException("You don't have access to this page!");
+        }
+    }
+
+    /**
+     * Edit action.
+     *
+     * @param \Silex\Application                        $app     Silex application
+     * @param int                                       $id      Record id
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     */
+    public function editAction(Application $app, $id, Request $request)
+    {
+        $videoRepository = new VideoRepository($app['db']);
+        $video = $videoRepository->findOneById($id);
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
+
+        $token = $app['security.token_storage']->getToken();
+        if (null !== $token) {
+            $user = $token->getUser();
+            $userLogin = $user->getUsername();
+        }
+
+        if($app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
+            if (!$video) {
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'warning',
+                        'message' => 'message.record_not_found',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('video_index'));
+            }
+
+            $form = $app['form.factory']->createBuilder(
+                VideoType::class,
+                $video,
+                ['skaters_repository' => new SkaterRepository($app['db'])]
+            )->getForm();
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $videoRepository->saveForEdit($form->getData(), $userLogin);
+
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'success',
+                        'message' => 'message.element_successfully_edited',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('video_index'), 301);
+            }
+
+            return $app['twig']->render(
+                'video/edit.html.twig',
+                [
+                    'video' => $video,
+                    'form' => $form->createView(),
+                    'user_id' => $userId,
+                ]
+            );
+        } else {
+            throw new AccessDeniedException("You don't have access to this page!");
+        }
+    }
+
+    /**
+     * Delete action.
+     *
+     * @param \Silex\Application                        $app     Silex application
+     * @param int                                       $id      Record id
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP Response
+     */
+    public function deleteAction(Application $app, $id, Request $request)
+    {
+        $videoRepository = new VideoRepository($app['db']);
+        $video = $videoRepository->findOneById($id);
+
+        $userRepository = new UserRepository($app['db']);
+        $userId = $userRepository->getLoggedUserId($app);
+
+        if($app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
+            if (!$video) {
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'warning',
+                        'message' => 'message.record_not_found',
+                    ]
+                );
+
+                return $app->redirect($app['url_generator']->generate('video_index'));
+            }
+
+            $form = $app['form.factory']->createBuilder(FormType::class, $video)->add('id', HiddenType::class)->getForm();
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $videoRepository->delete($form->getData());
+
+                $app['session']->getFlashBag()->add(
+                    'messages',
+                    [
+                        'type' => 'success',
+                        'message' => 'message.element_successfully_deleted',
+                    ]
+                );
+
+                return $app->redirect(
+                    $app['url_generator']->generate('video_index'),
+                    301
+                );
+            }
+
+            return $app['twig']->render(
+                'video/delete.html.twig',
+                [
+                    'video' => $video,
+                    'form' => $form->createView(),
+                    'user_id' => $userId,
+                ]
+            );
+        } else {
+            throw new AccessDeniedException("You don't have access to this page!");
+        }
     }
 }

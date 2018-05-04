@@ -170,12 +170,14 @@
                                         {{ line.text }}
                                     </div>
                                     <div class="col-md-1 col-sm-1 col-xs-1 link">
-                                        <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
-                                            {{ 'delete'|trans }}
-                                        </a>
-                                        <a class="edit" href="{{ url('comment_edit', {'id': line.id}) }}" title="{{ 'edit'|trans }}">
-                                            {{ 'edit'|trans }}
-                                        </a>
+                                        {% if is_granted('IS_AUTHENTICATED_FULLY') and user_id==line.users_id or is_granted('ROLE_ADMIN')%}
+                                            <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
+                                                {{ 'delete'|trans }}
+                                            </a>
+                                            <a class="edit" href="{{ url('comment_edit', {'id': line.id}) }}" title="{{ 'edit'|trans }}">
+                                                {{ 'edit'|trans }}
+                                            </a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             {% endfor %}
