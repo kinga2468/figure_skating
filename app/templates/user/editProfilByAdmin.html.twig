@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Łyżwiarstwo figurowe ~Soliści~
+{% endblock %}
+
+{% block body %}
+    <div class="all">
+        <div class="container header">
+            <div class="row logo">
+                <p class="slogan">
+                    <a href="{{ url('main_index') }}" title="Łyżwiarstwo figurowe">
+                        Łyżwiarstwo figurowe
+                    </a>
+                </p>
+                <p class="extra">~Soliści~</p>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container-fluid">
+                            <!-- przycisk rozwijania mobilnego menu -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Rozwiń nawigację</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="{{ url('rules_index') }}" title="zasady">
+                                            Zasady
+                                        </a></li>
+                                    <li><a href="{{ url('video_index') }}" title="występy">
+                                            Występy
+                                        </a></li>
+                                    <li><a href="#">Rankingi</a></li>
+                                    <li><a href="{{ url('skater_index') }}" title="występy">
+                                            Łyżwiarze
+                                        </a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-fluid -->
+                    </nav>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="row log-in">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="admin">
+                                <a class="AdminPanel" href="{{ url('user_index') }}" title="{{ 'label.admin'|trans }}">
+                                    {{ 'label.admin'|trans }}
+                                </a>
+                            </div>
+                        {% endif %}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a  class="aLogIn" href="{{ url('auth_logout') }}" title="{{ 'auth.logout.label'|trans }}">
+                                {{ 'auth.logout.label'|trans }}
+                            </a>
+                            <p class="imie">
+                                {{ 'hello'|trans }}
+                                <a href="{{ url('user_panel', {'id': user_id}) }}" title="{{ 'label.panel'|trans }}">
+                                    {{ app.user.username }}
+                                </a>
+                                ,
+                            </p>
+                        {% else %}
+                            <a class="aLogIn" href="{{ url('auth_login') }}" title="{{ 'auth.login.label'|trans }}">
+                                {{ 'auth.login.label'|trans }}
+                            </a>
+                            <a class="aLogIn" href="{{ url('auth_signup') }}" title="{{ 'auth.signup.label'|trans }}">
+                                {{ 'auth.signup.label'|trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid rules">
+            <div class="row rule">
+                <div class="shadow-rules">
+                    <div class="title">
+                        Użytkownik - panel admina
+                    </div>
+                </div>
+            </div>
+            <div class="container delete_comment">
+                {% form_theme form with ['bootstrap_3_horizontal_layout.html.twig'] %}
+                {% if error is defined and error|length %}
+                    {% include 'default/_single_alert_message.html.twig' with {
+                        is_single_message: true,
+                        is_dismissible: false,
+                        type: 'danger',
+                        message: error,
+                    } %}
+                {% endif %}
+                <section id="loginform" class="outer-wrapper">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="akcje">
+                                {#<h1>Zmień login</h1>#}
+                                <div class="form">
+                                    {{ form_start(form, { method: 'post', action: url('user_editPanel', {'id': user.id}) }) }}
+                                    {{ form_label(form.login) }}
+                                    {{ form_widget(form.login) }}
+                                </div>
+                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
+                                {{ form_end(form) }}
+                                <a class="back" href="{{ url('user_view', {'id': user.id}) }}" title="{{ 'back.to.list'|trans }}">
+                                    {{ 'back.to.list'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row footer">
+                EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.
+            </div>
+        </div>
+    </div>
+{% endblock %}

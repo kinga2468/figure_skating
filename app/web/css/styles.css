@@ -381,6 +381,8 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 
 .icons{position: relative; bottom: 28px; background-color: white; width:45px;}
 .icon{ color:#383888; font-size: 1.2em;}
+.icon:hover{color:black;}
+.icon:focus{color:black;}
 .icon.cog{padding:5px 3px 5px 5px;}
 .icon.trash{padding:5px 5px 5px 0;}
 .movie-center{width:440px; margin:0 auto;}
@@ -449,7 +451,7 @@ textarea{width:100%; margin:10px 0; border-radius:4px;}
 /*.pager ul li{background-color: red;}*/
 /*.previous{background-color: red;}*/
 /*.next{background-color: red;}*/
-.pager a{color:#6666FF; }
+.pager a{color:#6666FF; margin:10px 20px 0 20px;}
 .pager a span{padding:0 4px 10px 4px;}
 .users{margin-bottom:16px;}
 

@@ -87,19 +87,70 @@
             </div>
         </div>
 
-        <div class="container delete_comment">
-            {% if user|length %}
-                <div>
-                    <p>{{ user.login }}</p>
+        <div class="container">
+            <div class="row user_data">
+                {% if user|length %}
+                    <div class="dane">
+                        <p>{{ 'label.login'|trans }}: {{ user.login }}</p>
+                    </div>
+                {% else %}
+                    <div>
+                        {{ 'no_user'|trans }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="row panel_buttony">
+                <div class="message">
+                    {% include 'default/_flash_messages.html.twig' %}
                 </div>
-            {% else %}
-                <div>
-                    No user found!
+                <div class="panel_button">
+                    <p class="wprzycisk">
+                        <a href="{{ url('user_editPanel', {'id': user.id}) }}" title="{{ 'label.change.data'|trans }}">
+                            {{ 'label.change.data'|trans }}
+                        </a>
+                    </p>
                 </div>
-            {% endif %}
-            <a class="back" href="{{ url('user_index') }}" title="{{ 'back.to.list'|trans }}">
-                {{ 'back.to.list'|trans }}
-            </a>
+                <div class="panel_button">
+                    <p class="wprzycisk">
+                        <a href="{{ url('user_editPassword', {'id': user.id}) }}" title="{{ 'label.change.password'|trans }}">
+                            {{ 'label.change.password'|trans }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="row your_comments">
+                <div class="title">Komentarze użytkownika:</div>
+                {% if user_comments|length %}
+                    {% for line in user_comments %}
+                        <div class="row comment">
+                            <div class="col-md-3 col-sm-3 col-xs-3 login">
+                                <div class="date">
+                                    {{ line.date_adding }}
+                                </div>
+                                <div class="login2">
+                                    <p>Komentarz do: {{ line.title }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-xs-8 text">
+                                {{ line.text }}
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-1 link">
+                                <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
+                                    {{ 'delete'|trans }}
+                                </a>
+                                <a class="edit" href="{{ url('comment_edit', {'id': line.id}) }}" title="{{ 'edit'|trans }}">
+                                    {{ 'edit'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="powrot">
+                <a class="back" href="{{ url('user_index') }}" title="{{ 'back.to.list'|trans }}">
+                    {{ 'back.to.list'|trans }}
+                </a>
+            </div>
         </div>
 
 

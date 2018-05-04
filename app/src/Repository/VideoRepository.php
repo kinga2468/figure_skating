@@ -5,12 +5,19 @@
 namespace Repository;
 
 use Doctrine\DBAL\Connection;
+use Utils\Paginator;
 
 /**
  * Class SkaterRepository.
  */
 class VideoRepository
 {
+    /**
+     * Number of items per page.
+     *
+     * const int NUM_ITEMS
+     */
+    const NUM_ITEMS = 12;
     /**
      * Doctrine DBAL connection.
      *
@@ -39,6 +46,25 @@ class VideoRepository
         $queryBuilder = $this->queryAll();
 
         return $queryBuilder->execute()->fetchAll();
+    }
+    /**
+     * Get records paginated.
+     *
+     * @param int $page Current page number
+     *
+     * @return array Result
+     */
+    public function findAllPaginated($page = 1)
+    {
+        $countQueryBuilder = $this->queryAll()
+            ->select('COUNT(DISTINCT v.id) AS total_results')
+            ->setMaxResults(1);
+
+        $paginator = new Paginator($this->queryAll(), $countQueryBuilder);
+        $paginator->setCurrentPage($page);
+        $paginator->setMaxPerPage(self::NUM_ITEMS);
+
+        return $paginator->getCurrentPageResults();
     }
 
     /**

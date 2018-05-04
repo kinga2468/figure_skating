@@ -34,8 +34,13 @@ class VideoController implements ControllerProviderInterface
     {
         $controller = $app['controllers_factory'];
 //        $controller->get('/', [$this, 'indexAction'])->bind('video_index');
-        $controller->get('/', [$this, 'findMatchingAction'])
+//        $controller->get('/', [$this, 'findMatchingAction'])
+//            ->bind('video_index');
+
+        $controller->get('/page/{page}', [$this, 'findMatchingAction'])
+            ->value('page', 1)
             ->bind('video_index');
+
         $controller->get('/{id}', [$this, 'viewAction'])
             ->assert('id', '[1-9]\d*')
             ->bind('video_view');
@@ -137,7 +142,7 @@ class VideoController implements ControllerProviderInterface
         );
     }
 
-    public function findMatchingAction(Application $app, Request $request)
+    public function findMatchingAction(Application $app, Request $request, $page = 1)
     {
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
@@ -158,6 +163,7 @@ class VideoController implements ControllerProviderInterface
         return $app['twig']->render(
             'video/index.html.twig',
             [
+                'paginator' => $videoRepository->findAllPaginated($page),
                 'video' => $videoRepository->findAll(),
                 'form' => $form->createView(),
                 'user_id' => $userId,

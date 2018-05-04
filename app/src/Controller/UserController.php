@@ -15,7 +15,7 @@ use Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-
+use Repository\CommentRepository;
 
 
 /**
@@ -40,14 +40,6 @@ class UserController implements ControllerProviderInterface
         $controller->get('/{id}', [$this, 'viewAction'])
             ->assert('id', '[1-9]\d*')
             ->bind('user_view');
-        $controller->match('/{id}/editPassword', [$this, 'editActionPassword'])
-            ->method('GET|POST')
-            ->assert('id', '[1-9]\d*')
-            ->bind('user_editPassword');
-        $controller->match('/{id}/editPanel', [$this, 'editActionPanel'])
-            ->method('GET|POST')
-            ->assert('id', '[1-9]\d*')
-            ->bind('user_editPanel');
         $controller->match('/{id}/delete', [$this, 'deleteAction'])
             ->method('GET|POST')
             ->assert('id', '[1-9]\d*')
@@ -56,6 +48,15 @@ class UserController implements ControllerProviderInterface
             ->method('GET|POST')
             ->assert('id', '[1-9]\d*')
             ->bind('user_change');
+
+        $controller->match('/{id}/editPassword', [$this, 'editActionPassword'])
+            ->method('GET|POST')
+            ->assert('id', '[1-9]\d*')
+            ->bind('user_editPassword');
+        $controller->match('/{id}/editPanel', [$this, 'editActionPanel'])
+            ->method('GET|POST')
+            ->assert('id', '[1-9]\d*')
+            ->bind('user_editPanel');
 
 
         return $controller;
@@ -105,11 +106,14 @@ class UserController implements ControllerProviderInterface
         $signupRepository = new SignUpRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
+        $commentsRepository = new CommentRepository($app['db']);
+        $userComments = $commentsRepository->getUserComments($id);
 
         return $app['twig']->render(
             'user/view.html.twig',
             ['user' => $signupRepository->findOneById($id),
                 'user_id' => $userId,
+                'user_comments' => $userComments,
             ]
         );
     }
