@@ -87,24 +87,21 @@
                 </div>
             </div>
 
-            <div class="container main">
+            <div class="container"> <!--tu można dodać main żeby był większy bottom margin -->
                 <div class="message">
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
-                <div class="index skater_all">
+                <div class="skater_all">
                     {% if skater|length %}
                         {% for row in skater %}
-                            <div class="skater_one">
-                                <div class="photo">
-                                    <img src="{{ row.img }} " />
+                            <a href="{{ url('skater_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                <div class="skater_one">
+                                    <div class="photo">
+                                        <img src="{{ row.img }} " />
+                                    </div>
+                                    <p>{{ row.name|upper }} </p>
                                 </div>
-                                <p>{{ row.name|upper }} </p>
-                                <div class="link">
-                                    <a class="edit" href="{{ url('skater_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
-                                        zobacz więcej
-                                    </a>
-                                </div>
-                            </div>
+                            </a>
                         {% endfor %}
                     {% endif %}
                 </div>

@@ -69,4 +69,34 @@ class SkaterRepository
         return $queryBuilder->select('*')
             ->from('skaters', 's');
     }
+    /**
+    * findSkaterVideo($id)
+    */
+    public function findSkaterVideo($id)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('*')
+            ->from('video', 'v')
+            ->where('v.skaters_id = :id')
+            ->setParameter(':id', $id, \PDO::PARAM_INT);
+        $result = $queryBuilder->execute()->fetchAll();
+        return $result;
+    }
+    /**
+     * findSkaterVideoPaginated($id)
+     */
+    public function findSkaterVideoPaginated($id, $page=1)
+    {
+        $countQueryBuilder = $this->findSkaterVideo($id)
+            ->select('COUNT(DISTINCT v.id) AS total_results')
+            ->setMaxResults(1);
+
+        $paginator = new Paginator($this->findSkaterVideo($id), $countQueryBuilder);
+        $paginator->setCurrentPage($page);
+        $paginator->setMaxPerPage(self::NUM_ITEMS);
+
+        return $paginator->getCurrentPageResults();
+    }
+
 }

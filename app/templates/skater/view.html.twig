@@ -87,19 +87,82 @@
                 </div>
             </div>
 
-            <div class="container skater main">
+            <div class="container">
                 <div class="message">
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
-
                 {% if skater|length %}
-                    <div class="image">
-                        <img src="{{ skater.img }} " />
-                        {#<img src="{{asset('../../web/images/yuzuru.jpg')}}">#}
-
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-5">
+                            <div class="image">
+                                <img src="{{ skater.img }} " />
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-sm-7 col-xs-7 info_skater">
+                            <div class="championship">
+                                <p>{{ skater.name }}</p>
+                            </div>
+                            <div class="personal_data">
+                                <p>Data urodzenia: {{ skater.date_of_birth }}</p>
+                                <p>Reprezentacja: {{ skater.country_repr }}</p>
+                                <p>Miejsce urodzenia: {{ skater.birth_place }}</p>
+                                <p>Wzrost: {{ skater.height }} cm</p>
+                                <p>Trener: {{ skater.couch }}</p>
+                            </div>
+                            <div class="biography">
+                                <p>{{ skater.info }}</p>
+                            </div>
+                            <div class="records">
+                                <div class="title">
+                                    <p>Rekordy życiowe:</p>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="record">
+                                        <p>Program krótki</p>
+                                        <p class="number">{{ skater.short_record }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="record">
+                                        <p>Program dowolny</p>
+                                        <p class="number">{{ skater.free_record }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="record">
+                                        <p>Nota łączna</p>
+                                        <p class="number">{{ skater.total_record }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p>{{ skater.name }}</p>
+                    <div class="row video">
+                        <div class="title">
+                            <p>Jego video: </p>
+                        </div>
+                        {% if video|length %}
+                            {% for row in video %}
+                                <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                    <div class="image_video">
+                                        <div class="image">
+                                            <img src="{{ row.img_video_yt }} " />
+                                            {% if is_granted('ROLE_ADMIN')%}
+                                                <div class="icons">
+                                                    <a class="icon cog" href="{{ url('video_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                        <span class="fa fa-cog"></span>
+                                                    </a>
+                                                    <a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                        <span class="fa fa-trash"></span>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <p>{{ row.title }}</p>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 {% else %}
                     <div>

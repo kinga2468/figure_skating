@@ -351,16 +351,36 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 
 
 /*zakładka skaters////////////////////////////////////////////////////////*/
-.skater_all .image{ width:300px; height: 200px;}
-.skater_all .image img{width:200px; height: 250px;  margin-left: auto; margin-right: auto;}
+/*.skater_all .image{ width:300px; height: 200px;}*/
+/*.skater_all .image img{width:200px; height: 250px;  margin-left: auto; margin-right: auto;}*/
 .skater p {display: block; float: left;}
 
 .photo{width:200px; height: 246px; }
 .photo img{width:100%; height: auto; background-repeat: no-repeat; background-size: cover;
     margin:0; padding:3px; background-position: 65% 0;}
-.skater_one{float:left; border:1px solid #ddd; border-radius: 4px; margin:10px 13px;}
+.skater_one{
+    float:left;
+    border:1px solid #ddd; border-radius: 4px;
+    /*padding:1px; */
+    margin:10px 13px;
+}
+.skater_one p{text-align: center; font-size: 1.2em; margin:8px 0;}
+.skater_all a{color:black;}
+/*.skater_all{margin:0 auto; width:1140px; }*/
+/*.container{background-color: red;}*/
 
+.image{width:100%;}
+.image img{width:100%; height: auto; background-repeat: no-repeat; background-size: cover;}
 
+.info_skater{font-size:1.2em; border:1px solid #ddd; border-radius: 4px;
+    /*min-height: 480px;*/ color:black;
+    padding:16px; }
+.biography{height:147px; margin-top:23px;}
+.records{margin-top:24px;}
+.records .title{font-size:1.2em; margin:0;}
+.record{margin-top:10px;}
+.record p{text-align: center;}
+.number{color:#baba8e; font-size: 1.7em;}
 
 /*zakładka rejestracja////////////////////////////////////////////////////////*/
 #signupform .form-control {

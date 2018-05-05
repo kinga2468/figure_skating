@@ -68,7 +68,8 @@ class SkaterController implements ControllerProviderInterface
         return $app['twig']->render(
             'skater/view.html.twig',
             ['skater' => $skaterRepository->findOneById($id),
-                'user_id' => $userId,]
+                'user_id' => $userId,
+                'video'=>$skaterRepository->findSkaterVideo($id)]
         );
     }
 }
