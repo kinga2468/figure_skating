@@ -91,6 +91,17 @@
                 <div class="message">
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
+                <div class="row">
+                    {% if is_granted('ROLE_ADMIN')%}
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="skater_add">
+                                <a href="{{ url('skater_add') }}" title="{{ 'skater_add'|trans }}">
+                                    {{ 'skater_add'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="skater_all">
                     {% if skater|length %}
                         {% for row in skater %}
@@ -98,6 +109,16 @@
                                 <div class="skater_one">
                                     <div class="photo">
                                         <img src="{{ row.img }} " />
+                                        {% if is_granted('ROLE_ADMIN')%}
+                                            <div class="icons">
+                                                <a class="icon cog" href="{{ url('skater_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                    <span class="fa fa-cog"></span>
+                                                </a>
+                                                {#<a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">#}
+                                                    {#<span class="fa fa-trash"></span>#}
+                                                {#</a>#}
+                                            </div>
+                                        {% endif %}
                                     </div>
                                     <p>{{ row.name|upper }} </p>
                                 </div>

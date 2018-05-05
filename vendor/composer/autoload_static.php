@@ -37,6 +37,7 @@ class ComposerStaticInit0f30a26c05fb082c62cb950add9cfcac
             'Symfony\\Component\\Validator\\' => 28,
             'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\Stopwatch\\' => 28,
+            'Symfony\\Component\\Serializer\\' => 29,
             'Symfony\\Component\\Process\\' => 26,
             'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\Filesystem\\' => 29,
@@ -130,6 +131,10 @@ class ComposerStaticInit0f30a26c05fb082c62cb950add9cfcac
         'Symfony\\Component\\Stopwatch\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/stopwatch',
+        ),
+        'Symfony\\Component\\Serializer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/serializer',
         ),
         'Symfony\\Component\\Process\\' => 
         array (

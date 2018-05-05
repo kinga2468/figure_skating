@@ -5,6 +5,8 @@
 namespace Repository;
 
 use Doctrine\DBAL\Connection;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Class SkaterRepository.
@@ -97,6 +99,31 @@ class SkaterRepository
         $paginator->setMaxPerPage(self::NUM_ITEMS);
 
         return $paginator->getCurrentPageResults();
+    }
+
+    /**
+     * Save record.
+     *
+     * @param array $tag Tag
+     *
+     * @return boolean Result
+     */
+    public function save($skater)
+    {
+        $serializer = new Serializer(array(new DateTimeNormalizer('Y-m-d')));
+
+        $skater['date_of_birth'] = $serializer->normalize($skater['date_of_birth']);
+
+        if (isset($skater['id']) && ctype_digit((string) $skater['id'])) {
+            // update record
+            $id = $skater['id'];
+            unset($skater['id']);
+
+            return $this->db->update('skaters', $skater, ['id' => $id]);
+        } else {
+            // add new record
+            return $this->db->insert('skaters', $skater);
+        }
     }
 
 }

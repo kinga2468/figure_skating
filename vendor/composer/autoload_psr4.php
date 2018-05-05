@@ -21,6 +21,7 @@ return array(
     'Symfony\\Component\\Validator\\' => array($vendorDir . '/symfony/validator'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Symfony\\Component\\Stopwatch\\' => array($vendorDir . '/symfony/stopwatch'),
+    'Symfony\\Component\\Serializer\\' => array($vendorDir . '/symfony/serializer'),
     'Symfony\\Component\\Process\\' => array($vendorDir . '/symfony/process'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),

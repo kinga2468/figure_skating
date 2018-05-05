@@ -174,6 +174,55 @@
                 <source>add_video</source>
                 <target>Dodaj video</target>
             </trans-unit>
+            <trans-unit id="skater_add">
+                <source>skater_add</source>
+                <target>Dodaj łyżwiarza</target>
+            </trans-unit>
+
+            <trans-unit id="label.img">
+                <source>label.img</source>
+                <target>Link do obrazka</target>
+            </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Imię i nazwisko</target>
+            </trans-unit>
+            <trans-unit id="label.date_of_birth">
+                <source>label.date_of_birth</source>
+                <target>Data urodzenia</target>
+            </trans-unit>
+            <trans-unit id="label.country_repr">
+                <source>label.country_repr</source>
+                <target>Reprezentacja</target>
+            </trans-unit>
+            <trans-unit id="label.birth_place">
+                <source>label.birth_place</source>
+                <target>Miejsce urodzenia</target>
+            </trans-unit>
+            <trans-unit id="label.height">
+                <source>label.height</source>
+                <target>Wzrost</target>
+            </trans-unit>
+            <trans-unit id="label.couch">
+                <source>label.couch</source>
+                <target>Trener</target>
+            </trans-unit>
+            <trans-unit id="label.info">
+                <source>label.info</source>
+                <target>Biografia</target>
+            </trans-unit>
+            <trans-unit id="label.short_record">
+                <source>label.short_record</source>
+                <target>Record - program krótki</target>
+            </trans-unit>
+            <trans-unit id="label.free_record">
+                <source>label.free_record</source>
+                <target>Record - program dowolny</target>
+            </trans-unit>
+            <trans-unit id="label.total_record">
+                <source>label.total_record</source>
+                <target>Record - nota łączna</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

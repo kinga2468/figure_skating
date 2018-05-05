@@ -465,6 +465,11 @@ textarea{width:100%; margin:10px 0; border-radius:4px;}
 .back:focus{color:black;}
 .back:hover{text-decoration: none; color:black}
 
+.skater_add{width:170px;  clear:both; margin:10px auto 20px; background-color: red; }
+.skater_add a{width:170px; font-size:1.2em; text-decoration: none; color:white; text-align: center;
+    background-color: #383888; padding:8px 40px; border-radius: 4px; }
+
+.form-inline .form-control{width:32.7%;}
 
 /*zakładka user//////////////////////////////////////////////////*/
 .category{border:1px solid #ddd; border-radius: 4px; margin:10px; font-size: 1.3em; height:52px;}

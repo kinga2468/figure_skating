@@ -138,11 +138,11 @@
                         </div>
                     </div>
                     <div class="row video">
-                        <div class="title">
-                            <p>Jego video: </p>
-                        </div>
                         {% if video|length %}
                             {% for row in video %}
+                                <div class="title">
+                                    <p>Jego video: </p>
+                                </div>
                                 <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
                                     <div class="image_video">
                                         <div class="image">
