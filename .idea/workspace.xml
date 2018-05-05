@@ -15,75 +15,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/main/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="317" column="16" selection-start-line="317" selection-start-column="16" selection-end-line="317" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/skater/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="113" column="88" selection-start-line="113" selection-start-column="88" selection-end-line="113" selection-end-column="88" />
+            <state relative-caret-position="317">
+              <caret line="40" column="40" lean-forward="true" selection-start-line="40" selection-start-column="40" selection-end-line="42" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/web/css/styles.css">
+      <file leaf-file-name="view.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/skater/view.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="471" column="36" selection-start-line="471" selection-start-column="36" selection-end-line="471" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages.pl.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/translations/messages.pl.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="223" column="44" selection-start-line="223" selection-start-column="44" selection-end-line="223" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkaterController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/Controller/SkaterController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="160" column="32" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
-              <folding>
-                <element signature="e#59#101#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/skater/edit.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="665">
-              <caret line="133" column="72" selection-start-line="133" selection-start-column="72" selection-end-line="133" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkaterRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Repository/SkaterRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="116" column="51" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
-              <folding>
-                <element signature="e#59#88#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkaterType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Form/SkaterType.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="43" column="42" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
-              <folding>
-                <element signature="e#6#29#0#PHP" expanded="true" />
-                <element signature="e#47#87#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="161">
+              <caret line="143" column="34" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -92,9 +46,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>usuń</find>
-      <find>logo</find>
-      <find>textare</find>
       <find>form</find>
       <find>.form-horizontal .control-label</find>
       <find>button</find>
@@ -120,8 +71,11 @@
       <find>where</find>
       <find>save</find>
       <find>ska</find>
-      <find>_add</find>
       <find>video</find>
+      <find>_add</find>
+      <find>skater_all</find>
+      <find>findallp</find>
+      <find>icons</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,7 +84,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/Form/PanelEditType.php" />
         <option value="$PROJECT_DIR$/app/src/Provider/UserProvider.php" />
         <option value="$PROJECT_DIR$/app/src/app.php" />
         <option value="$PROJECT_DIR$/app/data/tables.sql" />
@@ -161,26 +114,27 @@
         <option value="$PROJECT_DIR$/app/templates/video/add.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Form/VideoType.php" />
         <option value="$PROJECT_DIR$/app/templates/video/edit.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/video/delete.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Repository/VideoRepository.php" />
         <option value="$PROJECT_DIR$/app/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/app/templates/user/view.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/user/passwordByAdmin.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/user/editProfilByAdmin.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/main/index.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Form/RatingType.php" />
         <option value="$PROJECT_DIR$/app/src/Controller/VideoController.php" />
         <option value="$PROJECT_DIR$/app/templates/skater/add.html.twig" />
         <option value="$PROJECT_DIR$/app/composer.json" />
-        <option value="$PROJECT_DIR$/app/templates/skater/view.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/video/index.html.twig" />
         <option value="$PROJECT_DIR$/app/translations/messages.pl.xml" />
         <option value="$PROJECT_DIR$/app/src/Form/SkaterType.php" />
-        <option value="$PROJECT_DIR$/app/web/css/styles.css" />
         <option value="$PROJECT_DIR$/app/templates/skater/edit.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/skater/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/templates/skater/delete.html.twig" />
+        <option value="$PROJECT_DIR$/app/templates/video/delete.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Repository/SkaterRepository.php" />
         <option value="$PROJECT_DIR$/app/src/Controller/SkaterController.php" />
+        <option value="$PROJECT_DIR$/app/templates/skater/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/web/css/styles.css" />
+        <option value="$PROJECT_DIR$/app/templates/skater/view.html.twig" />
+        <option value="$PROJECT_DIR$/app/templates/main/index.html.twig" />
       </list>
     </option>
   </component>
@@ -498,12 +452,12 @@
       <workItem from="1525457234328" duration="2283000" />
       <workItem from="1525460488887" duration="308000" />
       <workItem from="1525513752512" duration="10475000" />
-      <workItem from="1525548938461" duration="4889000" />
+      <workItem from="1525548938461" duration="6729000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214831000" />
+    <option name="totallyTimeSpent" value="216671000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -558,13 +512,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/translations/validators.en.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/translations/validators.pl.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -719,13 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/video/delete.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/user/panel.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
@@ -782,13 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/main/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="82" column="40" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/video/view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -810,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/skater/view.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="144" column="38" selection-start-line="142" selection-start-column="32" selection-end-line="144" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -824,34 +750,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Repository/VideoRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="235" column="12" selection-start-line="235" selection-start-column="12" selection-end-line="235" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/vendor/symfony/translation/Loader/schema/dic/xliff-core/xliff-core-1.2-strict.xsd">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="1920" column="6" selection-start-line="1920" selection-start-column="6" selection-end-line="1920" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/web/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="471" column="36" selection-start-line="471" selection-start-column="36" selection-end-line="471" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Controller/VideoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="384" column="5" lean-forward="true" selection-start-line="254" selection-start-column="4" selection-end-line="384" selection-end-column="5" />
-          <folding>
-            <element signature="e#58#100#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -894,24 +796,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/video/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/templates/skater/delete.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="187" column="44" selection-start-line="183" selection-start-column="40" selection-end-line="192" selection-end-column="51" />
+        <state relative-caret-position="291">
+          <caret line="98" column="20" lean-forward="true" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="76" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/skater/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/templates/video/delete.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="113" column="88" selection-start-line="113" selection-start-column="88" selection-end-line="113" selection-end-column="88" />
+        <state relative-caret-position="192">
+          <caret line="103" column="24" selection-start-line="103" selection-start-column="24" selection-end-line="105" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Repository/VideoRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Controller/VideoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="41" selection-end-column="34" />
+          <folding>
+            <element signature="e#58#100#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Repository/SkaterRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="116" column="51" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
+        <state relative-caret-position="-697">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
           <folding>
             <element signature="e#59#88#0#PHP" expanded="true" />
           </folding>
@@ -920,11 +839,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Controller/SkaterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="160" column="32" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
+        <state relative-caret-position="221">
+          <caret line="71" column="14" lean-forward="true" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="23" />
           <folding>
             <element signature="e#59#101#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/video/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="200" column="16" selection-start-line="200" selection-start-column="16" selection-end-line="203" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/web/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="371" column="11" selection-start-line="371" selection-start-column="11" selection-end-line="371" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/skater/view.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="143" column="34" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/skater/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="40" column="40" lean-forward="true" selection-start-line="40" selection-start-column="40" selection-end-line="42" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/main/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="317" column="16" selection-start-line="317" selection-start-column="16" selection-end-line="317" selection-end-column="16" />
         </state>
       </provider>
     </entry>

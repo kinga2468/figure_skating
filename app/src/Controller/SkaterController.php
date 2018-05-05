@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Repository\UserRepository;
 use Form\SkaterType;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 /**
@@ -28,7 +30,10 @@ class SkaterController implements ControllerProviderInterface
     public function connect(Application $app)
     {
         $controller = $app['controllers_factory'];
-        $controller->get('/', [$this, 'indexAction'])->bind('skater_index');
+//        $controller->get('/', [$this, 'indexAction'])->bind('skater_index');
+        $controller->get('/page/{page}', [$this, 'indexAction'])
+            ->value('page', 1)
+            ->bind('skater_index');
         $controller->get('/{id}', [$this, 'viewAction'])
             ->assert('id', '[1-9]\d*')
             ->bind('skater_view');
@@ -39,6 +44,10 @@ class SkaterController implements ControllerProviderInterface
             ->method('GET|POST')
             ->assert('id', '[1-9]\d*')
             ->bind('skater_edit');
+        $controller->match('/{id}/delete', [$this, 'deleteAction'])
+            ->method('GET|POST')
+            ->assert('id', '[1-9]\d*')
+            ->bind('skater_delete');
 
 
         return $controller;
@@ -52,7 +61,7 @@ class SkaterController implements ControllerProviderInterface
      *
      * @return string Response
      */
-    public function indexAction(Application $app)
+    public function indexAction(Application $app, $page = 1)
     {
         $skaterRepository = new SkaterRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
@@ -60,7 +69,7 @@ class SkaterController implements ControllerProviderInterface
 
         return $app['twig']->render(
             'skater/index.html.twig',
-            ['skater' => $skaterRepository->findAll(),
+            ['paginator' => $skaterRepository->findAllPaginated($page),
             'user_id' => $userId,]
         );
     }
@@ -221,14 +230,14 @@ class SkaterController implements ControllerProviderInterface
      */
     public function deleteAction(Application $app, $id, Request $request)
     {
-        $videoRepository = new VideoRepository($app['db']);
-        $video = $videoRepository->findOneById($id);
+        $skaterRepository = new SkaterRepository($app['db']);
+        $skater = $skaterRepository->findOneById($id);
 
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
 
         if($app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
-            if (!$video) {
+            if (!$skater) {
                 $app['session']->getFlashBag()->add(
                     'messages',
                     [
@@ -237,14 +246,14 @@ class SkaterController implements ControllerProviderInterface
                     ]
                 );
 
-                return $app->redirect($app['url_generator']->generate('video_index'));
+                return $app->redirect($app['url_generator']->generate('skater_index'));
             }
 
-            $form = $app['form.factory']->createBuilder(FormType::class, $video)->add('id', HiddenType::class)->getForm();
+            $form = $app['form.factory']->createBuilder(FormType::class, $skater)->add('id', HiddenType::class)->getForm();
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-                $videoRepository->delete($form->getData());
+                $skaterRepository->delete($form->getData());
 
                 $app['session']->getFlashBag()->add(
                     'messages',
@@ -255,15 +264,15 @@ class SkaterController implements ControllerProviderInterface
                 );
 
                 return $app->redirect(
-                    $app['url_generator']->generate('video_index'),
+                    $app['url_generator']->generate('skater_index'),
                     301
                 );
             }
 
             return $app['twig']->render(
-                'video/delete.html.twig',
+                'skater/delete.html.twig',
                 [
-                    'video' => $video,
+                    'skater' => $skater,
                     'form' => $form->createView(),
                     'user_id' => $userId,
                 ]

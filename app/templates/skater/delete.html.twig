@@ -82,26 +82,22 @@
             <div class="row rule">
                 <div class="shadow-rules">
                     <div class="title">
-                        Usuń video
+                        Usuń łyżwiarza
                     </div>
                 </div>
             </div>
             <div class="container delete_comment">
-                <p>Czy na pewno chcesz usunąć to video: </p>
-                <div class="movie-center">
-                    <iframe width="440" height="246" src="{{ video.link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </div>
+                <p>Czy na pewno chcesz usunąć łyżwiarza: {{ skater.name }}: </p>
 
                 <div class="akcje">
-                    {#<h1>{{ 'title.user_delete'|trans({'%id%': user.id}) }} {{ user.login}}</h1>#}
                     <div class="form">
-                        {{ form_start(form, { method: 'post', action: url('video_delete', {'id': video.id}) }) }}
+                        {{ form_start(form, { method: 'post', action: url('skater_delete', {'id': skater.id}) }) }}
                         {{ form_widget(form) }}
                     </div>
                     <input type="submit" value="{{ 'delete'|trans }}" class="btn btn-primary" />
                     {{ form_end(form) }}
                     <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-3">
-                        <a class="back" href="{{ url('video_index') }}" title="{{ 'back.to.list'|trans }}">
+                        <a class="back" href="{{ url('skater_index') }}" title="{{ 'back.to.list'|trans }}">
                             {{ 'back.to.list'|trans }}
                         </a>
                     </div>

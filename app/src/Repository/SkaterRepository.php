@@ -7,12 +7,19 @@ namespace Repository;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Utils\Paginator;
 
 /**
  * Class SkaterRepository.
  */
 class SkaterRepository
 {
+    /**
+     * Number of items per page.
+     *
+     * const int NUM_ITEMS
+     */
+    const NUM_ITEMS = 10;
     /**
      * Doctrine DBAL connection.
      *
@@ -40,6 +47,26 @@ class SkaterRepository
         $queryBuilder = $this->queryAll();
 
         return $queryBuilder->execute()->fetchAll();
+    }
+
+    /**
+     * Get records paginated.
+     *
+     * @param int $page Current page number
+     *
+     * @return array Result
+     */
+    public function findAllPaginated($page = 1)
+    {
+        $countQueryBuilder = $this->queryAll()
+            ->select('COUNT(DISTINCT s.id) AS total_results')
+            ->setMaxResults(1);
+
+        $paginator = new Paginator($this->queryAll(), $countQueryBuilder);
+        $paginator->setCurrentPage($page);
+        $paginator->setMaxPerPage(self::NUM_ITEMS);
+
+        return $paginator->getCurrentPageResults();
     }
 
     /**
@@ -124,6 +151,18 @@ class SkaterRepository
             // add new record
             return $this->db->insert('skaters', $skater);
         }
+    }
+
+    /**
+     * Remove record.
+     *
+     * @param array $tag Tag
+     *
+     * @return boolean Result
+     */
+    public function delete($tag)
+    {
+        return $this->db->delete('skaters', ['id' => $tag['id']]);
     }
 
 }

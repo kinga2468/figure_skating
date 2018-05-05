@@ -102,30 +102,38 @@
                         </div>
                     {% endif %}
                 </div>
-                <div class="skater_all">
-                    {% if skater|length %}
-                        {% for row in skater %}
-                            <a href="{{ url('skater_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
-                                <div class="skater_one">
-                                    <div class="photo">
-                                        <img src="{{ row.img }} " />
-                                        {% if is_granted('ROLE_ADMIN')%}
-                                            <div class="icons">
-                                                <a class="icon cog" href="{{ url('skater_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
-                                                    <span class="fa fa-cog"></span>
-                                                </a>
-                                                {#<a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">#}
-                                                    {#<span class="fa fa-trash"></span>#}
-                                                {#</a>#}
-                                            </div>
-                                        {% endif %}
+                {#<div class="main">#}
+                    <div class="skater_all">
+                        {% if paginator.data|length %}
+                            {% for row in paginator.data %}
+                                <a href="{{ url('skater_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                    <div class="skater_one">
+                                        <div class="photo">
+                                            <img src="{{ row.img }} " />
+                                            {% if is_granted('ROLE_ADMIN')%}
+                                                <div class="icons">
+                                                    <a class="icon cog" href="{{ url('skater_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                        <span class="fa fa-cog"></span>
+                                                    </a>
+                                                    <a class="icon trash" href="{{ url('skater_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                        <span class="fa fa-trash"></span>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <p>{{ row.name|upper }} </p>
                                     </div>
-                                    <p>{{ row.name|upper }} </p>
-                                </div>
-                            </a>
-                        {% endfor %}
-                    {% endif %}
-                </div>
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {#</div>#}
+            </div>
+            <div class="container paginator">
+                {% include 'default/_paginator.html.twig' with {
+                    paginator: paginator,
+                    route_name: 'skater_index',
+                } %}
             </div>
         </div>
         <div class="container-fluid">

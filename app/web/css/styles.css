@@ -366,8 +366,10 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 }
 .skater_one p{text-align: center; font-size: 1.2em; margin:8px 0;}
 .skater_all a{color:black;}
-/*.skater_all{margin:0 auto; width:1140px; }*/
-/*.container{background-color: red;}*/
+.skater_all .icons{position: relative; bottom: 27px; }
+.skater_all .icon{color:#383888;}
+
+.paginator{margin-top:0px; margin-bottom:0px;}
 
 .image{width:100%;}
 .image img{width:100%; height: auto; background-repeat: no-repeat; background-size: cover;}
