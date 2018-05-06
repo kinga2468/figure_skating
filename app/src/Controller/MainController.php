@@ -14,6 +14,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Repository\SignUpRepository;
 use Form\ForPasswordType;
 use Form\PanelEditType;
+use Repository\SkaterRepository;
 
 /**
  * Class MainController.
@@ -60,11 +61,15 @@ class MainController implements ControllerProviderInterface
         $videoRepository = new VideoRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
+        $skaterRepository = new SkaterRepository($app['db']);
 
         return $app['twig']->render(
             'main/index.html.twig',
-            ['video' => $videoRepository->findNewestVideo(),
-                'user_id' => $userId,]
+            [
+                'video' => $videoRepository->findNewestVideo(),
+                'user_id' => $userId,
+                'skaters' => $skaterRepository->findAll(),
+            ]
 //                'videoSum' => $videoRepository-> videoRecord(),]
         );
     }

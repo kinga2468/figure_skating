@@ -161,9 +161,6 @@
             </div>
 
 
-
-
-
             <div class="row">
                 <div class="title">
                     Najpopularniejsze:
@@ -252,65 +249,24 @@
                     </div>
                 </div>
             </div>
-        {#</div>#}
             <div class="row skaters">
                 <div class="title">
                     Najpopularniejsi łyżwiarze:
                 </div>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <div class="skater jeden">
-                            <div class="shadow">
-                                <div class="name">Javier<br>Fernandez</div>
-                            </div>
+                {% if skaters|length %}
+                    {% for row in skaters %}
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <a href="{{ url('skater_view', {'id': row.id}) }}"
+                               {#title="{{ 'label.view'|trans }}"#}
+                            >
+                                <div class="photo_main">
+                                    <div class="name centered">{{ row.name }}</div>
+                                    <img src="{{ row.img }} " />
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <div class="skater dwa">
-                            <div class="shadow">
-                                <div class="name">Yuzuru<br>Hanyu</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <div class="skater trzy">
-                            <div class="shadow">
-                                <div class="name">Misha<br>Ge</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <div class="skater cztery">
-                            <div class="shadow">
-                                <div class="name">Nathan<br>Chen</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <div class="skater piec">
-                            <div class="shadow">
-                                <div class="name">Jin<br>Boyang</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-2 col-sm-4 col-xs-6">
-                    <a href="#">
-                        <div class="skater szesc">
-                            <div class="shadow">
-                                <div class="name">Mikhail<br>Kolyada</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                    {% endfor %}
+                {% endif %}
                 <div class="more">
                     <a href="{{ url('skater_index') }}" title="Zobacz więcej">
                         Zobacz więcej <span class="fas fa-angle-right"></span>
