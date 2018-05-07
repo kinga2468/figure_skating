@@ -56,7 +56,7 @@ class MainController implements ControllerProviderInterface
      *
      * @return string Response
      */
-    public function indexAction(Application $app)
+    public function indexAction(Application $app, $page = 1)
     {
         $videoRepository = new VideoRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
@@ -68,7 +68,7 @@ class MainController implements ControllerProviderInterface
             [
                 'video' => $videoRepository->findNewestVideo(),
                 'user_id' => $userId,
-                'skaters' => $skaterRepository->findAll(),
+                'skaters' => $skaterRepository->findAllPaginatedForMainPage($page),
             ]
 //                'videoSum' => $videoRepository-> videoRecord(),]
         );

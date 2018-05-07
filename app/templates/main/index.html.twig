@@ -37,7 +37,6 @@
                                     <li><a href="{{ url('video_index') }}" title="występy">
                                             Występy
                                         </a></li>
-                                    <li><a href="#">Rankingi</a></li>
                                     <li><a href="{{ url('skater_index') }}" title="występy">
                                             Łyżwiarze
                                         </a></li>
@@ -253,12 +252,11 @@
                 <div class="title">
                     Najpopularniejsi łyżwiarze:
                 </div>
-                {% if skaters|length %}
-                    {% for row in skaters %}
+                {% if skaters.data|length %}
+                    {% for row in skaters.data %}
                         <div class="col-md-2 col-sm-4 col-xs-6">
-                            <a href="{{ url('skater_view', {'id': row.id}) }}"
-                               {#title="{{ 'label.view'|trans }}"#}
-                            >
+                            <a href="{{ url('skater_view', {'id': row.id}) }}">
+                               {#title="{{ 'label.view'|trans }}">#}
                                 <div class="photo_main">
                                     <div class="name centered">{{ row.name }}</div>
                                     <img src="{{ row.img }} " />

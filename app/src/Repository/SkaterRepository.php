@@ -19,6 +19,12 @@ class SkaterRepository
      *
      * const int NUM_ITEMS
      */
+    const NUM_ITEMS_FOR_MAIN_PAGE = 6;
+    /**
+     * Number of items per page.
+     *
+     * const int NUM_ITEMS
+     */
     const NUM_ITEMS = 10;
     /**
      * Doctrine DBAL connection.
@@ -65,6 +71,26 @@ class SkaterRepository
         $paginator = new Paginator($this->queryAll(), $countQueryBuilder);
         $paginator->setCurrentPage($page);
         $paginator->setMaxPerPage(self::NUM_ITEMS);
+
+        return $paginator->getCurrentPageResults();
+    }
+
+    /**
+     * Get records paginated.
+     *
+     * @param int $page Current page number
+     *
+     * @return array Result
+     */
+    public function findAllPaginatedForMainPage($page = 1)
+    {
+        $countQueryBuilder = $this->queryAll()
+            ->select('COUNT(DISTINCT s.id) AS total_results')
+            ->setMaxResults(1);
+
+        $paginator = new Paginator($this->queryAll(), $countQueryBuilder);
+        $paginator->setCurrentPage($page);
+        $paginator->setMaxPerPage(self::NUM_ITEMS_FOR_MAIN_PAGE);
 
         return $paginator->getCurrentPageResults();
     }
