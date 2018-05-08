@@ -110,7 +110,8 @@ class VideoController implements ControllerProviderInterface
         $commentRepository = new CommentRepository($app['db']);
         $ratingRepository = new RatingRepository($app['db']);
 
-//        $app['session']->remove('form');
+        $videoIsRatedByUser = $ratingRepository->CheckIfUserRatedVideo($id, $userId);
+
         $comment = [];
         $commentForm = $app['form.factory']->createBuilder(
             CommentType::class,
@@ -158,9 +159,8 @@ class VideoController implements ControllerProviderInterface
                     'message' => 'message.video_successfully_rated',
                 ]
             );
+            echo "<meta http-equiv='Refresh' content='0.1'/>";
         }
-
-//        $video['average_rating'] = $ratingRepository->averageRating($id);
 
 
         return $app['twig']->render(
@@ -175,6 +175,7 @@ class VideoController implements ControllerProviderInterface
                 'form_rating' => $ratingForm->createView(),
 //                'average_rating' => $ratingRepository->averageRating($id),
                 'ratedBy' =>$ratingRepository -> howManyUsersRatedThisVideo($id),
+                'video_is_rated'=>$videoIsRatedByUser,
             ]
         );
     }
@@ -213,7 +214,7 @@ class VideoController implements ControllerProviderInterface
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
 
-        var_dump(1);
+//        var_dump(1);
         if(!$app['session']->get('form')) {
             $form = $request->get('video_type');
             $app['session']->set('form', $form);
@@ -221,7 +222,6 @@ class VideoController implements ControllerProviderInterface
         $match = $app['session']->get('form');
         $videoRepository = new VideoRepository($app['db']);
         $video = $videoRepository->getMatching($match, 'video');
-        var_dump($video);
 //        $paginator = $videoRepository->paginateMatchingVideo($video, $page);
         return $app['twig']->render(
             'video/match.html.twig',

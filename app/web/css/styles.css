@@ -459,7 +459,7 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 .rating .box p{margin:0;}
 .rating .rate_by{padding:0;}
 
-.rating_form{padding: 0 0 5px 5px; margin:20px 0 0 0;}
+.rating_form{padding: 0 0 5px 5px; margin:20px 0 0 0; height:40px;}
 .rating_form .rating_name{font-size:1.2em; text-align: left; width:30%; float:left;}
 .rating_form .name{padding:0; width:70%; float:left}
 
@@ -470,11 +470,11 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 .save_button .btn-success:focus{background-color: white; color:black; border:none; font-size: 1.2em; margin:0 0 6px 11px;}
 
 
-.skater_button{ clear: both; margin:75px 0 30px 5px;}
+.skater_button{ clear: both; margin:30px 0 30px 5px;}
 .skater_button a{background-color: #383888; font-size: 1.1em; border-radius: 0; color:white; padding:7px 10px;}
 
 .info .date{font-size:1.2em; text-align: left; padding: 0 0 5px 5px;}
-
+.videoAlreadyRated p{font-size:1.2em;}
 
 /*.rating{margin:35px 0; width:100%;}*/
 /**/

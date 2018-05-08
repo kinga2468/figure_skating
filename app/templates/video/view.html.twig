@@ -112,7 +112,7 @@
 
                             <div class="rating">
                                 <div class="box">
-                                    {#{{ dump(video.average_rating) }}#}
+                                    {#{{ dump(average_rating.average_rate) }}#}
                                     {%  if video.average_rating != NULL %}
                                         <p>{{ video.average_rating }} /5</p>
                                     {% else %}
@@ -120,28 +120,40 @@
                                     {% endif %}
                                 </div>
                                 <div class="rate_by">
-                                    <p>ocenione przez {{ ratedBy.howMany }} użytkowników</p>
+                                    <p>ocenione przez {{ ratedBy.howMany }}
+                                        {% if ratedBy.howMany == 1 %}
+                                            użytkownika
+                                        {% else %}
+                                            użytkowników
+                                        {% endif %}
+                                    </p>
                                 </div>
                             </div>
                             <div class="rating_form">
-                                <div class="rating_name">
-                                    <p>Twoja ocena: </p>
-                                </div>
-                                <div class="name">
-                                    {% if video|length %}
-                                        {{ form_start(form_rating, { method: 'post', action: url('video_view', {'id':id}) }) }}
-                                            {#{{ form_label(form_rating.rate) }}#}
-                                        <div class="form_input">
-                                            {{ form_widget(form_rating.rate, { 'value': '' }) }}
-                                        </div>
-                                        <div class="save_button">
-                                            <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
-                                            {#{{ form_widget(form_rating.save, {'attr': {'class': 'btn btn-success'}}) }}#}
+                                {% if video_is_rated == false %}
+                                    <div class="rating_name">
+                                        <p>Twoja ocena: </p>
+                                    </div>
+                                    <div class="name">
+                                        {% if video|length %}
+                                            {{ form_start(form_rating, { method: 'post', action: url('video_view', {'id':id}) }) }}
+                                                {#{{ form_label(form_rating.rate) }}#}
+                                            <div class="form_input">
+                                                {{ form_widget(form_rating.rate, { 'value': '' }) }}
+                                            </div>
+                                            <div class="save_button">
+                                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
+                                                {#{{ form_widget(form_rating.save, {'attr': {'class': 'btn btn-success'}}) }}#}
 
-                                        </div>
-                                        {{ form_end(form_rating) }}
-                                    {% endif %}
-                                </div>
+                                            </div>
+                                            {{ form_end(form_rating) }}
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <div class="videoAlreadyRated">
+                                        <p>Ten występ został już przez Ciebie oceniony</p>
+                                    </div>
+                                {% endif %}
                             </div>
 
                             <div class="skater_button">

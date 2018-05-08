@@ -231,6 +231,11 @@
                 <source>choose_rating</source>
                 <target>Wybierz ocenę</target>
             </trans-unit>
+            <trans-unit id="message.video_successfully_rated">
+                <source>message.video_successfully_rated</source>
+                <target>Twoja ocena została zapisana.</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

@@ -25,44 +25,7 @@ class RatingRepository
     {
         $this->db = $db;
     }
-    /**
-     *
-     * Find average records for photo.
-     *
-     * @param string $photoId id of photo
-     *
-     * @return array|mixed Result
-     */
-    public function AverageRaringForPhoto($photoId)
-    {
-        $queryBuilder = $this->queryAll();
-        $queryBuilder->where('r.photoId = :photoId')
-            ->select("avg(r.value)")
-            ->setParameter(':photoId', $photoId);
-        $result = $queryBuilder->execute()->fetch();
-        return !$result ? [] : current($result);
-    }
-    /**
-     *
-     * Check if user rated photo.
-     *
-     * @param int $photoId id of photo
-     * @param int $userId id of user
-     * @return array|mixed Result
-     */
-    public function CheckIfUserRatedPhoto($photoId, $userId)
-    {
-        $queryBuilder = $this->queryAll();
-        $queryBuilder->where('r.photoId = :photoId')
-            ->setParameter(':photoId', $photoId);
-        $results = $queryBuilder->execute()->fetchAll();
-        foreach ($results as $result){
-            if($result['userId']===$userId){
-                return true;
-            }
-        }
-        return false;
-    }
+
     /**
      * Save record.
      *
@@ -104,9 +67,10 @@ class RatingRepository
         if (isset($video['id']) && ctype_digit((string) $video['id'])) {
             // update record
 
+//            return 0;
             $id = $video['id'];
             unset($video['id']);
-
+//
             return $this->db->update('video', $video, ['id' => $id]);
         } else {
             // add new record
@@ -114,22 +78,6 @@ class RatingRepository
         }
     }
 
-//    public function saveAverageRating($video, $videoId)
-//    {
-//        $video['average_rating'] = $this->averageRating($videoId);
-//
-//        if (isset($video['id']) && ctype_digit((string) $video['id'])) {
-//            // update record
-//            $id = $video['id'];
-//            unset($video['id']);
-////            return 0;
-//
-//            return $this->db->update('video', $video, ['id' => $id]);
-//        } else {
-//            // add new record
-//            return $this->db->insert('video', $video);
-//        }
-//    }
 
     /**
      * Query all records.
@@ -155,6 +103,27 @@ class RatingRepository
         $result = $queryBuilder->execute()->fetchAll();
 
         return !$result ? [] : current($result);
+    }
+
+    /**
+     * Check if user rated video.
+     */
+    public function CheckIfUserRatedVideo($video_id, $userId)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('*')
+            ->from('rating', 'r')
+            ->where('r.video_id = :video_id')
+            ->setParameter(':video_id', $video_id);
+        $results = $queryBuilder->execute()->fetchAll();
+
+        foreach ($results as $result){
+            if($result['users_id'] ===$userId){
+                return true;
+            }
+        }
+        return false;
     }
 
     public function howManyUsersRatedThisVideo($videoId)
