@@ -81,9 +81,9 @@
             <div class="row rule">
                 <div class="shadow-rules">
                     <div class="title">
-                        {#{% if video|length %}#}
-                            Video
-                        {#{% endif %}#}
+                        {% if video|length %}
+                            {{ video.championship }} {{ video.year_championship }}
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -101,9 +101,6 @@
                         </div>
 
                         <div class="col-md-4 col-sm-3 col-xs-12 info">
-                            <div class="championship">
-                                <p>{{ video.championship }} {{ video.year_championship }}</p>
-                            </div>
                             <div class="video_skater">
                                 {% if skater|length %}
                                     <p>{{ skater.0.name }}, {{ video.type }}</p>
@@ -112,17 +109,41 @@
                             <div class="song">
                                 <p>do piosenki {{ video.song }}.</p>
                             </div>
+
                             <div class="rating">
                                 <div class="box">
-                                    <p>{{ video.average_rating }}</p>
+                                    {#{{ dump(video.average_rating) }}#}
+                                    {%  if video.average_rating != NULL %}
+                                        <p>{{ video.average_rating }} /5</p>
+                                    {% else %}
+                                        <p>0.00 /5</p>
+                                    {% endif %}
                                 </div>
-                                <div class="name">
-                                    <p>oceń występ</p>
-                                </div>
-                                <div class="stars">
-
+                                <div class="rate_by">
+                                    <p>ocenione przez {{ ratedBy.howMany }} użytkowników</p>
                                 </div>
                             </div>
+                            <div class="rating_form">
+                                <div class="rating_name">
+                                    <p>Twoja ocena: </p>
+                                </div>
+                                <div class="name">
+                                    {% if video|length %}
+                                        {{ form_start(form_rating, { method: 'post', action: url('video_view', {'id':id}) }) }}
+                                            {#{{ form_label(form_rating.rate) }}#}
+                                        <div class="form_input">
+                                            {{ form_widget(form_rating.rate, { 'value': '' }) }}
+                                        </div>
+                                        <div class="save_button">
+                                            <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
+                                            {#{{ form_widget(form_rating.save, {'attr': {'class': 'btn btn-success'}}) }}#}
+
+                                        </div>
+                                        {{ form_end(form_rating) }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
                             <div class="skater_button">
                                 <a href="{{ url('skater_view', {'id': video.skaters_id}) }}" title="{{ 'label.see_Skater'|trans }}">
                                     zobacz łyżwiarza
@@ -144,7 +165,6 @@
                         <div class="title">
                             <p>Komentarze: </p>
                         </div>
-
                         <div class="add_comment">
                             {% if video|length %}
                                 {{ form_start(form_comment, { method: 'post', action: url('video_view', {'id':id}) }) }}

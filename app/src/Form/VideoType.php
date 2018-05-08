@@ -104,7 +104,7 @@ class VideoType extends AbstractType
             [
                 'label' => 'label.skaters_name',
                 'required' => true,
-                'choices' => $this->prepareTypesForChoices($options['skaters_repository']),
+                'choices' => $this->findOptions($options['skaters_repository']),
             ]
         );
 
@@ -134,13 +134,13 @@ class VideoType extends AbstractType
         return 'video_type';
     }
 
-    protected function prepareTypesForChoices($skatersRepository)
+    protected function findOptions($skatersRepository)
     {
-        $propertyTypes = $skatersRepository->findAll();
-        $choices = [];
-        foreach ($propertyTypes as $propertyType) {
-            $choices[$propertyType['name']] = $propertyType['id'];
+        $choice = [];
+        $options = $skatersRepository->findAll();
+        foreach ($options as $option) {
+            $choice[$option['name']] = $option['id'];
         }
-        return $choices;
+        return $choice;
     }
 }

@@ -81,7 +81,7 @@
             <div class="row rule">
                 <div class="shadow-rules">
                     <div class="title">
-                        Łyżwiarz
+                        {{ skater.name }}
                     </div>
                 </div>
             </div>
@@ -98,9 +98,6 @@
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-7 col-xs-7 info_skater">
-                            <div class="championship">
-                                <p>{{ skater.name }}</p>
-                            </div>
                             <div class="personal_data">
                                 <p>Data urodzenia: {{ skater.date_of_birth }}</p>
                                 <p>Reprezentacja: {{ skater.country_repr }}</p>

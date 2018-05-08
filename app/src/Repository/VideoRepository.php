@@ -179,6 +179,17 @@ class VideoRepository
         return $result;
     }
 
+    public function findPopularVideo()
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('*')
+            ->from('video', 'v')
+            ->orderBy('v.average_rating', 'DESC');
+        $result = $queryBuilder->execute()->fetchAll();
+        return $result;
+    }
+
     public function getMatching($match, $table)
     {
         $queryBuilder = $this->db->createQueryBuilder()
@@ -249,6 +260,7 @@ class VideoRepository
             return $this->db->insert('video', $video);
         }
     }
+
 
     /**
      * SaveForEdit record.

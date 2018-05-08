@@ -12,7 +12,9 @@ use Repository\CommentRepository;
 use Form\FindVideoType;
 use Form\CommentType;
 use Form\VideoType;
+use Form\RatingType;
 use Repository\SkaterRepository;
+use Repository\RatingRepository;
 use Repository\UserRepository;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -42,6 +44,7 @@ class VideoController implements ControllerProviderInterface
             ->bind('video_index');
 
         $controller->get('/{id}', [$this, 'viewAction'])
+            ->method('POST|GET')
             ->assert('id', '[1-9]\d*')
             ->bind('video_view');
         $controller->match('/add', [$this, 'addAction'])
@@ -101,9 +104,11 @@ class VideoController implements ControllerProviderInterface
     public function viewAction(Application $app, $id, Request $request)
     {
         $videoRepository = new VideoRepository($app['db']);
+        $video = $videoRepository->findOneById($id);
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
         $commentRepository = new CommentRepository($app['db']);
+        $ratingRepository = new RatingRepository($app['db']);
 
 //        $app['session']->remove('form');
         $comment = [];
@@ -129,6 +134,35 @@ class VideoController implements ControllerProviderInterface
             );
         }
 
+        $rating = [];
+        $ratingForm = $app['form.factory']->createBuilder(
+            RatingType::class,
+            $rating,
+            ['rating_repository' => new RatingRepository($app['db'])]
+        )->getForm();
+        $ratingForm->handleRequest($request);
+        if ($ratingForm->isSubmitted() && $ratingForm->isValid()) {
+            $ratingRepository = new RatingRepository($app['db']);
+            $rating = $ratingForm->getData();
+            $rating['users_id'] = $userId;
+            $rating['video_id'] = $id;
+            $ratingRepository->save($rating, $id, $video);
+
+//            $videoRepository = new VideoRepository($app['db']);
+//            $videoRepository->saveAverageRating($rating, $id);
+
+            $app['session']->getFlashBag()->add(
+                'messages',
+                [
+                    'type' => 'success',
+                    'message' => 'message.video_successfully_rated',
+                ]
+            );
+        }
+
+//        $video['average_rating'] = $ratingRepository->averageRating($id);
+
+
         return $app['twig']->render(
             'video/view.html.twig',
             [
@@ -138,6 +172,9 @@ class VideoController implements ControllerProviderInterface
                 'user_id' => $userId,
                 'comments' => $commentRepository->findVideoComments($id),
                 'form_comment' => $commentForm->createView(),
+                'form_rating' => $ratingForm->createView(),
+//                'average_rating' => $ratingRepository->averageRating($id),
+                'ratedBy' =>$ratingRepository -> howManyUsersRatedThisVideo($id),
             ]
         );
     }

@@ -87,7 +87,7 @@ class CommentController implements ControllerProviderInterface
                 );
 
                 return $app->redirect(
-                    $app['url_generator']->generate('video_index'),
+                    $app['url_generator']->generate('video_index', ['id' => $id]),
                     301
                 );
             }

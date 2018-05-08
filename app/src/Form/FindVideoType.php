@@ -33,7 +33,7 @@ class FindVideoType extends AbstractType
             ChoiceType::class,
             [
                 'label' => 'label.championship',
-                'choices' => $this->prepareTypesForChoices($options['championship']),
+                'choices' => $this->findOptions($options['championship']),
 //                    $options['championship'],
                 'expanded' => true,
                 'multiple' => false,
@@ -44,7 +44,7 @@ class FindVideoType extends AbstractType
             ChoiceType::class,
             [
                 'label' => 'label.year',
-                'choices' => $this->prepareTypesForChoices($options['year_championship']),
+                'choices' => $this->findOptions($options['year_championship']),
                 'expanded' => true,
                 'multiple' => false,
             ]
@@ -54,7 +54,7 @@ class FindVideoType extends AbstractType
             ChoiceType::class,
             [
                 'label' => 'label.skater',
-                'choices' => $this->prepareTypesForChoices($options['skater']),
+                'choices' => $this->findOptions($options['skater']),
                 'expanded' => true,
                 'multiple' => false,
             ]
@@ -64,7 +64,7 @@ class FindVideoType extends AbstractType
             ChoiceType::class,
             [
                 'label' => 'label.type',
-                'choices' => $this->prepareTypesForChoices($options['type']),
+                'choices' => $this->findOptions($options['type']),
                 'expanded' => true,
                 'multiple' => false,
             ]
@@ -102,7 +102,7 @@ class FindVideoType extends AbstractType
         return 'video_type';
     }
 
-    protected function prepareTypesForChoices($column)
+    protected function findOptions($column)
     {
 //        $propertyTypes = $videoRepository->findChampionship();
         $choices = [];

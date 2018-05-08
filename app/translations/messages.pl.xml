@@ -223,6 +223,14 @@
                 <source>label.total_record</source>
                 <target>Record - nota łączna</target>
             </trans-unit>
+            <trans-unit id="label.rate">
+                <source>label.rate</source>
+                <target>oceń występ</target>
+            </trans-unit>
+            <trans-unit id="choose_rating">
+                <source>choose_rating</source>
+                <target>Wybierz ocenę</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

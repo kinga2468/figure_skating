@@ -67,6 +67,7 @@ class MainController implements ControllerProviderInterface
             'main/index.html.twig',
             [
                 'video' => $videoRepository->findNewestVideo(),
+                'video_popular' => $videoRepository->findPopularVideo(),
                 'user_id' => $userId,
                 'skaters' => $skaterRepository->findAllPaginatedForMainPage($page),
             ]

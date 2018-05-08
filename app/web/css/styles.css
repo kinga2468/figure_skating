@@ -21,7 +21,7 @@ a:hover{text-decoration:none;}
 a:focus{text-decoration:none;}
 
 .logo p{text-align:center;}
-.logo .slogan{font-size:1.9em; color:black; margin-top:15px;}
+.logo .slogan{font-size:1.6em; color:black; margin-top:15px;}
 .slogan a{color:black;}
 .slogan:focus{text-decoration:none;}
 .logo .extra{font-family: 'Dancing Script', helvetica, arial, sans-serif; font-size:2.4em; color:#6666FF; margin-top:-8px;}
@@ -391,13 +391,13 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 
 .info_skater{font-size:1.2em; border:1px solid #ddd; border-radius: 4px;
     /*min-height: 480px;*/ color:black;
-    padding:16px; }
-.biography{height:147px; margin-top:23px;}
+    padding:20px; }
+.biography{height:178px; margin-top:23px;}
 .records{margin-top:24px;}
 .records .title{font-size:1.2em; margin:0;}
 .record{margin-top:10px;}
 .record p{text-align: center;}
-.number{color:#baba8e; font-size: 1.7em;}
+.number{ color:#bfa100; font-size: 1.9em;}
 
 /*zakładka rejestracja////////////////////////////////////////////////////////*/
 #signupform .form-control {
@@ -445,21 +445,50 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 .btn-primary:focus{background-color: #383888; border:none;}
 
 .movie{min-width:683px;  padding:2px 35px;}
-.info{border:1px solid #ddd; border-radius: 4px; min-height: 388px; padding:16px 0 0 0; }
-.info p{padding:0 5px;}
-.championship{font-size:1.5em; text-align: center; color:black;}
-.video_skater{font-size:1.4em; text-align: center; color:black;}
-.song{font-size:1.2em; text-align: center; margin-top:13px;}
 
-.rating{margin:35px 0; width:100%;}
-.box{font-size: 2.4em; color:#baba8e; border:2px solid black; width:30%; height: 90px; margin-left:40px; float:left;}
-.box p{text-align: center; padding:17px;}
-.rating .name{float:left; width:50%;}
-.rating .name p{text-align: center; font-size:1.2em; padding-top:10px;}
+.info{border:1px solid #ddd; border-radius: 4px; min-height: 388px;
+    padding:16px 8px 0 8px;
+    margin-top:2px;}
+/*.info div{margin:0; padding: 0;}*/
+/*.info div{padding: 0 0 5px 5px;}*/
+.video_skater{font-size:1.5em; text-align: left; color:black; padding: 0 0 5px 5px;}
+.song{font-size:1.2em; text-align: left; padding: 0 0 5px 5px;}
 
-.skater_button{margin: 180px auto 20px; width:190px; clear:both;}
-.skater_button a{font-size:1.2em; text-decoration: none; color:white; background-color: #383888; padding:8px 40px; }
-.info .date{font-size:1.2em; text-align: center; margin-top:30px;}
+.rating{color:#bfa100;  padding: 0 0 5px 5px; margin: 10px 0 0 0;}
+.rating .box{font-size:2.4em; padding:0;}
+.rating .box p{margin:0;}
+.rating .rate_by{padding:0;}
+
+.rating_form{padding: 0 0 5px 5px; margin:20px 0 0 0;}
+.rating_form .rating_name{font-size:1.2em; text-align: left; width:30%; float:left;}
+.rating_form .name{padding:0; width:70%; float:left}
+
+.rating_name{padding-top:5px;}
+.rating_form .name .form_input{width:70%; float:left;}
+.rating_form .name .save_button{width:30%; float:left; }
+.save_button .btn-success{background-color: white; color:#666; border:none; font-size: 1.2em; margin:0 0 6px 11px;}
+.save_button .btn-success:focus{background-color: white; color:black; border:none; font-size: 1.2em; margin:0 0 6px 11px;}
+
+
+.skater_button{ clear: both; margin:75px 0 30px 5px;}
+.skater_button a{background-color: #383888; font-size: 1.1em; border-radius: 0; color:white; padding:7px 10px;}
+
+.info .date{font-size:1.2em; text-align: left; padding: 0 0 5px 5px;}
+
+
+/*.rating{margin:35px 0; width:100%;}*/
+/**/
+/*.box p{text-align: left;}*/
+/*!*.rating .name{float:left; width:30%;}*!*/
+/*!*.info p{font-size:1.2em; }*!*/
+/*.save_button{margin:10px auto; width:60px;}*/
+
+/*.name .btn-success:focus{background-color: #383888; font-size: 1.1em; border-radius: 0; border:0;}*/
+/*.name .btn-success{background-color: #383888; font-size: 1.1em; border-radius: 0;}*/
+
+/*.skater_button{margin: 120px auto 20px; width:190px; clear:both;}*/
+/*.skater_button a{font-size:1.2em; text-decoration: none; color:white; background-color: #383888; padding:8px 40px; }*/
+
 
 .comments{clear:both;  padding:10px 0;}
 .comment{ margin:10px 10px 10px 30px; border:1px solid #ddd; border-radius: 4px; padding:10px;}
@@ -487,6 +516,7 @@ textarea{width:100%; margin:10px 0; border-radius:4px;}
     background-color: #383888; padding:8px 40px; border-radius: 4px; }
 
 .form-inline .form-control{width:32.7%;}
+
 
 /*zakładka user//////////////////////////////////////////////////*/
 .category{border:1px solid #ddd; border-radius: 4px; margin:10px; font-size: 1.3em; height:52px;}

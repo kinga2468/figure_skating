@@ -24,6 +24,7 @@
         "symfony/validator": "~2.8|^3.0",
         "twbs/bootstrap": "^4.0",
         "doctrine/dbal": "^2.5",
+        "blackknight467/star-rating-bundle": "2.*",
         "symfony/serializer": "^3.4",
         "sorien/silex-dbal-profiler": "~2.0"
     },
