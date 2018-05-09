@@ -195,10 +195,10 @@ class VideoRepository
         $queryBuilder = $this->db->createQueryBuilder()
             ->select('*')
             ->where('championship = :championship', 'type = :type',
-                'skater = :skater', 'year_championship = :year_championship')
+                'skater_id = :skater_id', 'year_championship = :year_championship')
             ->setParameter(':championship', $match['championship'])
             ->setParameter(':type', $match['type'])
-            ->setParameter(':skater', $match['skater'])
+            ->setParameter(':skater_id', $match['skater_id'])
             ->setParameter(':year_championship', $match['year_championship'])
             ->from('video');
         $result = $queryBuilder->execute()->fetchAll();

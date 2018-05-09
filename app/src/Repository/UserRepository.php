@@ -153,10 +153,18 @@ class UserRepository
             ->from('users')
             ->where('login = :login')
             ->setParameter(':login', $login);
-        $userId = current($queryBuilder->execute()->fetch());
+        $some = $queryBuilder->execute()->fetch();
+        if($some != NULL){
+            $userId = current($queryBuilder->execute()->fetch());
+            return $userId;
+        }
+        else{
+            return 0;
+        }
+
 //        $userId = $queryBuilder->execute()->fetch();
 //        var_dump("userid",$userId);
-        return $userId;
+
     }
 
     /**
@@ -177,11 +185,6 @@ class UserRepository
 
         return $userId;
     }
-
-
-
-
-
 
 
 }

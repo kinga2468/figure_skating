@@ -235,7 +235,18 @@
                 <source>message.video_successfully_rated</source>
                 <target>Twoja ocena została zapisana.</target>
             </trans-unit>
-
+            <trans-unit id="label.panel">
+                <source>label.panel</source>
+                <target>Zobacz swój panel</target>
+            </trans-unit>
+            <trans-unit id="figure_skating">
+                <source>figure_skating</source>
+                <target>Łyżwiarstwo figurowe</target>
+            </trans-unit>
+            <trans-unit id="soloists">
+                <source>soloists</source>
+                <target>~Soliści~</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

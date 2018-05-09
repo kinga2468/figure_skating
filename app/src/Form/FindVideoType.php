@@ -22,12 +22,7 @@ class FindVideoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//        $championship = array();
-//        foreach ($this->praticiens as $id => $praticien) {
-//            $cle = $praticien->__toString();
-//            $choices[$cle] = $id;
-//        }
-
+//        dump($this->findOptions($options['championship']));
         $builder->add(
             'championship',
             ChoiceType::class,
@@ -40,7 +35,7 @@ class FindVideoType extends AbstractType
             ]
         );
         $builder->add(
-            'year',
+            'year_championship',
             ChoiceType::class,
             [
                 'label' => 'label.year',
@@ -50,11 +45,11 @@ class FindVideoType extends AbstractType
             ]
         );
         $builder->add(
-            'skater',
+            'skater_id',
             ChoiceType::class,
             [
                 'label' => 'label.skater',
-                'choices' => $this->findOptions($options['skater']),
+                'choices' => $this->findOptions($options['skater_id']),
                 'expanded' => true,
                 'multiple' => false,
             ]
@@ -84,7 +79,7 @@ class FindVideoType extends AbstractType
                 'validation_groups' => 'video-default',
                 'year_championship' => null,
                 'championship' => null,
-                'skater' => null,
+                'skater_id' => null,
                 'type' => null
             ]
         );
@@ -92,8 +87,8 @@ class FindVideoType extends AbstractType
         $resolver->setRequired('year_championship');
         $resolver->setAllowedTypes('year_championship', array('array'));
         $resolver->setAllowedTypes('championship', array('array'));
-        $resolver->setRequired('skater');
-        $resolver->setAllowedTypes('skater', array('array'));
+        $resolver->setRequired('skater_id');
+        $resolver->setAllowedTypes('skater_id', array('array'));
         $resolver->setRequired('type');
         $resolver->setAllowedTypes('type', array('array'));
     }
@@ -105,13 +100,17 @@ class FindVideoType extends AbstractType
     protected function findOptions($column)
     {
         $choices = [];
+//        $iterator = 0;
+//        dump($column);
         foreach ($column as $first) {
-//            var_dump($choices[$first]);
+//            dump($first);
             foreach ($first as $second){
-//                var_dump($choices[$second]);
-                $choices[$second] = 1;
+                $choices[$second] = $second;
+//                $iterator = $iterator +1;
             }
         }
+//        dump($choices);
         return $choices;
     }
+
 }

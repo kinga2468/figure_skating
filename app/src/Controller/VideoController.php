@@ -59,7 +59,7 @@ class VideoController implements ControllerProviderInterface
             ->assert('id', '[1-9]\d*')
             ->bind('video_delete');
 
-        $controller->get('/{params}', [$this, 'displayMatchingAction'])
+        $controller->get('/search/{params}', [$this, 'displayMatchingAction'])
             ->value('params', '')
 //            ->value('page', 1)
             ->bind('matching_video_paginated');
@@ -90,7 +90,8 @@ class VideoController implements ControllerProviderInterface
             $video,
             array('championship' => $videoRepository->findChampionship(),
                 'year_championship' => $videoRepository->findYear(),
-                'skater' => $videoRepository->findSkater(),
+                'skater_id' => $videoRepository->findSkater(),
+//                'skater' => $videoRepository->find
                 'type'=> $videoRepository->findType()
             )
 //            ['video_repository' => new VideoRepository($app['db'])]
@@ -189,7 +190,7 @@ class VideoController implements ControllerProviderInterface
 //                    'message' => 'message.video_successfully_rated',
 //                ]
 //            );
-            echo "<meta http-equiv='Refresh' content='0.1'/>";
+            echo "<meta http-equiv='Refresh' content='0'/>";
         }
 
 
@@ -221,10 +222,11 @@ class VideoController implements ControllerProviderInterface
             $form = $request->get('video_type');
             $app['session']->set('form', $form);
         }
+
         $match = $app['session']->get('form');
         $videoRepository = new VideoRepository($app['db']);
 
-        var_dump($match);
+        var_dump('match',$match);
 
 
         $video = $videoRepository->getMatching($match);

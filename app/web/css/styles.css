@@ -399,6 +399,8 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 .record p{text-align: center;}
 .number{ color:#bfa100; font-size: 1.9em;}
 
+.skater_view .back{margin:15px 0;}
+
 /*zakładka rejestracja////////////////////////////////////////////////////////*/
 #signupform .form-control {
     width: 120%;
