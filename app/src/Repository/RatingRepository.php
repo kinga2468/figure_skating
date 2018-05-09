@@ -49,10 +49,7 @@ class RatingRepository
                 $this->db->insert('rating', $rating);
 
                 $rate = $this->averageRating($videoId);
-//                var_dump($rate['average_rate']);
-//                var_dump($video['average_rating']);
                 $video['average_rating'] = $rate['average_rate'];
-
                 $this->saveAverageRating($video);
 
                 return 1;

@@ -104,22 +104,14 @@ class FindVideoType extends AbstractType
 
     protected function findOptions($column)
     {
-//        $propertyTypes = $videoRepository->findChampionship();
         $choices = [];
-//        var_dump($column);
         foreach ($column as $first) {
-//            var_dump($first['name']);
-//            $choices[$first['name']] = $first['surname'];
-
+//            var_dump($choices[$first]);
             foreach ($first as $second){
-//                var_dump($second);
-//                var_dump($choices[$first]);
+//                var_dump($choices[$second]);
                 $choices[$second] = 1;
             }
-
         }
-//            $choices[$propertyType['name']] = $propertyType['id'];
-//        }
         return $choices;
     }
 }

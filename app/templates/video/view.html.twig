@@ -130,28 +130,34 @@
                                 </div>
                             </div>
                             <div class="rating_form">
-                                {% if video_is_rated == false %}
-                                    <div class="rating_name">
-                                        <p>Twoja ocena: </p>
-                                    </div>
-                                    <div class="name">
-                                        {% if video|length %}
-                                            {{ form_start(form_rating, { method: 'post', action: url('video_view', {'id':id}) }) }}
-                                                {#{{ form_label(form_rating.rate) }}#}
-                                            <div class="form_input">
-                                                {{ form_widget(form_rating.rate, { 'value': '' }) }}
-                                            </div>
-                                            <div class="save_button">
-                                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
-                                                {#{{ form_widget(form_rating.save, {'attr': {'class': 'btn btn-success'}}) }}#}
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    {% if video_is_rated == false %}
+                                        <div class="rating_name">
+                                            <p>Twoja ocena: </p>
+                                        </div>
+                                        <div class="name">
+                                            {% if video|length %}
+                                                {{ form_start(form_rating, { method: 'post', action: url('video_view', {'id':id}) }) }}
+                                                    {#{{ form_label(form_rating.rate) }}#}
+                                                <div class="form_input">
+                                                    {{ form_widget(form_rating.rate, { 'value': '' }) }}
+                                                </div>
+                                                <div class="save_button">
+                                                    <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
+                                                    {#{{ form_widget(form_rating.save, {'attr': {'class': 'btn btn-success'}}) }}#}
 
-                                            </div>
-                                            {{ form_end(form_rating) }}
-                                        {% endif %}
-                                    </div>
+                                                </div>
+                                                {{ form_end(form_rating) }}
+                                            {% endif %}
+                                        </div>
+                                    {% else %}
+                                        <div class="videoAlreadyRated">
+                                            <p>Ten występ został już przez Ciebie oceniony</p>
+                                        </div>
+                                    {% endif %}
                                 {% else %}
                                     <div class="videoAlreadyRated">
-                                        <p>Ten występ został już przez Ciebie oceniony</p>
+                                        <p>Zaloguj się, by móc ocenić występ oraz komentować.</p>
                                     </div>
                                 {% endif %}
                             </div>
@@ -174,17 +180,28 @@
                 </div>
                 <div class="row ko">
                     <div class="comments">
-                        <div class="title">
-                            <p>Komentarze: </p>
-                        </div>
-                        <div class="add_comment">
-                            {% if video|length %}
-                                {{ form_start(form_comment, { method: 'post', action: url('video_view', {'id':id}) }) }}
-                                {{ form_widget(form_comment.text, { 'value': '' }) }}
-                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success"/>
-                                {{ form_end(form_comment) }}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <div class="title">
+                                <p>Komentarze: </p>
+                            </div>
+                        {% else %}
+                            {% if comments|length %}
+                                <div class="title">
+                                    <p>Komentarze: </p>
+                                </div>
                             {% endif %}
-                        </div>
+                        {% endif %}
+
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <div class="add_comment">
+                                {% if video|length %}
+                                    {{ form_start(form_comment, { method: 'post', action: url('video_view', {'id':id}) }) }}
+                                    {{ form_widget(form_comment.text, { 'value': '' }) }}
+                                    <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success"/>
+                                    {{ form_end(form_comment) }}
+                                {% endif %}
+                            </div>
+                        {% endif %}
 
                         {% if comments|length %}
                             {% for line in comments %}

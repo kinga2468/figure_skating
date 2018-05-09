@@ -168,16 +168,13 @@ class UserRepository
      */
     public function getLoggedUserId(Application $app)
     {
-//        $userId=[];
-
         $token = $app['security.token_storage']->getToken();
-//        var_dump("getlogged");
-//        var_dump("token", $token);
+
         if (null !== $token) {
             $user = $token->getUser();
             $userId = $this ->findUserId($user);
         }
-//        var_dump($userId);
+
         return $userId;
     }
 

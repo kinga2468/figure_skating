@@ -190,7 +190,7 @@ class VideoRepository
         return $result;
     }
 
-    public function getMatching($match, $table)
+    public function getMatching($match)
     {
         $queryBuilder = $this->db->createQueryBuilder()
             ->select('*')
@@ -200,8 +200,7 @@ class VideoRepository
             ->setParameter(':type', $match['type'])
             ->setParameter(':skater', $match['skater'])
             ->setParameter(':year_championship', $match['year_championship'])
-//            ->orderBy('created_at', 'ASC')
-            ->from($table);
+            ->from('video');
         $result = $queryBuilder->execute()->fetchAll();
         $result = isset($result) ? $result : [];
         var_dump($result);
