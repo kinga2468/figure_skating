@@ -150,15 +150,15 @@ class VideoController implements ControllerProviderInterface
             $ratingRepository->save($rating, $id, $video);
 
 //            $videoRepository = new VideoRepository($app['db']);
-//            $videoRepository->saveAverageRating($rating, $id);
+//            $ratingRepository->saveAverageRating($video);
 
-            $app['session']->getFlashBag()->add(
-                'messages',
-                [
-                    'type' => 'success',
-                    'message' => 'message.video_successfully_rated',
-                ]
-            );
+//            $app['session']->getFlashBag()->add(
+//                'messages',
+//                [
+//                    'type' => 'success',
+//                    'message' => 'message.video_successfully_rated',
+//                ]
+//            );
             echo "<meta http-equiv='Refresh' content='0.1'/>";
         }
 

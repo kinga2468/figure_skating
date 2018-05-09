@@ -35,12 +35,8 @@ class RatingRepository
      */
     public function save($rating, $videoId, $video)
     {
-
-//        dump($rating['average_rating_for_video']);
-//        dump($this->averageRating($videoId));
-//
-//        $rating['average_rating_for_video'] = $this->averageRating($videoId);
-
+//        $videoIsRatedByUser = $this->CheckIfUserRatedVideo($videoId, $userId);
+//        var_dump($videoIsRatedByUser);
 
         if (isset($rating['id']) && ctype_digit((string) $rating['id'])) {
             // update record
@@ -50,15 +46,17 @@ class RatingRepository
 
 //            return $this->db->update('rating', $rating, ['id' => $id]);
         } else {
-            // add new record
-            $this->db->insert('rating', $rating);
+                $this->db->insert('rating', $rating);
 
-            $rate = $this->averageRating($videoId);
-            $video['average_rating'] = $rate['average_rate'];
-//            dump($video['average_rating']);
-            $this->saveAverageRating($video);
+                $rate = $this->averageRating($videoId);
+//                var_dump($rate['average_rate']);
+//                var_dump($video['average_rating']);
+                $video['average_rating'] = $rate['average_rate'];
 
-            return 1;
+                $this->saveAverageRating($video);
+
+                return 1;
+
         }
     }
 

@@ -154,6 +154,7 @@ class UserRepository
             ->where('login = :login')
             ->setParameter(':login', $login);
         $userId = current($queryBuilder->execute()->fetch());
+//        $userId = $queryBuilder->execute()->fetch();
 //        var_dump("userid",$userId);
         return $userId;
     }
@@ -181,30 +182,7 @@ class UserRepository
     }
 
 
-    /**
-     * Gets logged user.
-     * @param Application $app
-     *
-     * @return array Result
-     */
-//    public function getLoggedUser(Application $app)
-//    {
-//        $loggedUser = [];
-//        $token = $app['security.token_storage']->getToken();
-//        if (null !== $token) {
-//            $user = $token->getUser();
-//            var_dump($user);
-//            $user = $this->getUserByLogin($user);
-//            var_dump($user);
-//            $loggedUser = $user;
-//            if ($loggedUser) {
-//                $loggedUser['id'] = $user['id'];
-//                $loggedRole = $this->getUserRoles($loggedUser['id']);
-//                $loggedUser['role'] = $loggedRole[0];
-//            }
-//        }
-//        return $loggedUser;
-//    }
+
 
 
 

@@ -208,17 +208,6 @@ class VideoRepository
         return $result;
     }
 
-//    public function videoRecord()
-//    {
-//        $queryBuilder = $this->db->createQueryBuilder()
-//            ->select('count(*)')
-//            ->from('video', 'v');
-//        $query1 = $queryBuilder->getQuery()->getResult();
-//
-//        $result = count($query1);
-//
-//        return $result;
-//    }
 
     /**
      * znajduje id użytkownika po jego loginie
