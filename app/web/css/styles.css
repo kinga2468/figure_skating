@@ -43,7 +43,7 @@ a:focus{text-decoration:none;}
 .imie a{font-size:1em; color:#666666;}
 .log-in{margin:13px;}
 .aLogIn{font-size:1.4em; color:#666666; float:right; margin-left:13px;}
-.AdminPanel{font-size:1.4em; color:#666666; float: left; margin-right:13px; }
+.AdminPanel{font-size:1.4em; color:#666666; float: right; margin-left:20px; }
 
 
 .baner{background-image: url("../images/skates.jpg"); height:210px; background-repeat: no-repeat;
@@ -255,7 +255,7 @@ a:focus{text-decoration:none;}
 textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 
 /*zakładka logowania////////////////////////////////////////////////////////*/
-.body-login{height:100%;
+.body-login{height:700px;
     /*margin:0;*/
     padding:120px 0 135px 0;
 }
@@ -327,8 +327,9 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 /*.index p{display: block; float:left; width:60%;}*/
 
 /*zakładka video//////////////////////////////////////////////////*/
-.btn {font-size:1.1m;}
+.btn {font-size:1.1em;}
 .all_video{height: 630px;}
+.all_video_matching{height: 460px;}
 /*.all_video_matching{width:100%; height: 100%; background-color: red;}*/
 .video .image{ width:246px; height: 138px;}
 .video .image img{width:100%; height: 100%; margin: 4px;}
@@ -447,34 +448,47 @@ textarea{width:100%; margin:10px 0; border-radius:4px;}
 .users{margin-bottom:16px;}
 
 
-/*tablety//////////////////////////////////////////////////*/
-@media screen and (max-width: 1204px){
-    #media3 img
-    {
-    width: 230px;
-    height: 160px;
-    }
-    .curiosities .row .title{margin-top:20px; text-align: center;}
-    .right-column .title{margin-top:20px; text-align: center;}
-    .more{margin-top:15px;}
-    .body-login{ padding:120px 0 450px 0;}
-}
-
 /*telefony/////////////////////////////////////////////////*/
-@media screen and (max-width: 767px){
+@media (max-width: 767px) {
     .baner{display: none;}
     .shadow-image{display: none;}
-    .piec{display: none;}
-    .szesc{display: none;}
+    .admin{width:100%; }
+    .aLogIn{float:right; clear:both; width:40%; margin-left:0; text-align: right;}
+    .imie{float:left; width:60%;}
     .navbar-default .navbar-nav > li > a:hover {background-color: #6666FF; color:white; border-bottom: none;}
     .navbar-default .navbar-nav > li > a:focus {background-color: #383888; color:white; border-bottom: none;}
-    .media-carousel .carousel-control.left { margin-top: 300px;}
-    .media-carousel .carousel-control.right { margin-top: 300px;}
-    .curiosities .row .title{margin-top:30px; text-align: center;}
-    .right-column .title{margin-top:30px; text-align: center;}
+    .media-carousel .carousel-control.left { margin-top: 480px;}
+    .media-carousel .carousel-control.right { margin-top: 480px;}
+    .AdminPanel{margin-left:0; float: left;}
+
+
+
     .more{margin-top:15px;}
 
-    .body-login .footer{height:60px;}
+    .footer{height:60px;}
     .body-login .btn.btn-danger{margin:10px 0 20px 15px;}
     .body-login{ padding:120px 0 180px 0;}
 }
+/*tablety//////////////////////////////////////////////////*/
+@media (min-width:767px) and (max-width: 1000px) {
+    #media3 img
+    {
+        width: 230px;
+        height: 160px;
+    }
+    /*.curiosities .row .title{margin-top:20px; text-align: center;}*/
+    /*.right-column .title{margin-top:20px; text-align: center;}*/
+    .more{margin-top:15px;}
+    .body-login{ padding:120px 0 450px 0;}
+    .counter p:first-child{padding:16px 7px 6px 0;}
+    .counter p:last-child{padding:16px 0 6px 4px;}
+    .media-carousel .carousel-control.left { margin-top: 125px;}
+    .media-carousel .carousel-control.right { margin-top: 125px;}
+    .AdminPanel{margin-left:10px;}
+}
+/*!*małe laptopy/////////////////////////////////////////////////!*!*/
+/*@media (min-width: 1200px) and (max-width:1350px){*/
+    /*.media-carousel .carousel-control.left { margin-top: 90px;}*/
+    /*.media-carousel .carousel-control.right { margin-top: 90px;}*/
+    /*.AdminPanel{margin-left:-50px;}*/
+/*}*/

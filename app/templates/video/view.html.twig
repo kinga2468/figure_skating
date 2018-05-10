@@ -185,7 +185,7 @@
                                 <p>Komentarze: </p>
                             </div>
                         {% else %}
-                            {% if comments|length %}
+                            {% if paginator.data|length %}
                                 <div class="title">
                                     <p>Komentarze: </p>
                                 </div>
@@ -203,8 +203,8 @@
                             </div>
                         {% endif %}
 
-                        {% if comments|length %}
-                            {% for line in comments %}
+                        {% if paginator.data|length %}
+                            {% for line in paginator.data %}
                                 <div class="row comment">
                                     <div class="col-md-3 col-sm-3 col-xs-3 login">
                                         <div class="login2">
@@ -232,6 +232,10 @@
                         {% endif %}
                     </div>
                 </div>
+                {% include 'default/_paginator_view.html.twig' with {
+                    paginator: paginator,
+                    route_name: 'video_view',
+                } %}
                 <div class="col-md-2 col-sm-2 col-xs-2 skater_view">
                     <a class="back" href="{{ url('video_index') }}" title="{{ 'back.to.list'|trans }}">
                         {{ 'back.to.list'|trans }}

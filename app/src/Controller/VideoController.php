@@ -43,8 +43,9 @@ class VideoController implements ControllerProviderInterface
             ->value('page', 1)
             ->bind('video_index');
 
-        $controller->get('/{id}', [$this, 'viewAction'])
+        $controller->get('/{id}/page/{page}', [$this, 'viewAction'])
             ->method('POST|GET')
+            ->value('page', 1)
             ->assert('id', '[1-9]\d*')
             ->bind('video_view');
         $controller->match('/add', [$this, 'addAction'])
@@ -107,23 +108,7 @@ class VideoController implements ControllerProviderInterface
             ]
         );
     }
-//    public function indexAction(Application $app)
-//    {
-//        $videoRepository = new VideoRepository($app['db']);
-//        $userRepository = new UserRepository($app['db']);
-//        $userId = $userRepository->getLoggedUserId($app);
-//
-//        return $app['twig']->render(
-//            'video/index.html.twig',
-//            ['video' => $videoRepository->findAll(),
-//                'championship' => $videoRepository->findChampionship(),
-//                'year' => $videoRepository->findYear(),
-//                'skater' => $videoRepository->findSkater(),
-//                'type' => $videoRepository->findType(),
-//                'user_id' => $userId,
-//                ]
-//        );
-//    }
+
     /**
      * View action.
      *
@@ -132,7 +117,7 @@ class VideoController implements ControllerProviderInterface
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      */
-    public function viewAction(Application $app, $id, Request $request)
+    public function viewAction(Application $app, $id, Request $request, $page = 1)
     {
         $videoRepository = new VideoRepository($app['db']);
         $video = $videoRepository->findOneById($id);
@@ -140,8 +125,6 @@ class VideoController implements ControllerProviderInterface
         $userId = $userRepository->getLoggedUserId($app);
         $commentRepository = new CommentRepository($app['db']);
         $ratingRepository = new RatingRepository($app['db']);
-
-        $videoIsRatedByUser = $ratingRepository->CheckIfUserRatedVideo($id, $userId);
 
         $comment = [];
         $commentForm = $app['form.factory']->createBuilder(
@@ -193,6 +176,7 @@ class VideoController implements ControllerProviderInterface
             echo "<meta http-equiv='Refresh' content='0'/>";
         }
 
+        $videoIsRatedByUser = $ratingRepository->CheckIfUserRatedVideo($id, $userId);
 
         return $app['twig']->render(
             'video/view.html.twig',
@@ -201,7 +185,7 @@ class VideoController implements ControllerProviderInterface
                 'id' => $id,
                 'skater' => $videoRepository->getVideoSkater($id),
                 'user_id' => $userId,
-                'comments' => $commentRepository->findVideoComments($id),
+                'paginator' => $commentRepository->findVideoCommentsPaginated($id, $page),
                 'form_comment' => $commentForm->createView(),
                 'form_rating' => $ratingForm->createView(),
 //                'average_rating' => $ratingRepository->averageRating($id),
@@ -216,8 +200,6 @@ class VideoController implements ControllerProviderInterface
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
 
-//        var_dump(1);
-
         if(!$app['session']->get('form')) {
             $form = $request->get('video_type');
             $app['session']->set('form', $form);
@@ -225,8 +207,6 @@ class VideoController implements ControllerProviderInterface
 
         $match = $app['session']->get('form');
         $videoRepository = new VideoRepository($app['db']);
-
-//        dump('match',$match);
 
         $video_matching = $videoRepository->getMatching($match);
 

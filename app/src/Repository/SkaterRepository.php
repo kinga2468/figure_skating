@@ -27,6 +27,12 @@ class SkaterRepository
      */
     const NUM_ITEMS = 10;
     /**
+     * Number of items per page.
+     *
+     * const int NUM_ITEMS
+     */
+    const NUM_ITEMS_VIDEO_OF_SKATER = 4;
+    /**
      * Doctrine DBAL connection.
      *
      * @var \Doctrine\DBAL\Connection $db
@@ -131,12 +137,12 @@ class SkaterRepository
     {
         $queryBuilder = $this->db->createQueryBuilder();
 
-        $queryBuilder->select('*')
+        return $queryBuilder->select('*')
             ->from('video', 'v')
             ->where('v.skaters_id = :id')
             ->setParameter(':id', $id, \PDO::PARAM_INT);
-        $result = $queryBuilder->execute()->fetchAll();
-        return $result;
+//        $result = $queryBuilder->execute()->fetchAll();
+//         $result;
     }
     /**
      * findSkaterVideoPaginated($id)
@@ -149,7 +155,7 @@ class SkaterRepository
 
         $paginator = new Paginator($this->findSkaterVideo($id), $countQueryBuilder);
         $paginator->setCurrentPage($page);
-        $paginator->setMaxPerPage(self::NUM_ITEMS);
+        $paginator->setMaxPerPage(self::NUM_ITEMS_VIDEO_OF_SKATER);
 
         return $paginator->getCurrentPageResults();
     }

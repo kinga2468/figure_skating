@@ -37,6 +37,10 @@ class SkaterController implements ControllerProviderInterface
         $controller->get('/{id}', [$this, 'viewAction'])
             ->assert('id', '[1-9]\d*')
             ->bind('skater_view');
+        $controller->get('/{id}/page/{page}', [$this, 'viewAction'])
+            ->assert('id', '[1-9]\d*')
+            ->value('page', 1)
+            ->bind('skater_view_paginated');
         $controller->match('/add', [$this, 'addAction'])
             ->method('POST|GET')
             ->bind('skater_add');
@@ -81,7 +85,7 @@ class SkaterController implements ControllerProviderInterface
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      */
-    public function viewAction(Application $app, $id)
+    public function viewAction(Application $app, $id, $page = 1)
     {
         $skaterRepository = new SkaterRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
@@ -89,9 +93,11 @@ class SkaterController implements ControllerProviderInterface
 
         return $app['twig']->render(
             'skater/view.html.twig',
-            ['skater' => $skaterRepository->findOneById($id),
+            [
+                'id' => $id,
+                'skater' => $skaterRepository->findOneById($id),
                 'user_id' => $userId,
-                'video'=>$skaterRepository->findSkaterVideo($id)]
+                'paginator'=>$skaterRepository->findSkaterVideoPaginated($id, $page)]
         );
     }
 

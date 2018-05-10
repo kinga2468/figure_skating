@@ -228,11 +228,9 @@ class VideoRepository
         $result = $queryBuilder->execute()->fetchAll();
         $result = isset($result) ? $result : [];
 
-//        dump('result', $result);
         return $result;
     }
-
-
+    
     /**
      * znajduje id użytkownika po jego loginie
      * używane przy save, saveOperation i saveForLimit

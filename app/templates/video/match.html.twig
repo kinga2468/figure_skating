@@ -85,13 +85,13 @@
                     </div>
                 </div>
             </div>
-            <div class="container main">
+            <div class="container">
                 <div class="message">
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
 
                 <div class="col-md-12 col-sm-12 col-xs-12 video">
-                    <div class="all_video">
+                    <div class="all_video_matching">
                         {% if video_matching|length %}
                             {% for row in video_matching %}
                                 <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">

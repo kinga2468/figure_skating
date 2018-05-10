@@ -134,29 +134,31 @@
                         </div>
                     </div>
                     <div class="row video">
-                        {% if video|length %}
+                        {% if paginator.data|length %}
                             <div class="title">
                                 <p>Jego video: </p>
                             </div>
-                            {% for row in video %}
-                                <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">
-                                    <div class="image_video">
-                                        <div class="image">
-                                            <img src="{{ row.img_video_yt }} " />
-                                            {% if is_granted('ROLE_ADMIN')%}
-                                                <div class="icons">
-                                                    <a class="icon cog" href="{{ url('video_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
-                                                        <span class="fa fa-cog"></span>
-                                                    </a>
-                                                    <a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
-                                                        <span class="fa fa-trash"></span>
-                                                    </a>
-                                                </div>
-                                            {% endif %}
+                            {% for row in paginator.data %}
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">
+                                        <div class="image_video">
+                                            <div class="image">
+                                                <img src="{{ row.img_video_yt }} " />
+                                                {% if is_granted('ROLE_ADMIN')%}
+                                                    <div class="icons">
+                                                        <a class="icon cog" href="{{ url('video_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                            <span class="fa fa-cog"></span>
+                                                        </a>
+                                                        <a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                            <span class="fa fa-trash"></span>
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <p>{{ row.title }}</p>
                                         </div>
-                                        <p>{{ row.title }}</p>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             {% endfor %}
                         {% endif %}
                     </div>
@@ -165,6 +167,10 @@
                         No skater found!
                     </div>
                 {% endif %}
+                {% include 'default/_paginator_view.html.twig' with {
+                    paginator: paginator,
+                    route_name: 'skater_view_paginated',
+                } %}
                 <div class="col-md-2 col-sm-2 col-xs-2 skater_view">
                     <a class="back" href="{{ url('skater_index') }}" title="{{ 'back.to.list'|trans }}">
                         {{ 'back.to.list'|trans }}

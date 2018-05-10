@@ -16,7 +16,7 @@
                 <p class="extra">~Soliści~</p>
             </div>
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-7 col-sm-6 col-xs-12">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="container-fluid">
                             <!-- przycisk rozwijania mobilnego menu -->
@@ -45,7 +45,7 @@
                         </div><!-- /.container-fluid -->
                     </nav>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-5 col-sm-6 col-xs-12">
                     <div class="row log-in">
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="admin">
@@ -81,19 +81,19 @@
             <div class="row baner">
                 <div class="shadow-image">
                     <div class="container">
-                        <div class="col-md-12 col-sm-4 col-xs-4">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="row">
                                 <div class="title">
                                     Do Rostelecom Cup zostało:
                                 </div>
                                 <div class="container-fluid counter">
-                                    <div class="col-md-2 col-md-offset-2 col-sm-4 col-xs-4 first">
+                                    <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 col-xs-4 first">
                                         <p id="days"></p>
                                     </div>
-                                    <div class="col-md-2 col-md-offset-1 col-sm-4 col-xs-4 second">
+                                    <div class="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 col-xs-4 second">
                                         <p id="hours"></p>
                                     </div>
-                                    <div class="col-md-2 col-md-offset-1 col-sm-4 col-xs-4 third">
+                                    <div class="col-md-2 col-md-offset-1 col-sm-2 col-sm-offset-1 col-xs-4 third">
                                         <p id="minutes"></p>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@
                                 {% for item in video %}
                                     {% if counter == 0 %}
                                         <div class="item active">
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
                                                 <a class="fancybox thumbnail" rel="gallery1" href="{{ url('video_view', {'id': item.id}) }}">
                                                     <img src="{{ item.img_video_yt }}" alt="">
                                                     <div class = "caption">
@@ -141,7 +141,7 @@
                                             </div>
                                     {% elseif counter % 4 == 0 and counter != 0 %}
                                             <div class="item">
-                                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                                <div class="col-md-3 col-sm-6 col-xs-12">
                                                     <a class="fancybox thumbnail" rel="gallery1" href="{{ url('video_view', {'id': item.id}) }}">
                                                         <img src="{{ item.img_video_yt }}" alt="">
                                                         <div class = "caption">
@@ -150,7 +150,7 @@
                                                     </a>
                                                 </div>
                                     {% elseif counter % 4 == 1 or counter % 4 == 2 %}
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
                                                 <a class="fancybox thumbnail" rel="gallery1" href="{{ url('video_view', {'id': item.id}) }}">
                                                     <img src="{{ item.img_video_yt }}" alt="">
                                                     <div class = "caption">
@@ -159,7 +159,7 @@
                                                 </a>
                                             </div>
                                     {% else %}
-                                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
                                                 <a class="fancybox thumbnail" rel="gallery1" href="{{ url('video_view', {'id': item.id}) }}">
                                                     <img src="{{ item.img_video_yt }}" alt="">
                                                     <div class = "caption">
@@ -200,7 +200,7 @@
                                 {% for item in video_popular %}
                                     {% if counter == 0 %}
                                         <div class="item active">
-                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
                                             <a class="fancybox thumbnail" rel="gallery1" href="{{ url('video_view', {'id': item.id}) }}">
                                                 <img src="{{ item.img_video_yt }}" alt="">
                                                 <div class = "caption">
@@ -210,7 +210,7 @@
                                         </div>
                                     {% elseif counter % 4 == 0 and counter != 0 %}
                                         <div class="item">
-                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
                                             <a class="fancybox thumbnail" rel="gallery1" href="{{ url('video_view', {'id': item.id}) }}">
                                                 <img src="{{ item.img_video_yt }}" alt="">
                                                 <div class = "caption">
@@ -219,7 +219,7 @@
                                             </a>
                                         </div>
                                     {% elseif counter % 4 == 1 or counter % 4 == 2 %}
-                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
                                             <a class="fancybox thumbnail" rel="gallery1" href="{{ url('video_view', {'id': item.id}) }}">
                                                 <img src="{{ item.img_video_yt }}" alt="">
                                                 <div class = "caption">
@@ -228,7 +228,7 @@
                                             </a>
                                         </div>
                                     {% else %}
-                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
                                             <a class="fancybox thumbnail" rel="gallery1" href="{{ url('video_view', {'id': item.id}) }}">
                                                 <img src="{{ item.img_video_yt }}" alt="">
                                                 <div class = "caption">
