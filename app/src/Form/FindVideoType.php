@@ -28,6 +28,8 @@ class FindVideoType extends AbstractType
             ChoiceType::class,
             [
                 'label' => 'label.championship',
+                'required' => false,
+                'placeholder' => 'wszystkie',
                 'choices' => $this->findOptions($options['championship']),
 //                    $options['championship'],
                 'expanded' => true,
@@ -39,26 +41,30 @@ class FindVideoType extends AbstractType
             ChoiceType::class,
             [
                 'label' => 'label.year',
+                'required' => false,
+                'placeholder' => 'wszystkie',
                 'choices' => $this->findOptions($options['year_championship']),
                 'expanded' => true,
                 'multiple' => false,
             ]
         );
-        $builder->add(
-            'skater_id',
-            ChoiceType::class,
-            [
-                'label' => 'label.skater',
-                'choices' => $this->findOptions($options['skater_id']),
-                'expanded' => true,
-                'multiple' => false,
-            ]
-        );
+//        $builder->add(
+//            'skater_id',
+//            ChoiceType::class,
+//            [
+//                'label' => 'label.skater',
+//                'choices' => $this->findOptions($options['skater_id']),
+//                'expanded' => true,
+//                'multiple' => false,
+//            ]
+//        );
         $builder->add(
             'type',
             ChoiceType::class,
             [
                 'label' => 'label.type',
+                'required' => false,
+                'placeholder' => 'wszystkie',
                 'choices' => $this->findOptions($options['type']),
                 'expanded' => true,
                 'multiple' => false,
@@ -79,7 +85,7 @@ class FindVideoType extends AbstractType
                 'validation_groups' => 'video-default',
                 'year_championship' => null,
                 'championship' => null,
-                'skater_id' => null,
+//                'skater_id' => null,
                 'type' => null
             ]
         );
@@ -87,8 +93,8 @@ class FindVideoType extends AbstractType
         $resolver->setRequired('year_championship');
         $resolver->setAllowedTypes('year_championship', array('array'));
         $resolver->setAllowedTypes('championship', array('array'));
-        $resolver->setRequired('skater_id');
-        $resolver->setAllowedTypes('skater_id', array('array'));
+//        $resolver->setRequired('skater_id');
+//        $resolver->setAllowedTypes('skater_id', array('array'));
         $resolver->setRequired('type');
         $resolver->setAllowedTypes('type', array('array'));
     }

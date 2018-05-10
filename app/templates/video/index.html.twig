@@ -115,90 +115,50 @@
                                 {{ form_widget(form.year_championship) }}
                             </div>
 
-                            <div class="radio2">
-                                <p class="title mini">{{ form_label(form.skater_id) }}</p>
-                                {{ form_widget(form.skater_id) }}
-                            </div>
+                            {#<div class="radio2">#}
+                                {#<p class="title mini">{{ form_label(form.skater_id) }}</p>#}
+                                {#{{ form_widget(form.skater_id) }}#}
+                            {#</div>#}
 
                             <div class="radio2">
                                 <p class="title mini">{{ form_label(form.type) }}</p>
                                 {{ form_widget(form.type) }}
                             </div>
-
-                            {#{{ form_widget(form) }}#}
-
-                            {#<a href=# id="send"><button type="submit" class="btn btn-primary">Filtruj</button></a>#}
-
                             <input type="submit" value="Filtruj" class="btn btn-primary" />
                             {{ form_end(form) }}
-
-
-
-                            {#<p class="title mini">Zawody</p>#}
-                            {#{% if championship|length %}#}
-                                {#{% for row in championship %}#}
-                                    {#<div class="radio">#}
-                                        {#<label><input type="radio" name="championship">{{ row.championship }}</label>#}
-                                    {#</div>#}
-                                {#{% endfor %}#}
-                            {#{% endif %}#}
-                            {#<p class="title mini">Rok</p>#}
-                            {#{% if year|length %}#}
-                                {#{% for row in year %}#}
-                                    {#<div class="radio">#}
-                                        {#<label><input type="radio" name="year">{{ row.year_championship }}</label>#}
-                                    {#</div>#}
-                                {#{% endfor %}#}
-                            {#{% endif %}#}
-                            {#<p class="title mini">Zawodnik</p>#}
-                            {#{% if skater|length %}#}
-                                {#{% for row in skater %}#}
-                                    {#<div class="radio">#}
-                                        {#<label><input type="radio" name="skater">{{ row.name }} {{ row.surname }}</label>#}
-                                    {#</div>#}
-                                {#{% endfor %}#}
-                            {#{% endif %}#}
-                            {#<p class="title mini">Program</p>#}
-                            {#{% if type|length %}#}
-                                {#{% for row in type %}#}
-                                    {#<div class="radio">#}
-                                        {#<label><input type="radio" name="type">{{ row.type }}</label>#}
-                                    {#</div>#}
-                                {#{% endfor %}#}
-                            {#{% endif %}#}
                         </div>
-                        {#<input type="submit" value="Filtruj" class="btn btn-primary" />#}
-                        {#<a href="{{ url('video_index', {'id': row.id}) }}" id="send"><button type="submit" class="btn btn-primary">Filtruj</button></a>#}
                 </div>
 
                 <div class="col-md-9 col-sm-9 col-xs-12 video">
-                    {% if paginator.data|length %}
-                        {% for row in paginator.data %}
-                            <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
-                                <div class="image_video">
-                                    <div class="image">
-                                        <img src="{{ row.img_video_yt }} " />
-                                        {% if is_granted('ROLE_ADMIN')%}
-                                            <div class="icons">
-                                                <a class="icon cog" href="{{ url('video_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
-                                                    <span class="fa fa-cog"></span>
-                                                </a>
-                                                <a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
-                                                    <span class="fa fa-trash"></span>
-                                                </a>
-                                            </div>
-                                        {% endif %}
+                    <div class="all_video">
+                        {% if paginator.data|length %}
+                            {% for row in paginator.data %}
+                                <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                    <div class="image_video">
+                                        <div class="image">
+                                            <img src="{{ row.img_video_yt }} " />
+                                            {% if is_granted('ROLE_ADMIN')%}
+                                                <div class="icons">
+                                                    <a class="icon cog" href="{{ url('video_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                        <span class="fa fa-cog"></span>
+                                                    </a>
+                                                    <a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                        <span class="fa fa-trash"></span>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <p>{{ row.title }}</p>
                                     </div>
-                                    <p>{{ row.title }}</p>
-                                </div>
-                            </a>
-                        {% endfor %}
-                    {% endif %}
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    {% include 'default/_paginator.html.twig' with {
+                        paginator: paginator,
+                        route_name: 'video_index',
+                    } %}
                 </div>
-                {% include 'default/_paginator.html.twig' with {
-                    paginator: paginator,
-                    route_name: 'video_index',
-                } %}
             </div>
         </div>
         <div class="container-fluid">

@@ -90,7 +90,7 @@ class VideoController implements ControllerProviderInterface
             $video,
             array('championship' => $videoRepository->findChampionship(),
                 'year_championship' => $videoRepository->findYear(),
-                'skater_id' => $videoRepository->findSkater(),
+//                'skater_id' => $videoRepository->findSkater(),
 //                'skater' => $videoRepository->find
                 'type'=> $videoRepository->findType()
             )
@@ -216,7 +216,7 @@ class VideoController implements ControllerProviderInterface
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
 
-        var_dump(1);
+//        var_dump(1);
 
         if(!$app['session']->get('form')) {
             $form = $request->get('video_type');
@@ -226,15 +226,14 @@ class VideoController implements ControllerProviderInterface
         $match = $app['session']->get('form');
         $videoRepository = new VideoRepository($app['db']);
 
-        var_dump('match',$match);
+//        dump('match',$match);
 
-
-        $video = $videoRepository->getMatching($match);
+        $video_matching = $videoRepository->getMatching($match);
 
         return $app['twig']->render(
             'video/match.html.twig',
             [
-                'video' => $video,
+                'video_matching' => $video_matching,
                 'user_id' => $userId,
             ]
         );

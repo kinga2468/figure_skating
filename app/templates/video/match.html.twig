@@ -90,6 +90,37 @@
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
 
+                <div class="col-md-12 col-sm-12 col-xs-12 video">
+                    <div class="all_video">
+                        {% if video_matching|length %}
+                            {% for row in video_matching %}
+                                <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                    <div class="image_video">
+                                        <div class="image">
+                                            <img src="{{ row.img_video_yt }} " />
+                                            {% if is_granted('ROLE_ADMIN')%}
+                                                <div class="icons">
+                                                    <a class="icon cog" href="{{ url('video_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                        <span class="fa fa-cog"></span>
+                                                    </a>
+                                                    <a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                        <span class="fa fa-trash"></span>
+                                                    </a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <p>{{ row.title }}</p>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 skater_view">
+                        <a class="back" href="{{ url('video_index') }}" title="{{ 'back.to.list'|trans }}">
+                            {{ 'back.to.list'|trans }}
+                        </a>
+                    </div>
+                </div>
 
             </div>
         </div>

@@ -17,7 +17,7 @@ class VideoRepository
      *
      * const int NUM_ITEMS
      */
-    const NUM_ITEMS = 12;
+    const NUM_ITEMS = 9;
     /**
      * Doctrine DBAL connection.
      *
@@ -196,10 +196,8 @@ class VideoRepository
 
         $queryBuilder->select('COUNT(*) as videoAmount')
             ->from('video', 'v');
-//            ->orderBy('v.average_rating', 'DESC');
-
         $result = $queryBuilder->execute()->fetchAll();
-//        dump($result);
+
         foreach ($result as $first) {
             foreach ($first as $second){
                 return (int) $second;
@@ -212,16 +210,25 @@ class VideoRepository
     {
         $queryBuilder = $this->db->createQueryBuilder()
             ->select('*')
-            ->where('championship = :championship', 'type = :type',
-                'skater_id = :skater_id', 'year_championship = :year_championship')
-            ->setParameter(':championship', $match['championship'])
-            ->setParameter(':type', $match['type'])
-            ->setParameter(':skater_id', $match['skater_id'])
-            ->setParameter(':year_championship', $match['year_championship'])
             ->from('video');
+
+        if ($match['championship']) {
+            $queryBuilder->andWhere('championship = :championship')
+                ->setParameter(':championship', $match['championship']);
+        }
+        if ($match['type']) {
+            $queryBuilder->andWhere('type = :type')
+                ->setParameter(':type', $match['type']);
+        }
+        if ($match['year_championship']) {
+            $queryBuilder->andWhere('year_championship = :year_championship')
+                ->setParameter(':year_championship', $match['year_championship']);
+        }
+
         $result = $queryBuilder->execute()->fetchAll();
         $result = isset($result) ? $result : [];
-        var_dump($result);
+
+//        dump('result', $result);
         return $result;
     }
 
