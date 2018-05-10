@@ -133,7 +133,7 @@
                     <div class="all_video">
                         {% if paginator.data|length %}
                             {% for row in paginator.data %}
-                                <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">
                                     <div class="image_video">
                                         <div class="image">
                                             <img src="{{ row.img_video_yt }} " />

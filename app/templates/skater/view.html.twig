@@ -139,7 +139,7 @@
                                 <p>Jego video: </p>
                             </div>
                             {% for row in video %}
-                                <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view2'|trans }}">
+                                <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">
                                     <div class="image_video">
                                         <div class="image">
                                             <img src="{{ row.img_video_yt }} " />
