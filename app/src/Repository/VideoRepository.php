@@ -230,7 +230,7 @@ class VideoRepository
 
         return $result;
     }
-    
+
     /**
      * znajduje id użytkownika po jego loginie
      * używane przy save, saveOperation i saveForLimit
