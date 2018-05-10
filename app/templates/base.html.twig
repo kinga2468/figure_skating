@@ -69,29 +69,34 @@
             }
         }, 1000);
     </script>
-    <script>
-        var $star_rating = $('.star-rating .fa');
 
-        var SetRatingStar = function() {
-            return $star_rating.each(function() {
-                if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-                    return $(this).removeClass('fa-star-o').addClass('fa-star');
-                } else {
-                    return $(this).removeClass('fa-star').addClass('fa-star-o');
-                }
-            });
-        };
+    {#<script>#}
+        {#$(document).ready(function() {#}
+            {#$('#media3').carousel({#}
+                {#pause: true,#}
+                {#interval: false#}
+            {#});#}
+        {#});#}
 
-        $star_rating.on('click', function() {
-            $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-            return SetRatingStar();
-        });
 
-        SetRatingStar();
-        $(document).ready(function() {
+        {#$('##media3').on('slid.bs.carousel', checkitem);#}
 
-        });
-    </script>
+        {#function checkitem()                        // check function#}
+        {#{#}
+            {#var $this = $('#media3');#}
+            {#if ($('.carousel-inner .item:first').hasClass('active')) {#}
+                {#$this.children('.left.carousel-control').addClass('control-hidden');#}
+            {#} else if ($('.carousel-inner .item:last').hasClass('active')) {#}
+                {#$this.children('.right.carousel-control').addClass('control-hidden');#}
+            {#} else {#}
+                {#$this.children('.carousel-control').removeClass('control-hidden');#}
+
+            {#}#}
+        {#}#}
+
+    {#</script>#}
+
+
 </head>
 <body>
 {% include 'default/_flash_messages.html.twig' %}

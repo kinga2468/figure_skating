@@ -190,6 +190,24 @@ class VideoRepository
         return $result;
     }
 
+    public function howManyVideo()
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('COUNT(*) as videoAmount')
+            ->from('video', 'v');
+//            ->orderBy('v.average_rating', 'DESC');
+
+        $result = $queryBuilder->execute()->fetchAll();
+//        dump($result);
+        foreach ($result as $first) {
+            foreach ($first as $second){
+                return (int) $second;
+            }
+        }
+//        return $result;
+    }
+
     public function getMatching($match)
     {
         $queryBuilder = $this->db->createQueryBuilder()

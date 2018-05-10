@@ -129,6 +129,12 @@ a:focus{text-decoration:none;}
 
 
 /*carusel left//////////////////////////////////////////////*/
+.fancybox.thumbnail{height: 219px;}
+
+.carousel .col-md-3{padding:8px;}
+
+.carousel .caption{text-align: center;}
+
 .media-carousel
 {
     margin-bottom: 0;
@@ -144,7 +150,7 @@ a:focus{text-decoration:none;}
     border-radius: 23px 23px 23px 23px;
     height: 40px;
     width : 40px;
-    margin-top: 60px;
+    margin-top: 80px;
 }
 /* Next button  */
 .media-carousel .carousel-control.right
@@ -156,7 +162,7 @@ a:focus{text-decoration:none;}
     border-radius: 23px 23px 23px 23px;
     height: 40px;
     width : 40px;
-    margin-top: 60px;
+    margin-top: 80px;
 }
 /* Changes the position of the indicators */
 .media-carousel .carousel-indicators
@@ -210,103 +216,6 @@ a:focus{text-decoration:none;}
     filter: alpha(opacity=100);
 }
 /*end carusel*/
-
-/*///////////////////////////////////////////////////////////////////////*/
-/*.multi-item-carousel .carousel-inner > .item {*/
-    /*transition: 500ms ease-in-out left;*/
-/*}*/
-/*.multi-item-carousel .carousel-inner .active.left {*/
-    /*left: -33%;*/
-/*}*/
-/*.multi-item-carousel .carousel-inner .active.right {*/
-    /*left: 33%;*/
-/*}*/
-/*.multi-item-carousel .carousel-inner .next {*/
-    /*left: 33%;*/
-/*}*/
-/*.multi-item-carousel .carousel-inner .prev {*/
-    /*left: -33%;*/
-/*}*/
-/*@media all and (transform-3d), (-webkit-transform-3d) {*/
-    /*.multi-item-carousel .carousel-inner > .item {*/
-        /*transition: 500ms ease-in-out left;*/
-        /*transition: 500ms ease-in-out all;*/
-        /*-webkit-backface-visibility: visible;*/
-        /*backface-visibility: visible;*/
-        /*-webkit-transform: none !important;*/
-        /*transform: none !important;*/
-    /*}*/
-/*}*/
-/*.multi-item-carousel .carouse-control.left,*/
-/*.multi-item-carousel .carouse-control.right {*/
-    /*background-image: none;*/
-/*}*/
-/*body {*/
-    /*background: #333;*/
-    /*color: #ddd;*/
-/*}*/
-/*h1 {*/
-    /*color: white;*/
-    /*font-size: 2.25em;*/
-    /*text-align: center;*/
-    /*margin-top: 1em;*/
-    /*margin-bottom: 2em;*/
-    /*text-shadow: 0px 2px 0px #000000;*/
-/*}*/
-
-
-
-
-/*carusel right//////////////////////////////////////////////////////////////*/
-/*#media3*/
-/*{*/
-    /*padding: 0 10px 30px 10px;*/
-    /*margin-top: 10px;*/
-/*}*/
-
-/*!* Control buttons  *!*/
-/*#media3 .carousel-control*/
-/*{*/
-    /*background: none;*/
-    /*color: #222;*/
-    /*font-size: 2.3em;*/
-    /*text-shadow: none;*/
-    /*margin-top: -25px;*/
-/*}*/
-/*!* Previous button  *!*/
-/*#media3 .carousel-control.left*/
-/*{*/
-    /*left: -12px;*/
-/*}*/
-/*!* Next button  *!*/
-/*#media3 .carousel-control.right*/
-/*{*/
-    /*right: -12px !important;*/
-/*}*/
-/*!* Changes the position of the indicators *!*/
-/*#media3 .carousel-indicators*/
-/*{*/
-    /*right: 50%;*/
-    /*top: auto;*/
-    /*bottom: 0;*/
-    /*margin-right: -19px;*/
-/*}*/
-/*!* Changes the color of the indicators *!*/
-/*#media3 .carousel-indicators li*/
-/*{*/
-    /*background: #c0c0c0;*/
-/*}*/
-/*#media3 .carousel-indicators .active*/
-/*{*/
-    /*background: #6666FF;*/
-/*}*/
-/*#media3 img*/
-/*{*/
-    /*!*wpadding-bottom:60px;idth: 250px;*!*/
-    /*height: 170px;*/
-/*}*/
-
-/*end carusel ///////////////////////////////////////////////////////////*/
 
 /*zakładka rules////////////////////////////////////////////////////////*/
 .rules{padding-bottom:70px;}

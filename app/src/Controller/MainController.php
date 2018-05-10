@@ -62,6 +62,8 @@ class MainController implements ControllerProviderInterface
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
         $skaterRepository = new SkaterRepository($app['db']);
+        $howManyVideo = $videoRepository->howManyVideo();
+//        dump($howManyVideo);
 
         return $app['twig']->render(
             'main/index.html.twig',
@@ -70,6 +72,7 @@ class MainController implements ControllerProviderInterface
                 'video_popular' => $videoRepository->findPopularVideo(),
                 'user_id' => $userId,
                 'skaters' => $skaterRepository->findAllPaginatedForMainPage($page),
+                'VideoInSlideShow' => $howManyVideo,
             ]
 //                'videoSum' => $videoRepository-> videoRecord(),]
         );
