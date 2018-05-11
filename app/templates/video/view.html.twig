@@ -16,7 +16,7 @@
                 <p class="extra">~Soliści~</p>
             </div>
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-7 col-sm-6 col-xs-12">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="container-fluid">
                             <!-- przycisk rozwijania mobilnego menu -->
@@ -45,7 +45,7 @@
                         </div><!-- /.container-fluid -->
                     </nav>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-5 col-sm-6 col-xs-12">
                     <div class="row log-in">
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="admin">
@@ -94,13 +94,13 @@
                 </div>
                 <div class=row">
                     {% if video|length %}
-                        <div class="col-md-8 col-sm-8 col-xs-12 movie">
+                        <div class="movie_film">
                             <div class="movie">
                                 <iframe width="683" height="384" src="{{ video.link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-3 col-xs-12 info">
+                        <div class="info">
                             <div class="video_skater">
                                 {% if skater|length %}
                                     <p>{{ skater.0.name }}, {{ video.type }}</p>
@@ -206,7 +206,7 @@
                         {% if paginator.data|length %}
                             {% for line in paginator.data %}
                                 <div class="row comment">
-                                    <div class="col-md-3 col-sm-3 col-xs-3 login">
+                                    <div class="col-md-3 col-sm-3 col-xs-12 login">
                                         <div class="login2">
                                             {{ line.login }}
                                         </div>
@@ -214,10 +214,10 @@
                                             {{ line.date_adding }}
                                         </div>
                                     </div>
-                                    <div class="col-md-8 col-sm-8 col-xs-8 text">
+                                    <div class="col-md-8 col-sm-8 col-xs-12 text">
                                         {{ line.text }}
                                     </div>
-                                    <div class="col-md-1 col-sm-1 col-xs-1 link">
+                                    <div class="col-md-1 col-sm-1 col-xs-12 link">
                                         {% if is_granted('IS_AUTHENTICATED_FULLY') and user_id==line.users_id or is_granted('ROLE_ADMIN')%}
                                             <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
                                                 {{ 'delete'|trans }}

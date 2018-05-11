@@ -16,7 +16,7 @@
             <p class="extra">~Soliści~</p>
         </div>
         <div class="row">
-            <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="col-md-7 col-sm-6 col-xs-12">
                 <nav class="navbar navbar-default" role="navigation">
                     <div class="container-fluid">
                         <!-- przycisk rozwijania mobilnego menu -->
@@ -45,7 +45,7 @@
                     </div><!-- /.container-fluid -->
                 </nav>
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="col-md-5 col-sm-6 col-xs-12">
                 <div class="row log-in">
                     {% if is_granted('ROLE_ADMIN') %}
                         <div class="admin">
@@ -122,7 +122,7 @@
                 {% if user_comments|length %}
                     {% for line in user_comments %}
                         <div class="row comment">
-                            <div class="col-md-3 col-sm-3 col-xs-3 login">
+                            <div class="col-md-3 col-sm-3 col-xs-12 login">
                                 <div class="date">
                                     {{ line.date_adding }}
                                 </div>
@@ -130,10 +130,10 @@
                                     <p>Komentarz do: {{ line.title }}</p>
                                 </div>
                             </div>
-                            <div class="col-md-8 col-sm-8 col-xs-8 text">
+                            <div class="col-md-8 col-sm-8 col-xs-12 text">
                                 {{ line.text }}
                             </div>
-                            <div class="col-md-1 col-sm-1 col-xs-1 link">
+                            <div class="col-md-1 col-sm-1 col-xs-12 link">
                                 <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
                                     {{ 'delete'|trans }}
                                 </a>
@@ -145,7 +145,7 @@
                     {% endfor %}
                 {% endif %}
             </div>
-            <div class="powrot">
+            <div class="back_div">
                 <a class="back" href="{{ url('user_index') }}" title="{{ 'back.to.list'|trans }}">
                     {{ 'back.to.list'|trans }}
                 </a>

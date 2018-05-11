@@ -16,7 +16,7 @@
                 <p class="extra">~Soliści~</p>
             </div>
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-7 col-sm-6 col-xs-12">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="container-fluid">
                             <!-- przycisk rozwijania mobilnego menu -->
@@ -45,7 +45,7 @@
                         </div><!-- /.container-fluid -->
                     </nav>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-5 col-sm-6 col-xs-12">
                     <div class="row log-in">
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="admin">
@@ -90,7 +90,7 @@
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
 
-                <div class="col-md-3 col-sm-3 col-xs-12 filtr">
+                <div class="col-md-3 col-sm-4 col-xs-12 filtr">
                     {% if is_granted('ROLE_ADMIN')%}
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="video_add">
@@ -129,36 +129,38 @@
                         </div>
                 </div>
 
-                <div class="col-md-9 col-sm-9 col-xs-12 video">
+                <div class="col-md-9 col-sm-8 col-xs-12 video">
                     <div class="all_video">
                         {% if paginator.data|length %}
                             {% for row in paginator.data %}
-                                <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">
-                                    <div class="image_video">
-                                        <div class="image">
-                                            <img src="{{ row.img_video_yt }} " />
-                                            {% if is_granted('ROLE_ADMIN')%}
-                                                <div class="icons">
-                                                    <a class="icon cog" href="{{ url('video_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
-                                                        <span class="fa fa-cog"></span>
-                                                    </a>
-                                                    <a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
-                                                        <span class="fa fa-trash"></span>
-                                                    </a>
-                                                </div>
-                                            {% endif %}
+                                <div class="one_video">
+                                    <a href="{{ url('video_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">
+                                        <div class="image_video">
+                                            <div class="image">
+                                                <img src="{{ row.img_video_yt }} " />
+                                                {% if is_granted('ROLE_ADMIN')%}
+                                                    <div class="icons">
+                                                        <a class="icon cog" href="{{ url('video_edit', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                            <span class="fa fa-cog"></span>
+                                                        </a>
+                                                        <a class="icon trash" href="{{ url('video_delete', {'id': row.id}) }}" title="{{ 'edit'|trans }}">
+                                                            <span class="fa fa-trash"></span>
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <p>{{ row.title }}</p>
                                         </div>
-                                        <p>{{ row.title }}</p>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             {% endfor %}
                         {% endif %}
                     </div>
-                    {% include 'default/_paginator.html.twig' with {
-                        paginator: paginator,
-                        route_name: 'video_index',
-                    } %}
                 </div>
+                {% include 'default/_paginator.html.twig' with {
+                    paginator: paginator,
+                    route_name: 'video_index',
+                } %}
             </div>
         </div>
         <div class="container-fluid">

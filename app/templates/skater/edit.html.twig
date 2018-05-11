@@ -16,7 +16,7 @@
                 <p class="extra">~Soliści~</p>
             </div>
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-7 col-sm-6 col-xs-12">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="container-fluid">
                             <!-- przycisk rozwijania mobilnego menu -->
@@ -45,7 +45,7 @@
                         </div><!-- /.container-fluid -->
                     </nav>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-5 col-sm-6 col-xs-12">
                     <div class="row log-in">
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="admin">
@@ -95,41 +95,54 @@
                         message: error,
                     } %}
                 {% endif %}
-                <section id="loginform" class="outer-wrapper">
+                <section class="outer-wrapper">
                     <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
+                        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
                             <div class="akcje">
-                                <div class="akcje">
-                                    <div class="form">
-                                        {{ form_start(form, { method: 'post', action: url('skater_edit', {'id': skater.id}) }) }}
+                                <div class="form">
+                                    {{ form_start(form, { method: 'post', action: url('skater_edit', {'id': skater.id}) }) }}
 
-                                        {{ form_label(form.img) }}
-                                        {{ form_widget(form.img) }}
-                                        {{ form_label(form.name) }}
-                                        {{ form_widget(form.name) }}
-                                        {{ form_label(form.date_of_birth) }}
-                                        {{ form_widget(form.date_of_birth) }}
-                                        {{ form_label(form.country_repr) }}
-                                        {{ form_widget(form.country_repr) }}
-                                        {{ form_label(form.birth_place) }}
-                                        {{ form_widget(form.birth_place) }}
-                                        {{ form_label(form.height) }}
-                                        {{ form_widget(form.height) }}
-                                        {{ form_label(form.couch) }}
-                                        {{ form_widget(form.couch) }}
-                                        {{ form_label(form.info) }}
-                                        {{ form_widget(form.info) }}
-                                        {{ form_label(form.short_record) }}
-                                        {{ form_widget(form.short_record) }}
-                                        {{ form_label(form.free_record) }}
-                                        {{ form_widget(form.free_record) }}
-                                        {{ form_label(form.total_record) }}
-                                        {{ form_widget(form.total_record) }}
+                                    {{ form_label(form.img) }}
+                                    {{ form_widget(form.img) }}
+                                    {{ form_label(form.name) }}
+                                    {{ form_widget(form.name) }}
 
-
+                                    {{ form_label(form.date_of_birth) }}
+                                        {#{{ form_label(form.date_of_birth.year) }}#}
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        {{ form_widget(form.date_of_birth.year) }}
                                     </div>
-                                    <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
-                                    {{ form_end(form) }}
+                                        {#{{ form_label(form.date_of_birth.month) }}#}
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        {{ form_widget(form.date_of_birth.month) }}
+                                    </div>
+                                        {#{{ form_label(form.date_of_birth.day) }}#}
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        {{ form_widget(form.date_of_birth.day) }}
+                                    </div>
+
+                                    {{ form_label(form.country_repr) }}
+                                    {{ form_widget(form.country_repr) }}
+                                    {{ form_label(form.birth_place) }}
+                                    {{ form_widget(form.birth_place) }}
+                                    {{ form_label(form.height) }}
+                                    {{ form_widget(form.height) }}
+                                    {{ form_label(form.couch) }}
+                                    {{ form_widget(form.couch) }}
+                                    {{ form_label(form.info) }}
+                                    {{ form_widget(form.info) }}
+                                    {{ form_label(form.short_record) }}
+                                    {{ form_widget(form.short_record) }}
+                                    {{ form_label(form.free_record) }}
+                                    {{ form_widget(form.free_record) }}
+                                    {{ form_label(form.total_record) }}
+                                    {{ form_widget(form.total_record) }}
+
+
+                                </div>
+                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
+                                {{ form_end(form) }}
+                                <div class="col-md-1 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-4  col-xs-offset-0 back_div">
                                     <a class="back" href="{{ url('skater_index') }}" title="{{ 'back.to.list'|trans }}">
                                         {{ 'back.to.list'|trans }}
                                     </a>

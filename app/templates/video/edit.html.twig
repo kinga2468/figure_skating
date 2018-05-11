@@ -16,7 +16,7 @@
                 <p class="extra">~Soliści~</p>
             </div>
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-7 col-sm-6 col-xs-12">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="container-fluid">
                             <!-- przycisk rozwijania mobilnego menu -->
@@ -45,7 +45,7 @@
                         </div><!-- /.container-fluid -->
                     </nav>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-5 col-sm-6 col-xs-12">
                     <div class="row log-in">
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="admin">
@@ -95,35 +95,35 @@
                         message: error,
                     } %}
                 {% endif %}
-                <section id="loginform" class="outer-wrapper">
+                <section class="outer-wrapper">
                     <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
+                        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
                             <div class="akcje">
-                                <div class="akcje">
-                                    <div class="form">
-                                        {{ form_start(form, { method: 'post', action: url('video_edit', {'id': video.id}) }) }}
+                                <div class="form">
+                                    {{ form_start(form, { method: 'post', action: url('video_edit', {'id': video.id}) }) }}
 
-                                        {{ form_label(form.link) }}
-                                        {{ form_widget(form.link) }}
-                                        {{ form_label(form.img_video_yt) }}
-                                        {{ form_widget(form.img_video_yt) }}
-                                        {{ form_label(form.title) }}
-                                        {{ form_widget(form.title) }}
-                                        {{ form_label(form.championship) }}
-                                        {{ form_widget(form.championship) }}
-                                        {{ form_label(form.year_championship) }}
-                                        {{ form_widget(form.year_championship) }}
-                                        {{ form_label(form.type) }}
-                                        {{ form_widget(form.type) }}
-                                        {{ form_label(form.song) }}
-                                        {{ form_widget(form.song) }}
-                                        {{ form_label(form.skaters_id) }}
-                                        {{ form_widget(form.skaters_id) }}
+                                    {{ form_label(form.link) }}
+                                    {{ form_widget(form.link) }}
+                                    {{ form_label(form.img_video_yt) }}
+                                    {{ form_widget(form.img_video_yt) }}
+                                    {{ form_label(form.title) }}
+                                    {{ form_widget(form.title) }}
+                                    {{ form_label(form.championship) }}
+                                    {{ form_widget(form.championship) }}
+                                    {{ form_label(form.year_championship) }}
+                                    {{ form_widget(form.year_championship) }}
+                                    {{ form_label(form.type) }}
+                                    {{ form_widget(form.type) }}
+                                    {{ form_label(form.song) }}
+                                    {{ form_widget(form.song) }}
+                                    {{ form_label(form.skaters_id) }}
+                                    {{ form_widget(form.skaters_id) }}
 
 
-                                    </div>
-                                    <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
-                                    {{ form_end(form) }}
+                                </div>
+                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
+                                {{ form_end(form) }}
+                                <div class="col-md-1 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-4  col-xs-offset-0 back_div">
                                     <a class="back" href="{{ url('video_index') }}" title="{{ 'back.to.list'|trans }}">
                                         {{ 'back.to.list'|trans }}
                                     </a>

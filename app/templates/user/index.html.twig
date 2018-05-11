@@ -16,7 +16,7 @@
                 <p class="extra">~Soliści~</p>
             </div>
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-md-7 col-sm-6 col-xs-12">
                     <nav class="navbar navbar-default" role="navigation">
                         <div class="container-fluid">
                             <!-- przycisk rozwijania mobilnego menu -->
@@ -45,7 +45,7 @@
                         </div><!-- /.container-fluid -->
                     </nav>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-5 col-sm-6 col-xs-12">
                     <div class="row log-in">
                         {% if is_granted('ROLE_ADMIN') %}
                             <div class="admin">
@@ -90,24 +90,34 @@
                     {% include 'default/_flash_messages.html.twig' %}
                 </div>
 
-                {% if paginator.data|length %}
-                    {% for row in paginator.data %}
-                        <div class="category">
-                            <p class="name">{{ row.login }}</p>
-                            <div class="link">
-                                <a class="edit" href="{{ url('user_delete', {'id': row.id}) }}" title="{{ 'delete'|trans }}">
-                                    {{ 'delete'|trans }}
-                                </a>
-                                <a class="edit" href="{{ url('user_change', {'id': row.id}) }}" title="{{ 'change.role'|trans }}">
-                                    {{ 'change.role'|trans }}
-                                </a>
-                                <a class="edit" href="{{ url('user_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">
-                                    {{ 'label.view'|trans }}
-                                </a>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    {% if paginator.data|length %}
+                        {% for row in paginator.data %}
+                            <div class="category">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <p class= "name">{{ row.login }}</p>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="link">
+                                        <a class="edit" href="{{ url('user_delete', {'id': row.id}) }}" title="{{ 'delete'|trans }}">
+                                            {{ 'delete'|trans }}
+                                        </a>
+                                    {#</div>#}
+                                    {#<div class="col-md-4 col-sm-4 col-xs-4">#}
+                                        <a class="edit" href="{{ url('user_change', {'id': row.id}) }}" title="{{ 'change.role'|trans }}">
+                                            {{ 'change.role'|trans }}
+                                        </a>
+                                    {#</div>#}
+                                    {#<div class="col-md-4 col-sm-4 col-xs-4">#}
+                                        <a class="edit" href="{{ url('user_view', {'id': row.id}) }}" title="{{ 'label.view'|trans }}">
+                                            {{ 'label.view'|trans }}
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
 
             </div>
             <div class="container">
