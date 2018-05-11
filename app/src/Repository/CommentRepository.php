@@ -152,13 +152,14 @@ class CommentRepository
     {
         $queryBuilder = $this->db->createQueryBuilder();
 
-        $queryBuilder->select('c.id, c.text, c.video_id, c.date_adding, v.title')
+        return $queryBuilder->select('c.id, c.text, c.video_id, c.date_adding, c.users_id, v.title')
             ->from('comments', 'c')
             ->innerJoin('c', 'video', 'v', 'c.video_id = v.id')
             ->where('c.users_id = :id')
             ->setParameter(':id', $id, \PDO::PARAM_INT);
-        $result = $queryBuilder->execute()->fetchAll();
-        return $result;
+//        $result = $queryBuilder->execute()->fetchAll();
+//        return $result;
+
     }
 
     public function getUserCommentsPaginated($id, $page = 1)
@@ -167,12 +168,11 @@ class CommentRepository
             ->select('COUNT(DISTINCT c.id) AS total_results')
             ->setMaxResults(1);
 
-        $paginator = new Paginator($this->queryAll(), $countQueryBuilder);
+        $paginator = new Paginator($this->getUserComments($id), $countQueryBuilder);
         $paginator->setCurrentPage($page);
         $paginator->setMaxPerPage(self::NUM_ITEMS);
 
         return $paginator->getCurrentPageResults();
     }
-
 
 }

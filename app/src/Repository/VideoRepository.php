@@ -60,7 +60,7 @@ class VideoRepository
             ->select('COUNT(DISTINCT v.id) AS total_results')
             ->setMaxResults(1);
 
-        $paginator = new Paginator($this->queryAll(), $countQueryBuilder);
+        $paginator = new Paginator($this->queryAll()->orderBy('date_add', 'desc'), $countQueryBuilder);
         $paginator->setCurrentPage($page);
         $paginator->setMaxPerPage(self::NUM_ITEMS);
 
@@ -224,7 +224,7 @@ class VideoRepository
             $queryBuilder->andWhere('year_championship = :year_championship')
                 ->setParameter(':year_championship', $match['year_championship']);
         }
-
+        
         $result = $queryBuilder->execute()->fetchAll();
         $result = isset($result) ? $result : [];
 

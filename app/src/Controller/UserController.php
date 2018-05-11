@@ -37,8 +37,9 @@ class UserController implements ControllerProviderInterface
         $controller->get('/page/{page}', [$this, 'indexAction'])
             ->value('page', 1)
             ->bind('user_index_paginated');
-        $controller->get('/{id}', [$this, 'viewAction'])
+        $controller->get('/{id}/page/{page}', [$this, 'viewAction'])
             ->assert('id', '[1-9]\d*')
+            ->value('page', 1)
             ->bind('user_view');
         $controller->match('/{id}/delete', [$this, 'deleteAction'])
             ->method('GET|POST')
@@ -101,19 +102,21 @@ class UserController implements ControllerProviderInterface
      * @param $id
      * @return mixed
      */
-    public function viewAction(Application $app, $id)
+    public function viewAction(Application $app, $id, $page = 1)
     {
         $signupRepository = new SignUpRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
         $commentsRepository = new CommentRepository($app['db']);
-        $userComments = $commentsRepository->getUserComments($id);
+        $userComments = $commentsRepository->getUserCommentsPaginated($id, $page);
 
         return $app['twig']->render(
             'user/view.html.twig',
-            ['user' => $signupRepository->findOneById($id),
+            [
+                'id'=>$id,
+                'user' => $signupRepository->findOneById($id),
                 'user_id' => $userId,
-                'user_comments' => $userComments,
+                'paginator' => $userComments,
             ]
         );
     }

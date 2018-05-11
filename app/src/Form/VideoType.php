@@ -78,13 +78,17 @@ class VideoType extends AbstractType
          );
         $builder->add(
             'type',
-            TextType::class,
+            ChoiceType::class,
             [
                 'label' => 'label.type',
                 'required' => true,
-                'attr' => [
-                    'max_length' => 2,
-                ],
+                'choices'  => array(
+                    'program krótki' => 'program krótki',
+                    'program dowolny' => 'program dowolny'
+                )
+//                'attr' => [
+//                    'max_length' => 2,
+//                ],
             ]
         );
         $builder->add(
