@@ -33,8 +33,9 @@ class MainController implements ControllerProviderInterface
         $controller = $app['controllers_factory'];
         $controller->get('/', [$this, 'indexAction'])->bind('main_index');
 
-        $controller->get('/panel/{id}', [$this, 'viewActionPanelUser'])
+        $controller->get('/panel/{id}/page/{page}', [$this, 'viewActionPanelUser'])
             ->assert('id', '[1-9]\d*')
+            ->value('page', 1)
             ->bind('user_panel');
         $controller->match('/panel/{id}/edit', [$this, 'editActionPanelUser'])
             ->method('POST|GET')
@@ -86,14 +87,14 @@ class MainController implements ControllerProviderInterface
      * @param $id
      * @return mixed
      */
-    public function viewActionPanelUser(Application $app, $id)
+    public function viewActionPanelUser(Application $app, $id, $page = 1)
     {
         $signupRepository = new SignUpRepository($app['db']);
         $userRepository = new UserRepository($app['db']);
         $commentsRepository = new CommentRepository($app['db']);
         $user = $signupRepository->findOneById($id);
         $userId = $userRepository->getLoggedUserId($app);
-        $userComments = $commentsRepository->getUserComments($id);
+        $userComments = $commentsRepository->getUserCommentsPaginated($id, $page);
 
         //nie pozwala użytkonikowi wchodzić na nie swoje strony, no chyba że jest administratorem
         if($user['id'] === $userId or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
@@ -107,9 +108,10 @@ class MainController implements ControllerProviderInterface
             return $app['twig']->render(
                 'user/panel.html.twig',
                 [
+                    'id'=>$id,
                     'user' => $signupRepository->findOneById($id),
                     'user_id' => $userId,
-                    'user_comments' => $userComments,
+                    'paginator' => $userComments,
                 ]
             );
         } else {

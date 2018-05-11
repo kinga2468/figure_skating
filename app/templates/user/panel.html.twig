@@ -118,8 +118,8 @@
                 </div>
                 <div class="row your_comments">
                     <div class="title">Twoje komentarze:</div>
-                    {% if user_comments|length %}
-                        {% for line in user_comments %}
+                    {% if paginator.data|length %}
+                        {% for line in paginator.data %}
                             <div class="row comment">
                                 <div class="col-md-3 col-sm-3 col-xs-12 login">
                                     <div class="date">
@@ -144,6 +144,10 @@
                         {% endfor %}
                     {% endif %}
                 </div>
+                {% include 'default/_paginator_view.html.twig' with {
+                    paginator: paginator,
+                    route_name: 'user_view',
+                } %}
                 <div class="back_div">
                     <a class="back" href="{{ url('main_index') }}" title="{{ 'back.to.list'|trans }}">
                         {{ 'back.to.list'|trans }}
