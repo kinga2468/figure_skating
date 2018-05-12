@@ -36,7 +36,9 @@ class LoginType extends AbstractType
                     new Assert\Length(
                         [
                             'min' => 8,
+                            'minMessage' => 'validators_login_min',
                             'max' => 32,
+                            'maxMessage' => 'validators_login_max',
                         ]
                     ),
                 ],
@@ -58,6 +60,8 @@ class LoginType extends AbstractType
                         [
                             'min' => 8,
                             'max' => 32,
+                            'minMessage' => 'validators_password_min',
+                            'maxMessage' => 'validators_password_max',
                         ]
                     ),
                 ],

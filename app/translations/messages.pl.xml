@@ -246,6 +246,10 @@
                 <source>figure_skating</source>
                 <target>Łyżwiarstwo figurowe</target>
             </trans-unit>
+            <trans-unit id="main.title">
+                <source>main.title</source>
+                <target>Łyżwiarstwo figurowe ~Soliści~</target>
+            </trans-unit>
             <trans-unit id="soloists">
                 <source>soloists</source>
                 <target>~Soliści~</target>

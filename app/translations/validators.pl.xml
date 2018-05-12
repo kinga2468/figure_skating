@@ -22,6 +22,143 @@
                 <source>validators_password_max</source>
                 <target>Hasło jest za długie. Musi mieć maksymalnie 32 znaki.</target>
             </trans-unit>
+            <trans-unit id="validators_heigh_max">
+                <source>validators_heigh_max</source>
+                <target>Wartość nie może wynosić ponad 300.</target>
+            </trans-unit>
+            <trans-unit id="validators_height_min">
+                <source>validators_height_min</source>
+                <target>Wartość musi wynosić ponad 100.</target>
+            </trans-unit>
+            <trans-unit id="validators_record_min">
+                <source>validators_record_min</source>
+                <target>Wartość musi wynosić ponad 1.</target>
+            </trans-unit>
+            <trans-unit id="validators_record_max">
+                <source>validators_record_max</source>
+                <target>Wartość nie może wynosić ponad 300.</target>
+            </trans-unit>
+            <trans-unit id="validators_link_min">
+                <source>validators_link_min</source>
+                <target>Wartość pola "link" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_link_max">
+                <source>validators_link_max</source>
+                <target>Wartość pola "link" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_img_vide_yt_min">
+                <source>validators_img_vide_yt_min</source>
+                <target>Wartość pola "Obrazek video" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_img_vide_yt_max">
+                <source>validators_img_vide_yt_max</source>
+                <target>Wartość pola "Obrazek video" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_title_min">
+                <source>validators_title_min</source>
+                <target>Wartość pola "Tytuł" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_title_max">
+                <source>validators_title_max</source>
+                <target>Wartość pola "Tytuł" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_championship_min">
+                <source>validators_championship_min</source>
+                <target>Wartość pola "Zawody video" jest za króka.</target>
+            </trans-unit>
+            <trans-unit id="validators_championship_max">
+                <source>validators_championship_max</source>
+                <target>Wartość pola "Zawody" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_championship_pattern">
+                <source>validators_championship_pattern</source>
+                <target>Wartość pola "Zawody" zawiera nie dozwolone elementy.</target>
+            </trans-unit>
+            <trans-unit id="validators_year_championship_min">
+                <source>validators_year_championship_min</source>
+                <target>Wartość pola "Rok zawodów" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_year_championship_max">
+                <source>validators_year_championship_max</source>
+                <target>Wartość pola "Rok zawodów" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_year_championship_pattern">
+                <source>validators_year_championship_pattern</source>
+                <target>Wartość pola "Rok zawodów" zawiera nie dozwolone elementy.</target>
+            </trans-unit>
+            <trans-unit id="validators_song_min">
+                <source>validators_song_min</source>
+                <target>Wartość pola "Piosenka" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_song_max">
+                <source>validators_song_max</source>
+                <target>Wartość pola "Piosenka" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_skater_name_min">
+                <source>validators_skater_name_min</source>
+                <target>Wartość pola "Imię i nazwisko" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_skater_name_max">
+                <source>validators_skater_name_max</source>
+                <target>Wartość pola "Imię i nazwisko" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_skater_name_pattern">
+                <source>validators_skater_name_pattern</source>
+                <target>Wartość pola "Imię i nazwisko" zawiera nie dozwolone elementy.</target>
+            </trans-unit>
+            <trans-unit id="validators_country_repr_min">
+                <source>validators_country_repr_min</source>
+                <target>Wartość pola "Reprezentacja" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_country_repr_max">
+                <source>validators_country_repr_max</source>
+                <target>Wartość pola "Reprezentacja" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_country_repr_pattern">
+                <source>validators_country_repr_pattern</source>
+                <target>Wartość pola "Reprezentacja" zawiera nie dozwolone elementy.</target>
+            </trans-unit>
+            <trans-unit id="validators_info_min">
+                <source>validators_info_min</source>
+                <target>Wartość pola "Biografia" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_info_max">
+                <source>validators_info_max</source>
+                <target>Wartość pola "Biografia" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_couch_min">
+                <source>validators_couch_min</source>
+                <target>Wartość pola "Trener" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_couch_max">
+                <source>validators_couch_max</source>
+                <target>Wartość pola "Trener" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_couch_pattern">
+                <source>validators_couch_pattern</source>
+                <target>Wartość pola "Trener" zawiera nie dozwolone elementy.</target>
+            </trans-unit>
+            <trans-unit id="validators_img_min">
+                <source>validators_img_min</source>
+                <target>Wartość pola "Obrazek video" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_img_max">
+                <source>validators_img_max</source>
+                <target>Wartość pola "Obrazek vide" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_birth_place_min">
+                <source>validators_birth_place_min</source>
+                <target>Wartość pola "Miejsce urodzenia" jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_birth_place_max">
+                <source>validators_birth_place_max</source>
+                <target>Wartość pola "Miejsce urodzenia" jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_birth_place_pattern">
+                <source>validators_birth_place_pattern</source>
+                <target>Wartość pola "Miejsce urodzenia" zawiera nie dozwolone elementy.</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

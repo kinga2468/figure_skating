@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Class CommentType.
  *
@@ -30,7 +31,16 @@ class CommentType extends AbstractType
                 'required'   => false,
                 'constraints' => [
                     new Assert\NotBlank(
-                        ['groups' => ['video-default']]
+                        ['groups' => ['comment-default']]
+                    ),
+                    new Assert\Length(
+                        [
+                            'groups' => ['comment-default'],
+                            'min' => 3,
+                            'minMessage' => 'validators_comment_min',
+                            'max' => 500,
+                            'maxMessage' => 'validators_comment_max',
+                        ]
                     ),
                 ],
             ]

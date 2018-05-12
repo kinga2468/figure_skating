@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class SkaterType.
@@ -31,6 +32,27 @@ class SkaterType extends AbstractType
                 'error_bubbling'=> true,
                 'attr' => [
                     'max_length' => 60,
+                ],
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Length(
+                        [
+                            'groups' => ['skater-default'],
+                            'min' => 2,
+                            'minMessage' => 'validators_skater_name_min',
+                            'max' => 60,
+                            'maxMessage' => 'validators_skater_name_max',
+                        ]
+                    ),
+                    new Assert\Regex(
+                        [
+                            'pattern'     => '/^[a-ż ]+$/i',
+                            'htmlPattern' => '^[a-żA-Ż ]+$',
+                            'message' => 'validators_skater_name_pattern'
+                        ]
+                    ),
                 ],
             ]
         );
@@ -54,6 +76,27 @@ class SkaterType extends AbstractType
                 'attr' => [
                     'max_length' => 45,
                 ],
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Length(
+                        [
+                            'groups' => ['skater-default'],
+                            'min' => 2,
+                            'minMessage' => 'validators_country_repr_min',
+                            'max' => 45,
+                            'maxMessage' => 'validators_country_repr_max',
+                        ]
+                    ),
+                    new Assert\Regex(
+                        [
+                            'pattern'     => '/^[a-ż ]+$/i',
+                            'htmlPattern' => '^[a-żA-Ż ]+$',
+                            'message' => 'validators_country_repr_pattern'
+                        ]
+                    ),
+                ],
             ]
         );
         $builder->add(
@@ -65,6 +108,20 @@ class SkaterType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 1000,
+                ],
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Length(
+                        [
+                            'groups' => ['skater-default'],
+                            'min' => 5,
+                            'minMessage' => 'validators_info_min',
+                            'max' => 1000,
+                            'maxMessage' => 'validators_info_max',
+                        ]
+                    ),
                 ],
             ]
         );
@@ -78,6 +135,27 @@ class SkaterType extends AbstractType
                 'attr' => [
                     'max_length' => 100,
                 ],
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Length(
+                        [
+                            'groups' => ['skater-default'],
+                            'min' => 2,
+                            'minMessage' => 'validators_couch_min',
+                            'max' => 100,
+                            'maxMessage' => 'validators_couch_max',
+                        ]
+                    ),
+                    new Assert\Regex(
+                        [
+                            'pattern'     => '/^[a-ż ]+$/i',
+                            'htmlPattern' => '^[a-żA-Ż ]+$',
+                            'message' => 'validators_couch_pattern'
+                        ]
+                    ),
+                ],
             ]
         );
         $builder->add(
@@ -87,6 +165,19 @@ class SkaterType extends AbstractType
                 'label' => 'label.short_record',
                 'error_bubbling'=> true,
                 'required' => true,
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Range(
+                        [
+                            'min' => 1,
+                            'minMessage' => 'validators_record_min',
+                            'max' => 500,
+                            'maxMessage' => 'validators_record_max',
+                        ]
+                    ),
+                ],
             ]
         );
         $builder->add(
@@ -96,6 +187,19 @@ class SkaterType extends AbstractType
                 'label' => 'label.free_record',
                 'error_bubbling'=> true,
                 'required' => true,
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Range(
+                        [
+                            'min' => 1,
+                            'minMessage' => 'validators_record_min',
+                            'max' => 500,
+                            'maxMessage' => 'validators_record_max',
+                        ]
+                    ),
+                ],
             ]
         );
         $builder->add(
@@ -105,6 +209,19 @@ class SkaterType extends AbstractType
                 'label' => 'label.total_record',
                 'error_bubbling'=> true,
                 'required' => true,
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Range(
+                        [
+                            'min' => 1,
+                            'minMessage' => 'validators_record_min',
+                            'max' => 500,
+                            'maxMessage' => 'validators_record_max',
+                        ]
+                    ),
+                ],
             ]
         );
         $builder->add(
@@ -116,6 +233,20 @@ class SkaterType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'max_length' => 60,
+                ],
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Length(
+                        [
+                            'groups' => ['skater-default'],
+                            'min' => 2,
+                            'minMessage' => 'validators_img_min',
+                            'max' => 60,
+                            'maxMessage' => 'validators_img_max',
+                        ]
+                    ),
                 ],
             ]
         );
@@ -129,6 +260,27 @@ class SkaterType extends AbstractType
                 'attr' => [
                     'max_length' => 45,
                 ],
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Length(
+                        [
+                            'groups' => ['skater-default'],
+                            'min' => 2,
+                            'minMessage' => 'validators_birth_place_min',
+                            'max' => 45,
+                            'maxMessage' => 'validators_birth_place_max',
+                        ]
+                    ),
+                    new Assert\Regex(
+                        [
+                            'pattern'     => '/^[a-ż ]+$/i',
+                            'htmlPattern' => '^[a-żA-Ż ]+$',
+                            'message' => 'validators_birth_place_pattern'
+                        ]
+                    ),
+                ],
             ]
         );
         $builder->add(
@@ -138,11 +290,36 @@ class SkaterType extends AbstractType
                 'error_bubbling'=> true,
                 'label' => 'label.height',
                 'required' => true,
-
+                'constraints' => [
+                    new Assert\NotBlank(
+                        ['groups' => ['skater-default']]
+                    ),
+                    new Assert\Range(
+                        [
+                            'min' => 100,
+                            'minMessage' => 'validators_height_min',
+                            'max' => 300,
+                            'maxMessage' => 'validators_heigh_max',
+                        ]
+                    ),
+                ],
             ]
         );
 
 
+    }
+
+    /**
+     * Configure Options
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(
+            [
+                'validation_groups' => ['skater-default'],
+            ]
+        );
     }
 
 

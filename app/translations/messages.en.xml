@@ -114,6 +114,334 @@
                 <source>label.change.data</source>
                 <target>Change login</target>
             </trans-unit>
+
+
+
+            <trans-unit id="auth.signup.label">
+                <source>auth.signup.label</source>
+                <target>signup</target>
+            </trans-unit>
+
+            <trans-unit id="labels.nav.prev">
+                <source>labels.nav.prev</source>
+                <target>Prev page</target>
+            </trans-unit>
+            <trans-unit id="label.nav.next">
+                <source>label.nav.next</source>
+                <target>Next page</target>
+            </trans-unit>
+            <trans-unit id="title.change_role">
+                <source>title.change_role</source>
+                <target>Change role: </target>
+            </trans-unit>
+            <trans-unit id="title.delete_user">
+                <source>title.delete_user</source>
+                <target>Delete user: </target>
+            </trans-unit>
+            <trans-unit id="label.role">
+                <source>label.role</source>
+                <target>Role</target>
+            </trans-unit>
+            <trans-unit id="label.link">
+                <source>label.link</source>
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="label.img_video_yt">
+                <source>label.img_video_yt</source>
+                <target>Video image</target>
+            </trans-unit>
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Title</target>
+            </trans-unit>
+            <trans-unit id="label.year_championship">
+                <source>label.year_championship</source>
+                <target>Year championship</target>
+            </trans-unit>
+            <trans-unit id="label.song">
+                <source>label.song</source>
+                <target>Song</target>
+            </trans-unit>
+            <trans-unit id="label.skaters_name">
+                <source>label.skaters_name</source>
+                <target>Skater</target>
+            </trans-unit>
+            <trans-unit id="add_video">
+                <source>add_video</source>
+                <target>Add video</target>
+            </trans-unit>
+            <trans-unit id="delete_video">
+                <source>delete_video</source>
+                <target>Delete video</target>
+            </trans-unit>
+            <trans-unit id="skater_add">
+                <source>skater_add</source>
+                <target>Skater add</target>
+            </trans-unit>
+            <trans-unit id="skater_delete">
+                <source>skater_delete</source>
+                <target>Skater delete</target>
+            </trans-unit>
+            <trans-unit id="label.img">
+                <source>label.img</source>
+                <target>Link to image</target>
+            </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Name and surname</target>
+            </trans-unit>
+            <trans-unit id="label.date_of_birth">
+                <source>label.date_of_birth</source>
+                <target>Date of birth</target>
+            </trans-unit>
+            <trans-unit id="label.country_repr">
+                <source>label.country_repr</source>
+                <target>Representation</target>
+            </trans-unit>
+            <trans-unit id="label.birth_place">
+                <source>label.birth_place</source>
+                <target>Birth place</target>
+            </trans-unit>
+            <trans-unit id="label.height">
+                <source>label.height</source>
+                <target>Height</target>
+            </trans-unit>
+            <trans-unit id="label.couch">
+                <source>label.couch</source>
+                <target>Couch</target>
+            </trans-unit>
+            <trans-unit id="label.info">
+                <source>label.info</source>
+                <target>Information</target>
+            </trans-unit>
+            <trans-unit id="label.short_record">
+                <source>label.short_record</source>
+                <target>Short record</target>
+            </trans-unit>
+            <trans-unit id="label.free_record">
+                <source>label.free_record</source>
+                <target>Free recorD</target>
+            </trans-unit>
+            <trans-unit id="label.total_record">
+                <source>label.total_record</source>
+                <target>Total record</target>
+            </trans-unit>
+            <trans-unit id="label.rate">
+                <source>label.rate</source>
+                <target>Rate</target>
+            </trans-unit>
+            <trans-unit id="choose_rating">
+                <source>choose_rating</source>
+                <target>Choose rate</target>
+            </trans-unit>
+            <trans-unit id="message.video_successfully_rated">
+                <source>message.video_successfully_rated</source>
+                <target>Video successfully rated.</target>
+            </trans-unit>
+            <trans-unit id="label.panel">
+                <source>label.panel</source>
+                <target>Panel</target>
+            </trans-unit>
+            <trans-unit id="figure_skating">
+                <source>figure_skating</source>
+                <target>Figure skating</target>
+            </trans-unit>
+            <trans-unit id="main.title">
+                <source>main.title</source>
+                <target>Figure skating ~Solists~</target>
+            </trans-unit>
+            <trans-unit id="soloists">
+                <source>soloists</source>
+                <target>~Solists~</target>
+            </trans-unit>
+            <trans-unit id="placeholder.all">
+                <source>placeholder.all</source>
+                <target>all</target>
+            </trans-unit>
+            <trans-unit id="short_program">
+                <source>short_program</source>
+                <target>short program</target>
+            </trans-unit>
+            <trans-unit id="free_program">
+                <source>free_program</source>
+                <target>free program</target>
+            </trans-unit>
+            <trans-unit id="short_program2">
+                <source>short_program2</source>
+                <target>Short program</target>
+            </trans-unit>
+            <trans-unit id="free_program2">
+                <source>free_program2</source>
+                <target>Free program</target>
+            </trans-unit>
+            <trans-unit id="total_note">
+                <source>total_note</source>
+                <target>Total note</target>
+            </trans-unit>
+            <trans-unit id="footer">
+                <source>footer</source>
+                <target>EPI bachelor 2018. Design and implementation: Kinga Bożęcka.</target>
+            </trans-unit>
+            <trans-unit id="menu.performances">
+                <source>menu.performances</source>
+                <target>Performances</target>
+            </trans-unit>
+            <trans-unit id="search_results">
+                <source>search_results</source>
+                <target>Search results</target>
+            </trans-unit>
+            <trans-unit id="menu.rules">
+                <source>menu.rules</source>
+                <target>Rules</target>
+            </trans-unit>
+            <trans-unit id="menu.skaters">
+                <source>menu.skaters</source>
+                <target>Skaters</target>
+            </trans-unit>
+            <trans-unit id="delete.comments">
+                <source>delete.comments</source>
+                <target>Are you sure you want to delete the comment about the content: </target>
+            </trans-unit>
+            <trans-unit id="open.nav">
+                <source>open.nav</source>
+                <target>Expand navigation</target>
+            </trans-unit>
+            <trans-unit id="comments.edit">
+                <source>comments.edit</source>
+                <target>Edit the comment:</target>
+            </trans-unit>
+            <trans-unit id="near_competitions">
+                <source>near_competitions</source>
+                <target>Until The Rostelecom Cup:</target>
+            </trans-unit>
+            <trans-unit id="stoper.days">
+                <source>stoper.days</source>
+                <target>days</target>
+            </trans-unit>
+            <trans-unit id="stoper.hours">
+                <source>stoper.hours</source>
+                <target>hours</target>
+            </trans-unit>
+            <trans-unit id="stoper.minutes">
+                <source>stoper.minutes</source>
+                <target>minutes</target>
+            </trans-unit>
+            <trans-unit id="label.newest">
+                <source>label.newest</source>
+                <target>Newest:</target>
+            </trans-unit>
+            <trans-unit id="label.popular_video">
+                <source>label.popular_video</source>
+                <target>Most popular:</target>
+            </trans-unit>
+            <trans-unit id="label.popular_skaters">
+                <source>label.popular_skaters</source>
+                <target>The most popular skaters:</target>
+            </trans-unit>
+            <trans-unit id="label.see.more">
+                <source>label.see.more</source>
+                <target>See more</target>
+            </trans-unit>
+            <trans-unit id="delete_skater">
+                <source>delete_skater</source>
+                <target>Are you sure you want to remove the skater</target>
+            </trans-unit>
+            <trans-unit id="skater_edit">
+                <source>skater_edit</source>
+                <target>Edit the skater</target>
+            </trans-unit>
+            <trans-unit id="life_records">
+                <source>life_records</source>
+                <target>Life records</target>
+            </trans-unit>
+            <trans-unit id="his_video">
+                <source>his_video</source>
+                <target>His video:</target>
+            </trans-unit>
+            <trans-unit id="No_skater_found">
+                <source>No_skater_found</source>
+                <target>No skater</target>
+            </trans-unit>
+            <trans-unit id="users.panel_admin">
+                <source>users.panel_admin</source>
+                <target>User - admin panel</target>
+            </trans-unit>
+            <trans-unit id="users2.panel_admin">
+                <source>users2.panel_admin</source>
+                <target>Users - admin panel</target>
+            </trans-unit>
+            <trans-unit id="user_panel">
+                <source>user_panel</source>
+                <target>Your panel</target>
+            </trans-unit>
+            <trans-unit id="yours_comments">
+                <source>yours_comments</source>
+                <target>Your comments:</target>
+            </trans-unit>
+            <trans-unit id="comments">
+                <source>comments</source>
+                <target>Comments:</target>
+            </trans-unit>
+            <trans-unit id="comment_to">
+                <source>comment_to</source>
+                <target>Comment to:</target>
+            </trans-unit>
+            <trans-unit id="users_comments">
+                <source>users_comments</source>
+                <target>User comments:</target>
+            </trans-unit>
+            <trans-unit id="delete_video_text">
+                <source>delete_video_text</source>
+                <target>Are you sure you want to delete this video:</target>
+            </trans-unit>
+            <trans-unit id="edit_video">
+                <source>edit_video</source>
+                <target>Edit the video</target>
+            </trans-unit>
+            <trans-unit id="filtration">
+                <source>filtration</source>
+                <target>Filtration</target>
+            </trans-unit>
+            <trans-unit id="to_song">
+                <source>to_song</source>
+                <target>to the song</target>
+            </trans-unit>
+            <trans-unit id="rated_by">
+                <source>rated_by</source>
+                <target>evaluated by </target>
+            </trans-unit>
+            <trans-unit id="user">
+                <source>user</source>
+                <target>user</target>
+            </trans-unit>
+            <trans-unit id="users">
+                <source>users</source>
+                <target>users</target>
+            </trans-unit>
+            <trans-unit id="your_opinion">
+                <source>your_opinion</source>
+                <target>Your opinion: </target>
+            </trans-unit>
+            <trans-unit id="perfomence_already_rated">
+                <source>perfomence_already_rated</source>
+                <target>You have already rated this performance.</target>
+            </trans-unit>
+            <trans-unit id="log_in_to_comments">
+                <source>log_in_to_comments</source>
+                <target>Log in to be able to rate performances and comment.</target>
+            </trans-unit>
+            <trans-unit id="see_skater">
+                <source>see_skater</source>
+                <target>see the skater</target>
+            </trans-unit>
+            <trans-unit id="date_adding">
+                <source>date_adding</source>
+                <target>date of addition:</target>
+            </trans-unit>
+            <trans-unit id="no_video_found">
+                <source>no_video_found</source>
+                <target>Video not found.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
