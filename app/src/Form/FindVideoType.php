@@ -2,13 +2,12 @@
 /**
  * Find Video Type.
  */
+
 namespace Form;
-use Repository\VideoRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Find Video Type.
@@ -22,16 +21,14 @@ class FindVideoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//        dump($this->findOptions($options['championship']));
         $builder->add(
             'championship',
             ChoiceType::class,
             [
                 'label' => 'label.championship',
                 'required' => false,
-                'placeholder' => 'wszystkie',
+                'placeholder' => 'placeholder.all',
                 'choices' => $this->findOptions($options['championship']),
-//                    $options['championship'],
                 'expanded' => true,
                 'multiple' => false,
             ]
@@ -42,7 +39,7 @@ class FindVideoType extends AbstractType
             [
                 'label' => 'label.year',
                 'required' => false,
-                'placeholder' => 'wszystkie',
+                'placeholder' => 'placeholder.all',
                 'choices' => $this->findOptions($options['year_championship']),
                 'expanded' => true,
                 'multiple' => false,
@@ -64,7 +61,7 @@ class FindVideoType extends AbstractType
             [
                 'label' => 'label.type',
                 'required' => false,
-                'placeholder' => 'wszystkie',
+                'placeholder' => 'placeholder.all',
                 'choices' => $this->findOptions($options['type']),
                 'expanded' => true,
                 'multiple' => false,

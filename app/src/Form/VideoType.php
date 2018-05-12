@@ -83,8 +83,8 @@ class VideoType extends AbstractType
                 'label' => 'label.type',
                 'required' => true,
                 'choices'  => array(
-                    'program krótki' => 'program krótki',
-                    'program dowolny' => 'program dowolny'
+                    'short_program' => 'short_program',
+                    'free_program' => 'free_program'
                 )
 //                'attr' => [
 //                    'max_length' => 2,

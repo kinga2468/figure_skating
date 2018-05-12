@@ -1,170 +1,170 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    Łyżwiarstwo figurowe ~Soliści~
-{% endblock %}
+{% block title %}{{ 'main.title'|trans }}{% endblock %}
 
 {% block body %}
-<div class="all">
-    <div class="container header">
-        <div class="row logo">
-            <p class="slogan">
-                <a href="{{ url('main_index') }}" title="Łyżwiarstwo figurowe">
-                    Łyżwiarstwo figurowe
-                </a>
-            </p>
-            <p class="extra">~Soliści~</p>
-        </div>
-        <div class="row">
-            <div class="col-md-7 col-sm-6 col-xs-12">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="container-fluid">
-                        <!-- przycisk rozwijania mobilnego menu -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                <span class="sr-only">Rozwiń nawigację</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li><a href="{{ url('rules_index') }}" title="zasady">
-                                        Zasady
-                                    </a></li>
-                                <li><a href="{{ url('video_index') }}" title="występy">
-                                        Występy
-                                    </a></li>
-                                <li><a href="{{ url('skater_index') }}" title="występy">
-                                        Łyżwiarze
-                                    </a></li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container-fluid -->
-                </nav>
-            </div>
-            <div class="col-md-5 col-sm-6 col-xs-12">
-                <div class="row log-in">
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <div class="admin">
-                            <a class="AdminPanel" href="{{ url('user_index') }}" title="{{ 'label.admin'|trans }}">
-                                {{ 'label.admin'|trans }}
-                            </a>
-                        </div>
-                    {% endif %}
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a  class="aLogIn" href="{{ url('auth_logout') }}" title="{{ 'auth.logout.label'|trans }}">
-                            {{ 'auth.logout.label'|trans }}
-                        </a>
-                        <p class="imie">
-                            {{ 'hello'|trans }}
-                            <a href="{{ url('user_panel', {'id': user_id}) }}" title="{{ 'label.panel'|trans }}">
-                                {{ app.user.username }}
-                            </a>
-                            ,
-                        </p>
-                    {% else %}
-                        <a class="aLogIn" href="{{ url('auth_login') }}" title="{{ 'auth.login.label'|trans }}">
-                            {{ 'auth.login.label'|trans }}
-                        </a>
-                        <a class="aLogIn" href="{{ url('auth_signup') }}" title="{{ 'auth.signup.label'|trans }}">
-                            {{ 'auth.signup.label'|trans }}
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid rules">
-        <div class="row rule">
-            <div class="shadow-rules">
-                <div class="title">
-                    Użytkownik - panel admina
-                </div>
-            </div>
-        </div>
-
+    <div class="all">
         <div class="container">
-            <div class="row user_data">
-                {% if user|length %}
-                    <div class="dane">
-                        <p>{{ 'label.login'|trans }}: {{ user.login }}</p>
-                    </div>
-                {% else %}
-                    <div>
-                        {{ 'no_user'|trans }}
-                    </div>
-                {% endif %}
+            <div class="row logo">
+                <p class="slogan">
+                    <a href="{{ url('main_index') }}" title="{{ 'figure_skating'|trans }}">
+                        {{ 'figure_skating'|trans }}
+                    </a>
+                </p>
+                <p class="extra">{{ 'soloists'|trans }}</p>
             </div>
-            <div class="row panel_buttony">
-                <div class="message">
-                    {% include 'default/_flash_messages.html.twig' %}
-                </div>
-                <div class="panel_button">
-                    <p class="wprzycisk">
-                        <a href="{{ url('user_editPanel', {'id': user.id}) }}" title="{{ 'label.change.data'|trans }}">
-                            {{ 'label.change.data'|trans }}
-                        </a>
-                    </p>
-                </div>
-                <div class="panel_button">
-                    <p class="wprzycisk">
-                        <a href="{{ url('user_editPassword', {'id': user.id}) }}" title="{{ 'label.change.password'|trans }}">
-                            {{ 'label.change.password'|trans }}
-                        </a>
-                    </p>
-                </div>
-            </div>
-            <div class="row your_comments">
-                <div class="title">Komentarze użytkownika:</div>
-                {% if paginator.data|length %}
-                    {% for line in paginator.data %}
-                        {#{{ dump(line) }}#}
-                        <div class="row comment">
-                            <div class="col-md-3 col-sm-3 col-xs-12 login">
-                                <div class="date">
-                                    {{ line.date_adding }}
-                                </div>
-                                <div class="login2">
-                                    <p>Komentarz do: {{ line.title }}</p>
-                                </div>
+            <div class="row">
+                <div class="col-md-7 col-sm-6 col-xs-12">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="container-fluid">
+                            <!-- przycisk rozwijania mobilnego menu -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">{{ 'open.nav'|trans }}</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
                             </div>
-                            <div class="col-md-8 col-sm-8 col-xs-12 text">
-                                {{ line.text }}
-                            </div>
-                            <div class="col-md-1 col-sm-1 col-xs-12 link">
-                                <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
-                                    {{ 'delete'|trans }}
-                                </a>
-                                <a class="edit" href="{{ url('comment_edit', {'id': line.id}) }}" title="{{ 'edit'|trans }}">
-                                    {{ 'edit'|trans }}
-                                </a>
+                            <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a href="{{ url('rules_index') }}" title="{{ 'menu.rules'|trans }}">
+                                            {{ 'menu.rules'|trans }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('video_index') }}" title="{{ 'menu.performances'|trans }}">
+                                            {{ 'menu.performances'|trans }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('skater_index') }}" title="{{ 'menu.skaters'|trans }}">
+                                            {{ 'menu.skaters'|trans }}
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-            {% include 'default/_paginator_view.html.twig' with {
-                paginator: paginator,
-                route_name: 'user_view',
-            } %}
-            <div class="back_div">
-                <a class="back" href="{{ url('user_index') }}" title="{{ 'back.to.list'|trans }}">
-                    {{ 'back.to.list'|trans }}
-                </a>
+                    </nav>
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <div class="row log-in">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div class="admin">
+                                <a class="AdminPanel" href="{{ url('user_index') }}" title="{{ 'label.admin'|trans }}">
+                                    {{ 'label.admin'|trans }}
+                                </a>
+                            </div>
+                        {% endif %}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a  class="aLogIn" href="{{ url('auth_logout') }}" title="{{ 'auth.logout.label'|trans }}">
+                                {{ 'auth.logout.label'|trans }}
+                            </a>
+                            <p class="imie">
+                                {{ 'hello'|trans }}
+                                <a href="{{ url('user_panel', {'id': user_id}) }}" title="{{ 'label.panel'|trans }}">
+                                    {{ app.user.username }}
+                                </a>
+                                ,
+                            </p>
+                        {% else %}
+                            <a class="aLogIn" href="{{ url('auth_login') }}" title="{{ 'auth.login.label'|trans }}">
+                                {{ 'auth.login.label'|trans }}
+                            </a>
+                            <a class="aLogIn" href="{{ url('auth_signup') }}" title="{{ 'auth.signup.label'|trans }}">
+                                {{ 'auth.signup.label'|trans }}
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="container-fluid rules">
+            <div class="row rule">
+                <div class="shadow-rules">
+                    <div class="title">
+                        {{ 'users.panel_admin'|trans }}
+                    </div>
+                </div>
+            </div>
 
-
-
-
-    </div>
-    <div class="container-fluid">
-        <div class="row footer">
-            EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.
+            <div class="container">
+                <div class="row user_data">
+                    {% if user|length %}
+                        <div class="dane">
+                            <p>{{ 'label.login'|trans }}: {{ user.login }}</p>
+                        </div>
+                    {% else %}
+                        <div>
+                            {{ 'no_user'|trans }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row panel_buttony">
+                    <div class="message">
+                        {% include 'default/_flash_messages.html.twig' %}
+                    </div>
+                    <div class="panel_button">
+                        <p class="wprzycisk">
+                            <a href="{{ url('user_editPanel', {'id': user.id}) }}" title="{{ 'label.change.data'|trans }}">
+                                {{ 'label.change.data'|trans }}
+                            </a>
+                        </p>
+                    </div>
+                    <div class="panel_button">
+                        <p class="wprzycisk">
+                            <a href="{{ url('user_editPassword', {'id': user.id}) }}" title="{{ 'label.change.password'|trans }}">
+                                {{ 'label.change.password'|trans }}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row your_comments">
+                    <div class="title">{{ 'users_comments'|trans }}</div>
+                    {% if paginator.data|length %}
+                        {% for line in paginator.data %}
+                            {#{{ dump(line) }}#}
+                            <div class="row comment">
+                                <div class="col-md-3 col-sm-3 col-xs-12 login">
+                                    <div class="date">
+                                        {{ line.date_adding }}
+                                    </div>
+                                    <div class="login2">
+                                        <p>Komentarz do: {{ line.title }}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-12 text">
+                                    {{ line.text }}
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-12 link">
+                                    <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
+                                        {{ 'delete'|trans }}
+                                    </a>
+                                    <a class="edit" href="{{ url('comment_edit', {'id': line.id}) }}" title="{{ 'edit'|trans }}">
+                                        {{ 'edit'|trans }}
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% include 'default/_paginator_view.html.twig' with {
+                    paginator: paginator,
+                    route_name: 'user_view',
+                } %}
+                <div class="back_div">
+                    <a class="back" href="{{ url('user_index') }}" title="{{ 'back.to.list'|trans }}">
+                        {{ 'back.to.list'|trans }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row footer">
+                {{ 'footer'|trans }}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

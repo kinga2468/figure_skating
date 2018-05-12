@@ -5,25 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}Default title{% endblock %}</title>
+    <title>{% block title %}{{ 'main.title'|trans }}{% endblock %}</title>
+
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Oswald" rel="stylesheet"> <!--czcionka Oswald, Shadows Into Light, Dancing Scripts-->
     <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+
     {% block stylesheets %}
-        <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        {#<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">#}
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-        {#<link href="{{ asset('css/slider.css') }}" rel="stylesheet">#}
     {% endblock %}
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    {#<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>#}
-    <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
-    {#<![endif]-->#}
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#media').carousel({
@@ -69,34 +63,6 @@
             }
         }, 1000);
     </script>
-
-    {#<script>#}
-        {#$(document).ready(function() {#}
-            {#$('#media3').carousel({#}
-                {#pause: true,#}
-                {#interval: false#}
-            {#});#}
-        {#});#}
-
-
-        {#$('##media3').on('slid.bs.carousel', checkitem);#}
-
-        {#function checkitem()                        // check function#}
-        {#{#}
-            {#var $this = $('#media3');#}
-            {#if ($('.carousel-inner .item:first').hasClass('active')) {#}
-                {#$this.children('.left.carousel-control').addClass('control-hidden');#}
-            {#} else if ($('.carousel-inner .item:last').hasClass('active')) {#}
-                {#$this.children('.right.carousel-control').addClass('control-hidden');#}
-            {#} else {#}
-                {#$this.children('.carousel-control').removeClass('control-hidden');#}
-
-            {#}#}
-        {#}#}
-
-    {#</script>#}
-
-
 </head>
 <body>
 {% include 'default/_flash_messages.html.twig' %}
@@ -106,7 +72,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {#<script src="{{ asset('js/scripts.js') }}"></script>#}
 {% endblock %}
 </body>
 </html>

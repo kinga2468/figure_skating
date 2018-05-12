@@ -18,6 +18,10 @@
                 <source>validators_password_match</source>
                 <target>Hasła nie są identyczne.</target>
             </trans-unit>
+            <trans-unit id="validators_password_max">
+                <source>validators_password_max</source>
+                <target>Hasło jest za długie. Musi mieć maksymalnie 32 znaki.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

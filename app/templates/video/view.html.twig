@@ -1,19 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    Łyżwiarstwo figurowe ~Soliści~
-{% endblock %}
+{% block title %}{{ 'main.title'|trans }}{% endblock %}
 
 {% block body %}
     <div class="all">
-        <div class="container header">
+        <div class="container">
             <div class="row logo">
                 <p class="slogan">
-                    <a href="{{ url('main_index') }}" title="Łyżwiarstwo figurowe">
-                        Łyżwiarstwo figurowe
+                    <a href="{{ url('main_index') }}" title="{{ 'figure_skating'|trans }}">
+                        {{ 'figure_skating'|trans }}
                     </a>
                 </p>
-                <p class="extra">~Soliści~</p>
+                <p class="extra">{{ 'soloists'|trans }}</p>
             </div>
             <div class="row">
                 <div class="col-md-7 col-sm-6 col-xs-12">
@@ -22,7 +20,7 @@
                             <!-- przycisk rozwijania mobilnego menu -->
                             <div class="navbar-header">
                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                    <span class="sr-only">Rozwiń nawigację</span>
+                                    <span class="sr-only">{{ 'open.nav'|trans }}</span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -31,18 +29,24 @@
                             <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="{{ url('rules_index') }}" title="zasady">
-                                            Zasady
-                                        </a></li>
-                                    <li><a href="{{ url('video_index') }}" title="występy">
-                                            Występy
-                                        </a></li>
-                                    <li><a href="{{ url('skater_index') }}" title="występy">
-                                            Łyżwiarze
-                                        </a></li>
+                                    <li>
+                                        <a href="{{ url('rules_index') }}" title="{{ 'menu.rules'|trans }}">
+                                            {{ 'menu.rules'|trans }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('video_index') }}" title="{{ 'menu.performances'|trans }}">
+                                            {{ 'menu.performances'|trans }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('skater_index') }}" title="{{ 'menu.skaters'|trans }}">
+                                            {{ 'menu.skaters'|trans }}
+                                        </a>
+                                    </li>
                                 </ul>
-                            </div><!-- /.navbar-collapse -->
-                        </div><!-- /.container-fluid -->
+                            </div>
+                        </div>
                     </nav>
                 </div>
                 <div class="col-md-5 col-sm-6 col-xs-12">
@@ -107,7 +111,7 @@
                                 {% endif %}
                             </div>
                             <div class="song">
-                                <p>do piosenki {{ video.song }}.</p>
+                                <p>{{ 'to_song'|trans }} {{ video.song }}.</p>
                             </div>
 
                             <div class="rating">
@@ -120,11 +124,11 @@
                                     {% endif %}
                                 </div>
                                 <div class="rate_by">
-                                    <p>ocenione przez {{ ratedBy.howMany }}
+                                    <p>{{ 'rated_by'|trans }} {{ ratedBy.howMany }}
                                         {% if ratedBy.howMany == 1 %}
-                                            użytkownika
+                                            {{ 'user'|trans }}
                                         {% else %}
-                                            użytkowników
+                                            {{ 'users'|trans }}
                                         {% endif %}
                                     </p>
                                 </div>
@@ -133,18 +137,16 @@
                                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                     {% if video_is_rated == false %}
                                         <div class="rating_name">
-                                            <p>Twoja ocena: </p>
+                                            <p>{{ 'your_opinion'|trans }}</p>
                                         </div>
                                         <div class="name">
                                             {% if video|length %}
                                                 {{ form_start(form_rating, { method: 'post', action: url('video_view', {'id':id}) }) }}
-                                                    {#{{ form_label(form_rating.rate) }}#}
                                                 <div class="form_input">
                                                     {{ form_widget(form_rating.rate, { 'value': '' }) }}
                                                 </div>
                                                 <div class="save_button">
                                                     <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success" />
-                                                    {#{{ form_widget(form_rating.save, {'attr': {'class': 'btn btn-success'}}) }}#}
 
                                                 </div>
                                                 {{ form_end(form_rating) }}
@@ -152,29 +154,29 @@
                                         </div>
                                     {% else %}
                                         <div class="videoAlreadyRated">
-                                            <p>Ten występ został już przez Ciebie oceniony</p>
+                                            <p>{{ 'perfomence_already_rated'|trans }}</p>
                                         </div>
                                     {% endif %}
                                 {% else %}
                                     <div class="videoAlreadyRated">
-                                        <p>Zaloguj się, by móc oceniać występy oraz komentować.</p>
+                                        <p>{{ 'log_in_to_comments'|trans }}</p>
                                     </div>
                                 {% endif %}
                             </div>
 
                             <div class="skater_button">
                                 <a href="{{ url('skater_view', {'id': video.skaters_id}) }}" title="{{ 'label.see_Skater'|trans }}">
-                                    zobacz łyżwiarza
+                                    {{ 'see_skater'|trans }}
                                 </a>
                             </div>
                             <div class="date">
-                                <p>data dodania: {{ video.date_add }}</p>
+                                <p>{{ 'date_adding'|trans }} {{ video.date_add }}</p>
                             </div>
                         </div>
 
                     {% else %}
                         <div>
-                            No video found!
+                            {{ 'no_video_found'|trans }}
                         </div>
                     {% endif %}
                 </div>
@@ -182,12 +184,12 @@
                     <div class="comments">
                         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                             <div class="title">
-                                <p>Komentarze: </p>
+                                <p>{{ 'comments'|trans }} </p>
                             </div>
                         {% else %}
                             {% if paginator.data|length %}
                                 <div class="title">
-                                    <p>Komentarze: </p>
+                                    <p>{{ 'comments'|trans }}</p>
                                 </div>
                             {% endif %}
                         {% endif %}
@@ -245,7 +247,7 @@
         </div>
         <div class="container-fluid">
             <div class="row footer">
-                EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.
+                {{ 'footer'|trans }}
             </div>
         </div>
     </div>

@@ -1,19 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    Łyżwiarstwo figurowe ~Soliści~
-{% endblock %}
+{% block title %}{{ 'main.title'|trans }}{% endblock %}
 
 {% block body %}
     <div class="all">
-        <div class="container header">
+        <div class="container">
             <div class="row logo">
                 <p class="slogan">
-                    <a href="{{ url('main_index') }}" title="Łyżwiarstwo figurowe">
-                        Łyżwiarstwo figurowe
+                    <a href="{{ url('main_index') }}" title="{{ 'figure_skating'|trans }}">
+                        {{ 'figure_skating'|trans }}
                     </a>
                 </p>
-                <p class="extra">~Soliści~</p>
+                <p class="extra">{{ 'soloists'|trans }}</p>
             </div>
             <div class="row">
                 <div class="col-md-7 col-sm-6 col-xs-12">
@@ -22,7 +20,7 @@
                             <!-- przycisk rozwijania mobilnego menu -->
                             <div class="navbar-header">
                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                    <span class="sr-only">Rozwiń nawigację</span>
+                                    <span class="sr-only">{{ 'open.nav'|trans }}</span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -31,18 +29,24 @@
                             <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="{{ url('rules_index') }}" title="zasady">
-                                            Zasady
-                                        </a></li>
-                                    <li><a href="{{ url('video_index') }}" title="występy">
-                                            Występy
-                                        </a></li>
-                                    <li><a href="{{ url('skater_index') }}" title="występy">
-                                            Łyżwiarze
-                                        </a></li>
+                                    <li>
+                                        <a href="{{ url('rules_index') }}" title="{{ 'menu.rules'|trans }}">
+                                            {{ 'menu.rules'|trans }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('video_index') }}" title="{{ 'menu.performances'|trans }}">
+                                            {{ 'menu.performances'|trans }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('skater_index') }}" title="{{ 'menu.skaters'|trans }}">
+                                            {{ 'menu.skaters'|trans }}
+                                        </a>
+                                    </li>
                                 </ul>
-                            </div><!-- /.navbar-collapse -->
-                        </div><!-- /.container-fluid -->
+                            </div>
+                        </div>
                     </nav>
                 </div>
                 <div class="col-md-5 col-sm-6 col-xs-12">
@@ -81,7 +85,7 @@
             <div class="row rule">
                 <div class="shadow-rules">
                     <div class="title">
-                        Dodaj łyżwiarza
+                        {{ 'skater_add'|trans }}
                     </div>
                 </div>
             </div>
@@ -108,15 +112,12 @@
                                     {{ form_widget(form.name) }}
 
                                     {{ form_label(form.date_of_birth) }}
-                                        {#{{ form_label(form.date_of_birth.year) }}#}
                                     <div class="col-md-4 col-sm-4 col-xs-4">
                                         {{ form_widget(form.date_of_birth.year) }}
                                     </div>
-                                        {#{{ form_label(form.date_of_birth.month) }}#}
                                     <div class="col-md-4 col-sm-4 col-xs-4">
                                         {{ form_widget(form.date_of_birth.month) }}
                                     </div>
-                                        {#{{ form_label(form.date_of_birth.day) }}#}
                                     <div class="col-md-4 col-sm-4 col-xs-4">
                                         {{ form_widget(form.date_of_birth.day) }}
                                     </div>
@@ -155,7 +156,7 @@
         </div>
         <div class="container-fluid">
             <div class="row footer">
-                EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.
+                {{ 'footer'|trans }}
             </div>
         </div>
     </div>

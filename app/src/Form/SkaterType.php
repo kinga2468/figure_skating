@@ -42,8 +42,6 @@ class SkaterType extends AbstractType
                 'error_bubbling'=> true,
                 'format' => 'yyyy-MM-dd',
                 'years' => range(1970,2010),
-//                'error_bubbling'=> true, //do wyświetlania błędów u góry
-//                'invalid_message' => 'dateStart_limit',
             ]
         );
         $builder->add(

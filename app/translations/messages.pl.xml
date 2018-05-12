@@ -2,10 +2,6 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="pl" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="title.bookmark_view">
-                <source>title.bookmark_view</source>
-                <target>Zakładka #%id%</target>
-            </trans-unit>
             <trans-unit id="hello">
                 <source>hello</source>
                 <target>Witaj </target>
@@ -174,11 +170,18 @@
                 <source>add_video</source>
                 <target>Dodaj video</target>
             </trans-unit>
+            <trans-unit id="delete_video">
+                <source>delete_video</source>
+                <target>Usuń video</target>
+            </trans-unit>
             <trans-unit id="skater_add">
                 <source>skater_add</source>
                 <target>Dodaj łyżwiarza</target>
             </trans-unit>
-
+            <trans-unit id="skater_delete">
+                <source>skater_delete</source>
+                <target>Usuń łyżwiarza</target>
+            </trans-unit>
             <trans-unit id="label.img">
                 <source>label.img</source>
                 <target>Link do obrazka</target>
@@ -246,6 +249,194 @@
             <trans-unit id="soloists">
                 <source>soloists</source>
                 <target>~Soliści~</target>
+            </trans-unit>
+            <trans-unit id="placeholder.all">
+                <source>placeholder.all</source>
+                <target>wszystkie</target>
+            </trans-unit>
+            <trans-unit id="short_program">
+                <source>short_program</source>
+                <target>program krótki</target>
+            </trans-unit>
+            <trans-unit id="free_program">
+                <source>free_program</source>
+                <target>program dowolny</target>
+            </trans-unit>
+            <trans-unit id="short_program2">
+                <source>short_program2</source>
+                <target>Program krótki</target>
+            </trans-unit>
+            <trans-unit id="free_program2">
+                <source>free_program2</source>
+                <target>Program dowolny</target>
+            </trans-unit>
+            <trans-unit id="total_note">
+                <source>total_note</source>
+                <target>Nota łączna</target>
+            </trans-unit>
+            <trans-unit id="footer">
+                <source>footer</source>
+                <target>EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.</target>
+            </trans-unit>
+            <trans-unit id="menu.performances">
+                <source>menu.performances</source>
+                <target>Występy</target>
+            </trans-unit>
+            <trans-unit id="search_results">
+                <source>search_results</source>
+                <target>Wyniki wyszukiwania</target>
+            </trans-unit>
+            <trans-unit id="menu.rules">
+                <source>menu.rules</source>
+                <target>Zasady</target>
+            </trans-unit>
+            <trans-unit id="menu.skaters">
+                <source>menu.skaters</source>
+                <target>Łyżwiarze</target>
+            </trans-unit>
+            <trans-unit id="delete.comments">
+                <source>delete.comments</source>
+                <target>Czy na pewno chcesz usunąć komentarz o treści: </target>
+            </trans-unit>
+            <trans-unit id="open.nav">
+                <source>open.nav</source>
+                <target>Rozwiń nawigację</target>
+            </trans-unit>
+            <trans-unit id="comments.edit">
+                <source>comments.edit</source>
+                <target>Zedytuj komentarz:</target>
+            </trans-unit>
+            <trans-unit id="near_competitions">
+                <source>near_competitions</source>
+                <target>Do Rostelecom Cup zostało:</target>
+            </trans-unit>
+            <trans-unit id="stoper.days">
+                <source>stoper.days</source>
+                <target>dni</target>
+            </trans-unit>
+            <trans-unit id="stoper.hours">
+                <source>stoper.hours</source>
+                <target>godzin</target>
+            </trans-unit>
+            <trans-unit id="stoper.minutes">
+                <source>stoper.minutes</source>
+                <target>minut</target>
+            </trans-unit>
+            <trans-unit id="label.newest">
+                <source>label.newest</source>
+                <target>Najnowsze:</target>
+            </trans-unit>
+            <trans-unit id="label.popular_video">
+                <source>label.popular_video</source>
+                <target>Najpopularniejsze:</target>
+            </trans-unit>
+            <trans-unit id="label.popular_skaters">
+                <source>label.popular_skaters</source>
+                <target>Najpopularniejsi łyżwiarze:</target>
+            </trans-unit>
+            <trans-unit id="label.see.more">
+                <source>label.see.more</source>
+                <target>Zobacz więcej</target>
+            </trans-unit>
+            <trans-unit id="delete_skater">
+                <source>delete_skater</source>
+                <target>Czy na pewno chcesz usunąć łyżwiarza</target>
+            </trans-unit>
+            <trans-unit id="skater_edit">
+                <source>skater_edit</source>
+                <target>Edytuj łyżwiarza</target>
+            </trans-unit>
+            <trans-unit id="life_records">
+                <source>life_records</source>
+                <target>Rekordy życiowe</target>
+            </trans-unit>
+            <trans-unit id="his_video">
+                <source>his_video</source>
+                <target>Jego video:</target>
+            </trans-unit>
+            <trans-unit id="No_skater_found">
+                <source>No_skater_found</source>
+                <target>Brak łyżwiarza</target>
+            </trans-unit>
+            <trans-unit id="users.panel_admin">
+                <source>users.panel_admin</source>
+                <target>Użytkownik - panel admina</target>
+            </trans-unit>
+            <trans-unit id="users2.panel_admin">
+                <source>users2.panel_admin</source>
+                <target>Użytkownicy - panel admina</target>
+            </trans-unit>
+            <trans-unit id="user_panel">
+                <source>user_panel</source>
+                <target>Twój panel</target>
+            </trans-unit>
+            <trans-unit id="yours_comments">
+                <source>yours_comments</source>
+                <target>Twoje komentarze:</target>
+            </trans-unit>
+            <trans-unit id="comments">
+                <source>comments</source>
+                <target>Komentarze:</target>
+            </trans-unit>
+            <trans-unit id="comment_to">
+                <source>comment_to</source>
+                <target>Komentarz do:</target>
+            </trans-unit>
+            <trans-unit id="users_comments">
+                <source>users_comments</source>
+                <target>Komentarze użytkownika:</target>
+            </trans-unit>
+            <trans-unit id="delete_video_text">
+                <source>delete_video_text</source>
+                <target>Czy na pewno chcesz usunąć to video:</target>
+            </trans-unit>
+            <trans-unit id="edit_video">
+                <source>edit_video</source>
+                <target>Edytuj video</target>
+            </trans-unit>
+            <trans-unit id="filtration">
+                <source>filtration</source>
+                <target>Filtrowanie</target>
+            </trans-unit>
+            <trans-unit id="to_song">
+                <source>to_song</source>
+                <target>do piosenki</target>
+            </trans-unit>
+            <trans-unit id="rated_by">
+                <source>rated_by</source>
+                <target>ocenione przez</target>
+            </trans-unit>
+            <trans-unit id="user">
+                <source>user</source>
+                <target>użytkownika</target>
+            </trans-unit>
+            <trans-unit id="users">
+                <source>users</source>
+                <target>użytkowników</target>
+            </trans-unit>
+            <trans-unit id="your_opinion">
+                <source>your_opinion</source>
+                <target>Twoja ocena: </target>
+            </trans-unit>
+            <trans-unit id="perfomence_already_rated">
+                <source>perfomence_already_rated</source>
+                <target>Ten występ został już przez Ciebie oceniony.</target>
+            </trans-unit>
+            <trans-unit id="log_in_to_comments">
+                <source>log_in_to_comments</source>
+                <target>Zaloguj się, by móc oceniać występy oraz komentować.</target>
+            </trans-unit>
+            <trans-unit id="see_skater">
+                <source>see_skater</source>
+                <target>zobacz łyżwiarza</target>
+            </trans-unit>
+            <trans-unit id="date_adding">
+                <source>date_adding</source>
+                <target>data dodania:</target>
+            </trans-unit>
+            <trans-unit id="no_video_found">
+                <source>no_video_found</source>
+                <target>Nie znaleziono video.</target>
             </trans-unit>
         </body>
     </file>

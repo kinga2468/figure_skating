@@ -1,19 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    Łyżwiarstwo figurowe ~Soliści~
-{% endblock %}
+{% block title %}{{ 'main.title'|trans }}{% endblock %}
 
 {% block body %}
     <div class="all">
-        <div class="container header">
+        <div class="container">
             <div class="row logo">
                 <p class="slogan">
-                    <a href="{{ url('main_index') }}" title="Łyżwiarstwo figurowe">
-                        Łyżwiarstwo figurowe
+                    <a href="{{ url('main_index') }}" title="{{ 'figure_skating'|trans }}">
+                        {{ 'figure_skating'|trans }}
                     </a>
                 </p>
-                <p class="extra">~Soliści~</p>
+                <p class="extra">{{ 'soloists'|trans }}</p>
             </div>
             <div class="row">
                 <div class="col-md-7 col-sm-6 col-xs-12">
@@ -22,7 +20,7 @@
                             <!-- przycisk rozwijania mobilnego menu -->
                             <div class="navbar-header">
                                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                    <span class="sr-only">Rozwiń nawigację</span>
+                                    <span class="sr-only">{{ 'open.nav'|trans }}</span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
@@ -31,18 +29,24 @@
                             <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav">
-                                    <li><a href="{{ url('rules_index') }}" title="zasady">
-                                            Zasady
-                                        </a></li>
-                                    <li><a href="{{ url('video_index') }}" title="występy">
-                                            Występy
-                                        </a></li>
-                                    <li><a href="{{ url('skater_index') }}" title="występy">
-                                            Łyżwiarze
-                                        </a></li>
+                                    <li>
+                                        <a href="{{ url('rules_index') }}" title="{{ 'menu.rules'|trans }}">
+                                            {{ 'menu.rules'|trans }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('video_index') }}" title="{{ 'menu.performances'|trans }}">
+                                            {{ 'menu.performances'|trans }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('skater_index') }}" title="{{ 'menu.skaters'|trans }}">
+                                            {{ 'menu.skaters'|trans }}
+                                        </a>
+                                    </li>
                                 </ul>
-                            </div><!-- /.navbar-collapse -->
-                        </div><!-- /.container-fluid -->
+                            </div>
+                        </div>
                     </nav>
                 </div>
                 <div class="col-md-5 col-sm-6 col-xs-12">
@@ -99,34 +103,34 @@
                         </div>
                         <div class="col-md-7 col-sm-8 col-xs-12 info_skater">
                             <div class="personal_data">
-                                <p>Data urodzenia: {{ skater.date_of_birth }}</p>
-                                <p>Reprezentacja: {{ skater.country_repr }}</p>
-                                <p>Miejsce urodzenia: {{ skater.birth_place }}</p>
-                                <p>Wzrost: {{ skater.height }} cm</p>
-                                <p>Trener: {{ skater.couch }}</p>
+                                <p>{{ 'label.date_of_birth'|trans }}: {{ skater.date_of_birth }}</p>
+                                <p>{{ 'label.country_repr'|trans }}: {{ skater.country_repr }}</p>
+                                <p>{{ 'label.birth_place'|trans }}: {{ skater.birth_place }}</p>
+                                <p>{{ 'label.height'|trans }}: {{ skater.height }} cm</p>
+                                <p>{{ 'label.couch'|trans }}: {{ skater.couch }}</p>
                             </div>
                             <div class="biography">
                                 <p>{{ skater.info }}</p>
                             </div>
                             <div class="records">
                                 <div class="title">
-                                    <p>Rekordy życiowe:</p>
+                                    <p>{{ 'life_records'|trans }}:</p>
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="record">
-                                        <p>Program krótki</p>
+                                        <p>{{ 'short_program2'|trans }}</p>
                                         <p class="number">{{ skater.short_record }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="record">
-                                        <p>Program dowolny</p>
+                                        <p>{{ 'free_program2'|trans }}</p>
                                         <p class="number">{{ skater.free_record }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="record">
-                                        <p>Nota łączna</p>
+                                        <p>{{ 'total_note'|trans }}</p>
                                         <p class="number">{{ skater.total_record }}</p>
                                     </div>
                                 </div>
@@ -136,7 +140,7 @@
                     <div class="row video">
                         {% if paginator.data|length %}
                             <div class="title">
-                                <p>Jego video: </p>
+                                <p>{{ 'his_video'|trans }}</p>
                             </div>
                             {% for row in paginator.data %}
                                 <div class="col-md-3 col-sm-6 col-xs-12">
@@ -164,7 +168,7 @@
                     </div>
                 {% else %}
                     <div>
-                        No skater found!
+                        {{ 'No_skater_found'|trans }}
                     </div>
                 {% endif %}
                 {% include 'default/_paginator_view.html.twig' with {
@@ -180,7 +184,7 @@
         </div>
         <div class="container-fluid">
             <div class="row footer">
-                EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.
+                {{ 'footer'|trans }}.
             </div>
         </div>
     </div>

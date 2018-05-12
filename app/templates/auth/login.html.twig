@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Łyżwiarstwo figurowe ~Soliści~{% endblock %}
+{% block title %}{{ main.title|trans }}{% endblock %}
 
 {% block body %}
     <div class="all">
@@ -20,7 +20,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-4 col-sm-offset-4">
-                                    <h1 class="text-center">{{ 'title.auth_login'|trans }}</h1>
+                                    <h1 class="text-center">{{ 'auth.login.label'|trans }}</h1>
 
                                     {{ form_start(form, { method: 'post', action: path('auth_login_check') }) }}
                                     {#{{ form_label(form.login) }}#}
@@ -47,7 +47,7 @@
             </div>
             <div class="container-fluid">
                 <div class="row footer">
-                    EPI praca licencjacka 2018. Projekt i realizacja: Kinga Bożęcka.
+                    {{ 'footer'|trans }}
                 </div>
             </div>
         </div>
