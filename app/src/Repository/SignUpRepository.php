@@ -9,7 +9,6 @@ use Doctrine\DBAL\Connection;
 use Silex\Application;
 use Utils\Paginator;
 
-
 /**
  * Class SignUpRepository.
  *

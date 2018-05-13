@@ -28,6 +28,7 @@ class RatingRepository
 
     /**
      * Save record.
+     * zapisywanie oceny
      *
      * @param array $rating Rating
      *
@@ -35,16 +36,9 @@ class RatingRepository
      */
     public function save($rating, $videoId, $video)
     {
-//        $videoIsRatedByUser = $this->CheckIfUserRatedVideo($videoId, $userId);
-//        var_dump($videoIsRatedByUser);
-
         if (isset($rating['id']) && ctype_digit((string) $rating['id'])) {
-            // update record
-//            $id = $rating['id'];
-//            unset($rating['id']);
+            // jeśli już ocenione przez użytkownika to nie można ocenić jeszcze raz
             return 0;
-
-//            return $this->db->update('rating', $rating, ['id' => $id]);
         } else {
                 $this->db->insert('rating', $rating);
 
@@ -57,15 +51,16 @@ class RatingRepository
         }
     }
 
+    /*
+     *  zapisywanie średniej ocen dla danego video do tabeli video
+     */
     public function saveAverageRating($video)
     {
         if (isset($video['id']) && ctype_digit((string) $video['id'])) {
             // update record
-
-//            return 0;
             $id = $video['id'];
             unset($video['id']);
-//
+
             return $this->db->update('video', $video, ['id' => $id]);
         } else {
             // add new record
@@ -86,22 +81,8 @@ class RatingRepository
             ->from('rating', 'r');
     }
 
-    public function averageRating($videoId)
-    {
-        $queryBuilder = $this->db->createQueryBuilder();
-
-        $queryBuilder->select('round(avg(r.rate),2) as average_rate')
-            ->from('rating', 'r')
-            ->innerJoin('r', 'video', 'v', 'r.video_id = v.id')
-            ->where('v.id = :id')
-            ->setParameter(':id', $videoId, \PDO::PARAM_INT);
-        $result = $queryBuilder->execute()->fetchAll();
-
-        return !$result ? [] : current($result);
-    }
-
     /**
-     * Check if user rated video.
+     * Sprawdzanie czy dany użytkownik ocenił już video
      */
     public function CheckIfUserRatedVideo($video_id, $userId)
     {
@@ -121,6 +102,9 @@ class RatingRepository
         return false;
     }
 
+    /**
+     * obliczanie ilu użytkoników oceniło video
+     */
     public function howManyUsersRatedThisVideo($videoId)
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -133,7 +117,5 @@ class RatingRepository
         $result = $queryBuilder->execute()->fetchAll();
 
         return !$result ? [] : current($result);
-
-
     }
 }

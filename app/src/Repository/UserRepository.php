@@ -161,10 +161,6 @@ class UserRepository
         else{
             return 0;
         }
-
-//        $userId = $queryBuilder->execute()->fetch();
-//        var_dump("userid",$userId);
-
     }
 
     /**

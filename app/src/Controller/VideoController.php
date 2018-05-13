@@ -35,14 +35,9 @@ class VideoController implements ControllerProviderInterface
     public function connect(Application $app)
     {
         $controller = $app['controllers_factory'];
-//        $controller->get('/', [$this, 'indexAction'])->bind('video_index');
-//        $controller->get('/', [$this, 'findMatchingAction'])
-//            ->bind('video_index');
-
         $controller->get('/page/{page}', [$this, 'indexAction'])
             ->value('page', 1)
             ->bind('video_index');
-
         $controller->get('/{id}/page/{page}', [$this, 'viewAction'])
             ->method('POST|GET')
             ->value('page', 1)
@@ -59,10 +54,8 @@ class VideoController implements ControllerProviderInterface
             ->method('GET|POST')
             ->assert('id', '[1-9]\d*')
             ->bind('video_delete');
-
-        $controller->get('/search/{params}', [$this, 'displayMatchingAction'])
+        $controller->get('/search/{params}', [$this, 'showMatchingAction'])
             ->value('params', '')
-//            ->value('page', 1)
             ->bind('matching_video_paginated');
 
 
@@ -71,6 +64,7 @@ class VideoController implements ControllerProviderInterface
 
     /**
      * Index action.
+     * wyświetlenie wszystkich video
      *
      * @param \Silex\Application                        $app     Silex application
      * @param \Symfony\Component\HttpFoundation\Request $request Request object
@@ -95,9 +89,7 @@ class VideoController implements ControllerProviderInterface
 //                'skater' => $videoRepository->find
                 'type'=> $videoRepository->findType()
             )
-//            ['video_repository' => new VideoRepository($app['db'])]
         )->getForm();
-//        var_dump($video);
         return $app['twig']->render(
             'video/index.html.twig',
             [
@@ -111,6 +103,7 @@ class VideoController implements ControllerProviderInterface
 
     /**
      * View action.
+     * wyświetl jedno video
      *
      * @param \Silex\Application $app Silex application
      * @param string             $id  Element Id
@@ -188,14 +181,13 @@ class VideoController implements ControllerProviderInterface
                 'paginator' => $commentRepository->findVideoCommentsPaginated($id, $page),
                 'form_comment' => $commentForm->createView(),
                 'form_rating' => $ratingForm->createView(),
-//                'average_rating' => $ratingRepository->averageRating($id),
                 'ratedBy' =>$ratingRepository -> howManyUsersRatedThisVideo($id),
                 'video_is_rated'=>$videoIsRatedByUser,
             ]
         );
     }
 
-    public function displayMatchingAction(Application $app, Request $request, $page = 1)
+    public function showMatchingAction(Application $app, Request $request, $page = 1)
     {
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
@@ -208,7 +200,7 @@ class VideoController implements ControllerProviderInterface
         $match = $app['session']->get('form');
         $videoRepository = new VideoRepository($app['db']);
 
-        $video_matching = $videoRepository->getMatching($match);
+        $video_matching = $videoRepository->getMatchingVideo($match);
 
         return $app['twig']->render(
             'video/match.html.twig',
@@ -221,6 +213,7 @@ class VideoController implements ControllerProviderInterface
 
     /**
      * Add action.
+     * dodawanie video (tylko admin)
      *
      * @param \Silex\Application                        $app     Silex application
      * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
@@ -278,6 +271,7 @@ class VideoController implements ControllerProviderInterface
 
     /**
      * Edit action.
+     * edytowanie video (tylko admin)
      *
      * @param \Silex\Application                        $app     Silex application
      * @param int                                       $id      Record id
@@ -347,6 +341,7 @@ class VideoController implements ControllerProviderInterface
 
     /**
      * Delete action.
+     * usuwanie video (tylko admin)
      *
      * @param \Silex\Application                        $app     Silex application
      * @param int                                       $id      Record id

@@ -6,8 +6,6 @@ namespace Repository;
 
 use Doctrine\DBAL\Connection;
 use Utils\Paginator;
-use Silex\Application;
-
 /**
  * Class CommentRepository.
  */
@@ -78,6 +76,10 @@ class CommentRepository
             ->from('comments', 'c');
     }
 
+
+    /*
+     *  funkcja znajdujące komentarze do danego video
+     */
     public function findVideoComments($videoId)
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -88,10 +90,12 @@ class CommentRepository
             ->setParameter(':video_id', $videoId, \PDO::PARAM_INT)
             ->orderBy('c.date_adding', 'DESC')
             ->innerJoin('c', 'users', 'u', 'c.users_id = u.id');
-//        $result = $queryBuilder->execute()->fetchAll();
-//        return $result;
     }
 
+    /*
+     *  funkcja znajdujące komentarze do danego video
+     *  + paginacja
+     */
     public function findVideoCommentsPaginated($videoId, $page = 1)
     {
 
@@ -108,6 +112,7 @@ class CommentRepository
 
     /**
      * Remove record.
+     * usuwanie komentarza
      */
     public function delete($comments)
     {
@@ -116,6 +121,7 @@ class CommentRepository
 
     /**
      * Save record.
+     * zapisywanie komentarza
      *
      * @param array $comment Comment
      *
@@ -135,7 +141,9 @@ class CommentRepository
         }
     }
 
-
+    /*
+     * znajduje videoId po id komentarza
+     */
     public function findVideoByComments($id)
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -148,6 +156,9 @@ class CommentRepository
         return $result;
     }
 
+    /**
+     * znaduje komentarze użytkownika
+     */
     public function getUserComments($id)
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -157,11 +168,13 @@ class CommentRepository
             ->innerJoin('c', 'video', 'v', 'c.video_id = v.id')
             ->where('c.users_id = :id')
             ->setParameter(':id', $id, \PDO::PARAM_INT);
-//        $result = $queryBuilder->execute()->fetchAll();
-//        return $result;
 
     }
 
+    /**
+     * znaduje komentarze użytkownika
+     *  + paginacja
+     */
     public function getUserCommentsPaginated($id, $page = 1)
     {
         $countQueryBuilder = $this->getUserComments($id)

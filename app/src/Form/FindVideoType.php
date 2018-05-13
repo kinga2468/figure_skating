@@ -102,18 +102,18 @@ class FindVideoType extends AbstractType
 
     protected function findOptions($column)
     {
-        $choices = [];
+        $choice = [];
 //        $iterator = 0;
 //        dump($column);
         foreach ($column as $first) {
 //            dump($first);
             foreach ($first as $second){
-                $choices[$second] = $second;
+                $choice[$second] = $second;
 //                $iterator = $iterator +1;
             }
         }
 //        dump($choices);
-        return $choices;
+        return $choice;
     }
 
 }

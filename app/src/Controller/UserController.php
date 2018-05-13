@@ -77,18 +77,11 @@ class UserController implements ControllerProviderInterface
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
 
-//        $token = $app['security.token_storage']->getToken();
-//        if (null !== $token) {
-//            $user = $token->getUser();
-//            $userLogin = $user->getUsername();
-//        }
-
         return $app['twig']->render(
             'user/index.html.twig',
                 [
                     'user' => $signupRepository-> findAll(),
                     'user_id' => $userId,
-//                    'user_id' => $userRepository->findUserId($userLogin),
                     'paginator' => $signupRepository->findAllPaginated($page)
                 ]
         );
@@ -179,7 +172,7 @@ class UserController implements ControllerProviderInterface
 
     /**
      * Edit action
-     * Edycja danych użytkownika przez admina, bez edycji hasła
+     * Edycja loginu przez admina
      *
      * @param Application $app
      * @param $id
@@ -296,7 +289,7 @@ class UserController implements ControllerProviderInterface
 
     /**
      * Change role
-     * Zmienia role użytkownika przez admina (admin, user)
+     * Zmienia roli użytkownika przez admina
      *
      * @param Application $app
      * @param $id

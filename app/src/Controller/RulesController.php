@@ -6,7 +6,6 @@ namespace Controller;
 
 use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
-use Symfony\Component\HttpFoundation\Request;
 use Repository\UserRepository;
 
 /**
@@ -44,7 +43,9 @@ class RulesController implements ControllerProviderInterface
 
         return $app['twig']->render(
             'rules/index.html.twig',
-            ['user_id' => $userId,]
+            [
+                'user_id' => $userId,
+            ]
         );
     }
 }

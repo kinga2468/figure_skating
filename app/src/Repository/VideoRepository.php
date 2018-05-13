@@ -98,6 +98,7 @@ class VideoRepository
     }
     /**
      * Find championship
+     * znajduje zawody do wyszukiwarki
      */
     public function findChampionship()
     {
@@ -109,8 +110,9 @@ class VideoRepository
         return $result;
     }
     /**
- * Find year
- */
+     * Find year
+     * znajduje lata zawodów do wyszukiwarki
+     */
     public function findYear()
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -122,20 +124,22 @@ class VideoRepository
     }
     /**
      * Find skater
+     * znajduje łyżwiarzy do wyszukiwarki (nie używane)
      */
-    public function findSkater()
-    {
-        $queryBuilder = $this->db->createQueryBuilder();
-
-        $queryBuilder->select('s.name')
-            ->from('skaters', 's')
-            ->innerJoin('s', 'video', 'v', 'v.skaters_id = s.id')
-            ->groupBy('s.name');
-        $result = $queryBuilder->execute()->fetchAll();
-        return $result;
-    }
+//    public function findSkater()
+//    {
+//        $queryBuilder = $this->db->createQueryBuilder();
+//
+//        $queryBuilder->select('s.name')
+//            ->from('skaters', 's')
+//            ->innerJoin('s', 'video', 'v', 'v.skaters_id = s.id')
+//            ->groupBy('s.name');
+//        $result = $queryBuilder->execute()->fetchAll();
+//        return $result;
+//    }
     /**
      * Find type
+     * znajduje programy do wyszukiwarki
      */
     public function findType()
     {
@@ -168,6 +172,9 @@ class VideoRepository
         return $result;
     }
 
+    /**
+     * znajduje najnowsze video do slidera
+     */
     public function findNewestVideo()
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -179,6 +186,9 @@ class VideoRepository
         return $result;
     }
 
+    /**
+     * znajduje najpopularniejsze video do slidera
+     */
     public function findPopularVideo()
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -190,6 +200,9 @@ class VideoRepository
         return $result;
     }
 
+    /**
+     * oblicza ile jest dodanych video na strone, używane przy sliderze
+     */
     public function howManyVideo()
     {
         $queryBuilder = $this->db->createQueryBuilder();
@@ -203,10 +216,12 @@ class VideoRepository
                 return (int) $second;
             }
         }
-//        return $result;
     }
 
-    public function getMatching($match)
+    /**
+     * znaduje pasujące video do podanych paramentrów
+     */
+    public function getMatchingVideo($match)
     {
         $queryBuilder = $this->db->createQueryBuilder()
             ->select('*')

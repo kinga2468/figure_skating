@@ -29,7 +29,6 @@ class SkaterController implements ControllerProviderInterface
     public function connect(Application $app)
     {
         $controller = $app['controllers_factory'];
-//        $controller->get('/', [$this, 'indexAction'])->bind('skater_index');
         $controller->get('/page/{page}', [$this, 'indexAction'])
             ->value('page', 1)
             ->bind('skater_index');
@@ -58,6 +57,7 @@ class SkaterController implements ControllerProviderInterface
 
     /**
      * Index action.
+     * wyświetla wszystkich łyżwiarzy
      *
      * @param \Silex\Application                        $app     Silex application
      * @param \Symfony\Component\HttpFoundation\Request $request Request object
@@ -72,12 +72,15 @@ class SkaterController implements ControllerProviderInterface
 
         return $app['twig']->render(
             'skater/index.html.twig',
-            ['paginator' => $skaterRepository->findAllPaginated($page),
-            'user_id' => $userId,]
+            [
+                'paginator' => $skaterRepository->findAllPaginated($page),
+                'user_id' => $userId,
+            ]
         );
     }
     /**
      * View action.
+     * wyświetla jednego łyżwiarza
      *
      * @param \Silex\Application $app Silex application
      * @param string             $id  Element Id
@@ -96,12 +99,14 @@ class SkaterController implements ControllerProviderInterface
                 'id' => $id,
                 'skater' => $skaterRepository->findOneById($id),
                 'user_id' => $userId,
-                'paginator'=>$skaterRepository->findSkaterVideoPaginated($id, $page)]
+                'paginator'=>$skaterRepository->findSkaterVideoPaginated($id, $page)
+            ]
         );
     }
 
     /**
      * Add action.
+     * dodawanie łyżwiarza (tylko admin)
      *
      * @param \Silex\Application                        $app     Silex application
      * @param \Symfony\Component\HttpFoundation\Request $request HTTP Request
@@ -113,12 +118,6 @@ class SkaterController implements ControllerProviderInterface
         $skater = [];
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
-
-//        $token = $app['security.token_storage']->getToken();
-//        if (null !== $token) {
-//            $user = $token->getUser();
-//            $userLogin = $user->getUsername();
-//        }
 
         if($app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
 
@@ -158,6 +157,7 @@ class SkaterController implements ControllerProviderInterface
 
     /**
      * Edit action.
+     * edycja łyżwiarza (tylko admin)
      *
      * @param \Silex\Application                        $app     Silex application
      * @param int                                       $id      Record id
@@ -173,12 +173,6 @@ class SkaterController implements ControllerProviderInterface
         $userId = $userRepository->getLoggedUserId($app);
 
         $skater['date_of_birth'] = new \DateTime($skater['date_of_birth']);
-
-//        $token = $app['security.token_storage']->getToken();
-//        if (null !== $token) {
-//            $user = $token->getUser();
-//            $userLogin = $user->getUsername();
-//        }
 
         if($app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
             if (!$skater) {
@@ -226,6 +220,7 @@ class SkaterController implements ControllerProviderInterface
 
     /**
      * Delete action.
+     * usuwanie łyżwiarza (tylko admin)
      *
      * @param \Silex\Application                        $app     Silex application
      * @param int                                       $id      Record id

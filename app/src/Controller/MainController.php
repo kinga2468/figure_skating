@@ -64,7 +64,6 @@ class MainController implements ControllerProviderInterface
         $userId = $userRepository->getLoggedUserId($app);
         $skaterRepository = new SkaterRepository($app['db']);
         $howManyVideo = $videoRepository->howManyVideo();
-//        dump($howManyVideo);
 
         return $app['twig']->render(
             'main/index.html.twig',
@@ -75,7 +74,6 @@ class MainController implements ControllerProviderInterface
                 'skaters' => $skaterRepository->findAllPaginatedForMainPage($page),
                 'VideoInSlideShow' => $howManyVideo,
             ]
-//                'videoSum' => $videoRepository-> videoRecord(),]
         );
     }
 
@@ -85,6 +83,7 @@ class MainController implements ControllerProviderInterface
      *
      * @param Application $app
      * @param $id
+     * @param int $page
      * @return mixed
      */
     public function viewActionPanelUser(Application $app, $id, $page = 1)
@@ -121,7 +120,7 @@ class MainController implements ControllerProviderInterface
 
     /**
      * Edit action
-     * edytowanie danych użytkownika przez użytkownika (w swoim panelu) - edycja bez hasła
+     * edytowanie loginu przez użytkownika (w swoim panelu)
      *
      * @param Application $app
      * @param $id

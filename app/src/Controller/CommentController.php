@@ -9,7 +9,6 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Repository\CommentRepository;
 use Repository\UserRepository;
-use Repository\VideoRepository;
 use Form\CommentType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -44,6 +43,7 @@ class CommentController implements ControllerProviderInterface
 
     /**
      * Delete action.
+     * Usuwanie komentarza
      *
      * @param \Silex\Application                        $app     Silex application
      * @param int                                       $id      Record id
@@ -58,7 +58,7 @@ class CommentController implements ControllerProviderInterface
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
 
-
+        //nie pozwala użytkonikowi wchodzić na nie swoje strony, no chyba że jest administratorem
         if($comment['users_id'] === $userId or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
             if (!$comment) {
                 $app['session']->getFlashBag()->add(
@@ -108,6 +108,7 @@ class CommentController implements ControllerProviderInterface
 
     /**
      * Edit action.
+     * edytowanie komentarza
      *
      * @param \Silex\Application                        $app     Silex application
      * @param int                                       $id      Record id

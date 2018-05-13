@@ -15,7 +15,7 @@ use Utils\Paginator;
 class SkaterRepository
 {
     /**
-     * Number of items per page.
+     * Number of items for main page.
      *
      * const int NUM_ITEMS
      */
@@ -27,7 +27,7 @@ class SkaterRepository
      */
     const NUM_ITEMS = 10;
     /**
-     * Number of items per page.
+     * Number of video per skater.
      *
      * const int NUM_ITEMS
      */
@@ -82,7 +82,7 @@ class SkaterRepository
     }
 
     /**
-     * Get records paginated.
+     * wyświetlenie łyżwiarzy na stronie głównej
      *
      * @param int $page Current page number
      *
@@ -131,7 +131,7 @@ class SkaterRepository
             ->from('skaters', 's');
     }
     /**
-    * findSkaterVideo($id)
+    * znajduje video należace do danego łyżwiarza
     */
     public function findSkaterVideo($id)
     {
@@ -141,11 +141,11 @@ class SkaterRepository
             ->from('video', 'v')
             ->where('v.skaters_id = :id')
             ->setParameter(':id', $id, \PDO::PARAM_INT);
-//        $result = $queryBuilder->execute()->fetchAll();
-//         $result;
+
     }
     /**
-     * findSkaterVideoPaginated($id)
+     * znajduje video należace do danego łyżwiarza
+     * + paginacja
      */
     public function findSkaterVideoPaginated($id, $page=1)
     {
