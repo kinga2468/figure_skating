@@ -247,24 +247,6 @@ class VideoRepository
     }
 
     /**
-     * znajduje id użytkownika po jego loginie
-     * używane przy save, saveOperation i saveForLimit
-     *
-     * @param $userLogin
-     * @return mixed
-     */
-    protected function findUserIdByLogin($userLogin)
-    {
-        $queryBuilder = $this->db->createQueryBuilder();
-        $queryBuilder->select('u.id')
-            ->from('users', 'u')
-            ->where('u.login = :login')
-            ->setParameter(':login', $userLogin, \PDO::PARAM_INT);
-        $user_id = current($queryBuilder->execute()->fetch());
-        return $user_id;
-    }
-
-    /**
      * Save record.
      */
     public function save($video, $userLogin)
@@ -290,6 +272,7 @@ class VideoRepository
 
     /**
      * SaveForEdit record.
+     * zapis przy edycji video
      */
     public function saveForEdit($video, $userLogin)
     {

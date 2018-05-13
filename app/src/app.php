@@ -98,10 +98,4 @@ $app->register(
     ]
 );
 
-/*login adminadmin2 z hasłem adminadmin2, oraz useruser2 z hasłem useruser2*/
-
-//dump($app['security.encoder.bcrypt']->encodePassword('adminadmin2', ''));
-//dump($app['security.encoder.bcrypt']->encodePassword('useruser2', ''));
-
-
 return $app;
