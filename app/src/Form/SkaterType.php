@@ -29,17 +29,17 @@ class SkaterType extends AbstractType
             [
                 'label' => 'label.name',
                 'required' => true,
-                'error_bubbling'=> true,
+//                'error_bubbling'=> true,
                 'attr' => [
                     'max_length' => 60,
                 ],
                 'constraints' => [
                     new Assert\NotBlank(
-                        ['groups' => ['skater-default']]
+//                        ['groups' => ['skater-default']]
                     ),
                     new Assert\Length(
                         [
-                            'groups' => ['skater-default'],
+//                            'groups' => ['skater-default'],
                             'min' => 2,
                             'minMessage' => 'validators_skater_name_min',
                             'max' => 60,
@@ -262,11 +262,11 @@ class SkaterType extends AbstractType
                 ],
                 'constraints' => [
                     new Assert\NotBlank(
-                        ['groups' => ['skater-default']]
+//                        ['groups' => ['skater-default']]
                     ),
                     new Assert\Length(
                         [
-                            'groups' => ['skater-default'],
+//                            'groups' => ['skater-default'],
                             'min' => 2,
                             'minMessage' => 'validators_birth_place_min',
                             'max' => 45,

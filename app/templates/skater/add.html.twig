@@ -1,4 +1,6 @@
 {% extends 'base.html.twig' %}
+{% form_theme form with ['bootstrap_3_horizontal_layout.html.twig'] %}
+
 
 {% block title %}{{ 'main.title'|trans }}{% endblock %}
 
@@ -90,15 +92,14 @@
                 </div>
             </div>
             <div class="container delete_comment">
-                {% form_theme form with ['bootstrap_3_horizontal_layout.html.twig', 'form/form_errors.html.twig'] %}
-                {% if error is defined and error|length %}
-                    {% include 'default/_single_alert_message.html.twig' with {
-                        is_single_message: true,
-                        is_dismissible: false,
-                        type: 'danger',
-                        message: error,
-                    } %}
-                {% endif %}
+                {#{% if error is defined and error|length %}#}
+                    {#{% include 'default/_single_alert_message.html.twig' with {#}
+                        {#is_single_message: true,#}
+                        {#is_dismissible: false,#}
+                        {#type: 'danger',#}
+                        {#message: error,#}
+                    {#} %}#}
+                {#{% endif %}#}
                 <section class="outer-wrapper">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
@@ -143,6 +144,7 @@
                                 </div>
                                 <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
                                 {{ form_end(form) }}
+                                {#{% form_theme form with 'form/form_errors.html.twig' %}#}
                                 <div class="col-md-1 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-4  col-xs-offset-0 back_div">
                                     <a class="back" href="{{ url('skater_index') }}" title="{{ 'back.to.list'|trans }}">
                                         {{ 'back.to.list'|trans }}

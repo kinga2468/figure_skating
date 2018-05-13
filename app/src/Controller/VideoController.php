@@ -173,7 +173,7 @@ class VideoController implements ControllerProviderInterface
 //                    'message' => 'message.video_successfully_rated',
 //                ]
 //            );
-            echo "<meta http-equiv='Refresh' content='0'/>";
+//            echo "<meta http-equiv='Refresh' content='0'/>";
         }
 
         $videoIsRatedByUser = $ratingRepository->CheckIfUserRatedVideo($id, $userId);

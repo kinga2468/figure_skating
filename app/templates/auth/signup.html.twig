@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ main.title|trans }}{% endblock %}
+{% block title %}{{ 'main.title'|trans }}{% endblock %}
 
 {% block body %}
     <div class="all">
+        {% form_theme form with ['bootstrap_3_horizontal_layout.html.twig'] %}
+        {#{% if error is defined and error|length %}#}
+            {#{% include 'default/_single_alert_message.html.twig' with {#}
+                {#is_single_message: true,#}
+                {#is_dismissible: false,#}
+                {#type: 'danger',#}
+                {#message: error,#}
+            {#} %}#}
+        {#{% endif %}#}
         <div class="body-login">
             <div class="container">
-                {% form_theme form with ['bootstrap_3_horizontal_layout.html.twig', 'form/form_errors.html.twig'] %}
-                {% if error is defined and error|length %}
-                    {% include 'default/_single_alert_message.html.twig' with {
-                        is_single_message: true,
-                        is_dismissible: false,
-                        type: 'danger',
-                        message: error,
-                    } %}
-                {% endif %}
                 <section id="signupform" class="outer-wrapper">
                     <div class="inner-wrapper">
                         <div class="container">
@@ -33,7 +33,7 @@
                                     <input type="submit" value="{{ 'action.register'|trans }}" class="btn btn-success" />
 
                                     {{ form_end(form) }}
-                                    {% form_theme form with 'form/form_errors.html.twig' %}
+                                    {# form_theme form with 'form/form_errors.html.twig' %}#}
 
                                     <a class ="btn btn btn-danger" type="submit" href="{{ url('main_index') }}" title="{{ 'back.to.list'|trans }}">
                                         {{ 'back.to.list'|trans }}
@@ -47,7 +47,7 @@
             </div>
             <div class="container-fluid">
                 <div class="row footer">
-                    {{ footer|trans }}
+                    {{ 'footer'|trans }}
                 </div>
             </div>
         </div>

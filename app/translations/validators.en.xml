@@ -108,55 +108,55 @@
             </trans-unit>
             <trans-unit id="validators_country_repr_min">
                 <source>validators_country_repr_min</source>
-                <target>The value of the "Name and surname" field is too short.</target>
+                <target>The value of the "Representation" field is too short.</target>
             </trans-unit>
             <trans-unit id="validators_country_repr_max">
                 <source>validators_country_repr_max</source>
-                <target>Wartość pola "Reprezentacja" jest za długa.</target>
+                <target>The value of the "Representation" field is too long.</target>
             </trans-unit>
             <trans-unit id="validators_country_repr_pattern">
                 <source>validators_country_repr_pattern</source>
-                <target>Wartość pola "Reprezentacja" zawiera nie dozwolone elementy.</target>
+                <target>The value of the "Representation" field contains not allowed elements.</target>
             </trans-unit>
             <trans-unit id="validators_info_min">
                 <source>validators_info_min</source>
-                <target>The value of the "Name and surname" field is too short.</target>
+                <target>The value of the "Biography" field is too short.</target>
             </trans-unit>
             <trans-unit id="validators_info_max">
                 <source>validators_info_max</source>
-                <target>Wartość pola "Biografia" jest za długa.</target>
+                <target>The value of the "Biography" field is too long.</target>
             </trans-unit>
             <trans-unit id="validators_couch_min">
                 <source>validators_couch_min</source>
-                <target>The value of the "Name and surname" field is too short.</target>
+                <target>The value of the "Couch" field is too short.</target>
             </trans-unit>
             <trans-unit id="validators_couch_max">
                 <source>validators_couch_max</source>
-                <target>Wartość pola "Trener" jest za długa.</target>
+                <target>The value of the "Couch" field is too long.</target>
             </trans-unit>
             <trans-unit id="validators_couch_pattern">
                 <source>validators_couch_pattern</source>
-                <target>Wartość pola "Trener" zawiera nie dozwolone elementy.</target>
+                <target>The value of the "Couch" field contains not allowed elements.</target>
             </trans-unit>
             <trans-unit id="validators_img_min">
                 <source>validators_img_min</source>
-                <target>The value of the "Name and surname" field is too short.</target>
+                <target>The value of the "Image" field is too short.</target>
             </trans-unit>
             <trans-unit id="validators_img_max">
                 <source>validators_img_max</source>
-                <target>Wartość pola "Obrazek vide" jest za długa.</target>
+                <target>The value of the "Image" field is too long.</target>
             </trans-unit>
             <trans-unit id="validators_birth_place_min">
                 <source>validators_birth_place_min</source>
-                <target>The value of the "Name and surname" field is too short.</target>
+                <target>The value of the "Birth place" field is too short.</target>
             </trans-unit>
             <trans-unit id="validators_birth_place_max">
                 <source>validators_birth_place_max</source>
-                <target>Wartość pola "Miejsce urodzenia" jest za długa.</target>
+                <target>The value of the "Birth place" field is too long.</target>
             </trans-unit>
             <trans-unit id="validators_birth_place_pattern">
                 <source>validators_birth_place_pattern</source>
-                <target>Wartość pola "Miejsce urodzenia" zawiera nie dozwolone elementy.</target>
+                <target>The value of the "Birth place" field contains not allowed elements.</target>
             </trans-unit>
         </body>
     </file>
