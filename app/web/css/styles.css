@@ -223,25 +223,13 @@ a:focus{text-decoration:none;}
 .shadow-rules{background: rgba(0,0,102,0.5); color:white; font-size:1.5em; text-align: center;}
 .shadow-rules .title{color:white; font-size:1.2em; text-align: center;  margin:0; padding:7px; }
 
-/*.baner{background-image: url("../images/skates.jpg"); height:210px; background-repeat: no-repeat;*/
-    /*background-position: 0 70%; background-size: cover; color:white; }*/
-/*.shadow-image{background: rgba(0,0,102,0.7); color:white; height:100%;*/
-    /*font-size:1.3em; !*text-align: center;*!*/
-    /*padding-top:20px;*/
-/*}*/
-
-/*.shadow-image .row .title{color:white; font-size:1.3em; text-align: center;  margin:0; padding:0; padding-bottom:20px;}*/
-
-/*.rules .row.title {background-color: black; opacity: 0.2;}*/
-/*.rules .row.title p{!*background-color: #383888;*! color:white; font-size:1.7em; text-align: center; }*/
-
 .nav.nav-tabs.nav-justified{margin:20px 0; font-size:1.3em;}
 .tab-pane .title{margin:15px 15px 15px 25px;}
 .nav-tabs a{color:#383888;}
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{color:#6666FF;}
 
-.tab-content p{font-family: 'Open Sans', sans-serif;}
-
+.tab-content p{font-family: 'Open Sans', sans-serif; padding-top: 6px;}
+.tab-content .title{padding-top: 20px;}
 
 
 /*zakładka panel////////////////////////////////////////////////////////*/

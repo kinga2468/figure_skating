@@ -5,7 +5,7 @@
  * @copyright (c) 2016 Tomasz Chojna
  * @link http://epi.chojna.info.pl
  */
-
+umask(0000);
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 
