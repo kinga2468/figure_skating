@@ -47,7 +47,7 @@ $app->register(
             'host'      => 'localhost',
             'dbname'    => 'baza',
             'user'      => 'root',
-            'password'  => 'U7b4b7sd',
+            'password'  => '',
             'charset'   => 'utf8',
             'collate' => 'utf8mb4_unicode_ci',
             'driverOptions' => [

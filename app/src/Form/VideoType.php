@@ -167,8 +167,8 @@ class VideoType extends AbstractType
                 'label' => 'label.type',
                 'required' => true,
                 'choices'  => array(
-                    'short_program' => 'short_program',
-                    'free_program' => 'free_program'
+                    'short_program' => 'program krótki',
+                    'free_program' => 'program dowolny'
                 )
             ]
         );

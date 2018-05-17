@@ -118,4 +118,23 @@ class RatingRepository
 
         return !$result ? [] : current($result);
     }
+
+    /**
+     * funkcja averageRating,
+     * oblicza średnią ocenę video
+     * używane by zapisać wynik do bazy
+     */
+    public function averageRating($videoId)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+
+        $queryBuilder->select('round(avg(r.rate),2) as average_rate')
+            ->from('rating', 'r')
+            ->innerJoin('r', 'video', 'v', 'r.video_id = v.id')
+            ->where('v.id = :id')
+            ->setParameter(':id', $videoId, \PDO::PARAM_INT);
+        $result = $queryBuilder->execute()->fetchAll();
+
+        return !$result ? [] : current($result);
+    }
 }

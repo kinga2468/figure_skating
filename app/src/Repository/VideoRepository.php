@@ -301,4 +301,22 @@ class VideoRepository
         return $this->db->delete('video', ['id' => $video['id']]);
     }
 
+    /**
+     * znajduje id użytkownika po jego loginie
+     * używane przy zapisywaniu
+     *
+     * @param $userLogin
+     * @return mixed
+     */
+    protected function findUserIdByLogin($userLogin)
+    {
+        $queryBuilder = $this->db->createQueryBuilder();
+        $queryBuilder->select('u.id')
+            ->from('users', 'u')
+            ->where('u.login = :login')
+            ->setParameter(':login', $userLogin, \PDO::PARAM_INT);
+        $user_id = current($queryBuilder->execute()->fetch());
+        return $user_id;
+    }
+
 }
