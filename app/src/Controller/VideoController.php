@@ -58,7 +58,6 @@ class VideoController implements ControllerProviderInterface
             ->value('params', '')
             ->bind('matching_video_paginated');
 
-
         return $controller;
     }
 

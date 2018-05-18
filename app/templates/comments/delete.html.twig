@@ -100,11 +100,11 @@
             {% endif %}
             <div class="container delete_comment">
                 <p>{{ 'delete.comments'|trans }}</p>
-                <p>"{{ 'comment.text' }}"</p>
+                <p>"{{ comment.text }}"</p>
 
                 <div class="akcje">
                     <div class="form">
-                        {{ form_start(form, { method: 'post', action: url('comment_delete', {'id': comment.id}) }) }}
+                        {{ form_start(form, { method: 'post', action: url('comment_delete', {'videoId': comment.video_id, 'id': comment.id}) }) }}
                         {{ form_widget(form) }}
                     </div>
                     <input type="submit" value="{{ 'delete'|trans }}" class="btn btn-primary" />

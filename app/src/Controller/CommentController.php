@@ -29,11 +29,11 @@ class CommentController implements ControllerProviderInterface
     public function connect(Application $app)
     {
         $controller = $app['controllers_factory'];
-        $controller->match('/{id}/delete', [$this, 'deleteAction'])
+        $controller->match('/{videoId}/comment/{id}/delete', [$this, 'deleteAction'])
             ->method('GET|POST')
             ->assert('id', '[1-9]\d*')
             ->bind('comment_delete');
-        $controller->match('/{id}/edit', [$this, 'editAction'])
+        $controller->match('/{videoId}/comment/{id}/edit', [$this, 'editAction'])
             ->method('GET|POST')
             ->assert('id', '[1-9]\d*')
             ->bind('comment_edit');
@@ -51,7 +51,7 @@ class CommentController implements ControllerProviderInterface
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      */
-    public function deleteAction(Application $app, $id, Request $request)
+    public function deleteAction(Application $app, $id, Request $request, $videoId)
     {
         $commentRepository = new CommentRepository($app['db']);
         $comment = $commentRepository->findOneById($id);
@@ -87,7 +87,7 @@ class CommentController implements ControllerProviderInterface
                 );
 
                 return $app->redirect(
-                    $app['url_generator']->generate('video_index', ['id' => $id]),
+                    $app['url_generator']->generate('video_view', ['id' => $videoId]),
                     301
                 );
             }
@@ -116,13 +116,13 @@ class CommentController implements ControllerProviderInterface
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP Response
      */
-    public function editAction(Application $app, $id, Request $request)
+    public function editAction(Application $app, $id, Request $request, $videoId)
     {
         $commentRepository = new commentRepository($app['db']);
         $comment = $commentRepository->findOneById($id);
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
-        $videoId = $commentRepository->findVideoByComments($id);
+//        $videoId = $commentRepository->findVideoByComments($id);
 
         //nie pozwala użytkonikowi wchodzić na nie swoje strony, no chyba że jest administratorem
         if($comment['users_id'] === $userId or $app['security.authorization_checker']->isGranted('ROLE_ADMIN')) {
@@ -153,7 +153,10 @@ class CommentController implements ControllerProviderInterface
                     ]
                 );
 
-                return $app->redirect($app['url_generator']->generate('video_index'), 301);
+                return $app->redirect(
+                    $app['url_generator']->generate('video_view', ['id' => $videoId]),
+                    301
+                );
             }
 
             return $app['twig']->render(

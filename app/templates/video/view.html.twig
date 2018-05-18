@@ -221,10 +221,10 @@
                                     </div>
                                     <div class="col-md-1 col-sm-1 col-xs-12 link">
                                         {% if is_granted('IS_AUTHENTICATED_FULLY') and user_id==line.users_id or is_granted('ROLE_ADMIN')%}
-                                            <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
+                                            <a class="edit" href="{{ url('comment_delete', {'id': line.id, 'videoId': line.video_id}) }}" title="{{ 'delete'|trans }}">
                                                 {{ 'delete'|trans }}
                                             </a>
-                                            <a class="edit" href="{{ url('comment_edit', {'id': line.id}) }}" title="{{ 'edit'|trans }}">
+                                            <a class="edit" href="{{ url('comment_edit', {'id': line.id, 'videoId': line.video_id}) }}" title="{{ 'edit'|trans }}">
                                                 {{ 'edit'|trans }}
                                             </a>
                                         {% endif %}
@@ -234,10 +234,12 @@
                         {% endif %}
                     </div>
                 </div>
-                {% include 'default/_paginator_view.html.twig' with {
-                    paginator: paginator,
-                    route_name: 'video_view',
-                } %}
+                {% if paginator.data|length %}
+                    {% include 'default/_paginator_view.html.twig' with {
+                        paginator: paginator,
+                        route_name: 'video_view',
+                    } %}
+                {% endif %}
                 <div class="col-md-2 col-sm-2 col-xs-2 skater_view">
                     <a class="back" href="{{ url('video_index') }}" title="{{ 'back.to.list'|trans }}">
                         {{ 'back.to.list'|trans }}

@@ -137,10 +137,10 @@
                                     {{ line.text }}
                                 </div>
                                 <div class="col-md-1 col-sm-1 col-xs-12 link">
-                                    <a class="edit" href="{{ url('comment_delete', {'id': line.id}) }}" title="{{ 'delete'|trans }}">
+                                    <a class="edit" href="{{ url('comment_delete', {'videoId': line.video_id, 'id': line.id}) }}" title="{{ 'delete'|trans }}">
                                         {{ 'delete'|trans }}
                                     </a>
-                                    <a class="edit" href="{{ url('comment_edit', {'id': line.id}) }}" title="{{ 'edit'|trans }}">
+                                    <a class="edit" href="{{ url('comment_edit', {'videoId': line.video_id, 'id': line.id}) }}" title="{{ 'edit'|trans }}">
                                         {{ 'edit'|trans }}
                                     </a>
                                 </div>
@@ -148,10 +148,12 @@
                         {% endfor %}
                     {% endif %}
                 </div>
-                {% include 'default/_paginator_view.html.twig' with {
-                    paginator: paginator,
-                    route_name: 'user_view',
-                } %}
+                {% if paginator.data|length %}
+                    {% include 'default/_paginator_view.html.twig' with {
+                        paginator: paginator,
+                        route_name: 'user_view',
+                    } %}
+                {% endif %}
                 <div class="back_div">
                     <a class="back" href="{{ url('main_index') }}" title="{{ 'back.to.list'|trans }}">
                         {{ 'back.to.list'|trans }}
