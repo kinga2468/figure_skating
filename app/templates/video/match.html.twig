@@ -117,6 +117,8 @@
                                     </div>
                                 </a>
                             {% endfor %}
+                        {% else %}
+                            <p class="no_results">{{ 'No_results'|trans }}</p>
                         {% endif %}
                     </div>
                 </div>

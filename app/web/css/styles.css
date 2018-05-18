@@ -404,6 +404,8 @@ textarea{font-family: Oswald, helvetica, arial, sans-serif;}
 .info .date{font-size:1.2em; text-align: left; padding: 0 0 5px 5px;}
 .videoAlreadyRated p{font-size:1.2em;}
 
+.no_results{text-align: center; font-size: 1.5em;}
+
 /*.rating{margin:35px 0; width:100%;}*/
 /**/
 /*.box p{text-align: left;}*/
@@ -490,7 +492,7 @@ textarea{width:100%; margin:10px 0; border-radius:4px;}
 
     .rule{height:50px;}
     .shadow-rules{height:50px;}
-    .rules{padding-top:90px;}
+    .rules{padding-top:0px;}
     .rules .back_div{padding:20px 0 30px 0;}
 
     .skater_one {

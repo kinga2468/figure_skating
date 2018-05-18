@@ -442,6 +442,10 @@
                 <source>no_video_found</source>
                 <target>Video not found.</target>
             </trans-unit>
+            <trans-unit id="No_results">
+                <source>No_results</source>
+                <target>No results.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

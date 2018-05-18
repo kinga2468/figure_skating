@@ -216,15 +216,15 @@
             </trans-unit>
             <trans-unit id="label.short_record">
                 <source>label.short_record</source>
-                <target>Record - program krótki</target>
+                <target>Rekord - program krótki</target>
             </trans-unit>
             <trans-unit id="label.free_record">
                 <source>label.free_record</source>
-                <target>Record - program dowolny</target>
+                <target>Rekord - program dowolny</target>
             </trans-unit>
             <trans-unit id="label.total_record">
                 <source>label.total_record</source>
-                <target>Record - nota łączna</target>
+                <target>Rekord - nota łączna</target>
             </trans-unit>
             <trans-unit id="label.rate">
                 <source>label.rate</source>
@@ -441,6 +441,10 @@
             <trans-unit id="no_video_found">
                 <source>no_video_found</source>
                 <target>Nie znaleziono video.</target>
+            </trans-unit>
+            <trans-unit id="No_results">
+                <source>No_results</source>
+                <target>Brak wyników.</target>
             </trans-unit>
         </body>
     </file>

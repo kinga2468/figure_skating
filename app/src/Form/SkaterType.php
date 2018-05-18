@@ -48,7 +48,7 @@ class SkaterType extends AbstractType
                     ),
                     new Assert\Regex(
                         [
-                            'pattern'     => '/^[a-ż ]+$/i',
+                            'pattern'     => '/^[a-żA-ż ]+$/i',
                             'htmlPattern' => '^[a-żA-Ż ]+$',
                             'message' => 'validators_skater_name_pattern'
                         ]
