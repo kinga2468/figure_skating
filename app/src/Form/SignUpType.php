@@ -109,9 +109,9 @@ class SignUpType extends AbstractType
                 'validation_groups' =>
                     [
                         'login-default',
-                        'name-default',
-                        'email-default',
-                        'surname-default',
+//                        'name-default',
+//                        'email-default',
+//                        'surname-default',
                         'password-default'
                     ],
                 'login_repository' => null,

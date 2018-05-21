@@ -115,6 +115,7 @@ class SkaterController implements ControllerProviderInterface
      */
     public function addAction(Application $app, Request $request)
     {
+
         $skater = [];
         $userRepository = new UserRepository($app['db']);
         $userId = $userRepository->getLoggedUserId($app);
@@ -127,9 +128,13 @@ class SkaterController implements ControllerProviderInterface
             )->getForm();
             $form->handleRequest($request);
 
+            dump($form->getErrors());
+
             if ($form->isSubmitted() && $form->isValid()) {
                 $skaterRepository = new SkaterRepository($app['db']);
                 $skaterRepository->save($form->getData());
+
+//                dump($form->getErrors());
 
                 $app['session']->getFlashBag()->add(
                     'messages',

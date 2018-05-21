@@ -13,6 +13,7 @@ use Controller\SkaterController;
 use Controller\UserController;
 use Controller\CommentController;
 
+$app->mount('/', new MainController());
 $app->mount('/auth', new AuthController());
 $app->mount('/main', new MainController());
 $app->mount('/rules', new RulesController());

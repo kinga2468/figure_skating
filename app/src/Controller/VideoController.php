@@ -148,6 +148,7 @@ class VideoController implements ControllerProviderInterface
             ['rating_repository' => new RatingRepository($app['db'])]
         )->getForm();
         $ratingForm->handleRequest($request);
+
         if ($ratingForm->isSubmitted() && $ratingForm->isValid()) {
             $ratingRepository = new RatingRepository($app['db']);
             $rating = $ratingForm->getData();

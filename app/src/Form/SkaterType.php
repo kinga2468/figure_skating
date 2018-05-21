@@ -13,6 +13,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Validator\Constraints as CustomAssert;
+
 /**
  * Class SkaterType.
  */
@@ -40,14 +42,15 @@ class SkaterType extends AbstractType
                     new Assert\Length(
                         [
                             'groups' => ['skater-default'],
-                            'min' => 2,
+                            'min' => 8,
                             'minMessage' => 'validators_skater_name_min',
-                            'max' => 60,
+                            'max' => 32,
                             'maxMessage' => 'validators_skater_name_max',
                         ]
                     ),
                     new Assert\Regex(
                         [
+                            'groups' => ['skater-default'],
                             'pattern'     => '/^[a-żA-ż ]+$/i',
                             'htmlPattern' => '^[a-żA-Ż ]+$',
                             'message' => 'validators_skater_name_pattern'
@@ -91,6 +94,7 @@ class SkaterType extends AbstractType
                     ),
                     new Assert\Regex(
                         [
+                            'groups' => ['skater-default'],
                             'pattern'     => '/^[a-ż ]+$/i',
                             'htmlPattern' => '^[a-żA-Ż ]+$',
                             'message' => 'validators_country_repr_pattern'
@@ -150,6 +154,7 @@ class SkaterType extends AbstractType
                     ),
                     new Assert\Regex(
                         [
+                            'groups' => ['skater-default'],
                             'pattern'     => '/^[a-ż ]+$/i',
                             'htmlPattern' => '^[a-żA-Ż ]+$',
                             'message' => 'validators_couch_pattern'
@@ -171,6 +176,7 @@ class SkaterType extends AbstractType
                     ),
                     new Assert\Range(
                         [
+                            'groups' => ['skater-default'],
                             'min' => 1,
                             'minMessage' => 'validators_record_min',
                             'max' => 500,
@@ -193,6 +199,7 @@ class SkaterType extends AbstractType
                     ),
                     new Assert\Range(
                         [
+                            'groups' => ['skater-default'],
                             'min' => 1,
                             'minMessage' => 'validators_record_min',
                             'max' => 500,
@@ -215,6 +222,7 @@ class SkaterType extends AbstractType
                     ),
                     new Assert\Range(
                         [
+                            'groups' => ['skater-default'],
                             'min' => 1,
                             'minMessage' => 'validators_record_min',
                             'max' => 500,
@@ -275,6 +283,7 @@ class SkaterType extends AbstractType
                     ),
                     new Assert\Regex(
                         [
+                            'groups' =>['skater-default'],
                             'pattern'     => '/^[a-ż ]+$/i',
                             'htmlPattern' => '^[a-żA-Ż ]+$',
                             'message' => 'validators_birth_place_pattern'
@@ -296,6 +305,7 @@ class SkaterType extends AbstractType
                     ),
                     new Assert\Range(
                         [
+                            'groups' => ['skater-default'],
                             'min' => 100,
                             'minMessage' => 'validators_height_min',
                             'max' => 300,
@@ -317,11 +327,13 @@ class SkaterType extends AbstractType
     {
         $resolver->setDefaults(
             [
-                'validation_groups' => ['skater-default'],
+                'validation_groups' => [
+                    'skater-default',
+                ],
+                'skater_repository' => null,
             ]
         );
     }
-
 
     /**
      * {@inheritdoc}

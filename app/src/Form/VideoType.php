@@ -120,6 +120,7 @@ class VideoType extends AbstractType
                     ),
                     new Assert\Regex(
                         [
+                            'groups' => ['video-default'],
                             'pattern'     => '/^[a-ż ]+$/i',
                             'htmlPattern' => '^[a-żA-Ż ]+$',
                             'message' => 'validators_championship_pattern'
@@ -152,6 +153,7 @@ class VideoType extends AbstractType
                     ),
                     new Assert\Regex(
                         [
+                            'groups' => ['video-default'],
                             'pattern'     => '/^[0-9]+$/i',
                             'htmlPattern' => '^[0-9]+$',
                             'message' => 'validators_year_championship_pattern'
@@ -220,7 +222,7 @@ class VideoType extends AbstractType
         $resolver->setDefaults(
             [
                 'validation_groups' => 'video-default',
-                'skaters_repository' => null,
+                'video_repository' => null,
             ]
         );
     }

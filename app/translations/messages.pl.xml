@@ -412,7 +412,7 @@
             </trans-unit>
             <trans-unit id="user">
                 <source>user</source>
-                <target>użytkownika</target>
+                <target>użytkownik</target>
             </trans-unit>
             <trans-unit id="users">
                 <source>users</source>
