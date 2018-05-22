@@ -25,6 +25,9 @@ a:focus{text-decoration:none;}
 .slogan a{color:black;}
 .slogan:focus{text-decoration:none;}
 .logo .extra{font-family: 'Dancing Script', helvetica, arial, sans-serif; font-size:2.4em; color:#6666FF; margin-top:-8px;}
+.logo .extra a{color:#6666FF;}
+.logo .extra a:hover{color:#6666FF;}
+.logo .extra a:focus{color:#6666FF;}
 
 /*.navbar-nav{margin:0 auto;}*/
 .navbar{background-color:white; color:black; font-size:1.5em; border:none;}
