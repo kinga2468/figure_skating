@@ -36,31 +36,22 @@
         });
     </script>
     <script>
-        var countDownDate = new Date("Oct 20, 2018 09:01:00").getTime();
-        // aktualizuj co sekunde
+        var counterDate = new Date("Oct 20, 2018 09:01:00").getTime();
+
         var x = setInterval(function() {
-            // dzisiejsza data i godzina
-            var now = new Date().getTime();
 
-            // znajdź ilość czasu między docelowymn czasem a dzisiejszym dniej
-            var distance = countDownDate - now;
+            var currentTime = new Date().getTime();
 
-            // obliczanie dni, godzin, minut i sekund
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            var difference = counterDate - currentTime;
 
-            // umieść je w elemencie o id="demo"
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("minutes").innerHTML = minutes;
+            var day = Math.floor(difference / (1000 * 3600 * 24));
+            var hour = Math.floor((difference % (1000 * 3600 * 24)) / (1000 * 3600));
+            var minute = Math.floor((difference % (1000 * 3600)) / (1000 * 60));
 
-            // jeśli odliczanie się zakończy, wypisz
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("demo").innerHTML = "Zawody się rozpoczynają!";
-            }
+            document.getElementById("day").innerHTML = day;
+            document.getElementById("hour").innerHTML = hour;
+            document.getElementById("minute").innerHTML = minute;
+
         }, 1000);
     </script>
 </head>
