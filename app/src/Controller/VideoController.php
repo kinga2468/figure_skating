@@ -240,7 +240,7 @@ class VideoController implements ControllerProviderInterface
                 ['skaters_repository' => new SkaterRepository($app['db'])]
             )->getForm();
             $form->handleRequest($request);
-
+            
             if ($form->isSubmitted() && $form->isValid()) {
                 $videoRepository = new VideoRepository($app['db']);
                 $videoRepository->save($form->getData(), $userLogin);

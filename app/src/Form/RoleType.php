@@ -29,6 +29,7 @@ class RoleType extends AbstractType
             ChoiceType::class,
             [
                 'label' => 'label.role',
+                'error_bubbling'=> true,
                 'choices'  => [
                     'admin' => 1,
                     'user' => 2,

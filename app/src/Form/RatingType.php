@@ -30,6 +30,7 @@ class RatingType extends AbstractType
                     'required' => true,
                     'attr' => array('class' => 'form-control'),
                     'placeholder' => 'choose_rating',
+                    'error_bubbling'=> true,
                     'choices' => $this->findOptions(),
                     'constraints' => [
                         new Assert\NotBlank(

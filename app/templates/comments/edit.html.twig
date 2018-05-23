@@ -110,6 +110,8 @@
                     <div class="form">
                         {{ form_start(form, { method: 'post', action: url('comment_edit', {'videoId': comment.video_id, 'id': comment.id}) }) }}
                         {#{{ form_label(form.login) }}#}
+                        {{ form_errors(form) }}
+
                         {{ form_widget(form.text) }}
                     </div>
                     <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />

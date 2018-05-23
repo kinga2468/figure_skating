@@ -110,8 +110,12 @@
                                 {#<h1>{{ 'title.user_delete'|trans({'%id%': user.id}) }} {{ user.login}}</h1>#}
                                 <div class="form">
                                     {{ form_start(form, { method: 'post', action: url('user_panel_edit', {'id': user.id}) }) }}
+
+                                    {{ form_errors(form) }}
+
                                     {{ form_label(form.login) }}
                                     {{ form_widget(form.login) }}
+
                                 </div>
                                 <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
                                 {{ form_end(form) }}

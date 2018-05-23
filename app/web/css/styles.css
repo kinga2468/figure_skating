@@ -493,8 +493,8 @@ textarea{width:100%; margin:10px 0; border-radius:4px;}
     .body-login .btn.btn-danger{margin:10px 0 20px 15px;}
     #signupform .btn.btn-danger{margin:10px 0 20px 15px;}
 
-    .rule{height:50px;}
-    .shadow-rules{height:50px;}
+    .rule{height:auto;}
+    .shadow-rules{height:auto;}
     .rules{padding-top:0px;}
     .rules .back_div{padding:20px 0 30px 0;}
 
@@ -582,8 +582,9 @@ textarea{width:100%; margin:10px 0; border-radius:4px;}
     .records{margin-top:20px;}
     /*.image_video{float:none; margin:8px auto;}*/
 
-    .image_video{width:212px; height: 180px; margin:8px 6px;}
-    .video .image{ width:202px; height: 118px;}
+    .image_video{width:236px; height: 185px; margin:8px auto;}
+    .video .image{ width:220px; height: 122px; margin: 0 auto;}
+    .video .image img{margin:4px 0 0 0;}
 
     .add_comment{ margin:10px auto; }
     .comment{ margin:10px auto; }

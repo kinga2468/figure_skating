@@ -128,13 +128,9 @@ class SkaterController implements ControllerProviderInterface
             )->getForm();
             $form->handleRequest($request);
 
-            dump($form->getErrors());
-
             if ($form->isSubmitted() && $form->isValid()) {
                 $skaterRepository = new SkaterRepository($app['db']);
                 $skaterRepository->save($form->getData());
-
-//                dump($form->getErrors());
 
                 $app['session']->getFlashBag()->add(
                     'messages',

@@ -110,6 +110,8 @@
                                 <div class="form">
                                     {{ form_start(form, { method: 'post', action: url('skater_edit', {'id': skater.id}) }) }}
 
+                                    {{ form_errors(form) }}
+
                                     {{ form_label(form.img) }}
                                     {{ form_widget(form.img) }}
                                     {{ form_label(form.name) }}

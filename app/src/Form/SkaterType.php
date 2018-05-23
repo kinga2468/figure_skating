@@ -155,8 +155,8 @@ class SkaterType extends AbstractType
                     new Assert\Regex(
                         [
                             'groups' => ['skater-default'],
-                            'pattern'     => '/^[a-ż ]+$/i',
-                            'htmlPattern' => '^[a-żA-Ż ]+$',
+                            'pattern'     => '/^[a-ż, ]+$/i',
+                            'htmlPattern' => '^[a-żA-Ż, ]+$',
                             'message' => 'validators_couch_pattern'
                         ]
                     ),
@@ -170,6 +170,7 @@ class SkaterType extends AbstractType
                 'label' => 'label.short_record',
                 'error_bubbling'=> true,
                 'required' => true,
+                'invalid_message'=>'validators_record_number',
                 'constraints' => [
                     new Assert\NotBlank(
                         ['groups' => ['skater-default']]
@@ -193,6 +194,7 @@ class SkaterType extends AbstractType
                 'label' => 'label.free_record',
                 'error_bubbling'=> true,
                 'required' => true,
+                'invalid_message'=>'validators_record_number',
                 'constraints' => [
                     new Assert\NotBlank(
                         ['groups' => ['skater-default']]
@@ -216,6 +218,7 @@ class SkaterType extends AbstractType
                 'label' => 'label.total_record',
                 'error_bubbling'=> true,
                 'required' => true,
+                'invalid_message'=>'validators_record_number',
                 'constraints' => [
                     new Assert\NotBlank(
                         ['groups' => ['skater-default']]
@@ -284,8 +287,8 @@ class SkaterType extends AbstractType
                     new Assert\Regex(
                         [
                             'groups' =>['skater-default'],
-                            'pattern'     => '/^[a-ż ]+$/i',
-                            'htmlPattern' => '^[a-żA-Ż ]+$',
+                            'pattern'     => '/^[a-ż, ]+$/i',
+                            'htmlPattern' => '^[a-żA-Ż, ]+$',
                             'message' => 'validators_birth_place_pattern'
                         ]
                     ),
@@ -299,6 +302,7 @@ class SkaterType extends AbstractType
                 'error_bubbling'=> true,
                 'label' => 'label.height',
                 'required' => true,
+                'invalid_message'=>'validators_height_number',
                 'constraints' => [
                     new Assert\NotBlank(
                         ['groups' => ['skater-default']]
@@ -309,7 +313,7 @@ class SkaterType extends AbstractType
                             'min' => 100,
                             'minMessage' => 'validators_height_min',
                             'max' => 300,
-                            'maxMessage' => 'validators_heigh_max',
+                            'maxMessage' => 'validators_height_max',
                         ]
                     ),
                 ],

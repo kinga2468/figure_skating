@@ -38,9 +38,12 @@ class PanelEditType extends AbstractType
                     'max_length' => 32,
                 ],
                 'constraints' => [
-                    new Assert\NotBlank(),
+                    new Assert\NotBlank(
+                        ['groups' => ['login-default']]
+                    ),
                     new Assert\Length(
                         [
+                            'groups' => ['login-default'],
                             'min' => 8,
                             'minMessage' => 'validators_login_min',
                             'max' => 32,
@@ -49,6 +52,7 @@ class PanelEditType extends AbstractType
                     ),
                     new CustomAssert\UniqueLogin(
                         [
+                            'groups' => ['login-default'],
                             'repository' => isset($options['login_repository']) ? $options['login_repository'] : null,
                             'elementId' => isset($options['data']['id']) ? $options['data']['id'] : null,
                         ]

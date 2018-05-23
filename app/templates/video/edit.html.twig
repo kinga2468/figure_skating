@@ -110,6 +110,8 @@
                                 <div class="form">
                                     {{ form_start(form, { method: 'post', action: url('video_edit', {'id': video.id}) }) }}
 
+                                    {{ form_errors(form) }}
+
                                     {{ form_label(form.link) }}
                                     {{ form_widget(form.link) }}
                                     {{ form_label(form.img_video_yt) }}

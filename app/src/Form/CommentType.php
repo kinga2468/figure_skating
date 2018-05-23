@@ -29,19 +29,20 @@ class CommentType extends AbstractType
             [
                 'label' => 'label.text',
                 'required'   => false,
+                'error_bubbling'=> true,
                 'constraints' => [
                     new Assert\NotBlank(
                         ['groups' => ['comment-default']]
                     ),
-                    new Assert\Length(
-                        [
-                            'groups' => ['comment-default'],
-                            'min' => 3,
-                            'minMessage' => 'validators_comment_min',
-                            'max' => 500,
-                            'maxMessage' => 'validators_comment_max',
-                        ]
-                    ),
+//                    new Assert\Length(
+//                        [
+//                            'groups' => ['comment-default'],
+//                            'min' => 3,
+//                            'minMessage' => 'validators_comment_min',
+//                            'max' => 500,
+//                            'maxMessage' => 'validators_comment_max',
+//                        ]
+//                    ),
                 ],
             ]
         );

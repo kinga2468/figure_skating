@@ -112,8 +112,11 @@
                                 <div class="form">
                                     {{ form_start(form, { method: 'post', action: url('user_change', {'id': user.id}) }) }}
                                     {#{{ form_widget(form) }}#}
+                                    {{ form_errors(form) }}
+
                                     {{ form_label(form.role_id) }}
                                     {{ form_widget(form.role_id) }}
+
                                 </div>
                                 <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
                                 {{ form_end(form) }}

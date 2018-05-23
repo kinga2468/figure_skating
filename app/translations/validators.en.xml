@@ -22,21 +22,21 @@
                 <source>validators_password_max</source>
                 <target>The password is too long. It must have a maximum of 32 characters.</target>
             </trans-unit>
-            <trans-unit id="validators_heigh_max">
-                <source>validators_heigh_max</source>
-                <target>The value can not exceed 300.</target>
+            <trans-unit id="validators_height_max">
+                <source>validators_height_max</source>
+                <target>The height value can not exceed 300.</target>
             </trans-unit>
             <trans-unit id="validators_height_min">
                 <source>validators_height_min</source>
-                <target>The value must be over 100.</target>
+                <target>The height value must be over 100.</target>
             </trans-unit>
             <trans-unit id="validators_record_min">
                 <source>validators_record_min</source>
-                <target>The value must be over 1.</target>
+                <target>The record value must be over 1.</target>
             </trans-unit>
             <trans-unit id="validators_record_max">
                 <source>validators_record_max</source>
-                <target>The value can not exceed 300.</target>
+                <target>The record value can not exceed 300.</target>
             </trans-unit>
             <trans-unit id="validators_link_min">
                 <source>validators_link_min</source>
@@ -74,14 +74,14 @@
                 <source>validators_championship_pattern</source>
                 <target>The value of the "Championship" field contains not allowed elements.</target>
             </trans-unit>
-            <trans-unit id="validators_year_championship_min">
-                <source>validators_year_championship_min</source>
-                <target>The value of the "Year of championship" field is too short.</target>
+            <trans-unit id="validators_year_championship_min_max">
+                <source>validators_year_championship_min_max</source>
+                <target>The value of the "Year of championship" field have to be between 1950 - 2018.</target>
             </trans-unit>
-            <trans-unit id="validators_year_championship_max">
-                <source>validators_year_championship_max</source>
-                <target>The value of the "Year of championship" field is too long.</target>
-            </trans-unit>
+            <!--<trans-unit id="validators_year_championship_max">-->
+                <!--<source>validators_year_championship_max</source>-->
+                <!--<target>The value of the "Year of championship" field is too long.</target>-->
+            <!--</trans-unit>-->
             <trans-unit id="validators_year_championship_pattern">
                 <source>validators_year_championship_pattern</source>
                 <target>The value of the "Year of championship" field contains not allowed elements.</target>
@@ -157,6 +157,27 @@
             <trans-unit id="validators_birth_place_pattern">
                 <source>validators_birth_place_pattern</source>
                 <target>The value of the "Birth place" field contains not allowed elements.</target>
+            </trans-unit>
+
+            <trans-unit id="validators_height_number">
+                <source>validators_height_number</source>
+                <target>The value of the "Height" field must contain only numbers from 100 to 300.</target>
+            </trans-unit>
+            <trans-unit id="validators_record_number">
+                <source>validators_record_number</source>
+                <target>Fields with records must contain only numbers from 1 to 500.</target>
+            </trans-unit>
+            <trans-unit id="validators_comment_min">
+                <source>validators_comment_min</source>
+                <target>The content of the commentary is too short.</target>
+            </trans-unit>
+            <trans-unit id="validators_comment_max">
+                <source>validators_comment_max</source>
+                <target>The content of the comment is too long.</target>
+            </trans-unit>
+            <trans-unit id="validators_year_championship">
+                <source>validators_year_championship</source>
+                <target>The value of the "Year of championship" field should have exactly 4 characters.</target>
             </trans-unit>
         </body>
     </file>

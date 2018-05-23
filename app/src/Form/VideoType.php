@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 /**
  * Class VideoType.
@@ -27,6 +28,7 @@ class VideoType extends AbstractType
             [
                 'label' => 'label.link',
                 'required' => true,
+                'error_bubbling'=> true,
                 'attr' => [
                     'max_length' => 200,
                 ],
@@ -52,6 +54,7 @@ class VideoType extends AbstractType
             [
                 'label' => 'label.img_video_yt',
                 'required' => true,
+                'error_bubbling'=> true,
                 'attr' => [
                     'max_length' => 200,
                 ],
@@ -77,6 +80,7 @@ class VideoType extends AbstractType
             [
                 'label' => 'label.title',
                 'required' => true,
+                'error_bubbling'=> true,
                 'attr' => [
                     'max_length' => 100,
                 ],
@@ -102,6 +106,7 @@ class VideoType extends AbstractType
             [
                 'label' => 'label.championship',
                 'required' => true,
+                'error_bubbling'=> true,
                 'attr' => [
                     'max_length' => 45,
                 ],
@@ -131,10 +136,12 @@ class VideoType extends AbstractType
         );
         $builder->add(
             'year_championship',
-            TextType::class,
+            NumberType::class,
             [
                 'label' => 'label.year_championship',
                 'required' => true,
+                'error_bubbling'=> true,
+                'invalid_message'=>'validators_year_championship_min_max',
                 'attr' => [
                     'max_length' => 4,
                 ],
@@ -142,13 +149,13 @@ class VideoType extends AbstractType
                     new Assert\NotBlank(
                         ['groups' => ['video-default']]
                     ),
-                    new Assert\Length(
+                    new Assert\Range(
                         [
                             'groups' => ['video-default'],
-                            'min' => 4,
-                            'minMessage' => 'validators_year_championship_min',
-                            'max' => 4,
-                            'maxMessage' => 'validators_year_championship_max',
+                            'min' => 1950,
+                            'minMessage' => 'validators_year_championship_min_max',
+                            'max' => 2018,
+                            'maxMessage' => 'validators_year_championship_min_max',
                         ]
                     ),
                     new Assert\Regex(
@@ -168,6 +175,7 @@ class VideoType extends AbstractType
             [
                 'label' => 'label.type',
                 'required' => true,
+                'error_bubbling'=> true,
                 'choices'  => array(
                     'short_program' => 'program krótki',
                     'free_program' => 'program dowolny'
@@ -180,6 +188,7 @@ class VideoType extends AbstractType
             [
                 'label' => 'label.song',
                 'required' => true,
+                'error_bubbling'=> true,
                 'attr' => [
                     'max_length' => 50,
                 ],
@@ -189,7 +198,7 @@ class VideoType extends AbstractType
                     ),
                     new Assert\Length(
                         [
-                            'groups' => ['skater-default'],
+                            'groups' => ['video-default'],
                             'min' => 4,
                             'minMessage' => 'validators_song_min',
                             'max' => 50,
@@ -205,6 +214,7 @@ class VideoType extends AbstractType
             [
                 'label' => 'label.skaters_name',
                 'required' => true,
+                'error_bubbling'=> true,
                 'choices' => $this->findOptions($options['skaters_repository']),
             ]
         );
@@ -222,7 +232,7 @@ class VideoType extends AbstractType
         $resolver->setDefaults(
             [
                 'validation_groups' => 'video-default',
-                'video_repository' => null,
+                'skaters_repository' => null,
             ]
         );
     }

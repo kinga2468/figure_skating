@@ -27,6 +27,7 @@ class LoginType extends AbstractType
             [
                 'label' => 'label.login',
                 'required' => true,
+                'error_bubbling'=> true,
                 'attr' => [
                     'max_length' => 32,
 
@@ -50,6 +51,7 @@ class LoginType extends AbstractType
             [
                 'label' => 'label.password',
                 'required' => true,
+                'error_bubbling'=> true,
                 'attr' => [
                     'max_length' => 32,
 

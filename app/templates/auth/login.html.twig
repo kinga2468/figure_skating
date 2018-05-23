@@ -25,11 +25,12 @@
 
                                     {{ form_start(form, { method: 'post', action: path('auth_login_check') }) }}
                                     {#{{ form_label(form.login) }}#}
+                                    {{ form_errors(form) }}
+
                                     {{ form_label(form.login) }}
                                     {{ form_widget(form.login) }}
                                     {{ form_label(form.password) }}
                                     {{ form_widget(form.password) }}
-
 
                                         <input type="submit" value="{{ 'action.login'|trans }}" class="btn btn-success" />
 

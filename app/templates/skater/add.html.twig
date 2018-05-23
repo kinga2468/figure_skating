@@ -111,10 +111,13 @@
                                 <div class="form">
                                     {{ form_start(form, { method: 'post', action: url('skater_add') }) }}
 
+                                    {{ form_errors(form) }}
+
                                     {{ form_label(form.img) }}
                                     {{ form_widget(form.img) }}
                                     {{ form_label(form.name) }}
                                     {{ form_widget(form.name) }}
+
 
                                     {{ form_label(form.date_of_birth) }}
                                     <div class="col-md-4 col-sm-4 col-xs-4">

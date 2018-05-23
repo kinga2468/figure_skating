@@ -22,29 +22,29 @@
                 <source>validators_password_max</source>
                 <target>Hasło jest za długie. Musi mieć maksymalnie 32 znaki.</target>
             </trans-unit>
-            <trans-unit id="validators_heigh_max">
-                <source>validators_heigh_max</source>
-                <target>Wartość nie może wynosić ponad 300.</target>
+            <trans-unit id="validators_height_max">
+                <source>validators_height_max</source>
+                <target>Wartość pola "Wzrost" nie może wynosić ponad 300.</target>
             </trans-unit>
             <trans-unit id="validators_height_min">
                 <source>validators_height_min</source>
-                <target>Wartość musi wynosić ponad 100.</target>
+                <target>Wartość pola "Wzrost" musi wynosić ponad 100.</target>
             </trans-unit>
             <trans-unit id="validators_record_min">
                 <source>validators_record_min</source>
-                <target>Wartość musi wynosić ponad 1.</target>
+                <target>Wartość pola "Rekord" musi wynosić ponad 1.</target>
             </trans-unit>
             <trans-unit id="validators_record_max">
                 <source>validators_record_max</source>
-                <target>Wartość nie może wynosić ponad 300.</target>
+                <target>Wartość pola "Rekord" nie może wynosić ponad 500.</target>
             </trans-unit>
             <trans-unit id="validators_link_min">
                 <source>validators_link_min</source>
-                <target>Wartość pola "link" jest za krótka.</target>
+                <target>Wartość pola "Link" jest za krótka.</target>
             </trans-unit>
             <trans-unit id="validators_link_max">
                 <source>validators_link_max</source>
-                <target>Wartość pola "link" jest za długa.</target>
+                <target>Wartość pola "Link" jest za długa.</target>
             </trans-unit>
             <trans-unit id="validators_img_vide_yt_min">
                 <source>validators_img_vide_yt_min</source>
@@ -64,7 +64,7 @@
             </trans-unit>
             <trans-unit id="validators_championship_min">
                 <source>validators_championship_min</source>
-                <target>Wartość pola "Zawody video" jest za króka.</target>
+                <target>Wartość pola "Zawody" jest za króka.</target>
             </trans-unit>
             <trans-unit id="validators_championship_max">
                 <source>validators_championship_max</source>
@@ -74,14 +74,14 @@
                 <source>validators_championship_pattern</source>
                 <target>Wartość pola "Zawody" zawiera nie dozwolone elementy.</target>
             </trans-unit>
-            <trans-unit id="validators_year_championship_min">
-                <source>validators_year_championship_min</source>
-                <target>Wartość pola "Rok zawodów" jest za krótka.</target>
+            <trans-unit id="validators_year_championship_min_max">
+                <source>validators_year_championship_min_max</source>
+                <target>Wartość pola "Rok zawodów" może wynosić od 1950 do 2018.</target>
             </trans-unit>
-            <trans-unit id="validators_year_championship_max">
-                <source>validators_year_championship_max</source>
-                <target>Wartość pola "Rok zawodów" jest za długa.</target>
-            </trans-unit>
+            <!--<trans-unit id="validators_year_championship_max">-->
+                <!--<source>validators_year_championship_max</source>-->
+                <!--<target>Wartość pola "Rok zawodów" jest za duża.</target>-->
+            <!--</trans-unit>-->
             <trans-unit id="validators_year_championship_pattern">
                 <source>validators_year_championship_pattern</source>
                 <target>Wartość pola "Rok zawodów" zawiera nie dozwolone elementy.</target>
@@ -140,11 +140,11 @@
             </trans-unit>
             <trans-unit id="validators_img_min">
                 <source>validators_img_min</source>
-                <target>Wartość pola "Obrazek video" jest za krótka.</target>
+                <target>Wartość pola "Link do obrazka" jest za krótka.</target>
             </trans-unit>
             <trans-unit id="validators_img_max">
                 <source>validators_img_max</source>
-                <target>Wartość pola "Obrazek vide" jest za długa.</target>
+                <target>Wartość pola "Link do obrazka" jest za długa.</target>
             </trans-unit>
             <trans-unit id="validators_birth_place_min">
                 <source>validators_birth_place_min</source>
@@ -157,6 +157,27 @@
             <trans-unit id="validators_birth_place_pattern">
                 <source>validators_birth_place_pattern</source>
                 <target>Wartość pola "Miejsce urodzenia" zawiera nie dozwolone elementy.</target>
+            </trans-unit>
+
+            <trans-unit id="validators_height_number">
+                <source>validators_height_number</source>
+                <target>Wartość pola "Wzrost" musi zawierać tylko cyfry od 100 do 300.</target>
+            </trans-unit>
+            <trans-unit id="validators_record_number">
+                <source>validators_record_number</source>
+                <target>Pola z rekordami muszą zawierać tylko cyfry od 1 do 500.</target>
+            </trans-unit>
+            <trans-unit id="validators_comment_min">
+                <source>validators_comment_min</source>
+                <target>Treść komentarza jest za krótka.</target>
+            </trans-unit>
+            <trans-unit id="validators_comment_max">
+                <source>validators_comment_max</source>
+                <target>Treść komentarza jest za długa.</target>
+            </trans-unit>
+            <trans-unit id="validators_year_championship">
+                <source>validators_year_championship</source>
+                <target>Wartość pola "Rok Zawodów" powinna mieć dokładnie 4 znaki.</target>
             </trans-unit>
 
         </body>

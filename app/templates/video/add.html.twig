@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme form with ['bootstrap_3_horizontal_layout.html.twig'] %}
 
 {% block title %}{{ 'main.title'|trans }}{% endblock %}
 
@@ -94,21 +95,15 @@
                 </div>
             </div>
             <div class="container delete_comment">
-                {% form_theme form with ['bootstrap_3_horizontal_layout.html.twig', 'form/form_errors.html.twig'] %}
-                {% if error is defined and error|length %}
-                    {% include 'default/_single_alert_message.html.twig' with {
-                        is_single_message: true,
-                        is_dismissible: false,
-                        type: 'danger',
-                        message: error,
-                    } %}
-                {% endif %}
+
                 <section class="outer-wrapper">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
                             <div class="akcje">
                                 <div class="form">
                                     {{ form_start(form, { method: 'post', action: url('video_add') }) }}
+
+                                    {{ form_errors(form) }}
 
                                     {{ form_label(form.link) }}
                                     {{ form_widget(form.link) }}
