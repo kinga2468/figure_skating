@@ -101,13 +101,6 @@ a:focus{text-decoration:none;}
     transform: translate(-50%, -50%);}
 
 
-/*.jeden{background-image: url("../images/javier.jpg");}*/
-/*.dwa{background-image: url("../images/yuzuru.jpg");}*/
-/*.trzy{background-image: url("../images/misha.jpg");}*/
-/*.cztery{background-image: url("../images/nathan.jpg");}*/
-/*.piec{background-image: url("../images/boyang.jpg");}*/
-/*.szesc{background-image: url("../images/kolyada.jpg");}*/
-
 .row .title{color:black; font-size:1.5em; margin:15px;}
 .more{float:right; font-size:1.3em; margin-top:14px;}
 .more a{color:black; text-decoration: none;}
@@ -131,7 +124,7 @@ a:focus{text-decoration:none;}
 
 
 
-/*carusel left//////////////////////////////////////////////*/
+/*carusel //////////////////////////////////////////////*/
 .fancybox.thumbnail{height: 219px;}
 
 .carousel .col-md-3{padding:8px;}
